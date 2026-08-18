@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Запуск ИИ-агентов</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/home.css">
+</head>
+<body>
+<nav class="sitenav">
+  <a class="sitenav-mark" href="/">Запуск ИИ-агентов</a>
+  <div class="sitenav-links">
+      <a href="/kb/index.html" class="on">База знаний</a>
+      <a href="/news/index.html">Новости</a>
+      <a href="/hub/index.html">Хаб агентов</a>
+  </div>
+</nav>
+
+<article class="sheet">
+<header class="masthead home-hero">
+<p class="course">База знаний · обновлено <b>2026-08-16</b></p>
+<h1>Запуск ИИ-агентов</h1>
+<p class="tagline">Путь от «что такое агент» до «развернул, поддерживаю и масштабирую» — уроки с практикой, статьи по каждой теме и рабочие листы, к которым возвращаются.</p>
+<a class="resume" href="../lessons/0001-tsikl-agenta.html">
+<span class="lbl">Начать здесь</span>
+<span class="ttl">Агент — это замкнутая петля</span>
+<span class="sub">Пять тактов работы агента, признак замкнутой петли, разбор ботов и визуальных конструкторов и состав контекста.</span>
+</a>
+<div class="strip" role="img" aria-label="Состояние программы: 13 материалов из 45 готово">
+<span class="grp">
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+</span>
+<span class="grp">
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+<i data-s="published"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+<span class="grp">
+<i data-s="planned"></i>
+<i data-s="planned"></i>
+</span>
+</div>
+<p class="strip-legend"><b>13</b> материалов готово из <b>45</b> · <b>10</b> разделов · <b>229</b> понятий в базе</p>
+</header>
+<section id="put">
+<span class="num" aria-hidden="true">→</span>
+<h2>Путь</h2>
+<p>Уроки идут подряд и опираются друг на друга: каждый следующий пользуется языком предыдущего. Отметка о прохождении ставится, когда в уроке пройден весь блок практики.</p>
+<ol class="path">
+<li data-quiz-key="0001-a" data-quiz-total="7" data-href="../lessons/0001-tsikl-agenta.html" data-title="Агент — это замкнутая петля">
+<a href="../lessons/0001-tsikl-agenta.html">Агент — это замкнутая петля</a>
+<span class="note">Пять тактов работы агента, признак замкнутой петли, разбор ботов и визуальных конструкторов и состав контекста.</span>
+</li>
+<li data-quiz-key="0002-a" data-quiz-total="6" data-href="../lessons/0002-lestnitsa-avtonomii.html" data-title="Лестница автономии">
+<a href="../lessons/0002-lestnitsa-avtonomii.html">Лестница автономии</a>
+<span class="note">Три ступени и правило выбора самой нижней подходящей. Пять шаблонов workflow, четыре вопроса перед агентом и цена автономии.</span>
+</li>
+<li data-quiz-key="0003-a" data-quiz-total="6" data-href="../lessons/0003-analiz-trebovaniy.html" data-title="Из «хотим ИИ» в спецификацию">
+<a href="../lessons/0003-analiz-trebovaniy.html">Из «хотим ИИ» в спецификацию</a>
+<span class="note">Четыре роли вокруг агента, восемь блоков требований, критерии приемки и права на необратимые действия.</span>
+</li>
+</ol>
+<p>Дальше по пути — механика агента: инструменты, память, знания. Порядок можно менять: скажите, какая тема нужна раньше, и она поднимется в очереди.</p>
+</section>
+<section id="stati">
+<span class="num" aria-hidden="true">¶</span>
+<h2>Статьи</h2>
+<p>Отдельный слой от уроков. Урок ведет к одному результату и содержит практику; статья раскрывает тему целиком и читается не подряд, а по надобности. У статей своя разметка: двойная линия в поле, квадратные номера разделов и оглавление сверху.</p>
+<ul class="sheets sheets-art">
+<li>
+<p class="mat-kind">Основания</p>
+<p class="mat-title"><a href="../articles/tipy-agentov.html">Пять типов агентов</a></p>
+<p class="mat-sum">Пять типов по устройству: рефлексивный, модельный, целевой, утилитарный, обучающийся. Что каждый умеет, чего не может и как они уживаются слоями в одной системе.</p>
+</li>
+<li>
+<p class="mat-kind">Основания</p>
+<p class="mat-title"><a href="../articles/evolyutsiya-agentov.html">Откуда взялись агенты</a></p>
+<p class="mat-sum">Три волны: правила, обученные модели, языковые модели. Обо что разбилась каждая, что осталось в наследство и почему цена автономии просто сменила валюту.</p>
+</li>
+<li>
+<p class="mat-kind">Основания</p>
+<p class="mat-title"><a href="../articles/promahi-so-stupenyu.html">Семь способов промахнуться со ступенью</a></p>
+<p class="mat-sum">Шесть промахов в сторону переусложнения и один в обратную. Для каждого: как выглядит, чем оборачивается, по какому признаку ловится и что делать, если уже построено.</p>
+</li>
+<li>
+<p class="mat-kind">Проектирование</p>
+<p class="mat-title"><a href="../articles/promty-osnovy.html">Промпт как инструмент управления</a></p>
+<p class="mat-sum">Шесть приемов работы с промптом, три типовые ошибки и граница: пять случаев, где правка формулировок не поможет вообще.</p>
+</li>
+<li>
+<p class="mat-kind">Проектирование</p>
+<p class="mat-title"><a href="../articles/strukturirovannye-promty.html">Структурированные промпты</a></p>
+<p class="mat-sum">Промпт как документ: семь блоков, три обязательных, готовые наборы шаблонов и разбор случаев, где структура не окупается.</p>
+</li>
+<li>
+<p class="mat-kind">Проектирование</p>
+<p class="mat-title"><a href="../articles/kontekst-inzhiniring.html">Контекст-инжиниринг</a></p>
+<p class="mat-sum">Сборка входа как ремесло: пять видов памяти, пять источников, конвейер из трех стадий, четыре отказа, работа с историей, шесть приемов управления и чек-лист.</p>
+</li>
+<li>
+<p class="mat-kind">Проектирование</p>
+<p class="mat-title"><a href="../articles/shablony-proektirovaniya.html">Четыре шаблона проектирования</a></p>
+<p class="mat-sum">Рефлексия, вызов инструментов, планирование и мультиагентное сотрудничество: что дает каждый, где ломается, как они сочетаются и в каком порядке вводить.</p>
+</li>
+</ul>
+</section>
+<section id="listy">
+<span class="num" aria-hidden="true">§</span>
+<h2>Рабочие листы</h2>
+<p>Это не для чтения подряд, а для работы: держать открытым на встрече с заказчиком, печатать, возвращаться при разборе поломки.</p>
+<ul class="sheets">
+<li>
+<p class="mat-title"><a href="../reference/tsikl-agenta.html">Такты, лестница и диагностика</a></p>
+<p class="mat-sum">Рабочий лист: пять тактов, три ступени, пять шаблонов, четыре вопроса и таблица поиска поломки по симптому.</p>
+</li>
+<li>
+<p class="mat-title"><a href="../reference/specifikaciya.html">Шаблон спецификации</a></p>
+<p class="mat-sum">Заполняемый документ для встречи с заказчиком, список красных флагов и текстовая версия для копирования.</p>
+</li>
+<li>
+<p class="mat-title"><a href="../GLOSSARY.md">Глоссарий</a></p>
+<p class="mat-sum">Канонический язык базы знаний. Термин попадает сюда после того, как подтвержден практикой.</p>
+</li>
+</ul>
+</section>
+<section id="m-osnovaniya">
+<span class="num" aria-hidden="true">1</span>
+<h2>Основания</h2>
+<p class="mod-sum">Что такое агент, чем он не является и когда он нужен. <span class="mod-count">7 из 7 готово</span></p>
+<ul class="mats">
+<li data-status="published" data-quiz-key="0001-a" data-quiz-total="7" data-href="../lessons/0001-tsikl-agenta.html" data-title="Агент — это замкнутая петля">
+<p class="mat-kind">урок · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../lessons/0001-tsikl-agenta.html">Агент — это замкнутая петля</a> <span class="done" data-done-slot></span></p>
+<p class="mat-sum">Пять тактов работы агента, признак замкнутой петли, разбор ботов и визуальных конструкторов и состав контекста.</p>
+</div>
+</li>
+<li data-status="published" data-quiz-key="0002-a" data-quiz-total="6" data-href="../lessons/0002-lestnitsa-avtonomii.html" data-title="Лестница автономии">
+<p class="mat-kind">урок · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../lessons/0002-lestnitsa-avtonomii.html">Лестница автономии</a> <span class="done" data-done-slot></span></p>
+<p class="mat-sum">Три ступени и правило выбора самой нижней подходящей. Пять шаблонов workflow, четыре вопроса перед агентом и цена автономии.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">статья · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../articles/tipy-agentov.html">Пять типов агентов</a></p>
+<p class="mat-sum">Пять типов по устройству: рефлексивный, модельный, целевой, утилитарный, обучающийся. Что каждый умеет, чего не может и как они уживаются слоями в одной системе.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">статья · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../articles/evolyutsiya-agentov.html">Откуда взялись агенты</a></p>
+<p class="mat-sum">Три волны: правила, обученные модели, языковые модели. Обо что разбилась каждая, что осталось в наследство и почему цена автономии просто сменила валюту.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">статья · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../articles/promahi-so-stupenyu.html">Семь способов промахнуться со ступенью</a></p>
+<p class="mat-sum">Шесть промахов в сторону переусложнения и один в обратную. Для каждого: как выглядит, чем оборачивается, по какому признаку ловится и что делать, если уже построено.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">рабочий лист · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../reference/tsikl-agenta.html">Такты, лестница и диагностика</a></p>
+<p class="mat-sum">Рабочий лист: пять тактов, три ступени, пять шаблонов, четыре вопроса и таблица поиска поломки по симптому.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">рабочий лист · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../GLOSSARY.md">Глоссарий</a></p>
+<p class="mat-sum">Канонический язык базы знаний. Термин попадает сюда после того, как подтвержден практикой.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-proektirovanie">
+<span class="num" aria-hidden="true">2</span>
+<h2>Проектирование</h2>
+<p class="mod-sum">От задачи заказчика к спецификации, промпту и выбору шаблона. <span class="mod-count">6 из 6 готово</span></p>
+<ul class="mats">
+<li data-status="published" data-quiz-key="0003-a" data-quiz-total="6" data-href="../lessons/0003-analiz-trebovaniy.html" data-title="Из «хотим ИИ» в спецификацию">
+<p class="mat-kind">урок · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../lessons/0003-analiz-trebovaniy.html">Из «хотим ИИ» в спецификацию</a> <span class="done" data-done-slot></span></p>
+<p class="mat-sum">Четыре роли вокруг агента, восемь блоков требований, критерии приемки и права на необратимые действия.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">статья · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../articles/promty-osnovy.html">Промпт как инструмент управления</a></p>
+<p class="mat-sum">Шесть приемов работы с промптом, три типовые ошибки и граница: пять случаев, где правка формулировок не поможет вообще.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">статья · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../articles/strukturirovannye-promty.html">Структурированные промпты</a></p>
+<p class="mat-sum">Промпт как документ: семь блоков, три обязательных, готовые наборы шаблонов и разбор случаев, где структура не окупается.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">статья · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../articles/kontekst-inzhiniring.html">Контекст-инжиниринг</a></p>
+<p class="mat-sum">Сборка входа как ремесло: пять видов памяти, пять источников, конвейер из трех стадий, четыре отказа, работа с историей, шесть приемов управления и чек-лист.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">статья · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../articles/shablony-proektirovaniya.html">Четыре шаблона проектирования</a></p>
+<p class="mat-sum">Рефлексия, вызов инструментов, планирование и мультиагентное сотрудничество: что дает каждый, где ломается, как они сочетаются и в каком порядке вводить.</p>
+</div>
+</li>
+<li data-status="published">
+<p class="mat-kind">рабочий лист · готово</p>
+<div class="mat-body">
+<p class="mat-title"><a href="../reference/specifikaciya.html">Шаблон спецификации</a></p>
+<p class="mat-sum">Заполняемый документ для встречи с заказчиком, список красных флагов и текстовая версия для копирования.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-mehanika">
+<span class="num" aria-hidden="true">3</span>
+<h2>Механика агента</h2>
+<p class="mod-sum">Инструменты, память, знания, рассуждение, планирование. <span class="mod-count">0 из 8 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">урок · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Инструменты и вызов функций</span></p>
+<p class="mat-sum">Как модель просит вызов, как описывать инструмент, чтобы им пользовались верно, и как проектировать защиту от ошибок в аргументах.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Память агента</span></p>
+<p class="mat-sum">Кратковременная и долговременная память, эпизодическая и семантическая, где она физически живет и почему модель сама не помнит ничего.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">База знаний и поиск по документам</span></p>
+<p class="mat-sum">Как устроен поиск по своим данным, нарезка документов, векторное представление и типовые причины, по которым поиск не находит очевидное.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Агентный поиск</span></p>
+<p class="mat-sum">Когда агент сам решает, что искать, оценивает найденное и переспрашивает. Отличие от обычного поиска по документам и границы самостоятельности.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Как агент рассуждает</span></p>
+<p class="mat-sum">Думать-действовать-наблюдать против планирования наперед. Цепочка рассуждений, самосогласованность, самопроверка и цена каждого подхода.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Планирование и разбиение задачи</span></p>
+<p class="mat-sum">Как большая цель превращается в подзадачи, зачем нужен строгий формат плана и что делать, когда план оказался неверным на третьем шаге.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Агент, оценивающий себя</span></p>
+<p class="mat-sum">Способность заметить собственную ошибку, оценить уверенность и сменить стратегию. Что это дает на практике и чем оплачивается.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Рабочие процессы</span></p>
+<p class="mat-sum">Узлы, ветвления, циклы и передача данных между шагами. Как собирается процесс на визуальной платформе и что под ним на самом деле.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-protokoly">
+<span class="num" aria-hidden="true">4</span>
+<h2>Протоколы и интеграция</h2>
+<p class="mod-sum">Как агент подключается к внешнему миру и к другим агентам. <span class="mod-count">0 из 3 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">урок · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Подключение инструментов по стандарту</span></p>
+<p class="mat-sum">Протокол подключения ИИ-приложений к внешним системам: клиент, сервер, что сервер выставляет наружу и как это меняет работу интегратора.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Как агенты договариваются между собой</span></p>
+<p class="mat-sum">Протоколы обмена между агентами: карточка агента, задача, сообщение, артефакт. Чем это отличается от подключения инструментов.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Шлюз и пульт управления</span></p>
+<p class="mat-sum">Единая точка, через которую агенты ходят наружу: аутентификация, политики, маршрутизация, учет расхода и телеметрия.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-multiagent">
+<span class="num" aria-hidden="true">5</span>
+<h2>Мультиагентные системы</h2>
+<p class="mod-sum">Когда агентов несколько: роли, обмен, оркестрация. <span class="mod-count">0 из 2 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">урок · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Когда одного агента мало</span></p>
+<p class="mat-sum">Признаки, по которым задача просит нескольких агентов, и честный разбор случаев, где разделение только добавило точек отказа.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Схемы мультиагентных систем</span></p>
+<p class="mat-sum">Общий чат, передача хода, иерархия, оркестратор с исполнителями, совместная фильтрация. Что каждая схема дает и где ломается.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-platformy">
+<span class="num" aria-hidden="true">6</span>
+<h2>Платформы и сборка</h2>
+<p class="mod-sum">Где собирать агента и как выбирать инструментарий. <span class="mod-count">0 из 3 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Где собирать агента</span></p>
+<p class="mat-sum">Визуальные платформы и их потолок, критерии выбора, стоимость владения и вопрос переносимости решения между платформами.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Фреймворки для сборки в коде</span></p>
+<p class="mat-sum">Обзор инструментария для тех, кто вышел за потолок платформы: что они дают сверх голого вызова модели и когда обходятся дороже пользы.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">урок · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Первый агент своими руками</span></p>
+<p class="mat-sum">Сборка работающего агента от спецификации до запуска, с инструментом, потолком итераций и проверкой результата.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-kachestvo">
+<span class="num" aria-hidden="true">7</span>
+<h2>Качество и оценка</h2>
+<p class="mod-sum">Тестирование, метрики, наблюдаемость, разбор отказов. <span class="mod-count">0 из 5 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">урок · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Как проверять агента</span></p>
+<p class="mat-sum">Почему обычные тесты не работают на недетерминированной системе, что такое набор проверочных случаев и как ловить ухудшение после правки.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Метрики качества</span></p>
+<p class="mat-sum">Что измерять у агента: завершение задачи, верность вызовов, качество ответа, стоимость и задержка. Оценка до запуска и на живом трафике.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Наблюдаемость</span></p>
+<p class="mat-sum">Трассировка агентского хода: что записывать на каждом такте, как читать след неудачного запуска и какие сигналы выводить на монитор.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Ограничения и отказы</span></p>
+<p class="mat-sum">Выдумки, арифметика, счет слов, потеря начала длинного текста, машинный слог, зацикливание. Причины и рабочие способы обхода.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">рабочий лист · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Разбор отказов</span></p>
+<p class="mat-sum">Расширенная таблица: симптом, такт, вероятная причина, что проверить первым. Пополняется по мере курса.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-bezopasnost">
+<span class="num" aria-hidden="true">8</span>
+<h2>Доверие и безопасность</h2>
+<p class="mod-sum">Угрозы, участие человека, управление и ответственность. <span class="mod-count">0 из 3 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">урок · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Человек в контуре</span></p>
+<p class="mat-sum">Где ставить точку подтверждения, как формулировать системные ограничения и как прервать агента, не сломав задачу.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Угрозы и защита</span></p>
+<p class="mat-sum">Подмена инструкции через данные, доступ к критическим системам, отравление базы знаний, перерасход ресурсов, каскад ошибок.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Управление и ответственность</span></p>
+<p class="mat-sum">Кто отвечает за действие агента, журнал действий, опознание агента, требования к аудиту и что писать в договоре с заказчиком.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-ekspluataciya">
+<span class="num" aria-hidden="true">9</span>
+<h2>Эксплуатация</h2>
+<p class="mod-sum">Развертывание, стоимость, масштабирование, сопровождение. <span class="mod-count">0 из 6 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Жизненный цикл агента</span></p>
+<p class="mat-sum">Замысел, сборка, проверка, выпуск, наблюдение, доработка, вывод из эксплуатации. Чем этот цикл отличается от разработки обычной программы.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">урок · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Развертывание</span></p>
+<p class="mat-sum">Что меняется при переходе от рабочего прототипа к системе, которой пользуются: среда исполнения, доступы, секреты, откат версии.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Масштабирование</span></p>
+<p class="mat-sum">Что ломается при росте нагрузки: очереди, ограничения поставщика, параллельные запуски, изоляция клиентов, деградация под нагрузкой.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Стоимость и как ее считать</span></p>
+<p class="mat-sum">Из чего складывается счет, кэширование неизменной части, разные модели на разные шаги, потолки расхода и разговор с заказчиком о цене.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Когда агентов много</span></p>
+<p class="mat-sum">Разрастание парка агентов, реестр, владельцы, дубли, заброшенные агенты и практики сопровождения на длинной дистанции.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Агенты на своем железе</span></p>
+<p class="mat-sum">Когда данные нельзя отдавать наружу: малые модели, локальный запуск, чем приходится жертвовать и где проходит граница применимости.</p>
+</div>
+</li>
+</ul>
+</section>
+<section id="m-primenenie">
+<span class="num" aria-hidden="true">10</span>
+<h2>Применение</h2>
+<p class="mod-sum">Отраслевые сценарии и особые классы агентов. <span class="mod-count">0 из 2 готово</span></p>
+<ul class="mats">
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Агенты, работающие за компьютером</span></p>
+<p class="mat-sum">Управление браузером и интерфейсом вместо вызова API: когда это единственный путь, чем опасно и какие ограничители обязательны.</p>
+</div>
+</li>
+<li data-status="planned">
+<p class="mat-kind">статья · в плане</p>
+<div class="mat-body">
+<p class="mat-title"><span class="pending">Отраслевые сценарии</span></p>
+<p class="mat-sum">Разбор применений по отраслям: поддержка, продажи, кадры, финансы, закупки, снабжение, производство, здравоохранение.</p>
+</div>
+</li>
+</ul>
+</section>
+<footer class="colophon">
+<nav>
+<a href="../GLOSSARY.md">Глоссарий</a>
+<a href="../MISSION.md">Миссия</a>
+<a href="manifest.json">Манифест</a>
+</nav>
+<p class="ask">Серым отмечено то, что еще не написано. Отметки о пройденном хранятся в этом браузере и никуда не отправляются — чтобы я увидел результат, пришлите отчет из урока в чат.</p>
+</footer>
+</article>
+<script src="../assets/progress.js"></script>
+<script src="../assets/pagenav.js"></script>
+</body>
+</html>

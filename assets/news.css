@@ -1,0 +1,91 @@
+/* ============================================================
+   Раздел «Новости» — хронологическая лента.
+
+   Отличие от уроков и статей по форме, не по цвету: вместо номера
+   раздела на линии хода — дата, вместо оглавления — порядок по
+   времени. Здесь, в отличие от учебных материалов, называются
+   продукты и даются ссылки на источники — раздел справочный.
+   ============================================================ */
+
+.feed {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+}
+
+.feed-item {
+  position: relative;
+  display: flex;
+  gap: 1.4rem;
+  padding: 0 0 1.6rem 0;
+  margin: 0 0 1.6rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.feed-item:last-child {
+  border-bottom: none;
+}
+
+.feed-date {
+  flex: 0 0 6rem;
+  margin: 0.15rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.feed-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.feed-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.feed-sum {
+  margin: 0 0 0.5rem;
+  color: var(--ink-2);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.feed-meta {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.feed-meta a {
+  color: var(--accent);
+}
+
+.feed-meta .tag {
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.1em 0.5em;
+  border-radius: 2px;
+  background: var(--rule-soft);
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+}
+
+.feed-empty {
+  margin: 2.4rem 0;
+  padding: 1.6rem;
+  border: 1px dashed var(--rule);
+  border-radius: 3px;
+  color: var(--ink-2);
+}
+
+.feed-empty p {
+  margin: 0;
+}
+
+@media (max-width: 30rem) {
+  .feed-item { flex-direction: column; gap: 0.3rem; }
+  .feed-date { flex: none; }
+}

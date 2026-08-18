@@ -1,0 +1,94 @@
+/* ============================================================
+   Раздел «Хаб агентов» — справочный каталог, не лента и не путь.
+
+   Ближе по духу к рабочим листам, чем к урокам: читают не подряд,
+   а по надобности, с фильтром вместо порядка чтения. Здесь, как
+   и в новостях, называются продукты и даются прямые ссылки.
+   ============================================================ */
+
+.agent-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2rem 0 1.6rem;
+}
+
+.agent-filter button {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.agent-filter button:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.agent-filter button.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.agent-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 1rem;
+}
+
+.agent-card {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+}
+
+.agent-card[hidden] { display: none; }
+
+.agent-cat {
+  margin: 0 0 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.agent-name {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.agent-name a {
+  color: var(--ink);
+}
+
+.agent-task {
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.agent-tags {
+  margin: 0;
+}
+
+.agent-tags .tag {
+  display: inline-block;
+  margin: 0 0.4rem 0.3rem 0;
+  padding: 0.1em 0.5em;
+  border-radius: 2px;
+  background: var(--rule-soft);
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}

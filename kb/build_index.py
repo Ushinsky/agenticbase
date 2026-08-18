@@ -15,10 +15,14 @@ import html
 import json
 import os
 import re
+import sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(BASE, "kb"))
+from sitenav import render_sitenav
+
 MANIFEST = os.path.join(BASE, "kb", "manifest.json")
-OUT = os.path.join(BASE, "index.html")
+OUT = os.path.join(BASE, "kb", "index.html")
 
 KIND = {
     "lesson": "урок",
@@ -39,8 +43,10 @@ def esc(value):
 
 
 def href_of(node):
+    # index.html теперь лежит в kb/, на уровень глубже lessons/articles/reference,
+    # поэтому все пути из манифеста получают "../".
     path = node.get("path")
-    return path.replace("\\", "/") if path else None
+    return "../" + path.replace("\\", "/") if path else None
 
 
 def count_quiz_questions(node):
@@ -158,10 +164,11 @@ def build():
     add('<meta charset="utf-8">')
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
     add("<title>%s</title>" % esc(course["title"]))
-    add('<link rel="stylesheet" href="assets/lesson.css">')
-    add('<link rel="stylesheet" href="assets/home.css">')
+    add('<link rel="stylesheet" href="../assets/lesson.css">')
+    add('<link rel="stylesheet" href="../assets/home.css">')
     add("</head>")
     add("<body>")
+    add(render_sitenav("kb"))
     add('<article class="sheet">')
 
     # ---------- шапка ----------
@@ -290,9 +297,9 @@ def build():
 
     add('<footer class="colophon">')
     add("<nav>")
-    add('<a href="GLOSSARY.md">Глоссарий</a>')
-    add('<a href="MISSION.md">Миссия</a>')
-    add('<a href="kb/manifest.json">Манифест</a>')
+    add('<a href="../GLOSSARY.md">Глоссарий</a>')
+    add('<a href="../MISSION.md">Миссия</a>')
+    add('<a href="manifest.json">Манифест</a>')
     add("</nav>")
     add(
         '<p class="ask">Серым отмечено то, что еще не написано. Отметки '
@@ -302,8 +309,8 @@ def build():
     add("</footer>")
 
     add("</article>")
-    add('<script src="assets/progress.js"></script>')
-    add('<script src="assets/pagenav.js"></script>')
+    add('<script src="../assets/progress.js"></script>')
+    add('<script src="../assets/pagenav.js"></script>')
     add("</body>")
     add("</html>")
 
@@ -311,7 +318,7 @@ def build():
         fh.write("\n".join(out) + "\n")
 
     print(
-        "index.html собран: %d материалов (%d готово), %d разделов, "
+        "kb/index.html собран: %d материалов (%d готово), %d разделов, "
         "%d уроков в пути, %d понятий"
         % (total, done, len(modules), len(lessons), concepts)
     )

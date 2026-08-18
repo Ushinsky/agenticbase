@@ -17,8 +17,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Собрать index.html из манифеста
-        run: python kb/build_index.py
+      - name: Собрать сайт из манифестов
+        run: python build.py
 
       - name: Проверить базу
         run: python kb/check.py
@@ -29,10 +29,14 @@ jobs:
           rsync -a \
             --exclude='.git' \
             --exclude='.github' \
-            --exclude='kb' \
             --exclude='learning-records' \
             --exclude='*.pdf' \
             --exclude='site' \
+            --exclude='*.py' \
+            --exclude='__pycache__' \
+            --exclude='kb/manifest.json' \
+            --exclude='news/feed.json' \
+            --exclude='hub/agents.json' \
             . site/
 
       - name: Отправить на Beget по SSH

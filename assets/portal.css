@@ -1,0 +1,78 @@
+/* ============================================================
+   Портальная главная — три равных входа в разделы сайта.
+
+   Карточка оформлена по образцу .resume из базы знаний (тот же
+   акцентный левый край), чтобы вход в портал и вход в базу
+   читались как одна семья, а не разные сайты.
+   ============================================================ */
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1.2rem;
+  margin: 2.6rem 0;
+}
+
+.portal-card {
+  display: block;
+  padding: 1.3rem 1.4rem 1.4rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 3px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+}
+
+.portal-card:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+}
+
+.portal-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.portal-kind {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.portal-ttl {
+  margin: 0 0 0.4rem;
+  font-size: 1.14rem;
+  line-height: 1.3;
+}
+
+.portal-sub {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.portal-list {
+  margin: 0 0 0.7rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+.portal-list li {
+  padding: 0.2rem 0;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.portal-cta {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+}

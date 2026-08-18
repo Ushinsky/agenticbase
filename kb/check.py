@@ -69,10 +69,13 @@ def check_forbidden_names():
     return problems
 
 
+LINK_CHECK_TARGETS = PUBLIC_DIRS + ("kb", "news", "hub", "index.html")
+
+
 def check_internal_links():
     problems = []
     link_re = re.compile(r'(?:href|src)="([^"#][^"]*)"')
-    for public in PUBLIC_DIRS + ("index.html",):
+    for public in LINK_CHECK_TARGETS:
         base_path = os.path.join(BASE, public)
         paths = []
         if os.path.isfile(base_path):
@@ -90,7 +93,11 @@ def check_internal_links():
             for target in link_re.findall(text):
                 if target.startswith(("http://", "https://", "mailto:")):
                     continue
-                resolved = os.path.normpath(os.path.join(folder, target))
+                if target.startswith("/"):
+                    # Абсолютный путь от корня сайта — навигация в шапке.
+                    resolved = os.path.normpath(os.path.join(BASE, target.lstrip("/")))
+                else:
+                    resolved = os.path.normpath(os.path.join(folder, target))
                 if not os.path.exists(resolved):
                     problems.append(f"{rel(path)}: битая ссылка {target}")
     return problems

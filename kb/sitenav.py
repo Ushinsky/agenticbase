@@ -22,6 +22,7 @@ def render_sitenav(active=None):
   <a class="sitenav-mark" href="/">Запуск ИИ-агентов</a>
   <div class="sitenav-links">
       {links_html}
+      <a href="/lessons/0001-tsikl-agenta.html" class="btn btn-primary">Начать обучение</a>
   </div>
 </nav>
 """

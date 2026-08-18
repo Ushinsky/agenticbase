@@ -32,7 +32,7 @@ def render_card(item):
         '<span class="tag">%s</span>' % esc(t) for t in item.get("tags", [])
     )
     return "\n".join([
-        '<li class="agent-card" data-category="%s">' % esc(item.get("category", "")),
+        '<li class="card agent-card" data-category="%s">' % esc(item.get("category", "")),
         '<p class="agent-cat">%s</p>' % esc(item.get("category", "")),
         '<p class="agent-name"><a href="%s">%s</a></p>'
         % (esc(item["url"]), esc(item["name"])),
@@ -63,7 +63,7 @@ def build():
     add("</head>")
     add("<body>")
     add(render_sitenav("hub"))
-    add('<article class="sheet">')
+    add('<article class="sheet wide">')
 
     add('<header class="masthead">')
     add('<p class="course">Хаб · обновлено <b>%s</b></p>' % esc(data.get("updated", "")))

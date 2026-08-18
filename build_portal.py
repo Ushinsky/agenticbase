@@ -28,6 +28,12 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
+def href_of_first(node):
+    if not node or not node.get("path"):
+        return "kb/index.html"
+    return node["path"].replace("\\", "/")
+
+
 def load(path):
     full = os.path.join(BASE, path)
     if not os.path.exists(full):
@@ -64,36 +70,47 @@ def build():
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
     add("<title>%s</title>" % esc(manifest["course"]["title"]))
     add('<link rel="stylesheet" href="assets/lesson.css">')
-    add('<link rel="stylesheet" href="assets/home.css">')
     add('<link rel="stylesheet" href="assets/portal.css">')
     add("</head>")
     add("<body>")
     add(render_sitenav(None))
-    add('<article class="sheet">')
+    add('<main class="portal-shell">')
 
-    add('<header class="masthead home-hero">')
-    add("<h1>%s</h1>" % esc(manifest["course"]["title"]))
+    # ---------- герой ----------
+    add('<section class="portal-hero">')
+    add("<h1>Научитесь запускать ИИ-агентов на практике</h1>")
     add(
-        '<p class="tagline">Учебная база, новости по теме и справочник инструментов '
-        "в одном месте — три разных способа читать один и тот же предмет.</p>"
+        '<p class="lede">Уроки с разбором ошибок, статьи по каждой теме '
+        "и растущий каталог инструментов — путь от первого прототипа "
+        "до продакшена.</p>"
     )
-    add("</header>")
+    add(
+        '<a class="btn btn-primary btn-lg" href="%s">Начать обучение</a>'
+        % esc(href_of_first(first))
+    )
+    add('<a class="more" href="kb/index.html">или открыть всю программу →</a>')
+    add('<div class="portal-stats">')
+    add('<div><b>%d</b><span>материалов готово из %d</span></div>' % (done, total))
+    add('<div><b>%d</b><span>разделов программы</span></div>' % len(manifest.get("modules", [])))
+    add("</div>")
+    add("</section>")
 
+    # ---------- три раздела ----------
     add('<div class="portal-grid">')
 
-    # ---------- база знаний ----------
-    add('<a class="portal-card" href="kb/index.html">')
+    add('<a class="card portal-card is-kb" href="kb/index.html">')
+    add("<div>")
     add('<p class="portal-kind">База знаний</p>')
     add('<p class="portal-ttl">%s</p>' % esc(first["title"] if first else "Курс готовится"))
     add(
         '<p class="portal-sub">%d материалов готово из %d. Уроки с практикой, '
         "статьи и рабочие листы.</p>" % (done, total)
     )
+    add("</div>")
     add('<span class="portal-cta">Продолжить обучение →</span>')
     add("</a>")
 
-    # ---------- новости ----------
-    add('<a class="portal-card" href="news/index.html">')
+    add('<a class="card portal-card is-news" href="news/index.html">')
     add('<p class="portal-kind">Новости</p>')
     if news_items:
         add('<p class="portal-ttl">%s</p>' % esc(news_items[0]["title"]))
@@ -107,8 +124,7 @@ def build():
     add('<span class="portal-cta">Все новости →</span>')
     add("</a>")
 
-    # ---------- хаб ----------
-    add('<a class="portal-card" href="hub/index.html">')
+    add('<a class="card portal-card is-hub" href="hub/index.html">')
     add('<p class="portal-kind">Хаб агентов</p>')
     if hub_items:
         add('<p class="portal-ttl">%d инструментов в каталоге</p>' % len(hub_items))
@@ -131,7 +147,7 @@ def build():
     add("</nav>")
     add("</footer>")
 
-    add("</article>")
+    add("</main>")
     add("</body>")
     add("</html>")
 

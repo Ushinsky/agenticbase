@@ -1,37 +1,37 @@
 /* ============================================================
-   Раздел «Новости» — хронологическая лента.
+   Раздел «Новости» — хронологическая лента, интерфейсная страница.
 
-   Отличие от уроков и статей по форме, не по цвету: вместо номера
-   раздела на линии хода — дата, вместо оглавления — порядок по
-   времени. Здесь, в отличие от учебных материалов, называются
-   продукты и даются ссылки на источники — раздел справочный.
+   Отличие от уроков и статей по форме: гротеск вместо серифа,
+   карточки с тенью вместо подчеркнутого списка. Здесь, в отличие
+   от учебных материалов, называются продукты и даются ссылки.
    ============================================================ */
 
 .feed {
   list-style: none;
-  margin: 2.4rem 0 0;
+  margin: var(--sp-6) 0 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  font-family: var(--sans);
 }
 
 .feed-item {
-  position: relative;
   display: flex;
-  gap: 1.4rem;
-  padding: 0 0 1.6rem 0;
-  margin: 0 0 1.6rem;
-  border-bottom: 1px solid var(--rule-soft);
-}
-
-.feed-item:last-child {
-  border-bottom: none;
+  gap: var(--sp-5);
+  padding: var(--sp-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
 }
 
 .feed-date {
-  flex: 0 0 6rem;
-  margin: 0.15rem 0 0;
-  font-family: var(--mono);
+  flex: 0 0 4.6rem;
+  margin: 0.1rem 0 0;
+  font-weight: 600;
   font-size: 0.78rem;
-  color: var(--ink-2);
+  color: var(--text-muted);
   white-space: nowrap;
 }
 
@@ -41,15 +41,17 @@
 }
 
 .feed-title {
-  margin: 0 0 0.35rem;
-  font-size: 1.12rem;
+  margin: 0 0 var(--sp-2);
+  font-size: 1.1rem;
+  font-weight: 600;
   line-height: 1.35;
+  color: var(--text);
 }
 
 .feed-sum {
-  margin: 0 0 0.5rem;
-  color: var(--ink-2);
-  font-size: 0.96rem;
+  margin: 0 0 var(--sp-3);
+  color: var(--text-muted);
+  font-size: 0.94rem;
   line-height: 1.55;
 }
 
@@ -60,25 +62,32 @@
 
 .feed-meta a {
   color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
 }
+
+.feed-meta a:hover { text-decoration: underline; }
 
 .feed-meta .tag {
   display: inline-block;
-  margin-left: 0.6rem;
-  padding: 0.1em 0.5em;
-  border-radius: 2px;
-  background: var(--rule-soft);
-  color: var(--ink-2);
-  font-family: var(--mono);
-  font-size: 0.74rem;
+  margin-left: var(--sp-2);
+  padding: 0.15em 0.55em;
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunk);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.72rem;
 }
 
 .feed-empty {
-  margin: 2.4rem 0;
-  padding: 1.6rem;
-  border: 1px dashed var(--rule);
-  border-radius: 3px;
-  color: var(--ink-2);
+  margin: var(--sp-6) 0;
+  padding: var(--sp-7);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface-sunk);
+  color: var(--text-muted);
+  font-family: var(--sans);
+  text-align: center;
 }
 
 .feed-empty p {
@@ -86,6 +95,6 @@
 }
 
 @media (max-width: 30rem) {
-  .feed-item { flex-direction: column; gap: 0.3rem; }
+  .feed-item { flex-direction: column; gap: var(--sp-2); }
   .feed-date { flex: none; }
 }

@@ -65,7 +65,7 @@ def build():
     add("</head>")
     add("<body>")
     add(render_sitenav("news"))
-    add('<article class="sheet">')
+    add('<article class="sheet wide">')
 
     add('<header class="masthead">')
     add('<p class="course">Новости · обновлено <b>%s</b></p>' % esc(data.get("updated", "")))

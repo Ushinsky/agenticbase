@@ -1,78 +1,169 @@
 /* ============================================================
-   Портальная главная — три равных входа в разделы сайта.
+   Портальная главная — продуктовый лендинг, не оглавление файлов.
 
-   Карточка оформлена по образцу .resume из базы знаний (тот же
-   акцентный левый край), чтобы вход в портал и вход в базу
-   читались как одна семья, а не разные сайты.
+   Не использует .sheet: у портала нет линии хода и узкой колонки
+   документа — это интерфейсная страница, а не текст для чтения
+   подряд. Собственный широкий контейнер, шрифт --sans везде.
    ============================================================ */
+
+.portal-shell {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  font-family: var(--sans);
+}
+
+/* ---------- Герой ---------- */
+
+.portal-hero {
+  padding: var(--sp-9) 0 var(--sp-8);
+  text-align: left;
+}
+
+.portal-hero h1 {
+  margin: 0 0 var(--sp-4);
+  max-width: 34rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 3.1rem;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.portal-hero .lede {
+  margin: 0 0 var(--sp-6);
+  max-width: 32rem;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.portal-hero .more {
+  display: inline-block;
+  margin-left: var(--sp-4);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.portal-hero .more:hover { color: var(--accent); border-color: var(--accent); }
+
+.portal-stats {
+  display: flex;
+  gap: var(--sp-6);
+  margin-top: var(--sp-7);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
+}
+
+.portal-stats b {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.portal-stats span {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Карточки разделов ---------- */
 
 .portal-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
-  gap: 1.2rem;
-  margin: 2.6rem 0;
+  grid-template-columns: 1.7fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--sp-5);
+  margin: 0 0 var(--sp-9);
 }
 
 .portal-card {
-  display: block;
-  padding: 1.3rem 1.4rem 1.4rem;
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--accent);
-  border-radius: 3px;
-  background: var(--paper);
-  text-decoration: none;
-  color: inherit;
+  padding: var(--sp-6);
 }
 
-.portal-card:hover {
-  background: var(--accent-bg);
-  border-color: var(--accent);
+.portal-card.is-kb {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--sp-7);
 }
 
-.portal-card:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
+.portal-card.is-news { grid-column: 2; grid-row: 1; }
+.portal-card.is-hub  { grid-column: 2; grid-row: 2; }
 
 .portal-kind {
-  margin: 0 0 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.09em;
+  margin: 0 0 var(--sp-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
+.portal-card.is-kb .portal-ttl {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .portal-ttl {
-  margin: 0 0 0.4rem;
-  font-size: 1.14rem;
+  margin: 0 0 var(--sp-2);
+  font-size: 1.08rem;
+  font-weight: 600;
   line-height: 1.3;
+  color: var(--text);
 }
 
 .portal-sub {
   margin: 0;
-  font-size: 0.9rem;
-  color: var(--ink-2);
+  font-size: 0.92rem;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
 .portal-list {
-  margin: 0 0 0.7rem;
+  margin: var(--sp-2) 0 0;
   padding: 0;
   list-style: none;
-  font-size: 0.88rem;
-  color: var(--ink-2);
+  font-size: 0.86rem;
+  color: var(--text-muted);
 }
 
 .portal-list li {
-  padding: 0.2rem 0;
-  border-top: 1px solid var(--rule-soft);
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--border);
 }
 
 .portal-cta {
-  display: inline-block;
-  margin-top: 0.6rem;
-  font-family: var(--mono);
-  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: var(--sp-4);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.86rem;
   color: var(--accent);
+}
+
+@media (max-width: 55rem) {
+  .portal-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+  .portal-card.is-kb,
+  .portal-card.is-news,
+  .portal-card.is-hub {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .portal-hero h1 { font-size: 2.3rem; }
 }

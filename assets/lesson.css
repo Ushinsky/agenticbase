@@ -25,18 +25,51 @@
   --rail-line:  #bcc4c7;
   --accent:     #8a2f22;
   --accent-bg:  #efe4e1;
+  --accent-hover: #6f2419;
   --ok:         #2b6650;
   --ok-bg:      #dfeae5;
 
   --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
   --mono:  Consolas, "Cascadia Mono", "DejaVu Sans Mono", monospace;
+  --sans:  "Inter", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 
   --rail:    3.4rem;
   --gap:     2.2rem;
   --measure: 38rem;
   --side:    15.5rem;
   --nav:     11rem;
-  --navh:    3.25rem;
+  --navh:    4rem;
+
+  /* Нейтральная шкала интерфейса — отдельно от бумажных --paper/--ink,
+     которые откалиброваны под лист урока и не держат тень и скругление. */
+  --surface:       #ffffff;
+  --surface-sunk:  #f7f7f8;
+  --border:        #e6e7e9;
+  --border-strong: #d5d7da;
+  --text:          #14161a;
+  --text-muted:    #62666d;
+
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;   --sp-3: 0.75rem;
+  --sp-4: 1rem;     --sp-5: 1.5rem;   --sp-6: 2rem;
+  --sp-7: 3rem;     --sp-8: 4.5rem;   --sp-9: 6rem;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-1: 0 1px 2px rgba(20, 22, 26, 0.05), 0 1px 3px rgba(20, 22, 26, 0.08);
+  --shadow-2: 0 4px 10px rgba(20, 22, 26, 0.06), 0 2px 4px rgba(20, 22, 26, 0.08);
+}
+
+/* Один переменный файл вместо набора начертаний — 350 Кб, лицензия
+   SIL OFL, лежит локально, внешних запросов сайт не делает. */
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Variable.woff2") format("woff2-variations"),
+       url("fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* Курс намеренно светлотемный: уроки читают и печатают как документы,
@@ -86,59 +119,127 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.2rem;
-  padding: 0 1.5rem;
-  background: var(--paper);
-  border-bottom: 1px solid var(--rule);
+  gap: var(--sp-5);
+  padding: 0 var(--sp-6);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
 }
 
 .sitenav-mark {
-  font-family: var(--mono);
-  font-size: 0.86rem;
-  letter-spacing: 0.02em;
-  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
   text-decoration: none;
   white-space: nowrap;
+}
+
+.sitenav-mark::before {
+  content: "";
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  flex: none;
 }
 
 .sitenav-mark:hover { color: var(--accent); }
 
 .sitenav-links {
   display: flex;
-  gap: 1.4rem;
+  align-items: center;
+  gap: var(--sp-6);
+  font-family: var(--sans);
   font-size: 0.92rem;
 }
 
-.sitenav-links a {
-  color: var(--ink-2);
+.sitenav-links a:not(.btn) {
+  color: var(--text-muted);
   text-decoration: none;
   padding: 0.2rem 0;
   border-bottom: 2px solid transparent;
 }
 
-.sitenav-links a:hover { color: var(--ink); }
+.sitenav-links a:not(.btn):hover { color: var(--text); }
 
-.sitenav-links a.on {
-  color: var(--ink);
+.sitenav-links a.on:not(.btn) {
+  color: var(--text);
   border-bottom-color: var(--accent);
 }
 
-/* Три пункта плюс метка сайта не помещаются в одну строку на узком
-   экране — переносим на две и резервируем под это высоту заранее,
-   а не подгоняем постфактум: иначе первая строка текста страницы
-   заезжает под шапку в момент переноса. */
+/* Три пункта плюс метка сайта плюс кнопка не помещаются в одну строку
+   на узком экране — переносим на две и резервируем под это высоту
+   заранее, а не подгоняем постфактум: иначе первая строка текста
+   страницы заезжает под шапку в момент переноса. */
 @media (max-width: 30rem) {
-  :root { --navh: 5.7rem; }
+  :root { --navh: 6.2rem; }
   .sitenav {
     flex-wrap: wrap;
     align-content: center;
     height: auto;
     min-height: var(--navh);
-    padding: 0.7rem 1rem;
-    gap: 0.5rem 0.7rem;
+    padding: var(--sp-3) var(--sp-4);
+    gap: var(--sp-2) var(--sp-4);
   }
-  .sitenav-links { gap: 0.9rem; font-size: 0.86rem; }
-  .sitenav-mark { font-size: 0.78rem; }
+  .sitenav-links { gap: var(--sp-4); font-size: 0.86rem; }
+  .sitenav-mark { font-size: 0.86rem; }
+}
+
+/* ---------- Кнопка ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-lg { padding: 0.9rem 1.7rem; font-size: 1rem; }
+
+/* ---------- Карточка ---------- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow 150ms ease, transform 150ms ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-2px);
 }
 
 /* Атмосфера вместо плоской заливки: тонкое зерно поверх фона.
@@ -342,6 +443,23 @@ h1 {
   color: var(--ink-2);
   font-size: 1.02rem;
   line-height: 1.5;
+}
+
+/* Хаб и новости — интерфейсные страницы, не документы: гротеск
+   вместо серифа, жирнее и плотнее, как в портальном герое. */
+.sheet.wide .masthead h1 {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.sheet.wide .masthead .course {
+  font-family: var(--sans);
+  font-weight: 600;
+}
+
+.sheet.wide .masthead .standfirst {
+  font-family: var(--sans);
 }
 
 /* ---------- Разделы ---------- */

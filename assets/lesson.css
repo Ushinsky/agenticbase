@@ -176,7 +176,7 @@ body {
    заранее, а не подгоняем постфактум: иначе первая строка текста
    страницы заезжает под шапку в момент переноса. */
 @media (max-width: 30rem) {
-  :root { --navh: 6.2rem; }
+  :root { --navh: 8.4rem; }
   .sitenav {
     flex-wrap: wrap;
     align-content: center;
@@ -185,7 +185,13 @@ body {
     padding: var(--sp-3) var(--sp-4);
     gap: var(--sp-2) var(--sp-4);
   }
-  .sitenav-links { gap: var(--sp-4); font-size: 0.86rem; }
+  .sitenav-links {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: var(--sp-2) var(--sp-4);
+    font-size: 0.86rem;
+  }
+  .sitenav-links .btn { padding: 0.5rem 0.9rem; font-size: 0.84rem; }
   .sitenav-mark { font-size: 0.86rem; }
 }
 

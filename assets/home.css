@@ -1,0 +1,309 @@
+/* ============================================================
+   Курс «Запуск ИИ-агентов» — главная страница
+
+   Ручки: верстка 4 / движение 1 / плотность 6.
+   Плотнее урока, потому что это оглавление: сорок пять материалов
+   должны читаться с одного экрана прокрутки, а не разъезжаться.
+   Движение по-прежнему только в состояниях.
+
+   Фирменный артефакт тот же, что во всем курсе, — линия хода
+   с номерами. Здесь она держит разделы программы, а над ней
+   лежит полоса состояния: по одному штриху на материал.
+   ============================================================ */
+
+/* ---------- Шапка ---------- */
+
+.home-hero {
+  margin: 0 0 2.6rem;
+}
+
+.home-hero h1 {
+  margin: 0 0 0.7rem;
+  font-size: 2.5rem;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.home-hero .tagline {
+  margin: 0 0 1.8rem;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 30rem;
+}
+
+/* Точка входа и возврата. Скрипт подменяет ссылку на первый
+   непройденный урок; без скрипта ведет на первый урок курса. */
+.resume {
+  display: block;
+  margin: 0 0 1.6rem;
+  padding: 1.1rem 1.3rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 3px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+}
+
+.resume:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+}
+
+.resume:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.resume .lbl {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.resume .ttl {
+  display: block;
+  font-size: 1.22rem;
+  line-height: 1.25;
+}
+
+.resume .sub {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+
+/* ---------- Полоса состояния программы ---------- */
+
+.strip {
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 30px;
+}
+
+.strip .grp {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  margin-right: 9px;
+}
+
+.strip .grp:last-child { margin-right: 0; }
+
+.strip i {
+  display: block;
+  width: 5px;
+  height: 13px;
+  background: var(--rule);
+  border-radius: 1px;
+}
+
+.strip i[data-s="published"] {
+  height: 30px;
+  background: var(--accent);
+}
+
+.strip-legend {
+  margin: 0 0 2.4rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+}
+
+.strip-legend b {
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* ---------- Траектория: пройденный путь ---------- */
+
+.path {
+  margin: 0 0 0.4rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.path li {
+  position: relative;
+  margin: 0 0 0.75rem;
+  padding-left: 2.4rem;
+  counter-increment: step;
+}
+
+.path li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.16rem;
+  width: 1.45rem;
+  height: 1.45rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-variant-numeric: lining-nums;
+  color: var(--ink-2);
+}
+
+.path li[data-done]::before {
+  content: "\2713";
+  border-color: var(--ok);
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+
+.path a {
+  font-size: 1.04rem;
+  border-bottom-color: var(--rule);
+}
+
+.path a:hover { border-bottom-color: currentColor; }
+
+.path .note {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+/* ---------- Разделы программы ---------- */
+
+.mod-sum {
+  margin: 0 0 1.1rem;
+  color: var(--ink-2);
+}
+
+.mod-count {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-variant-numeric: lining-nums;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--ink-2);
+}
+
+.mats {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mats > li {
+  display: grid;
+  grid-template-columns: 5.6rem 1fr;
+  gap: 0 1rem;
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.mats > li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.mat-kind {
+  grid-column: 1;
+  padding-top: 0.22rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.mats > li[data-status="published"] .mat-kind { color: var(--accent); }
+
+.mat-body { grid-column: 2; }
+
+.mat-title {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+
+.mat-title a { border-bottom-color: var(--rule); }
+.mat-title a:hover { border-bottom-color: currentColor; }
+
+.mat-title .pending { color: var(--ink-2); }
+
+.mat-title .done {
+  margin-left: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ok);
+}
+
+.mat-sum {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ---------- Рабочие листы ---------- */
+
+.sheets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sheets > li {
+  margin: 0 0 1.1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+}
+
+.sheets > li:last-child { margin-bottom: 0; }
+
+.sheets .mat-title { font-size: 1.04rem; }
+
+/* Статьи в списке помечены той же двойной линией, что стоит
+   в поле самой статьи, — жанр опознается до перехода по ссылке. */
+.sheets-art > li {
+  border-left: 3px double var(--rule);
+  padding-left: 1.1rem;
+}
+
+.sheets-art .mat-kind {
+  margin: 0 0 0.15rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+@media (max-width: 40rem) {
+  .home-hero h1 { font-size: 1.95rem; }
+
+  .mats > li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .mat-kind, .mat-body { grid-column: 1; }
+  .mat-kind { padding-top: 0; }
+}
+
+@media print {
+  .resume { break-inside: avoid; }
+  .strip i[data-s="published"] { background: var(--ink); }
+}

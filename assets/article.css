@@ -1,0 +1,147 @@
+/* ============================================================
+   Курс «Запуск ИИ-агентов» — облик статьи
+
+   Статья и урок — разные жанры, и это должно быть видно с первого
+   взгляда, не вчитываясь в шапку.
+
+   Урок   — линейный: читается подряд, ведет к одному результату,
+            содержит практику. Линия хода сплошная, номера в кругах.
+   Статья — справочная: читается по надобности, раскрывает тему целиком,
+            практики не содержит. Линия хода двойная, номера в квадратах,
+            сверху оглавление.
+
+   Различаем формой, а не цветом: палитра в курсе одна, и заводить
+   второй акцент ради жанра значило бы разрушить цельность.
+   ============================================================ */
+
+/* ---------- Линия хода: двойная ---------- */
+
+.doc-article .sheet::before {
+  left: calc(-1 * var(--gap) - 2px);
+}
+
+.doc-article .sheet::after {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0;
+  left: calc(-1 * var(--gap) + 2px);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--rail-line) 0,
+    var(--rail-line) calc(100% - 6rem),
+    transparent 100%
+  );
+}
+
+/* ---------- Номера разделов: квадраты ---------- */
+
+.doc-article .num {
+  border-radius: 2px;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ---------- Шапка: полоса жанра ---------- */
+
+.doc-article .masthead {
+  padding-top: 0.9rem;
+  border-top: 3px double var(--rule);
+}
+
+.doc-article .masthead .course {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.doc-article .genre {
+  padding: 0.12rem 0.45rem;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.doc-article .masthead .note {
+  margin: 0.7rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ---------- Оглавление внутри статьи ---------- */
+
+/* Собирается скриптом. Для справочного материала это главный элемент
+   навигации: статью читают кусками и возвращаются к отдельным разделам. */
+
+.toc {
+  margin: 0 0 2.6rem;
+  padding: 1.1rem 1.3rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-left: 3px double var(--rule);
+  border-radius: 3px;
+}
+
+.toc > p {
+  margin: 0 0 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.toc li {
+  margin: 0 0 0.42rem;
+  break-inside: avoid;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.toc a {
+  display: flex;
+  gap: 0.55rem;
+  border-bottom: none;
+  color: var(--ink);
+}
+
+.toc a:hover {
+  background: none;
+  color: var(--accent);
+}
+
+.toc a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.toc .n {
+  flex: none;
+  width: 1.1rem;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-variant-numeric: lining-nums;
+  color: var(--ink-2);
+}
+
+@media (max-width: 44rem) {
+  .toc ol { columns: 1; }
+}
+
+@media print {
+  .toc { break-inside: avoid; }
+  .doc-article .sheet::after { display: none; }
+}

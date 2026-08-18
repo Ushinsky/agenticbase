@@ -1,0 +1,47 @@
+name: Собрать и опубликовать
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Забрать код
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Собрать index.html из манифеста
+        run: python kb/build_index.py
+
+      - name: Проверить базу
+        run: python kb/check.py
+
+      - name: Подготовить набор файлов для публикации
+        run: |
+          mkdir -p site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='kb' \
+            --exclude='learning-records' \
+            --exclude='*.pdf' \
+            --exclude='site' \
+            . site/
+
+      - name: Отправить на Beget по SSH
+        uses: easingthemes/ssh-deploy@v5
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.BEGET_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.BEGET_HOST }}
+          REMOTE_PORT: ${{ secrets.BEGET_PORT }}
+          REMOTE_USER: ${{ secrets.BEGET_USER }}
+          TARGET: ${{ secrets.BEGET_PATH }}
+          SOURCE: "site/"
+          ARGS: "-avz --delete"

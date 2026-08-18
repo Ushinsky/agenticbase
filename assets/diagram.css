@@ -1,0 +1,119 @@
+/* ============================================================
+   Курс «Запуск ИИ-агентов» — схемы
+
+   Схемы рисуются вручную как SVG в типографике курса: те же токены
+   цвета, тот же моноширинный шрифт на подписях, та же линия толщиной
+   в волос. Никаких растровых картинок и никаких заимствованных
+   изображений — только собственная графика.
+
+   Правила:
+   — цвет только из токенов, ни одного захардкоженного значения;
+   — подписи внутри SVG набираются шрифтом страницы, а не системным;
+   — схема обязана читаться в печати, поэтому заливки светлые;
+   — ширина тянется по колонке, высота задается через aspect-ratio.
+   ============================================================ */
+
+.fig {
+  margin: 1.8rem 0;
+}
+
+.fig svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.fig figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.fig figcaption b {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+/* ---------- Общие классы внутри SVG ---------- */
+
+.d-node {
+  fill: var(--paper);
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.d-node-accent {
+  fill: var(--accent-bg);
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+.d-line {
+  fill: none;
+  stroke: var(--rail-line);
+  stroke-width: 1;
+}
+
+.d-line-accent {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+}
+
+.d-dash {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.d-label {
+  font-family: var(--serif);
+  font-size: 13px;
+  fill: var(--ink);
+}
+
+.d-label-sm {
+  font-family: var(--serif);
+  font-size: 11.5px;
+  fill: var(--ink-2);
+}
+
+.d-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--accent);
+}
+
+.d-tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  fill: var(--ink-2);
+}
+
+.d-tag-accent {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  fill: var(--accent);
+}
+
+@media (max-width: 60rem) {
+  .d-label { font-size: 14px; }
+  .d-label-sm { font-size: 12.5px; }
+  .d-tag, .d-tag-accent { font-size: 10.5px; }
+}
+
+@media print {
+  .fig { break-inside: avoid; }
+}

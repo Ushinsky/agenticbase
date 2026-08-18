@@ -1,0 +1,993 @@
+/* ============================================================
+   Курс «Запуск ИИ-агентов» — общий лист стилей
+   Один голос на все уроки и справочники.
+
+   Фирменный артефакт курса: вертикальная линия хода в левом поле,
+   на которой сидят номера разделов. Она же навигация, она же
+   единственный слой, который пересекают другие элементы.
+
+   Ручки: верстка 3 / движение 1 / плотность 4.
+   Движение — только состояния (наведение, фокус, ответ).
+   Ни один элемент содержания не спрятан за анимацией.
+
+   Правило языка: буква «е с двумя точками» в этом проекте не
+   используется нигде — ни в текстах, ни в комментариях.
+   ============================================================ */
+
+/* ---------- Токены ---------- */
+
+:root {
+  --paper:      #fbfbfb;
+  --ink:        #191c1e;
+  --ink-2:      #5b6367;
+  --rule:       #d3d8da;
+  --rule-soft:  #e5e9ea;
+  --rail-line:  #bcc4c7;
+  --accent:     #8a2f22;
+  --accent-bg:  #efe4e1;
+  --ok:         #2b6650;
+  --ok-bg:      #dfeae5;
+
+  --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --mono:  Consolas, "Cascadia Mono", "DejaVu Sans Mono", monospace;
+
+  --rail:    3.4rem;
+  --gap:     2.2rem;
+  --measure: 38rem;
+  --side:    15.5rem;
+  --nav:     11rem;
+}
+
+/* Курс намеренно светлотемный: уроки читают и печатают как документы,
+   а темная тема ломает предсказуемость печати и контраст акцента. */
+:root { color-scheme: light; }
+
+/* ---------- База ---------- */
+
+* { box-sizing: border-box; }
+
+/* Ширина листа выросла примерно на пятую часть. Кегль поднят вместе с ней:
+   если растянуть колонку, не тронув шрифт, строка станет длиннее ста знаков
+   и читать будет тяжелее. Так страница шире, а строка почти той же длины. */
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+  /* Полоса прокрутки съедает часть окна справа и сдвигает центровку колонки
+     на половину своей ширины. Резервируем поле с обеих сторон — тогда
+     основной блок стоит строго посередине и не дергается. */
+  scrollbar-gutter: stable both-edges;
+}
+
+body {
+  margin: 0;
+  padding: 3.5rem 1.5rem 6rem;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  line-height: 1.62;
+  font-variant-numeric: oldstyle-num proportional-nums;
+  text-rendering: optimizeLegibility;
+}
+
+/* Атмосфера вместо плоской заливки: тонкое зерно поверх фона.
+   Отдельным слоем, чтобы не тащить его в печать. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/>\
+<feColorMatrix type='saturate' values='0'/></filter>\
+<rect width='160' height='160' filter='url(%23n)' opacity='0.09'/></svg>");
+}
+
+/* ---------- Лист ---------- */
+
+/* Лист по ширине равен колонке текста и центрируется по окну — так основной
+   блок стоит строго посередине. Боковые врезки уходят вправо отрицательным
+   полем, номера разделов и линия хода — влево. Оба поля живут за пределами
+   листа и на центровку не влияют. */
+.sheet {
+  position: relative;
+  z-index: 1;
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+
+/* линия хода — фирменный артефакт */
+.sheet::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0;
+  left: calc(-1 * var(--gap));
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--rail-line) 0,
+    var(--rail-line) calc(100% - 6rem),
+    transparent 100%
+  );
+}
+
+/* ---------- Якорное меню ---------- */
+
+/* Строится скриптом из заголовков разделов. Стоит в левом поле, прижато
+   к верху, кнопка «наверх» — сразу под списком. Появляется только когда
+   для него есть место: на узком экране лист листается целиком.
+   Это навигация, не содержание, — прятать ее на малых ширинах безопасно. */
+
+/* Меню привязано к колонке текста, а не к краю окна: колонка стоит по центру,
+   и меню обязано ехать вместе с ней, иначе на широком мониторе оно отрывается
+   в пустое поле. max() не дает ему уйти за левый край на узком экране. */
+.pagerail {
+  position: fixed;
+  top: 3.5rem;
+  left: max(1.5rem, calc(50% - var(--measure) / 2 - 4.5rem - var(--nav)));
+  z-index: 3;
+  width: var(--nav);
+  max-height: calc(100vh - 7rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.pagenav {
+  min-height: 0;
+  overflow-y: auto;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.pagenav ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagenav li { margin: 0 0 0.42rem; }
+
+.pagenav a {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--ink-2);
+  text-decoration: none;
+  border: none;
+  border-left: 2px solid transparent;
+  padding: 0.06rem 0 0.06rem 0.5rem;
+}
+
+.pagenav a:hover {
+  color: var(--ink);
+  background: none;
+  border-left-color: var(--rail-line);
+}
+
+.pagenav a[aria-current="true"] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.pagenav .n {
+  flex: none;
+  width: 1.1rem;
+  text-align: right;
+  font-variant-numeric: lining-nums;
+  opacity: 0.75;
+}
+
+.pagenav .t {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.pagenav a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Кнопка «наверх» — под меню, видима всегда: появление по прокрутке
+   заставляло бы искать ее в момент, когда она нужна. */
+.to-top {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  margin-left: 0.55rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 0.78rem;
+  background: var(--paper);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.to-top svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: block;
+}
+
+.to-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Меню и кнопка помещаются, только когда слева есть свободное поле.
+   Правило для боковых врезок живет ниже, сразу за их определением:
+   иначе оно проигрывает в каскаде при равной специфичности. */
+@media (max-width: 1200px) {
+  .pagerail { display: none; }
+}
+
+/* ---------- Шапка ---------- */
+
+.masthead {
+  position: relative;
+  margin: 0 0 3rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.masthead .course {
+  margin: 0 0 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.masthead .course b {
+  font-weight: 400;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.1rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.masthead .standfirst {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+/* ---------- Разделы ---------- */
+
+section {
+  position: relative;
+  margin: 0 0 2.75rem;
+}
+
+section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.28rem;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+h3 {
+  margin: 1.9rem 0 0.5rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* номер раздела садится верхом на линию хода — пересечение слоев */
+.num {
+  position: absolute;
+  top: 0.18rem;
+  left: calc(-1 * var(--gap));
+  transform: translateX(-50%);
+  width: 1.55rem;
+  height: 1.55rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-variant-numeric: lining-nums;
+  user-select: none;
+}
+
+p { margin: 0 0 1rem; }
+
+ul, ol {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+}
+
+li { margin-bottom: 0.45rem; }
+li > ul, li > ol { margin-top: 0.45rem; }
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ключевой термин — вводится один раз, дальше обычным текстом */
+.term {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+code, kbd, samp {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--rule-soft);
+  padding: 0.1em 0.34em;
+  border-radius: 2px;
+}
+
+pre {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  background: var(--rule-soft);
+  border-radius: 3px;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.82rem;
+}
+
+/* Текстовый шаблон для копирования: длинный, поэтому со своей прокруткой
+   и рамкой, чтобы читалось как вложенный документ, а не как код. */
+.plain {
+  max-height: 32rem;
+  overflow: auto;
+  padding: 1.1rem 1.2rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  line-height: 1.62;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--ink-2);
+}
+
+.tools {
+  margin: 1.2rem 0 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.03em;
+}
+
+a:hover { background: var(--accent-bg); }
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* ---------- Маргиналии ---------- */
+
+.side {
+  float: right;
+  clear: right;
+  width: var(--side);
+  margin: 0.3rem calc(-1 * (var(--side) + var(--gap))) 1.1rem var(--gap);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.side b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.side p { margin: 0 0 0.5rem; }
+.side p:last-child { margin-bottom: 0; }
+
+/* Врезки уходят в поток, когда справа перестает хватать поля.
+   Стоит сразу за определением .side — при равной специфичности
+   побеждает то правило, которое ниже. */
+@media (max-width: 1330px) {
+  .side {
+    float: none;
+    width: auto;
+    margin: 1rem 0 1.3rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--rule);
+  }
+}
+
+/* приглушенная строчная пометка рядом с текстом */
+.cite {
+  font-family: var(--mono);
+  font-size: 0.78em;
+  font-variant-numeric: lining-nums;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+/* ---------- Определение ---------- */
+
+/* Выделенное определение. Кегль чуть крупнее основного текста, поэтому
+   интервал задается отдельно: при общей строчности набор из полужирного
+   в увеличенном кегле выглядит сдавленным. */
+.def {
+  margin: 1.5rem 0;
+  padding: 0.35rem 0 0.4rem 1.15rem;
+  border-left: 2px solid var(--accent);
+  font-size: 1.02rem;
+  line-height: 1.74;
+}
+
+.def p:last-child { margin-bottom: 0; }
+
+/* ---------- Разбор ошибки ---------- */
+
+.caution {
+  margin: 1.6rem 0;
+  padding: 1rem 1.15rem 0.4rem;
+  background: var(--accent-bg);
+  border-radius: 3px;
+}
+
+.caution > .label {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.caution p:last-child { margin-bottom: 0.6rem; }
+
+/* ---------- Задание в реальном мире ---------- */
+
+.task {
+  margin: 1.6rem 0;
+  padding: 1.15rem 1.25rem 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+
+.task > .label {
+  margin: 0 0 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.task ol { margin-bottom: 0.6rem; }
+
+/* ---------- Карта базы знаний ---------- */
+
+.kb-list {
+  margin: 1.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kb-node {
+  margin: 0 0 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.kb-node:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.kb-head {
+  margin: 0 0 0.2rem;
+  font-size: 1.05rem;
+}
+
+.kb-head a { border-bottom-color: var(--rule); }
+.kb-head a:hover { border-bottom-color: currentColor; }
+
+.kb-head .pending { color: var(--ink-2); }
+
+.kb-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0 0 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.kb-node[data-status="published"] .kb-status { color: var(--ok); }
+
+.kb-sum {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.kb-node[data-status="planned"] .kb-sum { color: var(--ink-2); }
+
+.kb-concepts,
+.kb-links {
+  margin: 0.25rem 0 0;
+  font-size: 0.84rem;
+  color: var(--ink-2);
+}
+
+.kb-concepts {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.kb-links a { border-bottom-color: var(--rule); }
+.kb-links .pending { border-bottom: 1px dotted var(--rule); }
+
+/* ---------- Разрыв между заходами ---------- */
+
+.sitting {
+  position: relative;
+  margin: 3.5rem 0 3rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--rule);
+}
+
+.sitting > .label {
+  margin: 0 0 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.sitting p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.94rem;
+}
+
+/* ---------- Схема обмена с моделью ---------- */
+
+.wire {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.25rem;
+  background: var(--rule-soft);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.79rem;
+  line-height: 1.65;
+  font-variant-numeric: lining-nums;
+  overflow-x: auto;
+}
+
+.wire b {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.wire i {
+  color: var(--ink-2);
+  font-style: normal;
+}
+
+.wire .arrow {
+  display: block;
+  color: var(--ink-2);
+  padding-left: 0.2rem;
+}
+
+/* ---------- Пронумерованный разбор (спектр, шаблоны) ---------- */
+
+.tiers {
+  margin: 1.4rem 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: tier;
+}
+
+.tiers > li {
+  position: relative;
+  margin: 0 0 1.15rem;
+  padding-left: 2.1rem;
+  counter-increment: tier;
+}
+
+.tiers > li::before {
+  content: counter(tier);
+  position: absolute;
+  left: 0;
+  top: 0.08rem;
+  width: 1.4rem;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-variant-numeric: lining-nums;
+  color: var(--accent);
+}
+
+.tiers b {
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.tiers .when {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+/* ---------- Квиз ---------- */
+
+.quiz {
+  margin: 1.5rem 0 0;
+  counter-reset: qn;
+}
+
+.quiz > ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.q {
+  margin: 0 0 1.9rem;
+  padding: 0 0 1.5rem;
+  border-bottom: 1px solid var(--rule-soft);
+  counter-increment: qn;
+}
+
+.q:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0.4rem;
+}
+
+.q-stem { margin: 0 0 0.75rem; }
+
+.q-stem::before {
+  content: counter(qn) ". ";
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-variant-numeric: lining-nums;
+  color: var(--ink-2);
+}
+
+.q-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.2rem;
+}
+
+.q-opts button {
+  font-family: var(--serif);
+  font-size: 0.94rem;
+  line-height: 1.2;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.42rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.12s ease, background-color 0.12s ease;
+}
+
+.q-opts button:hover:not(:disabled) {
+  border-color: var(--ink-2);
+  background: var(--rule-soft);
+}
+
+.q-opts button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.q-opts button:disabled { cursor: default; }
+
+.q-opts button[data-state="right"] {
+  border-color: var(--ok);
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+
+.q-opts button[data-state="wrong"] {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.q-opts button[data-state="muted"] { opacity: 0.4; }
+
+.q-fb {
+  margin-top: 0.85rem;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.q-fb p { margin: 0 0 0.55rem; }
+.q-fb p:last-child { margin-bottom: 0; }
+
+.q-fb .verdict {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.q-fb[data-verdict="right"] .verdict { color: var(--ok); }
+.q-fb[data-verdict="wrong"] .verdict { color: var(--accent); }
+
+.quiz-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.2rem;
+  margin-top: 1.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+}
+
+.quiz-score {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-variant-numeric: lining-nums;
+  color: var(--ink-2);
+}
+
+button.link {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-2);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0 0 0.1rem;
+  cursor: pointer;
+}
+
+button.link:hover { color: var(--ink); border-bottom-color: currentColor; }
+
+button.link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.quiz-out {
+  margin: 0.9rem 0 0;
+  padding: 0.7rem 0.9rem;
+  background: var(--rule-soft);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-variant-numeric: lining-nums;
+  color: var(--ink);
+  user-select: all;
+  overflow-wrap: anywhere;
+}
+
+.quiz-out::before {
+  content: "вставьте эту строку в чат";
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  user-select: none;
+}
+
+.quiz-out[data-copied]::before { content: "скопировано — вставьте в чат"; }
+
+/* ---------- Подвал ---------- */
+
+.colophon {
+  position: relative;
+  margin-top: 3.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+
+.colophon nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.colophon nav a { border-bottom-color: var(--rule); }
+.colophon nav a:hover { border-bottom-color: currentColor; }
+
+.colophon .ask {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  background: var(--rule-soft);
+  border-radius: 3px;
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+/* ---------- Справочник (reference/*.html) ---------- */
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr;
+  column-gap: 0.85rem;
+  row-gap: 1.15rem;
+  margin: 0 0 1.5rem;
+}
+
+.ref-grid dt {
+  grid-column: 1;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-variant-numeric: lining-nums;
+  color: var(--accent);
+  padding-top: 0.22rem;
+}
+
+.ref-grid dd {
+  grid-column: 2;
+  margin: 0;
+}
+
+.ref-grid dd b { display: block; }
+
+.ref-grid dd span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+/* ---------- Узкий экран ---------- */
+
+@media (max-width: 60rem) {
+  html { font-size: 16px; }
+
+  body { padding: 2.5rem 1.1rem 4rem; }
+
+  .sheet {
+    max-width: 38rem;
+    margin-left: 2.6rem;
+    margin-right: 0;
+  }
+
+  .sheet::before { left: -1rem; }
+
+  .num {
+    left: -1rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    font-size: 0.68rem;
+  }
+
+  .side {
+    float: none;
+    width: auto;
+    margin: 1.1rem 0 1.4rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--rule-soft);
+  }
+
+  h1 { font-size: 1.75rem; }
+}
+
+/* ---------- Печать ---------- */
+
+@media print {
+  :root {
+    --paper:     #ffffff;
+    --ink:       #000000;
+    --ink-2:     #444444;
+    --rule:      #bbbbbb;
+    --rule-soft: #eeeeee;
+    --accent:    #7a2a1e;
+    --accent-bg: #f2eae8;
+    --ok:        #24523f;
+    --ok-bg:     #eaf1ee;
+    --rail-line: #999999;
+  }
+
+  html { font-size: 11pt; }
+
+  body {
+    padding: 0;
+    background: #fff;
+  }
+
+  body::before { display: none; }
+
+  .sheet {
+    max-width: none;
+    margin-left: 2.3rem;
+    margin-right: 0;
+  }
+
+  .sheet::before { left: -0.9rem; background: var(--rule); }
+
+  .num { left: -0.9rem; }
+
+  .side {
+    float: none;
+    width: auto;
+    margin: 0.8rem 0 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--rule-soft);
+  }
+
+  section { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  .q { break-inside: avoid; }
+
+  /* в печати выбирать нечего — прячем кнопки и раскрываем весь разбор */
+  .q-opts { display: none; }
+  .q-fb[hidden] { display: block !important; }
+  .quiz-foot { display: none; }
+  .quiz-out { display: none; }
+
+  /* шаблон печатается целиком: обрезать его по высоте — потерять половину */
+  .plain {
+    max-height: none;
+    overflow: visible;
+    break-inside: auto;
+    color: var(--ink);
+  }
+
+  .tools { display: none; }
+  .pagerail { display: none; }
+
+  a {
+    color: var(--ink);
+    border-bottom: none;
+  }
+
+  .colophon nav { display: none; }
+}

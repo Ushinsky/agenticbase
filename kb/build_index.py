@@ -253,23 +253,35 @@ def build():
     )
     add("</section>")
 
-    # ---------- программа ----------
-    for module in modules:
-        items = by_module[module["id"]]
-        if not items:
-            continue
-        ready = sum(1 for n in items if n.get("status") == "published")
-        add('<section id="m-%s">' % esc(module["id"]))
-        add('<span class="num" aria-hidden="true">%d</span>' % module["num"])
-        add("<h2>%s</h2>" % esc(module["title"]))
+    # ---------- план ----------
+    # Готовые уроки, статьи и рабочие листы уже показаны выше, в «Пути»,
+    # разбитыми по модулям и с реальным оформлением. Здесь — только то,
+    # чего еще нет: план того, что впереди. Повторять готовое смысла нет.
+    any_planned = any(
+        n.get("status") != "published" for n in nodes
+    )
+    if any_planned:
+        add('<section id="plan">')
+        add('<span class="num" aria-hidden="true">&hellip;</span>')
+        add("<h2>Что впереди</h2>")
         add(
-            '<p class="mod-sum">%s <span class="mod-count">%d из %d готово</span></p>'
-            % (esc(module["summary"]), ready, len(items))
+            "<p>Полный план курса — модули и темы, которые еще не написаны. "
+            "Порядок можно менять: скажите, какая тема нужна раньше, и она "
+            "поднимется в очереди.</p>"
         )
-        add('<ul class="mats">')
-        for n in items:
-            add(render_material(n))
-        add("</ul>")
+        for module in modules:
+            items = [n for n in by_module[module["id"]] if n.get("status") != "published"]
+            if not items:
+                continue
+            add('<div class="lesson-module">')
+            add('<div class="lesson-module-head">')
+            add('<h3>Модуль %d · %s</h3>' % (module["num"], esc(module["title"])))
+            add("</div>")
+            add('<ul class="mats">')
+            for n in items:
+                add(render_material(n))
+            add("</ul>")
+            add("</div>")
         add("</section>")
 
     add('<footer class="colophon">')

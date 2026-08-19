@@ -8,7 +8,9 @@
    agents-course:done:<id урока из манифеста>.
 
    Что делает:
-   — помечает пройденные уроки в траектории и в списке материалов;
+   — красит галочку на карточке урока в сетке «Путь»;
+   — считает «N из M пройдено» в заголовке каждого модуля;
+   — помечает те же уроки в общем списке программы ниже;
    — переводит крупную ссылку «продолжить» на первый непройденный урок.
 
    Если хранилище недоступно или пусто, страница остается ровно такой,
@@ -35,26 +37,51 @@
     );
     if (!steps.length) return;
 
-    var firstUnfinished = null;
-
     steps.forEach(function (el) {
       var key = el.getAttribute("data-done-key");
-      var done = isDone(key);
+      if (!isDone(key)) return;
 
-      if (done) {
-        el.setAttribute("data-done", "");
-        var slot = el.querySelector("[data-done-slot]");
-        if (slot) slot.textContent = "пройден";
-      } else if (!firstUnfinished) {
+      el.setAttribute("data-done", "");
+      el.classList.add("is-done");
+      var slot = el.querySelector("[data-done-slot]");
+      if (slot) slot.textContent = "пройден";
+    });
+
+    markModuleCounts();
+    setResumeLink();
+  }
+
+  function markModuleCounts() {
+    var groups = Array.prototype.slice.call(
+      document.querySelectorAll("[data-module-count]")
+    );
+    groups.forEach(function (slot) {
+      var group = slot.closest(".lesson-module");
+      if (!group) return;
+      var total = parseInt(slot.getAttribute("data-module-total") || "0", 10);
+      var done = group.querySelectorAll(".lesson-card.is-done").length;
+      slot.textContent = done + " / " + total + " пройдено";
+    });
+  }
+
+  function setResumeLink() {
+    var resume = document.querySelector(".resume");
+    if (!resume) return;
+
+    var cards = Array.prototype.slice.call(
+      document.querySelectorAll(".lesson-card[data-done-key]")
+    );
+    if (!cards.length) return;
+
+    var firstUnfinished = null;
+    cards.forEach(function (el) {
+      if (!firstUnfinished && !el.classList.contains("is-done")) {
         firstUnfinished = el;
       }
     });
 
-    var resume = document.querySelector(".resume");
-    if (!resume) return;
-
     if (!firstUnfinished) {
-      var last = steps[steps.length - 1];
+      var last = cards[cards.length - 1];
       setResume(
         resume,
         last.getAttribute("data-href"),

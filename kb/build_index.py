@@ -144,7 +144,7 @@ def build():
     add("</head>")
     add("<body>")
     add(render_sitenav("kb"))
-    add('<article class="sheet">')
+    add('<article class="sheet wide">')
 
     # ---------- шапка ----------
     add('<header class="masthead home-hero">')
@@ -195,21 +195,42 @@ def build():
         "пользуется языком предыдущего. Отметку о прохождении ставит сам "
         "читатель — кнопкой в конце урока.</p>"
     )
-    add('<ol class="path">')
-    for n in lessons:
-        link = href_of(n)
+
+    # Первый готовый урок все еще нужен скрипту для ссылки "Продолжить" —
+    # это отдельный элемент вне сетки, скрипт находит его по классу .resume.
+
+    add('<div class="lesson-modules">')
+    for module in modules:
+        mod_lessons = [n for n in lessons if n.get("module") == module["id"]]
+        if not mod_lessons:
+            continue
+        add('<div class="lesson-module">')
+        add('<div class="lesson-module-head">')
         add(
-            '<li data-done-key="%s" data-href="%s" data-title="%s">'
-            % (
-                esc(n["id"]),
-                esc(link),
-                esc(n["title"]),
-            )
+            '<h3>Модуль %d · %s</h3>' % (module["num"], esc(module["title"]))
         )
-        add('<a href="%s">%s</a>' % (esc(link), esc(n["title"])))
-        add('<span class="note">%s</span>' % esc(n.get("summary", "")))
-        add("</li>")
-    add("</ol>")
+        add(
+            '<span class="lesson-module-count" data-module-count '
+            'data-module-total="%d">0 / %d пройдено</span>'
+            % (len(mod_lessons), len(mod_lessons))
+        )
+        add("</div>")
+        add('<ul class="lesson-grid">')
+        for n in mod_lessons:
+            link = href_of(n)
+            add(
+                '<li class="card lesson-card" data-done-key="%s" '
+                'data-href="%s" data-title="%s">'
+                % (esc(n["id"]), esc(link), esc(n["title"]))
+            )
+            add('<span class="lesson-check" data-done-mark aria-hidden="true"></span>')
+            add('<p class="lesson-title"><a href="%s">%s</a></p>' % (esc(link), esc(n["title"])))
+            add('<p class="lesson-sum">%s</p>' % esc(n.get("summary", "")))
+            add("</li>")
+        add("</ul>")
+        add("</div>")
+    add("</div>")
+
     add(
         "<p>Дальше по пути — механика агента: инструменты, память, знания. "
         "Порядок можно менять: скажите, какая тема нужна раньше, и она "
@@ -284,7 +305,6 @@ def build():
 
     add("</article>")
     add('<script src="../assets/progress.js"></script>')
-    add('<script src="../assets/pagenav.js"></script>')
     add("</body>")
     add("</html>")
 

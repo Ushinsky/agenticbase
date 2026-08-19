@@ -6,13 +6,6 @@
    называются продукты и даются прямые ссылки.
    ============================================================ */
 
-.sheet.wide {
-  max-width: 56rem;
-}
-
-.sheet.wide::before {
-  display: none;
-}
 
 .agent-filter {
   display: flex;

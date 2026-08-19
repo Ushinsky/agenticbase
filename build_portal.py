@@ -36,19 +36,9 @@ def load(path):
         return json.load(fh)
 
 
-ICON_KB = (
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
-    'stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" '
-    'height="16" rx="3"/></svg>'
-)
-ICON_HUB = (
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
-    'stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/></svg>'
-)
-ICON_NEWS = (
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
-    'stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>'
-)
+ICON_KB = '<img src="assets/brand/icon-kb.png" alt="">'
+ICON_HUB = '<img src="assets/brand/icon-hub.png" alt="">'
+ICON_NEWS = '<img src="assets/brand/icon-news.png" alt="">'
 
 
 def build():

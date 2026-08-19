@@ -41,6 +41,22 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
+# Значок статьи — своя иконка на файл в assets/icons/articles/<id>.svg
+# (серая обводка, один стиль на всю серию). Статья без файла получает
+# запасной знак "&para;" — так сборка не падает на новой, еще не
+# оформленной статье.
+ICON_DIR = os.path.join(BASE, "assets", "icons", "articles")
+
+
+def article_mark(node):
+    if os.path.exists(os.path.join(ICON_DIR, "%s.svg" % node["id"])):
+        return (
+            '<img src="../assets/icons/articles/%s.svg" alt="" class="genre-icon">'
+            % esc(node["id"])
+        )
+    return "&para;"
+
+
 def href_of(node):
     # index.html теперь лежит в kb/, на уровень глубже lessons/articles/reference,
     # поэтому все пути из манифеста получают "../".
@@ -225,7 +241,7 @@ def build():
                 link = href_of(n)
                 add("<li>")
                 add('<a class="card article-card" href="%s">' % esc(link))
-                add('<span class="genre-mark" aria-hidden="true">&para;</span>')
+                add('<span class="genre-mark" aria-hidden="true">%s</span>' % article_mark(n))
                 add('<div class="body">')
                 add('<p class="lesson-title">%s</p>' % esc(n["title"]))
                 add("</div>")
@@ -245,12 +261,6 @@ def build():
 
         add("</div>")
     add("</div>")
-
-    add(
-        "<p>Дальше по пути — механика агента: инструменты, память, знания. "
-        "Порядок можно менять: скажите, какая тема нужна раньше, и она "
-        "поднимется в очереди.</p>"
-    )
     add("</section>")
 
     # ---------- план ----------
@@ -264,11 +274,6 @@ def build():
         add('<section id="plan">')
         add('<span class="num" aria-hidden="true">&hellip;</span>')
         add("<h2>Что впереди</h2>")
-        add(
-            "<p>Полный план курса — модули и темы, которые еще не написаны. "
-            "Порядок можно менять: скажите, какая тема нужна раньше, и она "
-            "поднимется в очереди.</p>"
-        )
         for module in modules:
             items = [n for n in by_module[module["id"]] if n.get("status") != "published"]
             if not items:

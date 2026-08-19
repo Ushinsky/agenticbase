@@ -339,17 +339,27 @@
   padding: 1rem 1.1rem;
 }
 
+/* Иконка статьи (assets/icons/articles/<id>.svg) уже серая сама
+   по себе, поэтому плашка под ней нейтральная, а не кирпичная —
+   акцент здесь был бы лишним. Запасной знак "&para;" у статьи без
+   своего файла остается текстом мельче, в том же нейтральном тоне. */
 .genre-mark {
   flex: none;
   width: 2.3rem;
   height: 2.3rem;
   display: grid;
   place-items: center;
-  background: var(--accent-bg);
-  color: var(--accent);
+  background: var(--surface-sunk);
+  color: var(--ink-2);
   border-radius: var(--radius-sm);
   font-family: var(--mono);
   font-size: 1.05rem;
+}
+
+.genre-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  display: block;
 }
 
 .article-card .body { min-width: 0; display: flex; align-items: center; }

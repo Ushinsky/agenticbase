@@ -168,8 +168,20 @@
 .lesson-modules {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   margin: 0 0 1.2rem;
+}
+
+/* Разделитель между модулями — серая черта, а не только отступ:
+   на длинной странице из десяти модулей граница между ними должна
+   быть видна с одного взгляда, не по одной лишь высоте зазора. */
+.lesson-module {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.lesson-module:first-child {
+  padding-top: 0;
+  border-top: none;
 }
 
 .lesson-module-head {
@@ -178,7 +190,10 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 0.4rem 1rem;
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.9rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--surface-sunk);
+  border-radius: var(--radius-sm);
 }
 
 .lesson-module-head h3 {

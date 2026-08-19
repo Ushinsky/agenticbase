@@ -41,14 +41,6 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
-def first_sentence(text):
-    # На карточке статьи полный summary был слишком длинным. Обрезка
-    # многоточием рвала фразу на середине — вместо этого берем первое
-    # законченное предложение целиком, ничего не отрезая на полуслове.
-    idx = text.find(". ")
-    return text[: idx + 1] if idx != -1 else text
-
-
 def href_of(node):
     # index.html теперь лежит в kb/, на уровень глубже lessons/articles/reference,
     # поэтому все пути из манифеста получают "../".
@@ -105,6 +97,9 @@ def build():
         [n for n in nodes if n.get("type") == "lesson" and n.get("status") == "published"],
         key=lambda n: (n.get("path") or ""),
     )
+    # Сквозной номер урока по всему курсу (не по модулю) — растет вместе
+    # с курсом, не привязан к тому, сколько уроков в конкретном модуле.
+    lesson_numbers = {n["id"]: i + 1 for i, n in enumerate(lessons)}
     sheets = [
         n for n in nodes
         if n.get("type") == "reference" and n.get("status") == "published"
@@ -179,15 +174,6 @@ def build():
 
     # ---------- траектория ----------
     add('<section id="put">')
-    add('<span class="num" aria-hidden="true">→</span>')
-    add("<h2>Путь</h2>")
-    add(
-        "<p>Уроки идут подряд и опираются друг на друга: каждый следующий "
-        "пользуется языком предыдущего. Статьи внутри модуля читаются не "
-        "по порядку, а по надобности; рабочие листы не читают, а берут "
-        "с собой. Отметку о прохождении урока ставит сам читатель — "
-        "кнопкой в конце урока.</p>"
-    )
 
     # Первый готовый урок все еще нужен скрипту для ссылки "Продолжить" —
     # это отдельный элемент вне сетки, скрипт находит его по классу .resume.
@@ -222,6 +208,10 @@ def build():
                     % (esc(n["id"]), esc(link))
                 )
                 add('<span class="lesson-check" data-done-mark aria-hidden="true"></span>')
+                add(
+                    '<span class="lesson-num" aria-hidden="true">%d</span>'
+                    % lesson_numbers[n["id"]]
+                )
                 add('<p class="lesson-title">%s</p>' % esc(n["title"]))
                 add('<p class="lesson-sum">%s</p>' % esc(n.get("summary", "")))
                 add("</a>")
@@ -238,7 +228,6 @@ def build():
                 add('<span class="genre-mark" aria-hidden="true">&para;</span>')
                 add('<div class="body">')
                 add('<p class="lesson-title">%s</p>' % esc(n["title"]))
-                add('<p class="lesson-sum">%s</p>' % esc(first_sentence(n.get("summary", ""))))
                 add("</div>")
                 add("</a>")
                 add("</li>")

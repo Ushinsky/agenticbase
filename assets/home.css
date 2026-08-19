@@ -230,18 +230,51 @@
   margin-bottom: 0.7rem;
   border: 1.5px solid var(--border-strong);
   border-radius: 50%;
-  color: transparent;
-  font-size: 0.78rem;
+  background: var(--surface-sunk);
+  color: var(--ink-2);
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0.55;
+}
+
+/* Пока урок не отмечен — блеклый вопросительный знак: статус еще
+   не определен, а не "пусто". Отмечен — заметная зеленая галочка. */
+.lesson-check::before {
+  content: "?";
 }
 
 .lesson-card.is-done .lesson-check {
   border-color: var(--ok);
   background: var(--ok);
   color: #fff;
+  opacity: 1;
+  font-size: 0.76rem;
 }
 
 .lesson-card.is-done .lesson-check::before {
   content: "\2713";
+}
+
+/* Сквозной номер урока по курсу — в углу карточки, тем же кирпичным
+   акцентом, что и весь сайт, но приглушенно: это ориентир, не главный
+   элемент. */
+.lesson-num {
+  position: absolute;
+  top: 1.05rem;
+  right: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-variant-numeric: lining-nums;
+  opacity: 0.75;
 }
 
 .lesson-title {
@@ -319,17 +352,12 @@
   font-size: 1.05rem;
 }
 
-.article-card .body { min-width: 0; }
+.article-card .body { min-width: 0; display: flex; align-items: center; }
 
-.article-card .lesson-title { font-size: 0.94rem; margin-bottom: 0.25rem; }
-
-/* Полный текст summary был в карточке — непропорционально длинный.
-   Обрезка многоточием (line-clamp) рвала фразу на середине, выглядело
-   криво. Вместо этого сборка (kb/build_index.py) кладет сюда только
-   первое предложение — законченную мысль, без "...". */
-.article-card .lesson-sum {
-  font-size: 0.82rem;
-}
+/* Пояснение под заголовком статьи убрано целиком — короткое, длинное,
+   обрезанное многоточием — ни один вариант не смотрелся хорошо
+   рядом с уроком. Название плюс значок жанра говорят сами за себя. */
+.article-card .lesson-title { font-size: 0.94rem; margin: 0; }
 
 /* ---------- Рабочие листы внутри модуля: ярлык, не карточка и не пилюля ----------
    Форма пилюли занята фильтром в хабе (assets/hub.css) — то же скругление

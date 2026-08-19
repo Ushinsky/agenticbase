@@ -173,13 +173,17 @@
 
 /* Разделитель между модулями — серая черта, а не только отступ:
    на длинной странице из десяти модулей граница между ними должна
-   быть видна с одного взгляда, не по одной лишь высоте зазора. */
+   быть видна с одного взгляда, не по одной лишь высоте зазора.
+   Отступ разбит на margin (до черты) и padding (после), иначе черта
+   липнет вплотную к содержимому модуля выше. */
 .lesson-module {
-  padding-top: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.7rem;
   border-top: 1px solid var(--border);
 }
 
 .lesson-module:first-child {
+  margin-top: 0;
   padding-top: 0;
   border-top: none;
 }
@@ -192,7 +196,7 @@
   gap: 0.4rem 1rem;
   margin: 0 0 0.9rem;
   padding: 0.55rem 0.9rem;
-  background: var(--surface-sunk);
+  background: var(--rule-soft);
   border-radius: var(--radius-sm);
 }
 

@@ -23,20 +23,6 @@ from sitenav import render_sitenav
 MANIFEST = os.path.join(BASE, "kb", "manifest.json")
 OUT = os.path.join(BASE, "kb", "index.html")
 
-KIND = {
-    "lesson": "урок",
-    "article": "статья",
-    "reference": "рабочий лист",
-    "index": "навигация",
-}
-
-STATUS = {
-    "published": "готово",
-    "draft": "черновик",
-    "planned": "в плане",
-}
-
-
 def esc(value):
     return html.escape(str(value), quote=True)
 
@@ -62,35 +48,6 @@ def href_of(node):
     # поэтому все пути из манифеста получают "../".
     path = node.get("path")
     return "../" + path.replace("\\", "/") if path else None
-
-
-def render_material(node):
-    link = href_of(node)
-    status = node.get("status", "planned")
-    title = esc(node["title"])
-
-    head = (
-        '<a href="%s">%s</a>' % (esc(link), title)
-        if link
-        else '<span class="pending">%s</span>' % title
-    )
-
-    done_slot = ""
-    attrs = ""
-    if node.get("type") == "lesson" and link:
-        attrs = ' data-done-key="%s"' % esc(node["id"])
-        done_slot = ' <span class="done" data-done-slot></span>'
-
-    return "\n".join([
-        '<li data-status="%s"%s>' % (esc(status), attrs),
-        '<p class="mat-kind">%s · %s</p>'
-        % (esc(KIND.get(node.get("type"), "")), esc(STATUS.get(status, status))),
-        '<div class="mat-body">',
-        '<p class="mat-title">%s%s</p>' % (head, done_slot),
-        '<p class="mat-sum">%s</p>' % esc(node.get("summary", "")),
-        "</div>",
-        "</li>",
-    ])
 
 
 def build():
@@ -263,41 +220,15 @@ def build():
     add("</div>")
     add("</section>")
 
-    # ---------- план ----------
-    # Готовые уроки, статьи и рабочие листы уже показаны выше, в «Пути»,
-    # разбитыми по модулям и с реальным оформлением. Здесь — только то,
-    # чего еще нет: план того, что впереди. Повторять готовое смысла нет.
-    any_planned = any(
-        n.get("status") != "published" for n in nodes
-    )
-    if any_planned:
-        add('<section id="plan">')
-        add('<span class="num" aria-hidden="true">&hellip;</span>')
-        add("<h2>Что впереди</h2>")
-        for module in modules:
-            items = [n for n in by_module[module["id"]] if n.get("status") != "published"]
-            if not items:
-                continue
-            add('<div class="lesson-module">')
-            add('<div class="lesson-module-head">')
-            add('<h3>Модуль %d · %s</h3>' % (module["num"], esc(module["title"])))
-            add("</div>")
-            add('<ul class="mats">')
-            for n in items:
-                add(render_material(n))
-            add("</ul>")
-            add("</div>")
-        add("</section>")
-
     add('<footer class="colophon">')
     add("<nav>")
     add('<a href="../GLOSSARY.md">Глоссарий</a>')
     add('<a href="manifest.json">Манифест</a>')
     add("</nav>")
     add(
-        '<p class="ask">Серым отмечено то, что еще не написано. Отметки '
-        "о пройденном хранятся в этом браузере и никуда не отправляются — "
-        "чтобы я увидел результат, пришлите отчет из урока в чат.</p>"
+        '<p class="ask">Отметки о пройденном хранятся в этом браузере '
+        "и никуда не отправляются — чтобы я увидел результат, пришлите "
+        "отчет из урока в чат.</p>"
     )
     add("</footer>")
 

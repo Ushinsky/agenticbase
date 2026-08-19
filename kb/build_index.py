@@ -97,6 +97,7 @@ def build():
     add("<head>")
     add('<meta charset="utf-8">')
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
+    add('<link rel="icon" href="/favicon.ico">')
     add("<title>%s</title>" % esc(course["title"]))
     add('<link rel="stylesheet" href="../assets/lesson.css">')
     add('<link rel="stylesheet" href="../assets/home.css">')
@@ -223,7 +224,6 @@ def build():
     add('<footer class="colophon">')
     add("<nav>")
     add('<a href="../GLOSSARY.md">Глоссарий</a>')
-    add('<a href="manifest.json">Манифест</a>')
     add("</nav>")
     add(
         '<p class="ask">Отметки о пройденном хранятся в этом браузере '

@@ -50,6 +50,7 @@ def build():
     modules = manifest.get("modules", [])
     lesson_count = sum(1 for n in nodes if n.get("type") == "lesson")
     hub_items = hub.get("items", [])
+    feed_items = feed.get("items", [])
 
     out = []
     add = out.append
@@ -59,6 +60,7 @@ def build():
     add("<head>")
     add('<meta charset="utf-8">')
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
+    add('<link rel="icon" href="/favicon.ico">')
     add("<title>%s</title>" % esc(manifest["course"]["title"]))
     add('<link rel="stylesheet" href="assets/lesson.css">')
     add('<link rel="stylesheet" href="assets/portal.css">')
@@ -126,7 +128,10 @@ def build():
         "в индустрии ИИ-агентов, со ссылкой на источник.</p>"
     )
     add('<div class="portal-foot">')
-    add('<span class="portal-meta">Обновляется еженедельно</span>')
+    if feed_items:
+        add('<span class="portal-meta">%d записей</span>' % len(feed_items))
+    else:
+        add('<span class="portal-meta">Лента пока пуста</span>')
     add("</div>")
     add("</a>")
 

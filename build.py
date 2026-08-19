@@ -18,6 +18,7 @@ STEPS = [
     os.path.join("news", "build_feed.py"),
     os.path.join("hub", "build_hub.py"),
     "build_portal.py",
+    "build_sitemap.py",
 ]
 
 for step in STEPS:

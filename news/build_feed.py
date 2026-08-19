@@ -59,6 +59,7 @@ def build():
     add("<head>")
     add('<meta charset="utf-8">')
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
+    add('<link rel="icon" href="/favicon.ico">')
     add("<title>Новости — Запуск ИИ-агентов</title>")
     add('<link rel="stylesheet" href="../assets/lesson.css">')
     add('<link rel="stylesheet" href="../assets/news.css">')

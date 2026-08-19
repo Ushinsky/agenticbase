@@ -612,7 +612,9 @@
       "module": "mehanika",
       "order": 1,
       "title": "Инструменты и вызов функций",
-      "status": "planned",
+      "status": "published",
+      "path": "lessons/0004-instrumenty.html",
+      "quiz": "0004-a",
       "summary": "Как модель просит вызов, как описывать инструмент, чтобы им пользовались верно, и как проектировать защиту от ошибок в аргументах.",
       "concepts": [
         "вызов инструмента",
@@ -621,7 +623,8 @@
         "права инструмента"
       ],
       "requires": [
-        "tsikl-agenta"
+        "tsikl-agenta",
+        "lestnitsa-avtonomii"
       ],
       "links": [
         "mcp",

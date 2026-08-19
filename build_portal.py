@@ -132,7 +132,6 @@ def build():
     add('<footer class="colophon">')
     add("<nav>")
     add('<a href="GLOSSARY.md">Глоссарий</a>')
-    add('<a href="MISSION.md">Миссия</a>')
     add("</nav>")
     add("</footer>")
 

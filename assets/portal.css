@@ -15,18 +15,22 @@
 
 /* ---------- Герой ---------- */
 
+/* Осьминог не центрируется по тексту, а прижат к шапке сверху -
+   по референсу он "выныривает" сразу под навигацией, а не висит
+   посреди героя. */
 .portal-hero {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: var(--sp-6);
-  padding: var(--sp-9) 0 var(--sp-8);
+  padding: var(--sp-7) 0 var(--sp-8);
   text-align: left;
 }
 
 .portal-hero-text {
   flex: 1 1 28rem;
   min-width: 0;
+  margin-top: var(--sp-6);
 }
 
 .portal-hero h1 {

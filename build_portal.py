@@ -79,11 +79,16 @@ def build():
 
     # ---------- герой ----------
     add('<section class="portal-hero">')
+    add('<div class="portal-hero-text">')
     add("<h1>Стройте и поддерживайте ИИ-агентов, которые работают в продакшене</h1>")
     add(
         '<p class="lede">Практический курс: от первого прототипа до агента, '
         "обслуживающего реального заказчика. Без привязки к одной платформе — "
         "только рабочие принципы и инструменты.</p>"
+    )
+    add("</div>")
+    add(
+        '<img class="portal-hero-mascot" src="assets/brand/hero-octopus.png" alt="">'
     )
     add("</section>")
 
@@ -101,7 +106,6 @@ def build():
     )
     add('<div class="portal-foot">')
     add('<span class="portal-meta">%d модулей · %d уроков</span>' % (len(modules), lesson_count))
-    add('<span class="portal-cta">Перейти →</span>')
     add("</div>")
     add("</a>")
 
@@ -119,7 +123,6 @@ def build():
         add('<span class="portal-meta">%d инструментов</span>' % len(hub_items))
     else:
         add('<span class="portal-meta">Каталог пока пуст</span>')
-    add('<span class="portal-cta">Перейти →</span>')
     add("</div>")
     add("</a>")
 
@@ -134,7 +137,6 @@ def build():
     )
     add('<div class="portal-foot">')
     add('<span class="portal-meta">Обновляется еженедельно</span>')
-    add('<span class="portal-cta">Перейти →</span>')
     add("</div>")
     add("</a>")
 

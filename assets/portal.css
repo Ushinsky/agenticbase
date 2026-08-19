@@ -16,13 +16,22 @@
 /* ---------- Герой ---------- */
 
 .portal-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-6);
   padding: var(--sp-9) 0 var(--sp-8);
   text-align: left;
 }
 
+.portal-hero-text {
+  flex: 1 1 28rem;
+  min-width: 0;
+}
+
 .portal-hero h1 {
   margin: 0 0 var(--sp-4);
-  max-width: 38rem;
+  max-width: 34rem;
   font-family: var(--sans);
   font-weight: 700;
   font-size: 3.1rem;
@@ -33,10 +42,22 @@
 
 .portal-hero .lede {
   margin: 0;
-  max-width: 34rem;
+  max-width: 32rem;
   font-size: 1.2rem;
   line-height: 1.55;
   color: var(--text-muted);
+}
+
+.portal-hero-mascot {
+  flex: 1 1 20rem;
+  max-width: 22rem;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 60rem) {
+  .portal-hero { flex-wrap: wrap; }
+  .portal-hero-mascot { max-width: 14rem; margin: 0 auto; order: -1; }
 }
 
 /* ---------- Карточки разделов ---------- */
@@ -44,13 +65,18 @@
 .portal-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
   gap: var(--sp-5);
   margin: 0 0 var(--sp-9);
 }
 
+/* Карточки равной высоты (align-items: stretch на сетке) + сама
+   карточка flex-column с .portal-sub на flex:1 — черта над meta
+   всегда садится на одном уровне, сколько бы строк ни занял текст. */
 .portal-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   padding: var(--sp-6);
 }
 
@@ -104,11 +130,6 @@
 }
 
 .portal-foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.4rem 0.75rem;
   margin-top: var(--sp-5);
   padding-top: var(--sp-4);
   border-top: 1px solid var(--border);
@@ -117,14 +138,6 @@
 .portal-meta {
   font-size: 0.78rem;
   color: var(--text-muted);
-}
-
-.portal-cta {
-  flex: none;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.86rem;
-  color: var(--accent);
 }
 
 @media (max-width: 55rem) {

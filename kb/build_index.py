@@ -3,9 +3,9 @@
 Манифест — источник правды. index.html никогда не правится руками:
 поменяли kb/manifest.json, запустили этот скрипт, получили страницу.
 
-Число вопросов в квизе не дублируется в манифесте, а считается прямо
-в файле урока: так оно не разъедется с действительностью, если квиз
-дополнят.
+Отметка «пройден» — не автоматическая: читатель ставит ее сам кнопкой
+в конце урока (assets/mark-done.js), сборка только готовит атрибут
+data-done-key, по которому эта отметка потом ищется в localStorage.
 
 Запуск из корня воркспейса:
     python kb/build_index.py
@@ -14,7 +14,6 @@
 import html
 import json
 import os
-import re
 import sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,26 +48,6 @@ def href_of(node):
     return "../" + path.replace("\\", "/") if path else None
 
 
-def count_quiz_questions(node):
-    """Считает вопросы в квизе урока, читая сам файл урока."""
-    key = node.get("quiz")
-    path = node.get("path")
-    if not key or not path:
-        return 0
-    full = os.path.join(BASE, path.replace("/", os.sep))
-    if not os.path.exists(full):
-        return 0
-    with open(full, "r", encoding="utf-8") as fh:
-        markup = fh.read()
-    block = re.search(
-        r'<div class="quiz" data-quiz="%s".*?</div>\s*</div>' % re.escape(key),
-        markup,
-        re.S,
-    )
-    scope = block.group(0) if block else markup
-    return len(re.findall(r'<li class="q"', scope))
-
-
 def render_material(node):
     link = href_of(node)
     status = node.get("status", "planned")
@@ -82,12 +61,8 @@ def render_material(node):
 
     done_slot = ""
     attrs = ""
-    if node.get("quiz") and link:
-        total = count_quiz_questions(node)
-        attrs = (
-            ' data-quiz-key="%s" data-quiz-total="%d" data-href="%s" data-title="%s"'
-            % (esc(node["quiz"]), total, esc(link), title)
-        )
+    if node.get("type") == "lesson" and link:
+        attrs = ' data-done-key="%s"' % esc(node["id"])
         done_slot = ' <span class="done" data-done-slot></span>'
 
     return "\n".join([
@@ -217,17 +192,16 @@ def build():
     add("<h2>Путь</h2>")
     add(
         "<p>Уроки идут подряд и опираются друг на друга: каждый следующий "
-        "пользуется языком предыдущего. Отметка о прохождении ставится, когда "
-        "в уроке пройден весь блок практики.</p>"
+        "пользуется языком предыдущего. Отметку о прохождении ставит сам "
+        "читатель — кнопкой в конце урока.</p>"
     )
     add('<ol class="path">')
     for n in lessons:
         link = href_of(n)
         add(
-            '<li data-quiz-key="%s" data-quiz-total="%d" data-href="%s" data-title="%s">'
+            '<li data-done-key="%s" data-href="%s" data-title="%s">'
             % (
-                esc(n.get("quiz", "")),
-                count_quiz_questions(n),
+                esc(n["id"]),
                 esc(link),
                 esc(n["title"]),
             )

@@ -1,10 +1,11 @@
 /* ============================================================
    Курс «Запуск ИИ-агентов» — отметки о пройденном на главной
 
-   Прогресс лежит там же, где его пишут квизы: в localStorage
-   браузера, под ключами agents-course:quiz:<код>. Никакого сервера
-   и никакого канала наружу — страница просто читает то, что уже
-   есть в этом браузере.
+   Прогресс — это то, что читатель сам отметил кнопкой в конце
+   урока (assets/mark-done.js пишет флаг). Никакого автоматического
+   счетчика по квизу: ответил на все вопросы — не значит «понял
+   и прошел», это решает сам человек. Ключ в localStorage:
+   agents-course:done:<id урока из манифеста>.
 
    Что делает:
    — помечает пройденные уроки в траектории и в списке материалов;
@@ -18,39 +19,34 @@
 (function () {
   "use strict";
 
-  var PREFIX = "agents-course:quiz:";
+  var PREFIX = "agents-course:done:";
 
-  function answeredCount(key) {
+  function isDone(key) {
     try {
-      var raw = window.localStorage.getItem(PREFIX + key);
-      if (!raw) return 0;
-      var data = JSON.parse(raw);
-      return data && typeof data === "object" ? Object.keys(data).length : 0;
+      return window.localStorage.getItem(PREFIX + key) === "1";
     } catch (e) {
-      return 0;
+      return false;
     }
   }
 
   function boot() {
     var steps = Array.prototype.slice.call(
-      document.querySelectorAll("[data-quiz-key]")
+      document.querySelectorAll("[data-done-key]")
     );
     if (!steps.length) return;
 
     var firstUnfinished = null;
 
     steps.forEach(function (el) {
-      var key = el.getAttribute("data-quiz-key");
-      var total = parseInt(el.getAttribute("data-quiz-total") || "0", 10);
-      var done = answeredCount(key);
-      var complete = total > 0 && done >= total;
+      var key = el.getAttribute("data-done-key");
+      var done = isDone(key);
 
-      if (complete) {
+      if (done) {
         el.setAttribute("data-done", "");
         var slot = el.querySelector("[data-done-slot]");
         if (slot) slot.textContent = "пройден";
       } else if (!firstUnfinished) {
-        firstUnfinished = { el: el, done: done, total: total };
+        firstUnfinished = el;
       }
     });
 
@@ -69,19 +65,12 @@
       return;
     }
 
-    var started = firstUnfinished.done > 0;
     setResume(
       resume,
-      firstUnfinished.el.getAttribute("data-href"),
-      started ? "Продолжить" : "Дальше по курсу",
-      firstUnfinished.el.getAttribute("data-title"),
-      started
-        ? "Практика начата: отвечено " +
-            firstUnfinished.done +
-            " из " +
-            firstUnfinished.total +
-            "."
-        : null
+      firstUnfinished.getAttribute("data-href"),
+      "Дальше по курсу",
+      firstUnfinished.getAttribute("data-title"),
+      null
     );
   }
 

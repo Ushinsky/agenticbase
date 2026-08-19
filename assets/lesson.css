@@ -230,6 +230,24 @@ body {
 
 .btn-lg { padding: 0.9rem 1.7rem; font-size: 1rem; }
 
+/* Кнопка «отметить урок пройденным» — свое состояние, отдельное
+   от .btn-primary/.btn-secondary: зеленая, как остальные признаки
+   «пройдено» в курсе (.path li[data-done], .mat-title .done). */
+.mark-done-row {
+  margin: 2.5rem 0 0;
+}
+
+.btn.is-done {
+  background: var(--ok-bg);
+  color: var(--ok);
+  border-color: var(--ok-bg);
+}
+
+.btn.is-done:hover {
+  background: var(--ok-bg);
+  border-color: var(--ok);
+}
+
 /* ---------- Карточка ---------- */
 
 .card {

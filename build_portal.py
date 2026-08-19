@@ -28,12 +28,6 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
-def href_of_first(node):
-    if not node or not node.get("path"):
-        return "kb/index.html"
-    return node["path"].replace("\\", "/")
-
-
 def load(path):
     full = os.path.join(BASE, path)
     if not os.path.exists(full):
@@ -84,11 +78,6 @@ def build():
         "и растущий каталог инструментов — путь от первого прототипа "
         "до продакшена.</p>"
     )
-    add(
-        '<a class="btn btn-primary btn-lg" href="%s">Начать обучение</a>'
-        % esc(href_of_first(first))
-    )
-    add('<a class="more" href="kb/index.html">или открыть всю программу →</a>')
     add('<div class="portal-stats">')
     add('<div><b>%d</b><span>материалов готово из %d</span></div>' % (done, total))
     add('<div><b>%d</b><span>разделов программы</span></div>' % len(manifest.get("modules", [])))

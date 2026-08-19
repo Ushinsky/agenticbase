@@ -145,9 +145,9 @@ body {
 
 .sitenav-mark img { display: block; width: auto; }
 
-.sitenav-mark .brand-icon { height: 2.5rem; }
-.sitenav-mark .brand-word { height: 2.03rem; }
-.sitenav-mark .brand-mascot { height: 2.15rem; }
+.sitenav-mark .brand-icon { height: 2.75rem; }
+.sitenav-mark .brand-word { height: 2.23rem; }
+.sitenav-mark .brand-mascot { height: 2.58rem; }
 
 .sitenav-links {
   display: flex;

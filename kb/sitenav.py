@@ -19,7 +19,11 @@ def render_sitenav(active=None):
         links.append(f'<a href="{href}"{cls}>{title}</a>')
     links_html = "\n      ".join(links)
     return f"""<nav class="sitenav">
-  <a class="sitenav-mark" href="/">Запуск ИИ-агентов</a>
+  <a class="sitenav-mark" href="/">
+    <img class="brand-icon" src="/assets/brand/mark.png" alt="">
+    <img class="brand-word" src="/assets/brand/wordmark.png" alt="AgenticBase">
+    <img class="brand-mascot" src="/assets/brand/octopus.png" alt="">
+  </a>
   <div class="sitenav-links">
       {links_html}
   </div>

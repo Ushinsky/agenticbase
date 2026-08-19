@@ -91,8 +91,10 @@ def build():
     add('<div class="portal-grid">')
 
     add('<a class="card portal-card" href="kb/index.html">')
+    add('<div class="portal-head">')
     add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_KB)
     add('<p class="portal-ttl">База знаний</p>')
+    add("</div>")
     add(
         '<p class="portal-sub">Пошаговые уроки о проектировании, разработке '
         "и эксплуатации агентов, сгруппированные по модулям.</p>"
@@ -104,8 +106,10 @@ def build():
     add("</a>")
 
     add('<a class="card portal-card" href="hub/index.html">')
+    add('<div class="portal-head">')
     add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_HUB)
     add('<p class="portal-ttl">Хаб агентов</p>')
+    add("</div>")
     add(
         '<p class="portal-sub">Справочник платформ и агентов, которые реально '
         "используются в проектах, с фильтром по категориям.</p>"
@@ -120,8 +124,10 @@ def build():
     add("</a>")
 
     add('<a class="card portal-card" href="news/index.html">')
+    add('<div class="portal-head">')
     add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_NEWS)
     add('<p class="portal-ttl">Новости</p>')
+    add("</div>")
     add(
         '<p class="portal-sub">Короткие карточки о том, что меняется '
         "в индустрии ИИ-агентов, со ссылкой на источник.</p>"
@@ -133,12 +139,6 @@ def build():
     add("</a>")
 
     add("</div>")
-
-    add('<footer class="colophon">')
-    add("<nav>")
-    add('<a href="GLOSSARY.md">Глоссарий</a>')
-    add("</nav>")
-    add("</footer>")
 
     add("</main>")
     add("</body>")

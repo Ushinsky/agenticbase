@@ -77,23 +77,6 @@ def render_material(node):
     ])
 
 
-def render_sheet(node, module_title=None):
-    link = href_of(node)
-    title = esc(node["title"])
-    head = (
-        '<a href="%s">%s</a>' % (esc(link), title)
-        if link
-        else '<span class="pending">%s</span>' % title
-    )
-    rows = ["<li>"]
-    if module_title:
-        rows.append('<p class="mat-kind">%s</p>' % esc(module_title))
-    rows.append('<p class="mat-title">%s</p>' % head)
-    rows.append('<p class="mat-sum">%s</p>' % esc(node.get("summary", "")))
-    rows.append("</li>")
-    return "\n".join(rows)
-
-
 def build():
     with open(MANIFEST, "r", encoding="utf-8") as fh:
         data = json.load(fh)
@@ -192,8 +175,10 @@ def build():
     add("<h2>Путь</h2>")
     add(
         "<p>Уроки идут подряд и опираются друг на друга: каждый следующий "
-        "пользуется языком предыдущего. Отметку о прохождении ставит сам "
-        "читатель — кнопкой в конце урока.</p>"
+        "пользуется языком предыдущего. Статьи внутри модуля читаются не "
+        "по порядку, а по надобности; рабочие листы не читают, а берут "
+        "с собой. Отметку о прохождении урока ставит сам читатель — "
+        "кнопкой в конце урока.</p>"
     )
 
     # Первый готовый урок все еще нужен скрипту для ссылки "Продолжить" —
@@ -202,32 +187,62 @@ def build():
     add('<div class="lesson-modules">')
     for module in modules:
         mod_lessons = [n for n in lessons if n.get("module") == module["id"]]
-        if not mod_lessons:
+        mod_articles = [n for n in articles if n.get("module") == module["id"]]
+        mod_sheets = [n for n in sheets if n.get("module") == module["id"]]
+        if not mod_lessons and not mod_articles and not mod_sheets:
             continue
+
         add('<div class="lesson-module">')
         add('<div class="lesson-module-head">')
-        add(
-            '<h3>Модуль %d · %s</h3>' % (module["num"], esc(module["title"]))
-        )
-        add(
-            '<span class="lesson-module-count" data-module-count '
-            'data-module-total="%d">0 / %d пройдено</span>'
-            % (len(mod_lessons), len(mod_lessons))
-        )
-        add("</div>")
-        add('<ul class="lesson-grid">')
-        for n in mod_lessons:
-            link = href_of(n)
+        add('<h3>Модуль %d · %s</h3>' % (module["num"], esc(module["title"])))
+        if mod_lessons:
             add(
-                '<li class="card lesson-card" data-done-key="%s" '
-                'data-href="%s" data-title="%s">'
-                % (esc(n["id"]), esc(link), esc(n["title"]))
+                '<span class="lesson-module-count" data-module-count '
+                'data-module-total="%d">0 / %d пройдено</span>'
+                % (len(mod_lessons), len(mod_lessons))
             )
-            add('<span class="lesson-check" data-done-mark aria-hidden="true"></span>')
-            add('<p class="lesson-title"><a href="%s">%s</a></p>' % (esc(link), esc(n["title"])))
-            add('<p class="lesson-sum">%s</p>' % esc(n.get("summary", "")))
-            add("</li>")
-        add("</ul>")
+        add("</div>")
+
+        if mod_lessons:
+            add('<p class="group-label">Уроки</p>')
+            add('<ul class="lesson-grid">')
+            for n in mod_lessons:
+                link = href_of(n)
+                add(
+                    '<li class="card lesson-card" data-done-key="%s" '
+                    'data-href="%s" data-title="%s">'
+                    % (esc(n["id"]), esc(link), esc(n["title"]))
+                )
+                add('<span class="lesson-check" data-done-mark aria-hidden="true"></span>')
+                add('<p class="lesson-title"><a href="%s">%s</a></p>' % (esc(link), esc(n["title"])))
+                add('<p class="lesson-sum">%s</p>' % esc(n.get("summary", "")))
+                add("</li>")
+            add("</ul>")
+
+        if mod_articles:
+            add('<p class="group-label">Статьи</p>')
+            add('<ul class="article-grid">')
+            for n in mod_articles:
+                link = href_of(n)
+                add('<li class="card article-card">')
+                add('<span class="genre-mark" aria-hidden="true">&para;</span>')
+                add('<div class="body">')
+                add('<p class="lesson-title"><a href="%s">%s</a></p>' % (esc(link), esc(n["title"])))
+                add('<p class="lesson-sum">%s</p>' % esc(n.get("summary", "")))
+                add("</div>")
+                add("</li>")
+            add("</ul>")
+
+        if mod_sheets:
+            add('<p class="group-label">Рабочие листы</p>')
+            add('<ul class="sheet-tags">')
+            for n in mod_sheets:
+                link = href_of(n)
+                add('<li class="sheet-tag">')
+                add('<a href="%s"><span class="genre-mark-sm" aria-hidden="true">&sect;</span>%s</a>' % (esc(link), esc(n["title"])))
+                add("</li>")
+            add("</ul>")
+
         add("</div>")
     add("</div>")
 
@@ -237,39 +252,6 @@ def build():
         "поднимется в очереди.</p>"
     )
     add("</section>")
-
-    # ---------- статьи ----------
-    if articles:
-        add('<section id="stati">')
-        add('<span class="num" aria-hidden="true">¶</span>')
-        add("<h2>Статьи</h2>")
-        add(
-            "<p>Отдельный слой от уроков. Урок ведет к одному результату и содержит "
-            "практику; статья раскрывает тему целиком и читается не подряд, "
-            "а по надобности. У статей своя разметка: двойная линия в поле, "
-            "квадратные номера разделов и оглавление сверху.</p>"
-        )
-        add('<ul class="sheets sheets-art">')
-        for n in articles:
-            mod = next((m for m in modules if m["id"] == n.get("module")), None)
-            add(render_sheet(n, mod["title"] if mod else None))
-        add("</ul>")
-        add("</section>")
-
-    # ---------- рабочие листы ----------
-    if sheets:
-        add('<section id="listy">')
-        add('<span class="num" aria-hidden="true">§</span>')
-        add("<h2>Рабочие листы</h2>")
-        add(
-            "<p>Это не для чтения подряд, а для работы: держать открытым "
-            "на встрече с заказчиком, печатать, возвращаться при разборе поломки.</p>"
-        )
-        add('<ul class="sheets">')
-        for n in sheets:
-            add(render_sheet(n))
-        add("</ul>")
-        add("</section>")
 
     # ---------- программа ----------
     for module in modules:

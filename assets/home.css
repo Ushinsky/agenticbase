@@ -218,6 +218,120 @@
   color: var(--ink-2);
 }
 
+/* Подпись группы внутри модуля — «Уроки» / «Статьи» / «Рабочие листы».
+   Порядок чтения: сначала шаги по порядку, потом чтение по надобности,
+   потом справочник, который не читают, а берут. */
+.group-label {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  margin: 1.3rem 0 0.6rem;
+}
+
+.lesson-module > .group-label:first-of-type {
+  margin-top: 0;
+}
+
+/* ---------- Статьи внутри модуля: своя сетка, шире и заметнее урока ---------- */
+
+.article-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 0.9rem;
+}
+
+.article-card {
+  display: flex;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+}
+
+.genre-mark {
+  flex: none;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 1.05rem;
+}
+
+.article-card .body { min-width: 0; }
+
+.article-card .lesson-title { font-size: 0.94rem; margin-bottom: 0.25rem; }
+.article-card .lesson-sum { font-size: 0.82rem; }
+.article-card:hover .lesson-title a { color: var(--accent); }
+
+/* ---------- Рабочие листы внутри модуля: ярлык, не карточка и не пилюля ----------
+   Форма пилюли занята фильтром в хабе (assets/hub.css) — то же скругление
+   там означает «нажми, чтобы включить фильтр». Здесь другая форма: почти
+   прямоугольник со скруглением карточки и загнутым уголком листа бумаги,
+   пунктирная рамка держит смысл «не читают, а берут с собой». */
+.sheet-tags {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.sheet-tag {
+  position: relative;
+}
+
+.sheet-tag a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.1rem 0.55rem 0.8rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--surface);
+}
+
+.sheet-tag a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.genre-mark-sm {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+/* уголок листа — единственная новая деталь, тихая, не главная */
+.sheet-tag::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.55rem;
+  height: 0.55rem;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, transparent 50%, var(--surface-sunk) 50%),
+    linear-gradient(315deg, transparent 50%, var(--border-strong) 50%);
+  background-size: 100% 50%, 50% 100%;
+  background-position: bottom, left;
+  background-repeat: no-repeat;
+}
+
 /* ---------- Разделы программы ---------- */
 
 .mod-sum {
@@ -293,40 +407,6 @@
   margin: 0.2rem 0 0;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--ink-2);
-}
-
-/* ---------- Рабочие листы ---------- */
-
-.sheets {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.sheets > li {
-  margin: 0 0 1.1rem;
-  padding-left: 1rem;
-  border-left: 2px solid var(--rule);
-}
-
-.sheets > li:last-child { margin-bottom: 0; }
-
-.sheets .mat-title { font-size: 1.04rem; }
-
-/* Статьи в списке помечены той же двойной линией, что стоит
-   в поле самой статьи, — жанр опознается до перехода по ссылке. */
-.sheets-art > li {
-  border-left: 3px double var(--rule);
-  padding-left: 1.1rem;
-}
-
-.sheets-art .mat-kind {
-  margin: 0 0 0.15rem;
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
   color: var(--ink-2);
 }
 

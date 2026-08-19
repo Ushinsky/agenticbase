@@ -22,7 +22,7 @@
 
 .portal-hero h1 {
   margin: 0 0 var(--sp-4);
-  max-width: 34rem;
+  max-width: 38rem;
   font-family: var(--sans);
   font-weight: 700;
   font-size: 3.1rem;
@@ -32,30 +32,10 @@
 }
 
 .portal-hero .lede {
-  margin: 0 0 var(--sp-6);
-  max-width: 32rem;
+  margin: 0;
+  max-width: 34rem;
   font-size: 1.2rem;
   line-height: 1.55;
-  color: var(--text-muted);
-}
-
-.portal-stats {
-  display: flex;
-  gap: var(--sp-6);
-  margin-top: var(--sp-7);
-  padding-top: var(--sp-5);
-  border-top: 1px solid var(--border);
-}
-
-.portal-stats b {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.portal-stats span {
-  font-size: 0.84rem;
   color: var(--text-muted);
 }
 
@@ -63,80 +43,68 @@
 
 .portal-grid {
   display: grid;
-  grid-template-columns: 1.7fr 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-5);
   margin: 0 0 var(--sp-9);
 }
 
 .portal-card {
+  display: flex;
+  flex-direction: column;
   padding: var(--sp-6);
 }
 
-.portal-card.is-kb {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: var(--sp-7);
-}
-
-.portal-card.is-news { grid-column: 2; grid-row: 1; }
-.portal-card.is-hub  { grid-column: 2; grid-row: 2; }
-
-.portal-kind {
-  margin: 0 0 var(--sp-3);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.portal-icon {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--sp-4);
+  background: var(--accent-bg);
   color: var(--accent);
+  border-radius: var(--radius-md);
 }
 
-.portal-card.is-kb .portal-ttl {
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1.2;
+.portal-icon svg {
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .portal-ttl {
   margin: 0 0 var(--sp-2);
   font-size: 1.08rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.3;
   color: var(--text);
 }
 
 .portal-sub {
+  flex: 1;
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-.portal-list {
-  margin: var(--sp-2) 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.86rem;
-  color: var(--text-muted);
-}
-
-.portal-list li {
-  padding: 0.3rem 0;
+.portal-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 0.75rem;
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-4);
   border-top: 1px solid var(--border);
 }
 
+.portal-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
 .portal-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-top: var(--sp-4);
+  flex: none;
   font-family: var(--sans);
   font-weight: 600;
   font-size: 0.86rem;
@@ -144,15 +112,6 @@
 }
 
 @media (max-width: 55rem) {
-  .portal-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-  }
-  .portal-card.is-kb,
-  .portal-card.is-news,
-  .portal-card.is-hub {
-    grid-column: 1;
-    grid-row: auto;
-  }
+  .portal-grid { grid-template-columns: 1fr; }
   .portal-hero h1 { font-size: 2.3rem; }
 }

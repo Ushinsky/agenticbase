@@ -36,22 +36,29 @@ def load(path):
         return json.load(fh)
 
 
+ICON_KB = (
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+    'stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" '
+    'height="16" rx="3"/></svg>'
+)
+ICON_HUB = (
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+    'stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/></svg>'
+)
+ICON_NEWS = (
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+    'stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>'
+)
+
+
 def build():
-    manifest = load("kb/manifest.json") or {"nodes": [], "course": {"title": "Запуск ИИ-агентов"}}
+    manifest = load("kb/manifest.json") or {"nodes": [], "course": {"title": "Запуск ИИ-агентов"}, "modules": []}
     feed = load("news/feed.json") or {"items": []}
     hub = load("hub/agents.json") or {"items": []}
 
     nodes = manifest["nodes"]
-    total = len(nodes)
-    done = sum(1 for n in nodes if n.get("status") == "published")
-
-    lessons = sorted(
-        [n for n in nodes if n.get("type") == "lesson" and n.get("status") == "published"],
-        key=lambda n: (n.get("path") or ""),
-    )
-    first = lessons[0] if lessons else None
-
-    news_items = sorted(feed.get("items", []), key=lambda i: i["date"], reverse=True)[:3]
+    modules = manifest.get("modules", [])
+    lesson_count = sum(1 for n in nodes if n.get("type") == "lesson")
     hub_items = hub.get("items", [])
 
     out = []
@@ -72,59 +79,57 @@ def build():
 
     # ---------- герой ----------
     add('<section class="portal-hero">')
-    add("<h1>Научитесь запускать ИИ-агентов на практике</h1>")
+    add("<h1>Стройте и поддерживайте ИИ-агентов, которые работают в продакшене</h1>")
     add(
-        '<p class="lede">Уроки с разбором ошибок, статьи по каждой теме '
-        "и растущий каталог инструментов — путь от первого прототипа "
-        "до продакшена.</p>"
+        '<p class="lede">Практический курс: от первого прототипа до агента, '
+        "обслуживающего реального заказчика. Без привязки к одной платформе — "
+        "только рабочие принципы и инструменты.</p>"
     )
-    add('<div class="portal-stats">')
-    add('<div><b>%d</b><span>материалов готово из %d</span></div>' % (done, total))
-    add('<div><b>%d</b><span>разделов программы</span></div>' % len(manifest.get("modules", [])))
-    add("</div>")
     add("</section>")
 
     # ---------- три раздела ----------
     add('<div class="portal-grid">')
 
-    add('<a class="card portal-card is-kb" href="kb/index.html">')
-    add("<div>")
-    add('<p class="portal-kind">База знаний</p>')
-    add('<p class="portal-ttl">%s</p>' % esc(first["title"] if first else "Курс готовится"))
+    add('<a class="card portal-card" href="kb/index.html">')
+    add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_KB)
+    add('<p class="portal-ttl">База знаний</p>')
     add(
-        '<p class="portal-sub">%d материалов готово из %d. Уроки с практикой, '
-        "статьи и рабочие листы.</p>" % (done, total)
+        '<p class="portal-sub">Пошаговые уроки о проектировании, разработке '
+        "и эксплуатации агентов, сгруппированные по модулям.</p>"
     )
+    add('<div class="portal-foot">')
+    add('<span class="portal-meta">%d модулей · %d уроков</span>' % (len(modules), lesson_count))
+    add('<span class="portal-cta">Перейти →</span>')
     add("</div>")
-    add('<span class="portal-cta">Продолжить обучение →</span>')
     add("</a>")
 
-    add('<a class="card portal-card is-news" href="news/index.html">')
-    add('<p class="portal-kind">Новости</p>')
-    if news_items:
-        add('<p class="portal-ttl">%s</p>' % esc(news_items[0]["title"]))
-        add('<ul class="portal-list">')
-        for item in news_items[1:]:
-            add('<li>%s</li>' % esc(item["title"]))
-        add("</ul>")
-    else:
-        add('<p class="portal-ttl">Пока пусто</p>')
-        add('<p class="portal-sub">Первая запись появится, как только наберется первая настоящая новость.</p>')
-    add('<span class="portal-cta">Все новости →</span>')
-    add("</a>")
-
-    add('<a class="card portal-card is-hub" href="hub/index.html">')
-    add('<p class="portal-kind">Хаб агентов</p>')
+    add('<a class="card portal-card" href="hub/index.html">')
+    add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_HUB)
+    add('<p class="portal-ttl">Хаб агентов</p>')
+    add(
+        '<p class="portal-sub">Справочник платформ и агентов, которые реально '
+        "используются в проектах, с фильтром по категориям.</p>"
+    )
+    add('<div class="portal-foot">')
     if hub_items:
-        add('<p class="portal-ttl">%d инструментов в каталоге</p>' % len(hub_items))
-        add('<ul class="portal-list">')
-        for item in hub_items[:3]:
-            add('<li>%s</li>' % esc(item["name"]))
-        add("</ul>")
+        add('<span class="portal-meta">%d инструментов</span>' % len(hub_items))
     else:
-        add('<p class="portal-ttl">Каталог пока пуст</p>')
-        add('<p class="portal-sub">Справочник конкретных агентов появится здесь по мере отбора.</p>')
-    add('<span class="portal-cta">Открыть каталог →</span>')
+        add('<span class="portal-meta">Каталог пока пуст</span>')
+    add('<span class="portal-cta">Перейти →</span>')
+    add("</div>")
+    add("</a>")
+
+    add('<a class="card portal-card" href="news/index.html">')
+    add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_NEWS)
+    add('<p class="portal-ttl">Новости</p>')
+    add(
+        '<p class="portal-sub">Короткие карточки о том, что меняется '
+        "в индустрии ИИ-агентов, со ссылкой на источник.</p>"
+    )
+    add('<div class="portal-foot">')
+    add('<span class="portal-meta">Обновляется еженедельно</span>')
+    add('<span class="portal-cta">Перейти →</span>')
+    add("</div>")
     add("</a>")
 
     add("</div>")

@@ -11,6 +11,45 @@
    лежит полоса состояния: по одному штриху на материал.
    ============================================================ */
 
+/* ---------- Один шрифт на странице ----------
+   .sheet.wide в lesson.css ставит гротеск в шапку хаба и новостей —
+   там это интерфейс. Здесь, в базе знаний, заголовки — это названия
+   тех же уроков и статей, что читаются серифом внутри; два шрифта
+   на одной странице выглядели как две разные системы. Правила ниже
+   отменяют гротеск именно на этой странице (файл подключен только
+   в kb/index.html, лесенка каскада решает: домашний.css грузится
+   после lesson.css). */
+
+.sheet.wide .masthead h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.sheet.wide .masthead .course {
+  font-family: var(--mono);
+  font-weight: 400;
+}
+
+.sheet.wide .masthead .standfirst {
+  font-family: var(--serif);
+}
+
+.sheet.wide h2 {
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+/* h3 на этой странице — только заголовок модуля («Модуль 1 · Основания»),
+   он открывает целый блок уроков/статей/листов, крупнее рядового h3. */
+.sheet.wide h3 {
+  font-family: var(--serif);
+  font-size: 1.34rem;
+  font-weight: 700;
+}
+
 /* ---------- Шапка ---------- */
 
 .home-hero {
@@ -165,6 +204,15 @@
   gap: 1rem;
 }
 
+/* <li> — только для семантики списка, сама сеточная ячейка —
+   вложенная <a class="card">: кликается вся карточка целиком,
+   а не только заголовок. display:contents убирает <li> из сетки,
+   как будто <a> стоит в ней напрямую. */
+.lesson-grid > li,
+.article-grid > li {
+  display: contents;
+}
+
 .lesson-card {
   position: relative;
   display: block;
@@ -198,18 +246,25 @@
 
 .lesson-title {
   margin: 0 0 0.35rem;
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 1.02rem;
   font-weight: 700;
   line-height: 1.3;
-}
-
-.lesson-title a {
   color: var(--ink);
-  text-decoration: none;
 }
 
-.lesson-card:hover .lesson-title a { color: var(--accent); }
+/* Наведение меняет только цвет заголовка — заливка фона (ее несет
+   общее правило "a:hover" для ссылок в тексте, а вся карточка теперь
+   тоже <a>) здесь лишняя: карточка и так поднимается тенью. */
+.lesson-card:hover,
+.article-card:hover {
+  background: var(--surface);
+}
+
+.lesson-card:hover .lesson-title,
+.article-card:hover .lesson-title {
+  color: var(--accent);
+}
 
 .lesson-sum {
   margin: 0;
@@ -222,11 +277,10 @@
    Порядок чтения: сначала шаги по порядку, потом чтение по надобности,
    потом справочник, который не читают, а берут. */
 .group-label {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.72rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--ink-2);
   margin: 1.3rem 0 0.6rem;
 }
@@ -268,8 +322,14 @@
 .article-card .body { min-width: 0; }
 
 .article-card .lesson-title { font-size: 0.94rem; margin-bottom: 0.25rem; }
-.article-card .lesson-sum { font-size: 0.82rem; }
-.article-card:hover .lesson-title a { color: var(--accent); }
+
+/* Полный текст summary был в карточке — непропорционально длинный.
+   Обрезка многоточием (line-clamp) рвала фразу на середине, выглядело
+   криво. Вместо этого сборка (kb/build_index.py) кладет сюда только
+   первое предложение — законченную мысль, без "...". */
+.article-card .lesson-sum {
+  font-size: 0.82rem;
+}
 
 /* ---------- Рабочие листы внутри модуля: ярлык, не карточка и не пилюля ----------
    Форма пилюли занята фильтром в хабе (assets/hub.css) — то же скругление

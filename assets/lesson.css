@@ -147,7 +147,7 @@ body {
   flex: none;
 }
 
-.sitenav-mark:hover { color: var(--accent); }
+.sitenav-mark:hover { color: var(--accent); background: none; }
 
 .sitenav-links {
   display: flex;
@@ -164,7 +164,7 @@ body {
   border-bottom: 2px solid transparent;
 }
 
-.sitenav-links a:not(.btn):hover { color: var(--text); }
+.sitenav-links a:not(.btn):hover { color: var(--text); background: none; }
 
 .sitenav-links a.on:not(.btn) {
   color: var(--text);

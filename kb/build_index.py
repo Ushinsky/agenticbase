@@ -41,6 +41,14 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
+def first_sentence(text):
+    # На карточке статьи полный summary был слишком длинным. Обрезка
+    # многоточием рвала фразу на середине — вместо этого берем первое
+    # законченное предложение целиком, ничего не отрезая на полуслове.
+    idx = text.find(". ")
+    return text[: idx + 1] if idx != -1 else text
+
+
 def href_of(node):
     # index.html теперь лежит в kb/, на уровень глубже lessons/articles/reference,
     # поэтому все пути из манифеста получают "../".
@@ -208,14 +216,15 @@ def build():
             add('<ul class="lesson-grid">')
             for n in mod_lessons:
                 link = href_of(n)
+                add("<li>")
                 add(
-                    '<li class="card lesson-card" data-done-key="%s" '
-                    'data-href="%s" data-title="%s">'
-                    % (esc(n["id"]), esc(link), esc(n["title"]))
+                    '<a class="card lesson-card" data-done-key="%s" href="%s">'
+                    % (esc(n["id"]), esc(link))
                 )
                 add('<span class="lesson-check" data-done-mark aria-hidden="true"></span>')
-                add('<p class="lesson-title"><a href="%s">%s</a></p>' % (esc(link), esc(n["title"])))
+                add('<p class="lesson-title">%s</p>' % esc(n["title"]))
                 add('<p class="lesson-sum">%s</p>' % esc(n.get("summary", "")))
+                add("</a>")
                 add("</li>")
             add("</ul>")
 
@@ -224,12 +233,14 @@ def build():
             add('<ul class="article-grid">')
             for n in mod_articles:
                 link = href_of(n)
-                add('<li class="card article-card">')
+                add("<li>")
+                add('<a class="card article-card" href="%s">' % esc(link))
                 add('<span class="genre-mark" aria-hidden="true">&para;</span>')
                 add('<div class="body">')
-                add('<p class="lesson-title"><a href="%s">%s</a></p>' % (esc(link), esc(n["title"])))
-                add('<p class="lesson-sum">%s</p>' % esc(n.get("summary", "")))
+                add('<p class="lesson-title">%s</p>' % esc(n["title"]))
+                add('<p class="lesson-sum">%s</p>' % esc(first_sentence(n.get("summary", ""))))
                 add("</div>")
+                add("</a>")
                 add("</li>")
             add("</ul>")
 

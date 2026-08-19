@@ -84,9 +84,9 @@
       var last = cards[cards.length - 1];
       setResume(
         resume,
-        last.getAttribute("data-href"),
+        last.getAttribute("href"),
         "Все уроки пройдены",
-        last.getAttribute("data-title"),
+        titleOf(last),
         "Можно вернуться к любому или ждать следующего."
       );
       return;
@@ -94,11 +94,16 @@
 
     setResume(
       resume,
-      firstUnfinished.getAttribute("data-href"),
+      firstUnfinished.getAttribute("href"),
       "Дальше по курсу",
-      firstUnfinished.getAttribute("data-title"),
+      titleOf(firstUnfinished),
       null
     );
+  }
+
+  function titleOf(card) {
+    var el = card.querySelector(".lesson-title");
+    return el ? el.textContent : "";
   }
 
   function setResume(node, href, label, title, sub) {

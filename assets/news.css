@@ -4,10 +4,27 @@
    ширины, только hover-подсветка, без зебры и карточек с тенью.
    ============================================================ */
 
+.news-hero {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+}
+
 .feed-page {
+  flex: 1 1 840px;
   max-width: 840px;
-  margin: 0 auto;
-  padding: 56px 56px 28px;
+  padding: 56px 0 28px 56px;
+}
+
+.news-mascot {
+  flex: 0 1 26rem;
+  max-width: 30rem;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 68rem) {
+  .news-mascot { display: none; }
 }
 
 .feed-head { margin: 0 0 8px; }

@@ -80,6 +80,7 @@ def build():
     add("<body>")
     add(render_sitenav("news"))
     add('<article class="sheet wide">')
+    add('<div class="news-hero">')
     add('<div class="feed-page">')
 
     add('<header class="feed-head">')
@@ -101,6 +102,8 @@ def build():
             "наберется первая настоящая новость.</p>")
         add("</div>")
 
+    add("</div>")
+    add('<img class="news-mascot" src="../assets/brand/hero-octopus.png" alt="">')
     add("</div>")
 
     add('<footer class="colophon">')

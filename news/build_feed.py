@@ -47,15 +47,14 @@ def render_item(item):
     url = item.get("url", "")
     label = domain_of(url) or item.get("source") or "источник"
     return "\n".join([
-        '<li class="feed-item">',
+        '<a class="feed-item" href="%s">' % esc(url),
         '<p class="feed-date">%s</p>' % esc(format_date(item["date"])),
         '<div class="feed-body">',
         '<p class="feed-title">%s</p>' % esc(item["title"]),
         '<p class="feed-sum">%s</p>' % esc(item.get("summary", "")),
         "</div>",
-        '<p class="feed-meta"><a href="%s">%s &rarr;</a></p>'
-        % (esc(url), esc(label)),
-        "</li>",
+        '<p class="feed-meta">%s &rarr;</p>' % esc(label),
+        "</a>",
     ])
 
 
@@ -81,25 +80,28 @@ def build():
     add("<body>")
     add(render_sitenav("news"))
     add('<article class="sheet wide">')
+    add('<div class="feed-page">')
 
-    add('<header class="masthead">')
+    add('<header class="feed-head">')
     add("<h1>Новости</h1>")
     add(
-        '<p class="standfirst">Что меняется в индустрии ИИ-агентов — коротко, '
+        '<p class="feed-lede">Что меняется в индустрии ИИ-агентов — коротко, '
         "по датам, со ссылкой на источник.</p>"
     )
     add("</header>")
 
     if items:
-        add('<ul class="feed">')
+        add('<div class="feed">')
         for item in items:
             add(render_item(item))
-        add("</ul>")
+        add("</div>")
     else:
         add('<div class="feed-empty">')
         add("<p>Пока пусто. Первая запись появится здесь, как только "
             "наберется первая настоящая новость.</p>")
         add("</div>")
+
+    add("</div>")
 
     add('<footer class="colophon">')
     add("<nav>")

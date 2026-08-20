@@ -103,7 +103,7 @@ def build():
         add("</div>")
 
     add("</div>")
-    add('<img class="news-mascot" src="../assets/brand/hero-octopus.png" alt="">')
+    add('<img class="news-mascot" src="../assets/brand/news-octopus.png" alt="">')
     add("</div>")
 
     add('<footer class="colophon">')

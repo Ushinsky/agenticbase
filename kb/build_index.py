@@ -15,6 +15,7 @@ import html
 import json
 import os
 import sys
+from datetime import datetime
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "kb"))
@@ -23,8 +24,21 @@ from sitenav import render_sitenav
 MANIFEST = os.path.join(BASE, "kb", "manifest.json")
 OUT = os.path.join(BASE, "kb", "index.html")
 
+# Месяцы в родительном падеже: дата читается как «16 августа 2026»,
+# а не машинным «2026-08-16». В манифесте формат остается ISO.
+MONTHS = [
+    "января", "февраля", "марта", "апреля", "мая", "июня",
+    "июля", "августа", "сентября", "октября", "ноября", "декабря",
+]
+
+
 def esc(value):
     return html.escape(str(value), quote=True)
+
+
+def format_date(value):
+    dt = datetime.strptime(value, "%Y-%m-%d")
+    return "%d %s %d" % (dt.day, MONTHS[dt.month - 1], dt.year)
 
 
 # Значок статьи — своя иконка на файл в assets/icons/articles/<id>.svg
@@ -108,12 +122,15 @@ def build():
 
     # ---------- шапка ----------
     add('<header class="masthead home-hero">')
-    add('<p class="course">База знаний · обновлено <b>%s</b></p>' % esc(data["updated"]))
+    add(
+        '<p class="course">База знаний · обновлено <b>%s</b></p>'
+        % esc(format_date(data["updated"]))
+    )
     add("<h1>%s</h1>" % esc(course["title"]))
     add(
-        '<p class="tagline">Путь от «что такое агент» до «развернул, поддерживаю '
-        "и масштабирую» — уроки с практикой, статьи по каждой теме и рабочие листы, "
-        "к которым возвращаются.</p>"
+        '<p class="tagline">Полноценный обучающий курс по ИИ-агентам: уроки '
+        "с практикой, статьи по каждой теме и рабочие листы, которые помогут "
+        "в работе. Бесплатный и обновляемый.</p>"
     )
 
     first = lessons[0] if lessons else None

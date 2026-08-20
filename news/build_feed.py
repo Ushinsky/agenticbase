@@ -15,6 +15,8 @@ import html
 import json
 import os
 import sys
+from datetime import datetime
+from urllib.parse import urlparse
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "kb"))
@@ -23,24 +25,36 @@ from sitenav import render_sitenav
 FEED = os.path.join(BASE, "news", "feed.json")
 OUT = os.path.join(BASE, "news", "index.html")
 
+MONTHS = ["янв", "фев", "мар", "апр", "май", "июн",
+          "июл", "авг", "сен", "окт", "ноя", "дек"]
+
 
 def esc(value):
     return html.escape(str(value), quote=True)
 
 
+def format_date(date_str):
+    dt = datetime.strptime(date_str, "%Y-%m-%d")
+    return "%d %s %d" % (dt.day, MONTHS[dt.month - 1], dt.year)
+
+
+def domain_of(url):
+    netloc = urlparse(url).netloc
+    return netloc[4:] if netloc.startswith("www.") else netloc
+
+
 def render_item(item):
-    tags = "".join(
-        '<span class="tag">%s</span>' % esc(t) for t in item.get("tags", [])
-    )
+    url = item.get("url", "")
+    label = domain_of(url) or item.get("source") or "источник"
     return "\n".join([
         '<li class="feed-item">',
-        '<p class="feed-date">%s</p>' % esc(item["date"]),
+        '<p class="feed-date">%s</p>' % esc(format_date(item["date"])),
         '<div class="feed-body">',
         '<p class="feed-title">%s</p>' % esc(item["title"]),
         '<p class="feed-sum">%s</p>' % esc(item.get("summary", "")),
-        '<p class="feed-meta"><a href="%s">%s</a>%s</p>'
-        % (esc(item["url"]), esc(item.get("source", "источник")), tags),
         "</div>",
+        '<p class="feed-meta"><a href="%s">%s &rarr;</a></p>'
+        % (esc(url), esc(label)),
         "</li>",
     ])
 
@@ -69,13 +83,10 @@ def build():
     add('<article class="sheet wide">')
 
     add('<header class="masthead">')
-    add('<p class="course">Новости · обновлено <b>%s</b></p>' % esc(data.get("updated", "")))
-    add("<h1>Новости про ИИ-агентов</h1>")
+    add("<h1>Новости</h1>")
     add(
-        '<p class="standfirst">Короткие карточки о том, что происходит в мире '
-        "агентов: новые модели, инструменты, протоколы, заметные разборы. "
-        "В отличие от уроков, здесь называются конкретные продукты и даются "
-        "ссылки на источники.</p>"
+        '<p class="standfirst">Что меняется в индустрии ИИ-агентов — коротко, '
+        "по датам, со ссылкой на источник.</p>"
     )
     add("</header>")
 

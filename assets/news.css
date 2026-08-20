@@ -10,74 +10,59 @@
   list-style: none;
   margin: var(--sp-6) 0 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
   font-family: var(--sans);
+  border-top: 1px solid var(--border);
 }
 
 .feed-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 6.4rem 1fr 8rem;
+  align-items: start;
   gap: var(--sp-5);
-  padding: var(--sp-5);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-1);
+  padding: var(--sp-5) var(--sp-3);
+  border-bottom: 1px solid var(--border);
 }
 
+.feed-item:nth-child(even) { background: var(--surface-sunk); }
+
 .feed-date {
-  flex: 0 0 4.6rem;
-  margin: 0.1rem 0 0;
-  font-weight: 600;
-  font-size: 0.78rem;
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
   color: var(--text-muted);
   white-space: nowrap;
 }
 
-.feed-body {
-  flex: 1 1 auto;
-  min-width: 0;
-}
+.feed-body { min-width: 0; }
 
 .feed-title {
   margin: 0 0 var(--sp-2);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   line-height: 1.35;
   color: var(--text);
 }
 
 .feed-sum {
-  margin: 0 0 var(--sp-3);
+  margin: 0;
   color: var(--text-muted);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   line-height: 1.55;
 }
 
 .feed-meta {
-  margin: 0;
-  font-size: 0.84rem;
+  margin: 0.15rem 0 0;
+  text-align: right;
 }
 
 .feed-meta a {
   color: var(--accent);
   font-weight: 600;
+  font-size: 0.86rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .feed-meta a:hover { text-decoration: underline; }
-
-.feed-meta .tag {
-  display: inline-block;
-  margin-left: var(--sp-2);
-  padding: 0.15em 0.55em;
-  border-radius: var(--radius-sm);
-  background: var(--surface-sunk);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  font-size: 0.72rem;
-}
 
 .feed-empty {
   margin: var(--sp-6) 0;
@@ -95,6 +80,9 @@
 }
 
 @media (max-width: 30rem) {
-  .feed-item { flex-direction: column; gap: var(--sp-2); }
-  .feed-date { flex: none; }
+  .feed-item {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+  }
+  .feed-meta { text-align: left; }
 }

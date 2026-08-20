@@ -6,7 +6,7 @@
 
 .news-hero {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--sp-6);
 }
 
@@ -16,11 +16,14 @@
   padding: 56px 0 28px 56px;
 }
 
+/* Маскот держится у верха страницы независимо от длины ленты:
+   лента растет вниз, осьминог остается на своем месте в шапке. */
 .news-mascot {
   flex: 0 1 26rem;
   max-width: 30rem;
   width: 100%;
   height: auto;
+  margin-top: var(--sp-5);
 }
 
 @media (max-width: 68rem) {

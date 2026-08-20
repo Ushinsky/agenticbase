@@ -181,7 +181,6 @@ def build():
                     '<a class="card lesson-card" data-done-key="%s" href="%s">'
                     % (esc(n["id"]), esc(link))
                 )
-                add('<span class="lesson-check" data-done-mark aria-hidden="true"></span>')
                 add(
                     '<span class="lesson-num" aria-hidden="true">%d</span>'
                     % lesson_numbers[n["id"]]

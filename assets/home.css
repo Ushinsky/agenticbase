@@ -240,43 +240,11 @@
   color: inherit;
 }
 
-.lesson-check {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-bottom: 0.7rem;
-  border: 1.5px solid var(--border-strong);
-  border-radius: 50%;
-  background: var(--surface-sunk);
-  color: var(--ink-2);
-  font-size: 0.7rem;
-  font-weight: 700;
-  opacity: 0.55;
-}
-
-/* Пока урок не отмечен — блеклый вопросительный знак: статус еще
-   не определен, а не "пусто". Отмечен — заметная зеленая галочка. */
-.lesson-check::before {
-  content: "?";
-}
-
-.lesson-card.is-done .lesson-check {
-  border-color: var(--ok);
-  background: var(--ok);
-  color: #fff;
-  opacity: 1;
-  font-size: 0.76rem;
-}
-
-.lesson-card.is-done .lesson-check::before {
-  content: "\2713";
-}
-
-/* Сквозной номер урока по курсу — в углу карточки, тем же кирпичным
-   акцентом, что и весь сайт, но приглушенно: это ориентир, не главный
-   элемент. */
+/* Номер урока в углу карточки одновременно служит отметкой о
+   прохождении: серый по умолчанию (как раньше был вопросительный
+   знак), заметно зеленый — когда урок отмечен пройденным. Отдельного
+   значка для этого больше нет, чтобы не дублировать один и тот же
+   статус двумя элементами. */
 .lesson-num {
   position: absolute;
   top: 1.05rem;
@@ -286,14 +254,21 @@
   justify-content: center;
   width: 1.5rem;
   height: 1.5rem;
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid var(--border-strong);
   border-radius: 50%;
-  background: var(--accent-bg);
-  color: var(--accent);
+  background: var(--surface-sunk);
+  color: var(--ink-2);
   font-family: var(--mono);
   font-size: 0.68rem;
   font-variant-numeric: lining-nums;
-  opacity: 0.75;
+  opacity: 0.55;
+}
+
+.lesson-card.is-done .lesson-num {
+  border-color: var(--ok);
+  background: var(--ok);
+  color: #fff;
+  opacity: 1;
 }
 
 .lesson-title {

@@ -141,7 +141,7 @@ body {
   transition: opacity 120ms ease;
 }
 
-.sitenav-mark:hover { opacity: 0.75; }
+.sitenav-mark:hover { opacity: 0.75; background: none; }
 
 .sitenav-mark img { display: block; width: auto; }
 

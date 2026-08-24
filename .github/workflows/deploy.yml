@@ -36,6 +36,7 @@ jobs:
             --exclude='__pycache__' \
             --exclude='kb/manifest.json' \
             --exclude='news/feed.json' \
+            --exclude='news/digest.json' \
             --exclude='hub/agents.json' \
             . site/
 

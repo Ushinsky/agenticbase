@@ -28,6 +28,15 @@ def build():
         if path:
             urls.append("/" + path.replace("\\", "/"))
 
+    digest_path = os.path.join(BASE, "news", "digest.json")
+    if os.path.exists(digest_path):
+        with open(digest_path, "r", encoding="utf-8") as fh:
+            digest = json.load(fh)
+        if digest.get("closed"):
+            urls.append("/news/archive/index.html")
+        for week in digest.get("closed", []):
+            urls.append("/news/" + week["html_path"].replace("\\", "/"))
+
     out = ['<?xml version="1.0" encoding="UTF-8"?>']
     out.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     for url in urls:

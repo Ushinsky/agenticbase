@@ -1,130 +1,264 @@
 /* ============================================================
-   Раздел «Новости» — лента, интерфейсная страница. Строгий макет
-   по ТЗ: вся строка — кликабельная ссылка, три колонки фиксированной
-   ширины, только hover-подсветка, без зебры и карточек с тенью.
+   Лента — еженедельный дайджест ИИ-агентов. Интерфейсная страница
+   (.sheet.wide), поэтому гротеск, а не сериф, и своя сетка карточек
+   вместо колонки для чтения подряд. Цвета и отступы — только токены
+   из assets/lesson.css, свой палитры здесь нет.
    ============================================================ */
 
-.news-hero {
+.digest-head {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   gap: var(--sp-6);
+  margin: 0 0 var(--sp-7);
+  flex-wrap: wrap;
 }
 
-.feed-page {
-  flex: 1 1 840px;
-  max-width: 840px;
-  padding: 56px 0 28px 56px;
+.digest-head-text {
+  flex: 1 1 28rem;
+  min-width: 0;
 }
 
-/* Маскот держится у верха страницы независимо от длины ленты:
-   лента растет вниз, осьминог остается на своем месте в шапке. */
-.news-mascot {
-  flex: 0 1 26rem;
-  max-width: 30rem;
-  width: 100%;
-  height: auto;
-  margin-top: var(--sp-5);
-}
-
-@media (max-width: 68rem) {
-  .news-mascot { display: none; }
-}
-
-.feed-head { margin: 0 0 8px; }
-
-.feed-head h1 {
-  margin: 0 0 8px;
+.digest-crumb {
+  margin: 0 0 var(--sp-3);
   font-family: var(--sans);
-  font-size: 34px;
-  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+.digest-crumb a { border-bottom-color: var(--rule); }
+.digest-crumb a:hover { border-bottom-color: currentColor; }
+
+.digest-head-text h1 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
   letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 var(--sp-3);
 }
 
-.feed-lede {
+.digest-lede {
   margin: 0;
+  max-width: 42rem;
   font-family: var(--sans);
-  font-size: 16px;
-  color: #6b6560;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-2);
 }
 
-.feed {
+.digest-stats {
+  display: flex;
+  gap: var(--sp-6);
+  flex-wrap: wrap;
+  margin: var(--sp-4) 0 0;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+.digest-stats strong {
+  display: block;
+  font-size: 1.35rem;
+  color: var(--accent);
+}
+
+.digest-mascot {
+  flex: 0 0 auto;
+  width: 9rem;
+  max-width: 100%;
+  height: auto;
+  align-self: flex-start;
+}
+
+/* ---------- Тулбар фильтров ---------- */
+
+.digest-toolbar {
+  display: flex;
+  gap: var(--sp-5);
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 0 var(--sp-5);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+
+.digest-toolbar select {
+  margin-left: 0.4rem;
+  font: inherit;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.digest-toolbar select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Сетка видео ---------- */
+
+.digest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  margin: 0 0 var(--sp-8);
+  align-items: stretch;
+}
+
+.digest-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.digest-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--surface-sunk);
+  display: block;
+}
+
+.digest-card-body {
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.digest-card-body h3 {
+  margin: 0 0 var(--sp-2);
   font-family: var(--sans);
-}
-
-.feed-item {
-  display: grid;
-  grid-template-columns: 120px 1fr auto;
-  align-items: start;
-  gap: 24px;
-  padding: 26px 8px;
-  border-top: 1px solid #e7e3de;
-  color: inherit;
-  text-decoration: none;
-}
-
-.feed-item:last-child { border-bottom: 1px solid #e7e3de; }
-
-.feed-item:hover { background: #f6f4f0; }
-
-.feed-date {
-  margin: 0;
-  padding-top: 3px;
-  font-size: 13px;
+  font-size: 1.02rem;
   font-weight: 700;
-  color: #9a948d;
-  white-space: nowrap;
+  line-height: 1.3;
 }
 
-.feed-body { min-width: 0; }
+.digest-card-body h3 a { border-bottom-color: transparent; }
+.digest-card-body h3 a:hover { border-bottom-color: currentColor; background: none; }
 
-.feed-title {
-  margin: 0 0 6px;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.35;
-  color: #1b1815;
-}
-
-.feed-sum {
+.digest-summary {
   margin: 0;
-  font-size: 14px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 0.88rem;
   line-height: 1.55;
-  color: #6b6560;
+  color: var(--ink-2);
 }
 
-.feed-meta {
-  margin: 0;
-  padding-top: 3px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #8a2f22;
-  white-space: nowrap;
-}
-
-.feed-empty {
-  margin: 2rem 0 0;
-  padding: 3rem;
-  border: 1px dashed #e7e3de;
+.digest-empty {
+  margin: 0 0 var(--sp-5);
+  padding: var(--sp-6);
+  border: 1px dashed var(--border-strong);
   border-radius: var(--radius-lg);
-  background: #f6f4f0;
-  color: #6b6560;
+  background: var(--surface-sunk);
+  color: var(--ink-2);
   font-family: var(--sans);
   text-align: center;
 }
 
-.feed-empty p {
+/* ---------- Веб-материалы ---------- */
+
+.digest-web-list {
+  list-style: decimal;
+  padding-left: 1.4rem;
   margin: 0;
+  display: grid;
+  gap: var(--sp-5);
+  font-family: var(--sans);
+}
+
+.digest-web-list li {
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.digest-web-list h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.digest-meta {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+
+.digest-score { font-weight: 700; color: var(--accent); }
+
+/* ---------- Архив ---------- */
+
+.digest-archive summary {
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 var(--sp-4);
+  text-transform: capitalize;
+}
+
+.digest-archive details {
+  margin: 0 0 var(--sp-7);
+}
+
+.digest-week-card {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--sans);
+}
+
+.digest-collage {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.digest-collage img {
+  width: 56px;
+  height: 32px;
+  object-fit: cover;
+  background: var(--surface-sunk);
+  border: 2px solid var(--paper);
+  margin-left: -12px;
+}
+
+.digest-collage img:first-child { margin-left: 0; }
+
+.digest-week-body {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+.digest-week-body h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.digest-open-link {
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+  border-bottom-color: transparent;
+}
+
+.digest-open-link:hover { border-bottom-color: currentColor; background: none; }
+
+@media (max-width: 60rem) {
+  .digest-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 30rem) {
-  .feed-page { padding: 32px 20px 20px; }
-  .feed-item {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding: 20px 8px;
-  }
-  .feed-meta { padding-top: 0; }
+  .digest-grid { grid-template-columns: 1fr; }
+  .digest-mascot { width: 6rem; }
 }

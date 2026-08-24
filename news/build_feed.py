@@ -73,7 +73,7 @@ def build():
     add('<meta charset="utf-8">')
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
     add('<link rel="icon" href="/favicon.ico">')
-    add("<title>Новости — Запуск ИИ-агентов</title>")
+    add("<title>Лента — Запуск ИИ-агентов</title>")
     add('<link rel="stylesheet" href="../assets/lesson.css">')
     add('<link rel="stylesheet" href="../assets/news.css">')
     add("</head>")
@@ -84,7 +84,7 @@ def build():
     add('<div class="feed-page">')
 
     add('<header class="feed-head">')
-    add("<h1>Новости</h1>")
+    add("<h1>Лента</h1>")
     add(
         '<p class="feed-lede">Что меняется в индустрии ИИ-агентов — коротко, '
         "по датам, со ссылкой на источник.</p>"
@@ -109,7 +109,6 @@ def build():
     add('<footer class="colophon">')
     add("<nav>")
     add('<a href="/kb/index.html">База знаний</a>')
-    add('<a href="/hub/index.html">Хаб агентов</a>')
     add("</nav>")
     add("</footer>")
 

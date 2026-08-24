@@ -7,8 +7,7 @@ hub/build_hub.py, build_portal.py), чтобы шапка была иденти�
 
 SECTIONS = {
     "kb": ("/kb/index.html", "База знаний"),
-    "news": ("/news/index.html", "Новости"),
-    "hub": ("/hub/index.html", "Хаб агентов"),
+    "news": ("/news/index.html", "Лента"),
 }
 
 

@@ -1,15 +1,17 @@
 """Сборка портальной главной страницы (корневой index.html).
 
-Собирает превью из трех разделов: kb/manifest.json, news/feed.json,
-hub/agents.json. Сама ничего не решает — только показывает, что уже
-собрано их собственными скриптами. Запускать после них:
+Собирает превью из двух разделов: kb/manifest.json, news/feed.json.
+Сама ничего не решает — только показывает, что уже собрано их
+собственными скриптами. Запускать после них:
 
     python kb/build_index.py
     python news/build_feed.py
-    python hub/build_hub.py
     python build_portal.py
 
 Или все разом — build.py.
+
+Хаб агентов временно снят с главной и из меню (пуст, наполнить позже) —
+раздел собирается hub/build_hub.py, но нигде не связан.
 """
 
 import html
@@ -37,19 +39,16 @@ def load(path):
 
 
 ICON_KB = '<img src="assets/brand/icon-kb.png" alt="">'
-ICON_HUB = '<img src="assets/brand/icon-hub.png" alt="">'
 ICON_NEWS = '<img src="assets/brand/icon-news.png" alt="">'
 
 
 def build():
     manifest = load("kb/manifest.json") or {"nodes": [], "course": {"title": "Запуск ИИ-агентов"}, "modules": []}
     feed = load("news/feed.json") or {"items": []}
-    hub = load("hub/agents.json") or {"items": []}
 
     nodes = manifest["nodes"]
     modules = manifest.get("modules", [])
     lesson_count = sum(1 for n in nodes if n.get("type") == "lesson")
-    hub_items = hub.get("items", [])
     feed_items = feed.get("items", [])
 
     out = []
@@ -84,7 +83,7 @@ def build():
     )
     add("</section>")
 
-    # ---------- три раздела ----------
+    # ---------- два раздела ----------
     add('<div class="portal-grid">')
 
     add('<a class="card portal-card" href="kb/index.html">')
@@ -101,27 +100,10 @@ def build():
     add("</div>")
     add("</a>")
 
-    add('<a class="card portal-card" href="hub/index.html">')
-    add('<div class="portal-head">')
-    add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_HUB)
-    add('<p class="portal-ttl">Хаб агентов</p>')
-    add("</div>")
-    add(
-        '<p class="portal-sub">Справочник платформ и агентов, которые реально '
-        "используются в проектах, с фильтром по категориям.</p>"
-    )
-    add('<div class="portal-foot">')
-    if hub_items:
-        add('<span class="portal-meta">%d инструментов</span>' % len(hub_items))
-    else:
-        add('<span class="portal-meta">Каталог пока пуст</span>')
-    add("</div>")
-    add("</a>")
-
     add('<a class="card portal-card" href="news/index.html">')
     add('<div class="portal-head">')
     add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_NEWS)
-    add('<p class="portal-ttl">Новости</p>')
+    add('<p class="portal-ttl">Лента</p>')
     add("</div>")
     add(
         '<p class="portal-sub">Короткие карточки о том, что меняется '

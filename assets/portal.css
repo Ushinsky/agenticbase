@@ -68,10 +68,11 @@
 
 .portal-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 42rem;
+  margin: 0 auto var(--sp-9);
   align-items: stretch;
   gap: var(--sp-5);
-  margin: 0 0 var(--sp-9);
 }
 
 /* Карточки равной высоты (align-items: stretch на сетке) + сама

@@ -1,7 +1,7 @@
 """Сборка sitemap.xml для поисковиков.
 
 Собирает список опубликованных страниц из kb/manifest.json плюс
-статические разделы (главная, база знаний, новости, хаб). Запускать
+статические разделы (главная, база знаний, лента). Запускать
 после kb/build_index.py, чтобы манифест был актуален. Обычно не
 вызывается отдельно — см. build.py.
 
@@ -20,7 +20,7 @@ def build():
     with open(os.path.join(BASE, "kb", "manifest.json"), "r", encoding="utf-8") as fh:
         manifest = json.load(fh)
 
-    urls = ["/", "/kb/index.html", "/news/index.html", "/hub/index.html"]
+    urls = ["/", "/kb/index.html", "/news/index.html"]
     for node in manifest["nodes"]:
         if node.get("status") != "published":
             continue

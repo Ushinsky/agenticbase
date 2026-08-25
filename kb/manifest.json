@@ -808,7 +808,8 @@
       "module": "mehanika",
       "order": 8,
       "title": "Рабочие процессы",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/agentnye-protsessy.html",
       "summary": "Узлы, ветвления, циклы и передача данных между шагами. Как собирается процесс на визуальной платформе и что под ним на самом деле.",
       "concepts": [
         "узел процесса",

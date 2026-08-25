@@ -65,7 +65,7 @@
 
 .digest-mascot {
   flex: 0 0 auto;
-  width: 9rem;
+  width: 27rem;
   max-width: 100%;
   height: auto;
   align-self: flex-start;
@@ -260,5 +260,5 @@
 
 @media (max-width: 30rem) {
   .digest-grid { grid-template-columns: 1fr; }
-  .digest-mascot { width: 6rem; }
+  .digest-mascot { width: 18rem; }
 }

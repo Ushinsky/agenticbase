@@ -783,7 +783,8 @@
       "module": "mehanika",
       "order": 7,
       "title": "Агент, оценивающий себя",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/metakognitsiya.html",
       "summary": "Способность заметить собственную ошибку, оценить уверенность и сменить стратегию. Что это дает на практике и чем оплачивается.",
       "concepts": [
         "метакогниция",

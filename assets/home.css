@@ -53,7 +53,29 @@
 /* ---------- Шапка ---------- */
 
 .home-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-6);
   margin: 0 0 2.6rem;
+}
+
+.home-hero-text {
+  flex: 1 1 32rem;
+  min-width: 0;
+}
+
+.home-hero-mascot {
+  flex: 1 1 20rem;
+  max-width: 22rem;
+  width: 100%;
+  height: auto;
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 60rem) {
+  .home-hero { flex-wrap: wrap; }
+  .home-hero-mascot { max-width: 12rem; margin: 0 auto; order: -1; }
 }
 
 .home-hero h1 {

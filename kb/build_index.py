@@ -122,6 +122,7 @@ def build():
 
     # ---------- шапка ----------
     add('<header class="masthead home-hero">')
+    add('<div class="home-hero-text">')
     add(
         '<p class="course">База знаний · обновлено <b>%s</b></p>'
         % esc(format_date(data["updated"]))
@@ -161,6 +162,8 @@ def build():
         "<b>%d</b> разделов · <b>%d</b> понятий в базе</p>"
         % (done, total, len(modules), concepts)
     )
+    add("</div>")
+    add('<img class="home-hero-mascot" src="/assets/brand/kb-octopus.png" alt="Осьминог — талисман базы знаний">')
     add("</header>")
 
     # ---------- траектория ----------

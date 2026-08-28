@@ -104,50 +104,11 @@
     return btn;
   }
 
-  /* Оглавление внутри страницы — только для статей. Урок читается подряд,
-     ему оглавление не нужно; статью читают кусками, и без него не обойтись. */
-  function buildToc(items) {
-    if (!document.body.classList.contains("doc-article")) return;
-    var masthead = document.querySelector(".masthead");
-    if (!masthead || items.length < 3) return;
-
-    var box = document.createElement("nav");
-    box.className = "toc";
-    box.setAttribute("aria-label", "Содержание статьи");
-
-    var title = document.createElement("p");
-    title.textContent = "В этой статье";
-    box.appendChild(title);
-
-    var ol = document.createElement("ol");
-    items.forEach(function (item) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = "#" + item.id;
-
-      var n = document.createElement("span");
-      n.className = "n";
-      n.textContent = item.num;
-
-      var t = document.createElement("span");
-      t.textContent = item.title;
-
-      a.appendChild(n);
-      a.appendChild(t);
-      li.appendChild(a);
-      ol.appendChild(li);
-    });
-
-    box.appendChild(ol);
-    masthead.insertAdjacentElement("afterend", box);
-  }
-
   function boot() {
     var items = collect();
     var rail = buildRail();
     if (items.length > 1) buildNav(items, rail);
     buildTopButton(rail);
-    buildToc(items);
 
     var timer = null;
 

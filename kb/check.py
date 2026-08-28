@@ -98,7 +98,10 @@ def check_internal_links():
                     resolved = os.path.normpath(os.path.join(BASE, target.lstrip("/")))
                 else:
                     resolved = os.path.normpath(os.path.join(folder, target))
-                if not os.path.exists(resolved):
+                # .htaccess на сервере дописывает .html к путям без расширения,
+                # поэтому ссылка на "resolved" без файла, но с "resolved.html",
+                # тоже рабочая.
+                if not os.path.exists(resolved) and not os.path.exists(resolved + ".html"):
                     problems.append(f"{rel(path)}: битая ссылка {target}")
     return problems
 

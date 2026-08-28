@@ -20,20 +20,23 @@ def build():
     with open(os.path.join(BASE, "kb", "manifest.json"), "r", encoding="utf-8") as fh:
         manifest = json.load(fh)
 
-    urls = ["/", "/kb/index.html", "/news/index.html"]
+    urls = ["/", "/kb/", "/news/"]
     for node in manifest["nodes"]:
         if node.get("status") != "published":
             continue
         path = node.get("path")
         if path:
-            urls.append("/" + path.replace("\\", "/"))
+            path = path.replace("\\", "/")
+            if path.endswith(".html"):
+                path = path[: -len(".html")]
+            urls.append("/" + path)
 
     digest_path = os.path.join(BASE, "news", "digest.json")
     if os.path.exists(digest_path):
         with open(digest_path, "r", encoding="utf-8") as fh:
             digest = json.load(fh)
         if digest.get("closed"):
-            urls.append("/news/archive/index.html")
+            urls.append("/news/archive/")
         for week in digest.get("closed", []):
             urls.append("/news/" + week["html_path"].replace("\\", "/"))
 

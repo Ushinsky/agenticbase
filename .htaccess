@@ -1,0 +1,17 @@
+# Чистые URL без .html — файлы на диске остаются как есть.
+# Запрос на /lessons/0001-tsikl-agenta отдает lessons/0001-tsikl-agenta.html,
+# если такого файла или папки с этим именем нет.
+
+RewriteEngine On
+
+# Если кто-то явно открыл адрес с .html — увести на короткий,
+# чтобы в индексе и в адресной строке всегда был один канонический вариант.
+RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Короткий адрес без расширения — если нет ни файла, ни папки с таким именем,
+# но есть одноименный .html — отдаем его без редиректа.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]

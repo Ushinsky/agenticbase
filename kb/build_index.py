@@ -59,9 +59,15 @@ def article_mark(node):
 
 def href_of(node):
     # index.html теперь лежит в kb/, на уровень глубже lessons/articles/reference,
-    # поэтому все пути из манифеста получают "../".
+    # поэтому все пути из манифеста получают "../". Расширение .html снимается —
+    # на сервере это делает .htaccess, ссылки короче.
     path = node.get("path")
-    return "../" + path.replace("\\", "/") if path else None
+    if not path:
+        return None
+    path = path.replace("\\", "/")
+    if path.endswith(".html"):
+        path = path[: -len(".html")]
+    return "../" + path
 
 
 def build():

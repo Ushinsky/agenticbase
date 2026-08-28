@@ -95,8 +95,8 @@ def build():
 
     add('<footer class="colophon">')
     add("<nav>")
-    add('<a href="/kb/index.html">База знаний</a>')
-    add('<a href="/news/index.html">Новости</a>')
+    add('<a href="/kb/">База знаний</a>')
+    add('<a href="/news/">Новости</a>')
     add("</nav>")
     add("</footer>")
 

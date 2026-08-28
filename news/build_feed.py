@@ -150,11 +150,11 @@ def render_issue_page(issue, is_closed=False):
 
     crumb = ""
     if is_closed:
-        crumb = '<p class="digest-crumb"><a href="/news/index.html">Лента</a> / <a href="/news/archive/index.html">Архив</a> / %s</p>' % esc(issue["period_label"])
+        crumb = '<p class="digest-crumb"><a href="/news/">Лента</a> / <a href="/news/archive/">Архив</a> / %s</p>' % esc(issue["period_label"])
         lede = "Архивный выпуск — материалы этой недели больше не меняются."
     else:
         lede = "Что нового у ИИ-агентов на YouTube и в вебе — с оценкой и коротким анонсом на русском."
-        crumb = '<p class="digest-crumb"><a href="/news/archive/index.html">Архив прошлых недель &rarr;</a></p>'
+        crumb = '<p class="digest-crumb"><a href="/news/archive/">Архив прошлых недель &rarr;</a></p>'
 
     script = "" if not videos else """
 <script>
@@ -222,8 +222,8 @@ sortSel.addEventListener('change', apply);
         "</section>",
         '<footer class="colophon">',
         "<nav>",
-        '<a href="/kb/index.html">База знаний</a>',
-        '<a href="/news/archive/index.html">Архив</a>',
+        '<a href="/kb/">База знаний</a>',
+        '<a href="/news/archive/">Архив</a>',
         "</nav>",
         "</footer>",
         "</article>",
@@ -276,8 +276,8 @@ def render_archive(closed_weeks):
         '<div class="digest-archive">%s</div>' % body,
         '<footer class="colophon">',
         "<nav>",
-        '<a href="/kb/index.html">База знаний</a>',
-        '<a href="/news/index.html">Текущая неделя</a>',
+        '<a href="/kb/">База знаний</a>',
+        '<a href="/news/">Текущая неделя</a>',
         "</nav>",
         "</footer>",
         "</article>",
@@ -315,7 +315,7 @@ def render_empty_index():
         '<header class="masthead"><h1>Лента</h1>',
         "<p class=\"standfirst\">Дайджест еще не собирался. Первый выпуск появится здесь после первой сборки.</p>",
         "</header>",
-        '<footer class="colophon"><nav><a href="/kb/index.html">База знаний</a></nav></footer>',
+        '<footer class="colophon"><nav><a href="/kb/">База знаний</a></nav></footer>',
         "</article>",
         "</body>",
         "</html>",

@@ -86,7 +86,7 @@ def build():
     # ---------- два раздела ----------
     add('<div class="portal-grid">')
 
-    add('<a class="card portal-card" href="kb/index.html">')
+    add('<a class="card portal-card" href="kb/">')
     add('<div class="portal-head">')
     add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_KB)
     add('<p class="portal-ttl">База знаний</p>')
@@ -100,7 +100,7 @@ def build():
     add("</div>")
     add("</a>")
 
-    add('<a class="card portal-card" href="news/index.html">')
+    add('<a class="card portal-card" href="news/">')
     add('<div class="portal-head">')
     add('<span class="portal-icon" aria-hidden="true">%s</span>' % ICON_NEWS)
     add('<p class="portal-ttl">Лента</p>')

@@ -1116,24 +1116,26 @@
       "module": "kachestvo",
       "order": 3,
       "title": "Наблюдаемость",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/nablyudaemost.html",
       "summary": "Трассировка агентского хода: что записывать на каждом такте, как читать след неудачного запуска и какие сигналы выводить на монитор.",
       "concepts": [
         "трасса",
         "шаг трассы",
         "журнал вызовов",
-        "сигналы монитора"
+        "сигналы монитора",
+        "черный ящик и прозрачный ящик"
       ],
       "requires": [
-        "tsikl-agenta"
+        "tsikl-agenta",
+        "otsenka-agentov"
       ],
       "links": [
         "otsenka-agentov",
         "ekspluataciya-parka"
       ],
       "sources": [
-        "ms",
-        "ibm"
+        "ms"
       ]
     },
     {

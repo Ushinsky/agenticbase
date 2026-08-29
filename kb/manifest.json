@@ -1096,10 +1096,12 @@
         "завершение задачи",
         "верность вызова инструмента",
         "оценка моделью",
+        "внутренняя и внешняя оценка",
         "оценка на живом трафике"
       ],
       "requires": [
-        "testirovanie-agentov"
+        "testirovanie-agentov",
+        "metakognitsiya"
       ],
       "links": [
         "nablyudaemost",
@@ -1107,7 +1109,8 @@
       ],
       "sources": [
         "ms",
-        "infante"
+        "infante",
+        "lanham"
       ]
     },
     {

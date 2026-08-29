@@ -1089,7 +1089,8 @@
       "module": "kachestvo",
       "order": 2,
       "title": "Метрики качества",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/otsenka-agentov.html",
       "summary": "Что измерять у агента: завершение задачи, верность вызовов, качество ответа, стоимость и задержка. Оценка до запуска и на живом трафике.",
       "concepts": [
         "завершение задачи",
@@ -1106,7 +1107,7 @@
       ],
       "sources": [
         "ms",
-        "ibm"
+        "infante"
       ]
     },
     {

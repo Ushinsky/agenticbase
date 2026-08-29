@@ -1144,16 +1144,21 @@
       "module": "kachestvo",
       "order": 4,
       "title": "Ограничения и отказы",
-      "status": "planned",
-      "summary": "Выдумки, арифметика, счет слов, потеря начала длинного текста, машинный слог, зацикливание. Причины и рабочие способы обхода.",
+      "status": "published",
+      "path": "articles/ogranicheniya-agentov.html",
+      "summary": "Выдумка, неточный счет слов, машинный слог, потеря начала длинного текста, зацикливание. Причины и рабочие способы обхода каждой.",
       "concepts": [
         "выдумка",
+        "смешение с опорой и вымысел без опоры",
+        "неточный счет слов",
+        "машинный слог",
         "зацикливание",
-        "потеря контекста",
         "обход ограничения"
       ],
       "requires": [
-        "tsikl-agenta"
+        "tsikl-agenta",
+        "kontekst-inzhiniring",
+        "metakognitsiya"
       ],
       "links": [
         "ref-diagnostika",
@@ -1489,22 +1494,26 @@
       "module": "kachestvo",
       "order": 90,
       "title": "Разбор отказов",
-      "status": "planned",
+      "status": "published",
+      "path": "reference/diagnostika.html",
       "summary": "Расширенная таблица: симптом, такт, вероятная причина, что проверить первым. Пополняется по мере курса.",
       "concepts": [
         "диагностика",
         "симптом",
         "причина отказа"
       ],
-      "requires": [],
+      "requires": [
+        "ogranicheniya-agentov",
+        "nablyudaemost",
+        "otsenka-agentov"
+      ],
       "links": [
         "ogranicheniya-agentov",
         "nablyudaemost"
       ],
       "sources": [
         "book",
-        "ms",
-        "ibm"
+        "ms"
       ]
     },
     {

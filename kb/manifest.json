@@ -1177,24 +1177,26 @@
       "module": "bezopasnost",
       "order": 1,
       "title": "Человек в контуре",
-      "status": "planned",
+      "status": "published",
+      "path": "lessons/0009-doverie-i-chelovek.html",
+      "quiz": "0009-a",
       "summary": "Где ставить точку подтверждения, как формулировать системные ограничения и как прервать агента, не сломав задачу.",
       "concepts": [
         "человек в контуре",
         "точка подтверждения",
-        "прерывание",
-        "системное ограничение"
+        "системное ограничение",
+        "прерывание с сохранением"
       ],
       "requires": [
-        "promahi-so-stupenyu"
+        "promahi-so-stupenyu",
+        "obmen-mezhdu-agentami"
       ],
       "links": [
         "bezopasnost-agentov",
         "upravlenie-agentami"
       ],
       "sources": [
-        "ms",
-        "ibm"
+        "ms"
       ]
     },
     {
@@ -1203,7 +1205,8 @@
       "module": "bezopasnost",
       "order": 2,
       "title": "Угрозы и защита",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/bezopasnost-agentov.html",
       "summary": "Подмена инструкции через данные, доступ к критическим системам, отравление базы знаний, перерасход ресурсов, каскад ошибок.",
       "concepts": [
         "подмена инструкции",
@@ -1213,15 +1216,15 @@
         "изоляция"
       ],
       "requires": [
-        "instrumenty"
+        "instrumenty",
+        "doverie-i-chelovek"
       ],
       "links": [
         "shlyuz-agentov",
         "upravlenie-agentami"
       ],
       "sources": [
-        "ms",
-        "ibm"
+        "ms"
       ]
     },
     {
@@ -1230,22 +1233,25 @@
       "module": "bezopasnost",
       "order": 3,
       "title": "Управление и ответственность",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/upravlenie-agentami.html",
       "summary": "Кто отвечает за действие агента, журнал действий, опознание агента, требования к аудиту и что писать в договоре с заказчиком.",
       "concepts": [
         "журнал действий",
         "опознание агента",
-        "аудит",
+        "что доказывает журнал, а что нет",
         "ответственность"
       ],
       "requires": [
-        "doverie-i-chelovek"
+        "doverie-i-chelovek",
+        "nablyudaemost",
+        "obmen-mezhdu-agentami"
       ],
       "links": [
         "ekspluataciya-parka"
       ],
       "sources": [
-        "ibm"
+        "ms"
       ]
     },
     {

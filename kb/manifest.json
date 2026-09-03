@@ -1425,16 +1425,19 @@
       "module": "primenenie",
       "order": 1,
       "title": "Агенты, работающие за компьютером",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/kompyuternye-agenty.html",
       "summary": "Управление браузером и интерфейсом вместо вызова API: когда это единственный путь, чем опасно и какие ограничители обязательны.",
       "concepts": [
         "управление браузером",
         "работа с интерфейсом",
-        "ограничитель действий"
+        "ограничитель действий",
+        "проверка кодом перед подтверждением"
       ],
       "requires": [
         "instrumenty",
-        "doverie-i-chelovek"
+        "doverie-i-chelovek",
+        "bezopasnost-agentov"
       ],
       "links": [
         "bezopasnost-agentov"
@@ -1449,7 +1452,8 @@
       "module": "primenenie",
       "order": 2,
       "title": "Отраслевые сценарии",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/otraslevye-stsenarii.html",
       "summary": "Разбор применений по отраслям: поддержка, продажи, кадры, финансы, закупки, снабжение, производство, здравоохранение.",
       "concepts": [
         "сценарий применения",
@@ -1457,7 +1461,8 @@
         "типовое возражение"
       ],
       "requires": [
-        "analiz-trebovaniy"
+        "analiz-trebovaniy",
+        "otsenka-agentov"
       ],
       "links": [
         "promahi-so-stupenyu"

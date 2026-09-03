@@ -1261,22 +1261,25 @@
       "module": "ekspluataciya",
       "order": 1,
       "title": "Жизненный цикл агента",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/zhiznennyy-tsikl.html",
       "summary": "Замысел, сборка, проверка, выпуск, наблюдение, доработка, вывод из эксплуатации. Чем этот цикл отличается от разработки обычной программы.",
       "concepts": [
         "жизненный цикл агента",
         "версия агента",
+        "цикл выпуска версии",
         "вывод из эксплуатации"
       ],
       "requires": [
-        "analiz-trebovaniy"
+        "analiz-trebovaniy",
+        "testirovanie-agentov"
       ],
       "links": [
         "razvertyvanie",
         "ekspluataciya-parka"
       ],
       "sources": [
-        "ibm"
+        "ms"
       ]
     },
     {
@@ -1285,25 +1288,28 @@
       "module": "ekspluataciya",
       "order": 2,
       "title": "Развертывание",
-      "status": "planned",
+      "status": "published",
+      "path": "lessons/0010-razvertyvanie.html",
+      "quiz": "0010-a",
       "summary": "Что меняется при переходе от рабочего прототипа к системе, которой пользуются: среда исполнения, доступы, секреты, откат версии.",
       "concepts": [
         "среда исполнения",
         "секреты",
+        "состояние снаружи процесса",
         "откат версии",
-        "изоляция окружения"
+        "проверка на дым"
       ],
       "requires": [
         "pervyy-agent",
-        "zhiznennyy-tsikl"
+        "zhiznennyy-tsikl",
+        "doverie-i-chelovek"
       ],
       "links": [
         "masshtabirovanie",
         "nablyudaemost"
       ],
       "sources": [
-        "ms",
-        "ibm"
+        "ms"
       ]
     },
     {
@@ -1312,23 +1318,25 @@
       "module": "ekspluataciya",
       "order": 3,
       "title": "Масштабирование",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/masshtabirovanie.html",
       "summary": "Что ломается при росте нагрузки: очереди, ограничения поставщика, параллельные запуски, изоляция клиентов, деградация под нагрузкой.",
       "concepts": [
         "очередь",
         "ограничение поставщика",
         "параллельный запуск",
+        "изоляция клиентов",
         "деградация"
       ],
       "requires": [
-        "razvertyvanie"
+        "razvertyvanie",
+        "bezopasnost-agentov"
       ],
       "links": [
         "stoimost-agenta"
       ],
       "sources": [
-        "ms",
-        "ibm"
+        "ms"
       ]
     },
     {
@@ -1337,7 +1345,8 @@
       "module": "ekspluataciya",
       "order": 4,
       "title": "Стоимость и как ее считать",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/stoimost-agenta.html",
       "summary": "Из чего складывается счет, кэширование неизменной части, разные модели на разные шаги, потолки расхода и разговор с заказчиком о цене.",
       "concepts": [
         "кэш контекста",
@@ -1346,15 +1355,15 @@
         "расчет стоимости"
       ],
       "requires": [
-        "tsikl-agenta"
+        "tsikl-agenta",
+        "kontekst-inzhiniring"
       ],
       "links": [
         "masshtabirovanie",
         "otsenka-agentov"
       ],
       "sources": [
-        "ms",
-        "ibm"
+        "ms"
       ]
     },
     {
@@ -1363,7 +1372,8 @@
       "module": "ekspluataciya",
       "order": 5,
       "title": "Когда агентов много",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/ekspluataciya-parka.html",
       "summary": "Разрастание парка агентов, реестр, владельцы, дубли, заброшенные агенты и практики сопровождения на длинной дистанции.",
       "concepts": [
         "разрастание парка",
@@ -1372,7 +1382,8 @@
         "сопровождение"
       ],
       "requires": [
-        "razvertyvanie"
+        "razvertyvanie",
+        "obmen-mezhdu-agentami"
       ],
       "links": [
         "upravlenie-agentami",
@@ -1388,15 +1399,18 @@
       "module": "ekspluataciya",
       "order": 6,
       "title": "Агенты на своем железе",
-      "status": "planned",
+      "status": "published",
+      "path": "articles/lokalnye-agenty.html",
       "summary": "Когда данные нельзя отдавать наружу: малые модели, локальный запуск, чем приходится жертвовать и где проходит граница применимости.",
       "concepts": [
         "малая модель",
         "локальный запуск",
-        "приватность данных"
+        "приватность данных",
+        "смешанный маршрут"
       ],
       "requires": [
-        "platformy-obzor"
+        "platformy-obzor",
+        "stoimost-agenta"
       ],
       "links": [
         "bezopasnost-agentov"

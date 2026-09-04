@@ -2,8 +2,9 @@
 """Состояние журнала сверки: что проверено, что нет, что устарело.
 
 Использование:
-    python kb/audit_status.py              — общая картина
-    python kb/audit_status.py lanham       — план работ по одному источнику
+    python kb/audit_status.py                          — общая картина
+    python kb/audit_status.py lanham                   — план работ по одному источнику
+    python kb/audit_status.py mark <узел> <источник>   — записать состоявшуюся сверку
 """
 import io
 import json
@@ -86,10 +87,39 @@ def report_source(manifest, source_id):
     print("\n* — источник заявлен у материала, но сверка не подтверждена: это первая очередь.")
 
 
-def main():
+def mark(node_id, source_id, date):
+    """Записать состоявшуюся сверку. Дата ставится только по факту проверки."""
     manifest = load()
-    if len(sys.argv) > 1:
-        report_source(manifest, sys.argv[1])
+
+    node = next((n for n in manifest["nodes"] if n["id"] == node_id), None)
+    if node is None:
+        raise SystemExit("нет такого узла: %s" % node_id)
+    if source_id not in {s["id"] for s in manifest["sources"]}:
+        raise SystemExit("нет такого источника: %s" % source_id)
+
+    node.setdefault("audited", {})[source_id] = date
+
+    with io.open(MANIFEST, "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(manifest, fh, ensure_ascii=False, indent=2)
+        fh.write("\n")
+
+    declared = " (заявлен у материала)" if source_id in node.get("sources", []) else " (не был заявлен)"
+    print("Записано: %s x %s = %s%s" % (node_id, source_id, date, declared))
+
+
+def main():
+    args = sys.argv[1:]
+    if args and args[0] == "mark":
+        if len(args) < 3:
+            raise SystemExit("нужно: mark <узел> <источник> [дата]")
+        import datetime
+        date = args[3] if len(args) > 3 else datetime.date.today().isoformat()
+        mark(args[1], args[2], date)
+        return
+
+    manifest = load()
+    if args:
+        report_source(manifest, args[0])
     else:
         report_all(manifest)
 

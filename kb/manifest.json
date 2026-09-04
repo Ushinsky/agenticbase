@@ -209,9 +209,17 @@
       ],
       "units_note": "Состав восстановлен из навигации раздела 2026-09-04. Совпал по числу с записью в usage: 75 статей.",
       "covered": [
+        "ai-agents",
         "ai-agents-vs-ai-assistants",
+        "agentic-ai",
+        "insights/agentic-ai",
+        "agentic-ai-vs-generative-ai",
+        "ai-agent-development",
         "agentic-engineering",
         "agentops",
+        "how-to-build-an-ai-agent",
+        "evolution-of-ai-agents",
+        "components-of-ai-agents",
         "agentic-workflows",
         "ai-agent-communication",
         "ai-agent-learning",
@@ -247,7 +255,8 @@
         "agentic-chunking"
       ],
       "units_gone": {
-        "insights/top-ai-agent-frameworks": "адрес из навигации отдает 404 на 2026-09-04; отдельные статьи группы читаются напрямую, обзор недоступен"
+        "insights/top-ai-agent-frameworks": "адрес из навигации отдает 404 на 2026-09-04; отдельные статьи группы читаются напрямую, обзор недоступен",
+        "how-to-build-an-ai-agent": "на 2026-09-04 адрес уводит на общую страницу раздела, самого руководства по нему нет"
       }
     },
     {
@@ -529,7 +538,8 @@
       ],
       "audited": {
         "book": "2026-09-04",
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -571,7 +581,8 @@
       ],
       "audited": {
         "lanham": "2026-08-29",
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1482,7 +1493,8 @@
         "оценка моделью",
         "внутренняя и внешняя оценка",
         "оценка на живом трафике",
-        "путь как метрика"
+        "путь как метрика",
+        "парная метрика"
       ],
       "requires": [
         "testirovanie-agentov",
@@ -1575,7 +1587,8 @@
       ],
       "audited": {
         "book": "2026-08-29",
-        "lanham": "2026-09-04"
+        "lanham": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {

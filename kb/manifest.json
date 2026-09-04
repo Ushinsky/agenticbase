@@ -132,7 +132,7 @@
       "checked_at": "2026-08-18",
       "file": "Infante Roberto - AI Agents and Applications - 2026.pdf",
       "covered": [
-        "201-378",
+        "1-378",
         "409-414"
       ]
     },
@@ -488,7 +488,8 @@
         "набор случаев",
         "промпт-пожелание",
         "подсказанный ответ",
-        "граница промпта"
+        "граница промпта",
+        "срок годности приема"
       ],
       "requires": [
         "tsikl-agenta"
@@ -500,14 +501,15 @@
       ],
       "sources": [
         "book",
-        "lanham"
+        "lanham",
+        "infante"
       ],
       "path": "articles/promty-osnovy.html",
       "figures": [
         "Схема 1: шесть приемов по частоте применения"
       ],
       "audited": {
-        "infante": "2026-08-29",
+        "infante": "2026-09-04",
         "lanham": "2026-09-04"
       }
     },
@@ -543,13 +545,16 @@
         "lestnitsa-avtonomii"
       ],
       "sources": [
-        "book"
+        "book",
+        "infante"
       ],
       "path": "articles/strukturirovannye-promty.html",
       "figures": [
         "Схема 1: семь блоков, обязательные и необязательные"
       ],
-      "audited": {}
+      "audited": {
+        "infante": "2026-09-04"
+      }
     },
     {
       "id": "kontekst-inzhiniring",
@@ -906,7 +911,8 @@
         "узел процесса",
         "ветвление",
         "передача данных",
-        "оптимизация процесса"
+        "оптимизация процесса",
+        "разбить, обработать, свести"
       ],
       "requires": [
         "lestnitsa-avtonomii"
@@ -916,9 +922,12 @@
       ],
       "sources": [
         "book",
-        "ibm"
+        "ibm",
+        "infante"
       ],
-      "audited": {}
+      "audited": {
+        "infante": "2026-09-04"
+      }
     },
     {
       "id": "mcp",

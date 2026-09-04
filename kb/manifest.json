@@ -210,6 +210,8 @@
       "units_note": "Состав восстановлен из навигации раздела 2026-09-04. Совпал по числу с записью в usage: 75 статей.",
       "covered": [
         "ai-agents-vs-ai-assistants",
+        "agentic-engineering",
+        "agentops",
         "agentic-workflows",
         "ai-agent-communication",
         "ai-agent-perception",
@@ -222,6 +224,7 @@
         "insights/top-ai-agent-frameworks",
         "autogpt",
         "crew-ai",
+        "langgraph",
         "ai-agent-evaluation",
         "ai-agent-management",
         "ai-agent-sprawl",
@@ -1495,7 +1498,8 @@
         "журнал вызовов",
         "сигналы монитора",
         "черный ящик и прозрачный ящик",
-        "снимок для продолжения"
+        "снимок для продолжения",
+        "сеанс над трассой"
       ],
       "requires": [
         "tsikl-agenta",
@@ -1507,11 +1511,13 @@
       ],
       "sources": [
         "ms",
-        "infante"
+        "infante",
+        "ibm"
       ],
       "audited": {
         "ms": "2026-09-04",
-        "infante": "2026-09-04"
+        "infante": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {

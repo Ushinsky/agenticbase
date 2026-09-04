@@ -43,6 +43,7 @@ OUTLINE_DIR = os.path.join(BASE, "sources", "outline")
 PAGE_MARK = "=== СТРАНИЦА %d ==="
 RAW_PREFIX = "raw/"
 ID_SHAPE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
+# Регистр в имени файла роли не играет: Infante.pdf и infante.pdf дают infante.
 
 
 def load_env():
@@ -202,7 +203,7 @@ def bucket_pdfs(client):
             found.append(
                 {
                     "key": key,
-                    "id": os.path.basename(key)[:-4],
+                    "id": os.path.basename(key)[:-4].lower(),
                     "etag": obj.get("ETag", "").strip('"'),
                 }
             )
@@ -223,6 +224,7 @@ def sync_from_bucket(client):
 
     bad_names = []
     need_manifest = []
+    stray = []
     done = 0
 
     for entry in objects:
@@ -247,6 +249,16 @@ def sync_from_bucket(client):
         text = build_text(reader)
         put(client, "extracted/%s.txt" % source_id, text.encode("utf-8"), "text/plain; charset=utf-8")
 
+        canonical = "%s%s.pdf" % (RAW_PREFIX, source_id)
+        if entry["key"] != canonical:
+            client.copy_object(
+                Bucket=os.environ["R2_BUCKET"],
+                Key=canonical,
+                CopySource={"Bucket": os.environ["R2_BUCKET"], "Key": entry["key"]},
+            )
+            print("      -> %s (копия исходного объекта)" % canonical)
+            stray.append(entry["key"])
+
         if source_id not in titles:
             need_manifest.append(source_id)
         done += 1
@@ -259,6 +271,12 @@ def sync_from_bucket(client):
         print("lanham.pdf. Переименовать объект в R2 нельзя, такой операции")
         print("там нет: переименуйте файл у себя и залейте заново. Не разобраны:")
         for key in bad_names:
+            print("  - %s" % key)
+
+    if stray:
+        print("\nэти объекты лежали не на своем месте и скопированы в raw/.")
+        print("Исходные копии можно удалить в панели Cloudflare:")
+        for key in stray:
             print("  - %s" % key)
 
     if need_manifest:

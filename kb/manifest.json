@@ -104,7 +104,10 @@
         "нет процесса разработки и эксплуатации"
       ],
       "checked_at": "2026-08-18",
-      "file": "_OceanofPDF.com_An_Illustrated_Guide_to_AI_Agents_ER_-_Maarten_Grootendorst.pdf"
+      "file": "_OceanofPDF.com_An_Illustrated_Guide_to_AI_Agents_ER_-_Maarten_Grootendorst.pdf",
+      "covered": [
+        "1-97"
+      ]
     },
     {
       "id": "infante",
@@ -127,7 +130,11 @@
         "протоколы связи между агентами за пределами MCP не раскрыты"
       ],
       "checked_at": "2026-08-18",
-      "file": "Infante Roberto - AI Agents and Applications - 2026.pdf"
+      "file": "Infante Roberto - AI Agents and Applications - 2026.pdf",
+      "covered": [
+        "201-292",
+        "409-414"
+      ]
     },
     {
       "id": "lanham",
@@ -731,7 +738,9 @@
         "переранжирование",
         "разнообразие отобранного",
         "преобразование вопроса",
-        "раздельные куски для поиска и для ответа"
+        "раздельные куски для поиска и для ответа",
+        "отбор по признакам куска",
+        "слияние списков по местам"
       ],
       "requires": [
         "tsikl-agenta"
@@ -764,7 +773,8 @@
         "оценка найденного",
         "самокоррекция",
         "границы самостоятельности",
-        "несколько источников"
+        "несколько источников",
+        "запрос в форме источника"
       ],
       "requires": [
         "baza-znaniy",
@@ -777,10 +787,12 @@
       "sources": [
         "ms",
         "ibm",
-        "illus"
+        "illus",
+        "infante"
       ],
       "audited": {
-        "illus": "2026-08-29"
+        "illus": "2026-08-29",
+        "infante": "2026-09-04"
       }
     },
     {

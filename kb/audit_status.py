@@ -5,7 +5,12 @@
     python kb/audit_status.py                          — общая картина
     python kb/audit_status.py lanham                   — план работ по одному источнику
     python kb/audit_status.py mark <узел> <источник>   — записать состоявшуюся сверку
+    python kb/audit_status.py cover <источник> 201-255 — записать прочитанные страницы
+
+Большой источник разбирают этапами, но ни одна его часть не остается
+без разбора: команда cover показывает, что еще не читалось.
 """
+
 import io
 import json
 import os
@@ -60,6 +65,91 @@ def report_all(manifest):
             print("  %-28s %-8s сверялось %s, источник от %s" % (node_id, source, was, now))
 
 
+OUTLINE_DIR = os.path.join(os.path.dirname(BASE), "sources", "outline")
+
+
+def source_pages(source_id):
+    """Сколько всего страниц в источнике — из оглавления, если оно построено."""
+    path = os.path.join(OUTLINE_DIR, "%s.json" % source_id)
+    if not os.path.exists(path):
+        return None
+    with io.open(path, encoding="utf-8") as fh:
+        return json.load(fh).get("pages")
+
+
+def parse_ranges(items):
+    """Строки вида "201-255" и "42" в список пар (от, до)."""
+    out = []
+    for item in items:
+        piece = str(item).strip()
+        if "-" in piece:
+            a, b = piece.split("-", 1)
+        else:
+            a = b = piece
+        out.append((int(a), int(b)))
+    return sorted(out)
+
+
+def merge_ranges(ranges):
+    merged = []
+    for a, b in sorted(ranges):
+        if merged and a <= merged[-1][1] + 1:
+            merged[-1][1] = max(merged[-1][1], b)
+        else:
+            merged.append([a, b])
+    return [(a, b) for a, b in merged]
+
+
+def gaps(covered, total):
+    """Непрочитанные куски источника — то, что правило запрещает игнорировать."""
+    out = []
+    cursor = 1
+    for a, b in merge_ranges(covered):
+        if a > cursor:
+            out.append((cursor, a - 1))
+        cursor = max(cursor, b + 1)
+    if cursor <= total:
+        out.append((cursor, total))
+    return out
+
+
+def show(ranges):
+    return ", ".join("%d-%d" % (a, b) if a != b else str(a) for a, b in ranges)
+
+
+def report_coverage(source):
+    """Прочитанное и непрочитанное по страницам. Большой источник берут этапами,
+    но ни одна часть не остается без разбора."""
+    total = source_pages(source["id"])
+    if not total:
+        return
+    covered = parse_ranges(source.get("covered", []))
+    print("\nПрочитано: %s из %d страниц" % (show(merge_ranges(covered)) or "ничего", total))
+    left = gaps(covered, total)
+    if left:
+        print("Не читалось — следующие этапы: %s" % show(left))
+    else:
+        print("Источник разобран целиком.")
+
+
+def cover(source_id, ranges):
+    """Записать прочитанные страницы."""
+    manifest = load()
+    source = next((s for s in manifest["sources"] if s["id"] == source_id), None)
+    if source is None:
+        raise SystemExit("нет такого источника: %s" % source_id)
+    existing = parse_ranges(source.get("covered", []))
+    source["covered"] = [
+        "%d-%d" % (a, b) if a != b else str(a)
+        for a, b in merge_ranges(existing + parse_ranges(ranges))
+    ]
+    with io.open(MANIFEST, "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(manifest, fh, ensure_ascii=False, indent=2)
+        fh.write("\n")
+    print("Записано прочитанное у %s: %s" % (source_id, ", ".join(source["covered"])))
+    report_coverage(source)
+
+
 def report_source(manifest, source_id):
     known = {s["id"] for s in manifest["sources"]}
     if source_id not in known:
@@ -109,6 +199,12 @@ def mark(node_id, source_id, date):
 
 def main():
     args = sys.argv[1:]
+    if args and args[0] == "cover":
+        if len(args) < 3:
+            raise SystemExit("нужно: cover <источник> <страницы> [страницы ...]")
+        cover(args[1], args[2:])
+        return
+
     if args and args[0] == "mark":
         if len(args) < 3:
             raise SystemExit("нужно: mark <узел> <источник> [дата]")

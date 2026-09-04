@@ -156,7 +156,7 @@
       "checked_at": "2026-08-18",
       "file": "Lanham Micheal - AI Agents in Action - 2025.pdf",
       "covered": [
-        "1-183"
+        "1-235"
       ]
     }
   ],
@@ -717,7 +717,8 @@
         "долговременная память",
         "профиль пользователя",
         "подкрепление и угасание записи",
-        "связи между записями"
+        "связи между записями",
+        "слияние близких записей"
       ],
       "requires": [
         "kontekst-inzhiniring"
@@ -731,11 +732,13 @@
         "ms",
         "ibm",
         "illus",
-        "infante"
+        "infante",
+        "lanham"
       ],
       "audited": {
         "illus": "2026-09-04",
-        "infante": "2026-09-04"
+        "infante": "2026-09-04",
+        "lanham": "2026-09-04"
       }
     },
     {
@@ -770,11 +773,13 @@
       "sources": [
         "book",
         "ibm",
-        "infante"
+        "infante",
+        "lanham"
       ],
       "audited": {
         "illus": "2026-09-04",
-        "infante": "2026-09-04"
+        "infante": "2026-09-04",
+        "lanham": "2026-09-04"
       }
     },
     {
@@ -1115,9 +1120,12 @@
       ],
       "sources": [
         "book",
-        "ibm"
+        "ibm",
+        "lanham"
       ],
-      "audited": {}
+      "audited": {
+        "lanham": "2026-09-04"
+      }
     },
     {
       "id": "frameworks",

@@ -214,7 +214,11 @@
         "agentops",
         "agentic-workflows",
         "ai-agent-communication",
+        "ai-agent-learning",
+        "ai-agent-memory",
         "ai-agent-perception",
+        "agentic-reasoning",
+        "tool-calling",
         "agentic-architecture",
         "agent-gateway",
         "agent-control-plane",
@@ -222,13 +226,23 @@
         "ai-agent-protocols",
         "agent-development-lifecycle-adlc",
         "insights/top-ai-agent-frameworks",
+        "agentgpt",
         "autogen",
         "autogpt",
+        "babyagi",
+        "beeai",
+        "chatdev",
         "crew-ai",
+        "watsonx-agents",
+        "langchain",
         "langgraph",
+        "langflow",
         "metagpt",
+        "insights/ai-agent-governance",
+        "insights/ai-agent-ethics",
         "ai-agent-evaluation",
         "ai-agent-management",
+        "ai-agent-security",
         "ai-agent-sprawl",
         "agentic-chunking"
       ],
@@ -926,7 +940,8 @@
         "infante": "2026-09-04",
         "lanham": "2026-09-04",
         "book": "2026-09-04",
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1040,7 +1055,8 @@
       ],
       "audited": {
         "lanham": "2026-09-04",
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1265,7 +1281,8 @@
         "мультиагентная система",
         "распараллеливание задачи",
         "точка отказа",
-        "изоляция отказа"
+        "изоляция отказа",
+        "отчет о несделанной работе"
       ],
       "requires": [
         "shablony-proektirovaniya"
@@ -1577,7 +1594,8 @@
         "точка подтверждения",
         "системное ограничение",
         "прерывание с сохранением",
-        "раскрытие перед человеком"
+        "раскрытие перед человеком",
+        "содержание точки подтверждения"
       ],
       "requires": [
         "promahi-so-stupenyu",
@@ -1593,7 +1611,8 @@
       ],
       "audited": {
         "ms": "2026-09-04",
-        "infante": "2026-09-04"
+        "infante": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1611,7 +1630,8 @@
         "каскад ошибок",
         "перерасход ресурсов",
         "изоляция",
-        "место проверки в ходе"
+        "место проверки в ходе",
+        "отравление памяти агента"
       ],
       "requires": [
         "instrumenty",
@@ -1627,7 +1647,8 @@
       ],
       "audited": {
         "ms": "2026-09-04",
-        "infante": "2026-09-04"
+        "infante": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1807,7 +1828,8 @@
         "реестр агентов",
         "владелец агента",
         "сопровождение",
-        "агенты в обход"
+        "агенты в обход",
+        "способ выключить агента"
       ],
       "requires": [
         "razvertyvanie",

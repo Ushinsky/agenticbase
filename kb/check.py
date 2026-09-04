@@ -128,12 +128,91 @@ def check_manifest_paths():
     return problems
 
 
+# Что вообще имеет право уехать на сайт. Все остальное — служебное
+# и должно попадать под исключения деплоя.
+PUBLIC_DIRS_ON_SITE = ("articles", "lessons", "reference", "assets", "kb", "news", "hub")
+PUBLIC_ROOT_FILES = {
+    "index.html",
+    "favicon.ico",
+    "robots.txt",
+    "sitemap.xml",
+    ".htaccess",
+    "GLOSSARY.md",
+}
+DEPLOY_WORKFLOW = os.path.join(".github", "workflows", "deploy.yml")
+
+
+def _deploy_rules():
+    """Правила фильтрации из воркфлоу, по порядку: (это_include, шаблон)."""
+    path = os.path.join(BASE, DEPLOY_WORKFLOW)
+    with open(path, "r", encoding="utf-8") as fh:
+        text = fh.read()
+    return [
+        (kind == "include", pattern)
+        for kind, pattern in re.findall(r"--(include|exclude)='([^']+)'", text)
+    ]
+
+
+def _rsync_copies(relpath, rules):
+    """Скопирует ли rsync этот файл. Первое совпавшее правило решает."""
+    import fnmatch
+
+    parts = relpath.split("/")
+    for is_include, pattern in rules:
+        if "/" in pattern:
+            hit = relpath == pattern or relpath.startswith(pattern + "/")
+        else:
+            hit = fnmatch.fnmatch(parts[-1], pattern) or any(
+                fnmatch.fnmatch(part, pattern) for part in parts[:-1]
+            )
+        if hit:
+            return is_include
+    return True
+
+
+def check_publication_surface():
+    """Служебный файл не должен уезжать на сайт из-за того, что его забыли исключить.
+
+    Считается по составу репозитория, а не по файловой системе: деплой
+    работает на свежем клоне и локальных неотслеживаемых файлов не видит.
+    """
+    import subprocess
+
+    try:
+        listing = subprocess.run(
+            ["git", "ls-files"],
+            cwd=BASE,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=True,
+        ).stdout
+    except (OSError, subprocess.CalledProcessError) as err:
+        return [f"состав публикации не проверен: git ls-files не отработал ({err})"]
+
+    problems = []
+    rules = _deploy_rules()
+    for relpath in listing.splitlines():
+        relpath = relpath.strip()
+        if not relpath or not _rsync_copies(relpath, rules):
+            continue
+        top = relpath.split("/")[0]
+        if top in PUBLIC_DIRS_ON_SITE or relpath in PUBLIC_ROOT_FILES:
+            continue
+        problems.append(
+            f"{relpath}: уедет на сайт, но публичным не объявлен — "
+            f"добавить в исключения {DEPLOY_WORKFLOW} или в PUBLIC_ROOT_FILES"
+        )
+    return problems
+
+
 def main():
     checks = [
         ("запрещенная буква", check_yo),
         ("упоминание источников на публичных страницах", check_forbidden_names),
         ("внутренние ссылки", check_internal_links),
         ("пути в манифесте", check_manifest_paths),
+        ("состав публикации", check_publication_surface),
     ]
 
     all_problems = []

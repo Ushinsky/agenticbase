@@ -214,7 +214,9 @@
         "ai-agent-perception",
         "agent-gateway",
         "agent-control-plane",
+        "rewoo",
         "agent-development-lifecycle-adlc",
+        "ai-agent-evaluation",
         "ai-agent-sprawl",
         "agentic-chunking"
       ]
@@ -1034,7 +1036,8 @@
       "concepts": [
         "разбиение задачи",
         "строгий формат вывода",
-        "перепланирование"
+        "перепланирование",
+        "план вслепую против чередования"
       ],
       "requires": [
         "rassuzhdenie"
@@ -1052,7 +1055,8 @@
       "audited": {
         "lanham": "2026-09-04",
         "book": "2026-09-04",
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1436,7 +1440,8 @@
         "верность вызова инструмента",
         "оценка моделью",
         "внутренняя и внешняя оценка",
-        "оценка на живом трафике"
+        "оценка на живом трафике",
+        "путь как метрика"
       ],
       "requires": [
         "testirovanie-agentov",
@@ -1449,12 +1454,14 @@
       "sources": [
         "ms",
         "infante",
-        "lanham"
+        "lanham",
+        "ibm"
       ],
       "audited": {
         "ms": "2026-09-04",
         "infante": "2026-08-29",
-        "lanham": "2026-08-29"
+        "lanham": "2026-08-29",
+        "ibm": "2026-09-04"
       }
     },
     {

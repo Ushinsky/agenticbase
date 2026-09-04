@@ -231,15 +231,26 @@
         "ai-agent-learning",
         "ai-agent-memory",
         "ai-agent-perception",
+        "ai-agent-planning",
         "agentic-reasoning",
         "tool-calling",
         "agentic-architecture",
+        "ai-agent-orchestration",
         "agent-gateway",
         "agent-control-plane",
+        "hierarchical-ai-agents",
+        "multiagent-system",
+        "multi-agent-collaboration",
         "react-agent",
         "rewoo",
         "ai-agent-protocols",
+        "agent-communication-protocol",
+        "agent2agent-protocol",
+        "model-context-protocol",
         "agent-development-lifecycle-adlc",
+        "agent-lifecycle-management",
+        "ai-agent-deployment",
+        "ai-agent-testing",
         "insights/top-ai-agent-frameworks",
         "agentgpt",
         "autogen",
@@ -1719,7 +1730,8 @@
         "жизненный цикл агента",
         "версия агента",
         "цикл выпуска версии",
-        "вывод из эксплуатации"
+        "вывод из эксплуатации",
+        "закрепленная версия модели"
       ],
       "requires": [
         "analiz-trebovaniy",
@@ -1773,7 +1785,8 @@
       ],
       "audited": {
         "ms": "2026-09-04",
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {

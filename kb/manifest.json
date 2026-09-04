@@ -210,6 +210,7 @@
       "units_note": "Состав восстановлен из навигации раздела 2026-09-04. Совпал по числу с записью в usage: 75 статей.",
       "covered": [
         "ai-agents-vs-ai-assistants",
+        "agentic-workflows",
         "ai-agent-communication",
         "ai-agent-perception",
         "agentic-architecture",
@@ -218,11 +219,17 @@
         "rewoo",
         "ai-agent-protocols",
         "agent-development-lifecycle-adlc",
+        "insights/top-ai-agent-frameworks",
+        "autogpt",
+        "crew-ai",
         "ai-agent-evaluation",
         "ai-agent-management",
         "ai-agent-sprawl",
         "agentic-chunking"
-      ]
+      ],
+      "units_gone": {
+        "insights/top-ai-agent-frameworks": "адрес из навигации отдает 404 на 2026-09-04; отдельные статьи группы читаются напрямую, обзор недоступен"
+      }
     },
     {
       "id": "illus",
@@ -813,7 +820,8 @@
       ],
       "sources": [
         "book",
-        "ms"
+        "ms",
+        "ibm"
       ],
       "path": "articles/shablony-proektirovaniya.html",
       "figures": [
@@ -823,7 +831,8 @@
       ],
       "audited": {
         "infante": "2026-08-29",
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1127,7 +1136,8 @@
       "audited": {
         "infante": "2026-09-04",
         "lanham": "2026-09-04",
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1359,7 +1369,7 @@
         "book"
       ],
       "audited": {
-        "ibm": "2026-08-28",
+        "ibm": "2026-09-04",
         "book": "2026-09-04",
         "ms": "2026-09-04"
       }

@@ -1,0 +1,2002 @@
+{
+  "id": "infante",
+  "title": "Roberto Infante. AI Agents and Applications, 2026",
+  "pages": 450,
+  "sections": [
+    {
+      "title": "AI Agents and Applications",
+      "page": 1,
+      "level": 0
+    },
+    {
+      "title": "brief contents",
+      "page": 8,
+      "level": 0
+    },
+    {
+      "title": "contents",
+      "page": 10,
+      "level": 0
+    },
+    {
+      "title": "preface",
+      "page": 18,
+      "level": 0
+    },
+    {
+      "title": "acknowledgments",
+      "page": 20,
+      "level": 0
+    },
+    {
+      "title": "about this book",
+      "page": 22,
+      "level": 0
+    },
+    {
+      "title": "Who should read this book",
+      "page": 22,
+      "level": 1
+    },
+    {
+      "title": "How this book is organized: A road map",
+      "page": 23,
+      "level": 1
+    },
+    {
+      "title": "How to read this book",
+      "page": 25,
+      "level": 1
+    },
+    {
+      "title": "About the code",
+      "page": 25,
+      "level": 1
+    },
+    {
+      "title": "liveBook discussion forum",
+      "page": 26,
+      "level": 1
+    },
+    {
+      "title": "about the author",
+      "page": 27,
+      "level": 0
+    },
+    {
+      "title": "about the cover illustration",
+      "page": 28,
+      "level": 0
+    },
+    {
+      "title": "Part 1 Getting started with LLMs",
+      "page": 29,
+      "level": 0
+    },
+    {
+      "title": "1 Introduction to AI agents and applications",
+      "page": 31,
+      "level": 1
+    },
+    {
+      "title": "1.1 Building LLM-based applications and agents",
+      "page": 32,
+      "level": 2
+    },
+    {
+      "title": "1.1.1 LLM-based applications: Summarization and Q&A engines",
+      "page": 32,
+      "level": 3
+    },
+    {
+      "title": "1.1.2 LLM-based chatbots",
+      "page": 35,
+      "level": 3
+    },
+    {
+      "title": "1.1.3 AI agents",
+      "page": 36,
+      "level": 3
+    },
+    {
+      "title": "1.2 Introducing LangChain",
+      "page": 39,
+      "level": 2
+    },
+    {
+      "title": "1.2.1 LangChain architecture",
+      "page": 40,
+      "level": 3
+    },
+    {
+      "title": "1.2.2 LangChain’s core object model",
+      "page": 43,
+      "level": 3
+    },
+    {
+      "title": "1.3 Typical LLM use cases",
+      "page": 47,
+      "level": 2
+    },
+    {
+      "title": "1.4 How to adapt an LLM to your needs",
+      "page": 48,
+      "level": 2
+    },
+    {
+      "title": "1.4.1 Prompt engineering",
+      "page": 48,
+      "level": 3
+    },
+    {
+      "title": "1.4.2 RAG",
+      "page": 48,
+      "level": 3
+    },
+    {
+      "title": "1.4.3 Fine-tuning",
+      "page": 50,
+      "level": 3
+    },
+    {
+      "title": "1.5 Which LLMs to choose",
+      "page": 51,
+      "level": 2
+    },
+    {
+      "title": "1.6 What you’ll learn from this book",
+      "page": 52,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 53,
+      "level": 2
+    },
+    {
+      "title": "2 Executing prompts programmatically",
+      "page": 55,
+      "level": 1
+    },
+    {
+      "title": "2.1 Running prompts programmatically",
+      "page": 56,
+      "level": 2
+    },
+    {
+      "title": "2.1.1 Setting up the environment for this chapter",
+      "page": 56,
+      "level": 3
+    },
+    {
+      "title": "2.1.2 Minimal prompt execution",
+      "page": 58,
+      "level": 3
+    },
+    {
+      "title": "2.2 Running prompts with LangChain",
+      "page": 59,
+      "level": 2
+    },
+    {
+      "title": "2.3 Prompt templates",
+      "page": 60,
+      "level": 2
+    },
+    {
+      "title": "2.3.1 Implementing a prompt template with a Python function",
+      "page": 60,
+      "level": 3
+    },
+    {
+      "title": "2.3.2 Using LangChain’s PromptTemplate",
+      "page": 61,
+      "level": 3
+    },
+    {
+      "title": "2.4 Prompt types",
+      "page": 62,
+      "level": 2
+    },
+    {
+      "title": "2.4.1 Text classification",
+      "page": 62,
+      "level": 3
+    },
+    {
+      "title": "2.4.2 Sentiment analysis",
+      "page": 63,
+      "level": 3
+    },
+    {
+      "title": "2.4.3 Text summarization",
+      "page": 64,
+      "level": 3
+    },
+    {
+      "title": "2.4.4 Composing text",
+      "page": 64,
+      "level": 3
+    },
+    {
+      "title": "2.4.5 Question answering",
+      "page": 66,
+      "level": 3
+    },
+    {
+      "title": "2.4.6 Reasoning",
+      "page": 67,
+      "level": 3
+    },
+    {
+      "title": "2.5 Reasoning in detail",
+      "page": 68,
+      "level": 2
+    },
+    {
+      "title": "2.5.1 One-shot learning",
+      "page": 68,
+      "level": 3
+    },
+    {
+      "title": "2.5.2 Two-shot learning",
+      "page": 69,
+      "level": 3
+    },
+    {
+      "title": "2.5.3 Providing steps",
+      "page": 69,
+      "level": 3
+    },
+    {
+      "title": "2.5.4 Few-shot learning",
+      "page": 70,
+      "level": 3
+    },
+    {
+      "title": "2.5.5 Implementing few-shot learning with LangChain",
+      "page": 72,
+      "level": 3
+    },
+    {
+      "title": "2.5.6 Chain of Thought",
+      "page": 74,
+      "level": 3
+    },
+    {
+      "title": "2.6 Prompt structure",
+      "page": 76,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 79,
+      "level": 2
+    },
+    {
+      "title": "Part 2 Summarization",
+      "page": 81,
+      "level": 0
+    },
+    {
+      "title": "3 Summarizing text using LangChain",
+      "page": 83,
+      "level": 1
+    },
+    {
+      "title": "3.1 Summarizing a document bigger than the context window",
+      "page": 84,
+      "level": 2
+    },
+    {
+      "title": "3.1.1 Chunking the text into Document objects",
+      "page": 85,
+      "level": 3
+    },
+    {
+      "title": "3.1.2 Split",
+      "page": 86,
+      "level": 3
+    },
+    {
+      "title": "3.1.3 Map",
+      "page": 87,
+      "level": 3
+    },
+    {
+      "title": "3.1.4 Reduce",
+      "page": 88,
+      "level": 3
+    },
+    {
+      "title": "3.1.5 MapReduce combined chain",
+      "page": 88,
+      "level": 3
+    },
+    {
+      "title": "3.1.6 MapReduce execution",
+      "page": 89,
+      "level": 3
+    },
+    {
+      "title": "3.2 Summarizing across documents",
+      "page": 89,
+      "level": 2
+    },
+    {
+      "title": "3.2.1 Creating a list of Document objects",
+      "page": 91,
+      "level": 3
+    },
+    {
+      "title": "3.2.2 Wikipedia content",
+      "page": 91,
+      "level": 3
+    },
+    {
+      "title": "3.2.3 File-based content",
+      "page": 92,
+      "level": 3
+    },
+    {
+      "title": "3.2.4 Creating the Document list",
+      "page": 93,
+      "level": 3
+    },
+    {
+      "title": "3.2.5 Progressively refining the final summary",
+      "page": 93,
+      "level": 3
+    },
+    {
+      "title": "3.3 Summarization flowchart",
+      "page": 95,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 96,
+      "level": 2
+    },
+    {
+      "title": "4 Building a research summarization engine",
+      "page": 97,
+      "level": 1
+    },
+    {
+      "title": "4.1 Overview of a research summarization engine",
+      "page": 98,
+      "level": 2
+    },
+    {
+      "title": "4.2 Setting up the project",
+      "page": 99,
+      "level": 2
+    },
+    {
+      "title": "4.3 Implementing the core functionality",
+      "page": 101,
+      "level": 2
+    },
+    {
+      "title": "4.3.1 Implementing web searching",
+      "page": 101,
+      "level": 3
+    },
+    {
+      "title": "4.3.2 Implementing web scraping",
+      "page": 102,
+      "level": 3
+    },
+    {
+      "title": "4.3.3 Instantiating the LLM client",
+      "page": 103,
+      "level": 3
+    },
+    {
+      "title": "4.3.4 JSON to Python object converter",
+      "page": 104,
+      "level": 3
+    },
+    {
+      "title": "4.4 Enhancing the architecture with query rewriting",
+      "page": 104,
+      "level": 2
+    },
+    {
+      "title": "4.5 Prompt engineering",
+      "page": 106,
+      "level": 2
+    },
+    {
+      "title": "4.5.1 Crafting web search prompts",
+      "page": 106,
+      "level": 3
+    },
+    {
+      "title": "4.5.2 Crafting summarization prompts",
+      "page": 109,
+      "level": 3
+    },
+    {
+      "title": "4.5.3 Research report prompt",
+      "page": 109,
+      "level": 3
+    },
+    {
+      "title": "4.6 Initial implementation",
+      "page": 110,
+      "level": 2
+    },
+    {
+      "title": "4.6.1 Importing functions and prompt templates",
+      "page": 110,
+      "level": 3
+    },
+    {
+      "title": "4.6.2 Setting constants and input variables",
+      "page": 111,
+      "level": 3
+    },
+    {
+      "title": "4.6.3 Instantiating the LLM client",
+      "page": 111,
+      "level": 3
+    },
+    {
+      "title": "4.6.4 Generating the web searches and collecting the results",
+      "page": 111,
+      "level": 3
+    },
+    {
+      "title": "4.6.5 Scraping the web results",
+      "page": 113,
+      "level": 3
+    },
+    {
+      "title": "4.6.6 Summarizing the web results",
+      "page": 114,
+      "level": 3
+    },
+    {
+      "title": "4.6.7 Generating the research report",
+      "page": 115,
+      "level": 3
+    },
+    {
+      "title": "4.7 Reimplementing the research summary engine in LCEL",
+      "page": 117,
+      "level": 2
+    },
+    {
+      "title": "4.7.1 Assistant Instructions chain",
+      "page": 119,
+      "level": 3
+    },
+    {
+      "title": "4.7.2 Web Searches chain",
+      "page": 121,
+      "level": 3
+    },
+    {
+      "title": "4.7.3 Search and Summarization chain",
+      "page": 122,
+      "level": 3
+    },
+    {
+      "title": "4.7.4 Web Research chain",
+      "page": 127,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 129,
+      "level": 2
+    },
+    {
+      "title": "5 Agentic workflows with LangGraph",
+      "page": 131,
+      "level": 1
+    },
+    {
+      "title": "5.1 Understanding agentic workflows and agents",
+      "page": 132,
+      "level": 2
+    },
+    {
+      "title": "5.1.1 Workflows",
+      "page": 133,
+      "level": 3
+    },
+    {
+      "title": "5.1.2 Agents",
+      "page": 134,
+      "level": 3
+    },
+    {
+      "title": "5.1.3 When to use agent-based architectures",
+      "page": 134,
+      "level": 3
+    },
+    {
+      "title": "5.1.4 Agent development frameworks",
+      "page": 134,
+      "level": 3
+    },
+    {
+      "title": "5.2 LangGraph basics",
+      "page": 135,
+      "level": 2
+    },
+    {
+      "title": "5.3 Moving from LangChain chains to LangGraph",
+      "page": 135,
+      "level": 2
+    },
+    {
+      "title": "5.4 LangGraph core components",
+      "page": 136,
+      "level": 2
+    },
+    {
+      "title": "5.4.1 StateGraph structure",
+      "page": 137,
+      "level": 3
+    },
+    {
+      "title": "5.4.2 State management and typing",
+      "page": 137,
+      "level": 3
+    },
+    {
+      "title": "5.4.3 Node functions and edge definitions",
+      "page": 138,
+      "level": 3
+    },
+    {
+      "title": "5.4.4 Entry points and end conditions",
+      "page": 138,
+      "level": 3
+    },
+    {
+      "title": "5.5 Turning the web research assistant into an AI agent",
+      "page": 138,
+      "level": 2
+    },
+    {
+      "title": "5.5.1 Original LangChain implementation overview",
+      "page": 139,
+      "level": 3
+    },
+    {
+      "title": "5.5.2 Identifying components for conversion",
+      "page": 140,
+      "level": 3
+    },
+    {
+      "title": "5.5.3 Step-by-step transformation process",
+      "page": 140,
+      "level": 3
+    },
+    {
+      "title": "5.5.4 Code comparison and benefits realized",
+      "page": 144,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 145,
+      "level": 2
+    },
+    {
+      "title": "Part 3 Q&A chatbots",
+      "page": 147,
+      "level": 0
+    },
+    {
+      "title": "6 RAG fundamentals with ChromaDB",
+      "page": 149,
+      "level": 1
+    },
+    {
+      "title": "6.1 Semantic search",
+      "page": 150,
+      "level": 2
+    },
+    {
+      "title": "6.1.1 A basic Q&A chatbot over a single document",
+      "page": 150,
+      "level": 3
+    },
+    {
+      "title": "6.1.2 A more complex Q&A chatbot over a knowledge base",
+      "page": 154,
+      "level": 3
+    },
+    {
+      "title": "6.1.3 The RAG design pattern",
+      "page": 155,
+      "level": 3
+    },
+    {
+      "title": "6.2 Vector stores",
+      "page": 158,
+      "level": 2
+    },
+    {
+      "title": "6.2.1 What’s a vector store?",
+      "page": 158,
+      "level": 3
+    },
+    {
+      "title": "6.2.2 How do vector stores work?",
+      "page": 159,
+      "level": 3
+    },
+    {
+      "title": "6.2.3 Vector libraries vs. vector databases",
+      "page": 159,
+      "level": 3
+    },
+    {
+      "title": "6.2.4 Most popular vector stores",
+      "page": 160,
+      "level": 3
+    },
+    {
+      "title": "6.2.5 Storing text and performing a semantic search using Chroma",
+      "page": 161,
+      "level": 3
+    },
+    {
+      "title": "6.3 Implementing RAG from scratch",
+      "page": 164,
+      "level": 2
+    },
+    {
+      "title": "6.3.1 Retrieving content from the vector database",
+      "page": 165,
+      "level": 3
+    },
+    {
+      "title": "6.3.2 Invoking the LLM",
+      "page": 165,
+      "level": 3
+    },
+    {
+      "title": "6.3.3 Building the chatbot",
+      "page": 167,
+      "level": 3
+    },
+    {
+      "title": "6.3.4 Recap of RAG terminology",
+      "page": 168,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 170,
+      "level": 2
+    },
+    {
+      "title": "7 Q&A chatbots with LangChain and LangSmith",
+      "page": 171,
+      "level": 1
+    },
+    {
+      "title": "7.1 LangChain object model for Q&A chatbots",
+      "page": 172,
+      "level": 2
+    },
+    {
+      "title": "7.1.1 Content ingestion (indexing) stage",
+      "page": 172,
+      "level": 3
+    },
+    {
+      "title": "7.1.2 Q&A (retrieval and generation) stage",
+      "page": 174,
+      "level": 3
+    },
+    {
+      "title": "7.2 Vector store content ingestion",
+      "page": 176,
+      "level": 2
+    },
+    {
+      "title": "7.2.1 Splitting and storing the documents",
+      "page": 177,
+      "level": 3
+    },
+    {
+      "title": "7.2.2 Removing duplication",
+      "page": 178,
+      "level": 3
+    },
+    {
+      "title": "7.2.3 Ingesting multiple documents from a folder",
+      "page": 179,
+      "level": 3
+    },
+    {
+      "title": "7.3 Q&A across stored documents",
+      "page": 180,
+      "level": 2
+    },
+    {
+      "title": "7.3.1 Querying the vector store directly",
+      "page": 181,
+      "level": 3
+    },
+    {
+      "title": "7.3.2 Asking a question through a LangChain chain",
+      "page": 181,
+      "level": 3
+    },
+    {
+      "title": "7.3.3 Completing the RAG chain setup",
+      "page": 182,
+      "level": 3
+    },
+    {
+      "title": "7.3.4 Follow-up question",
+      "page": 184,
+      "level": 3
+    },
+    {
+      "title": "7.4 Chatbot memory of message history",
+      "page": 185,
+      "level": 2
+    },
+    {
+      "title": "7.4.1 Amending the prompt",
+      "page": 186,
+      "level": 3
+    },
+    {
+      "title": "7.4.2 Updating the chat message history",
+      "page": 187,
+      "level": 3
+    },
+    {
+      "title": "7.4.3 Feeding the chat history to the RAG chain",
+      "page": 188,
+      "level": 3
+    },
+    {
+      "title": "7.4.4 Putting everything together",
+      "page": 188,
+      "level": 3
+    },
+    {
+      "title": "7.5 Tracing execution with LangSmith",
+      "page": 191,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 196,
+      "level": 2
+    },
+    {
+      "title": "Part 4 Advanced RAG",
+      "page": 199,
+      "level": 0
+    },
+    {
+      "title": "8 Advanced indexing",
+      "page": 201,
+      "level": 1
+    },
+    {
+      "title": "8.1 Improving RAG accuracy",
+      "page": 202,
+      "level": 2
+    },
+    {
+      "title": "8.1.1 Content ingestion stage",
+      "page": 202,
+      "level": 3
+    },
+    {
+      "title": "8.1.2 Question-answering stage",
+      "page": 203,
+      "level": 3
+    },
+    {
+      "title": "8.2 Advanced document indexing",
+      "page": 205,
+      "level": 2
+    },
+    {
+      "title": "8.3 Splitting strategy",
+      "page": 205,
+      "level": 2
+    },
+    {
+      "title": "8.3.1 Splitting strategies",
+      "page": 206,
+      "level": 3
+    },
+    {
+      "title": "8.3.2 Factors to consider",
+      "page": 207,
+      "level": 3
+    },
+    {
+      "title": "8.3.3 Choosing the right strategy",
+      "page": 207,
+      "level": 3
+    },
+    {
+      "title": "8.3.4 Splitting by HTML header",
+      "page": 207,
+      "level": 3
+    },
+    {
+      "title": "8.4 Embedding strategy",
+      "page": 211,
+      "level": 2
+    },
+    {
+      "title": "8.4.1 Embedding child chunks with ParentDocumentRetriever",
+      "page": 212,
+      "level": 3
+    },
+    {
+      "title": "8.4.2 Embedding child chunks with MultiVectorRetriever",
+      "page": 215,
+      "level": 3
+    },
+    {
+      "title": "8.4.3 Embedding document summaries",
+      "page": 217,
+      "level": 3
+    },
+    {
+      "title": "8.4.4 Embedding hypothetical questions",
+      "page": 221,
+      "level": 3
+    },
+    {
+      "title": "8.5 Granular chunk expansion",
+      "page": 225,
+      "level": 2
+    },
+    {
+      "title": "8.6 Semi-structured content",
+      "page": 229,
+      "level": 2
+    },
+    {
+      "title": "8.7 Multimodal RAG",
+      "page": 230,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 231,
+      "level": 2
+    },
+    {
+      "title": "9 Question transformations",
+      "page": 233,
+      "level": 1
+    },
+    {
+      "title": "9.1 Rewrite-Retrieve-Read",
+      "page": 234,
+      "level": 2
+    },
+    {
+      "title": "9.1.1 Retrieving content using the original user question",
+      "page": 237,
+      "level": 3
+    },
+    {
+      "title": "9.1.2 Setting up the query rewriter chain",
+      "page": 238,
+      "level": 3
+    },
+    {
+      "title": "9.1.3 Retrieving content with the rewritten query",
+      "page": 239,
+      "level": 3
+    },
+    {
+      "title": "9.1.4 Combining everything into a single RAG chain",
+      "page": 240,
+      "level": 3
+    },
+    {
+      "title": "9.2 Generating multiple queries",
+      "page": 241,
+      "level": 2
+    },
+    {
+      "title": "9.2.1 Setting up the chain for generating multiple queries",
+      "page": 243,
+      "level": 3
+    },
+    {
+      "title": "9.2.2 Setting up a custom multi-query retriever",
+      "page": 244,
+      "level": 3
+    },
+    {
+      "title": "9.2.3 Using a standard MultiQueryRetriever instance",
+      "page": 246,
+      "level": 3
+    },
+    {
+      "title": "9.3 Step-back question",
+      "page": 246,
+      "level": 2
+    },
+    {
+      "title": "9.3.1 Setting up the chain to generate a step-back question",
+      "page": 248,
+      "level": 3
+    },
+    {
+      "title": "9.3.2 Incorporating step-back question generation into the RAG chain",
+      "page": 248,
+      "level": 3
+    },
+    {
+      "title": "9.4 Hypothetical Document Embeddings (HyDE)",
+      "page": 250,
+      "level": 2
+    },
+    {
+      "title": "9.4.1 Generating a hypothetical document for the user question",
+      "page": 251,
+      "level": 3
+    },
+    {
+      "title": "9.4.2 Integrating the HyDE chain into the RAG chain",
+      "page": 251,
+      "level": 3
+    },
+    {
+      "title": "9.5 Single-step and multi-step decomposition",
+      "page": 252,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 255,
+      "level": 2
+    },
+    {
+      "title": "10 Query generation, routing, and retrieval postprocessing",
+      "page": 256,
+      "level": 1
+    },
+    {
+      "title": "10.1 Content database query generation",
+      "page": 257,
+      "level": 2
+    },
+    {
+      "title": "10.2 Self-querying (metadata query enrichment)",
+      "page": 258,
+      "level": 2
+    },
+    {
+      "title": "10.2.1 Ingestion: Metadata enrichment",
+      "page": 260,
+      "level": 3
+    },
+    {
+      "title": "10.2.2 Q&A on a metadata-enriched collection",
+      "page": 262,
+      "level": 3
+    },
+    {
+      "title": "10.3 Generating a structured SQL query",
+      "page": 267,
+      "level": 2
+    },
+    {
+      "title": "10.3.1 Installing SQLite",
+      "page": 268,
+      "level": 3
+    },
+    {
+      "title": "10.3.2 Setting up and connecting to the database",
+      "page": 268,
+      "level": 3
+    },
+    {
+      "title": "10.3.3 Generating SQL queries from natural language",
+      "page": 270,
+      "level": 3
+    },
+    {
+      "title": "10.3.4 Executing the SQL query",
+      "page": 272,
+      "level": 3
+    },
+    {
+      "title": "10.4 Generating a semantic SQL query",
+      "page": 272,
+      "level": 2
+    },
+    {
+      "title": "10.4.1 Standard SQL query",
+      "page": 273,
+      "level": 3
+    },
+    {
+      "title": "10.4.2 Semantic SQL query",
+      "page": 274,
+      "level": 3
+    },
+    {
+      "title": "10.4.3 Creating the embeddings",
+      "page": 274,
+      "level": 3
+    },
+    {
+      "title": "10.4.4 Performing a semantic SQL search",
+      "page": 275,
+      "level": 3
+    },
+    {
+      "title": "10.4.5 Automating semantic SQL search",
+      "page": 275,
+      "level": 3
+    },
+    {
+      "title": "10.4.6 Benefits of a semantic SQL search",
+      "page": 275,
+      "level": 3
+    },
+    {
+      "title": "10.5 Generating queries for a graph database",
+      "page": 276,
+      "level": 2
+    },
+    {
+      "title": "10.6 Chain routing",
+      "page": 279,
+      "level": 2
+    },
+    {
+      "title": "10.6.1 Setting up data retrievers",
+      "page": 280,
+      "level": 3
+    },
+    {
+      "title": "10.6.2 Setting up the query router",
+      "page": 280,
+      "level": 3
+    },
+    {
+      "title": "10.6.3 Integrating the chain router into a full RAG chain",
+      "page": 282,
+      "level": 3
+    },
+    {
+      "title": "10.7 Retrieval postprocessing",
+      "page": 284,
+      "level": 2
+    },
+    {
+      "title": "10.7.1 Similarity postprocessors",
+      "page": 285,
+      "level": 3
+    },
+    {
+      "title": "10.7.2 Keyword postprocessors",
+      "page": 285,
+      "level": 3
+    },
+    {
+      "title": "10.7.3 Time weighting",
+      "page": 285,
+      "level": 3
+    },
+    {
+      "title": "10.7.4 RAG fusion (Reciprocal Rank Fusion)",
+      "page": 286,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 291,
+      "level": 2
+    },
+    {
+      "title": "Part 5 AI agents",
+      "page": 293,
+      "level": 0
+    },
+    {
+      "title": "11 Building tool-based agents with LangGraph",
+      "page": 295,
+      "level": 1
+    },
+    {
+      "title": "11.1 Starting simple: Building a single-tool travel info agent",
+      "page": 296,
+      "level": 2
+    },
+    {
+      "title": "11.1.1 Project setup",
+      "page": 296,
+      "level": 3
+    },
+    {
+      "title": "11.1.2 Loading environment variables",
+      "page": 297,
+      "level": 3
+    },
+    {
+      "title": "11.1.3 Preparing the travel information vector store",
+      "page": 297,
+      "level": 3
+    },
+    {
+      "title": "11.2 Enabling agents to call tools",
+      "page": 299,
+      "level": 2
+    },
+    {
+      "title": "11.2.1 From function calling to tool calling",
+      "page": 299,
+      "level": 3
+    },
+    {
+      "title": "11.2.2 How tool calling works with LLMs",
+      "page": 301,
+      "level": 3
+    },
+    {
+      "title": "11.2.3 Registering tools with the LLM",
+      "page": 301,
+      "level": 3
+    },
+    {
+      "title": "11.2.4 Agent state: Tracking the conversation",
+      "page": 303,
+      "level": 3
+    },
+    {
+      "title": "11.2.5 Executing tool calls",
+      "page": 303,
+      "level": 3
+    },
+    {
+      "title": "11.2.6 The LLM node: Coordinating reasoning and action",
+      "page": 305,
+      "level": 3
+    },
+    {
+      "title": "11.3 Assembling the agent graph",
+      "page": 305,
+      "level": 2
+    },
+    {
+      "title": "11.4 Understanding the agent graph structure",
+      "page": 306,
+      "level": 2
+    },
+    {
+      "title": "11.5 Running the agent chatbot: The Read-Eval-Print Loop",
+      "page": 307,
+      "level": 2
+    },
+    {
+      "title": "11.6 Executing a request",
+      "page": 307,
+      "level": 2
+    },
+    {
+      "title": "11.6.1 Step-by-step debugging",
+      "page": 308,
+      "level": 3
+    },
+    {
+      "title": "11.7 Expanding your agent: Adding a weather forecast tool",
+      "page": 311,
+      "level": 2
+    },
+    {
+      "title": "11.7.1 Implementing a mock weather service",
+      "page": 311,
+      "level": 3
+    },
+    {
+      "title": "11.7.2 Creating the weather forecast tool",
+      "page": 312,
+      "level": 3
+    },
+    {
+      "title": "11.7.3 Updating the agent for multi-tool support",
+      "page": 312,
+      "level": 3
+    },
+    {
+      "title": "11.8 Executing the multi-tool agent",
+      "page": 312,
+      "level": 2
+    },
+    {
+      "title": "11.8.1 Running the multi-tool agent (initial behavior)",
+      "page": 313,
+      "level": 3
+    },
+    {
+      "title": "11.8.2 Improving LLM tool usage with system guidance",
+      "page": 313,
+      "level": 3
+    },
+    {
+      "title": "11.9 Using prebuilt components for rapid development",
+      "page": 316,
+      "level": 2
+    },
+    {
+      "title": "11.9.1 Refactoring to use the LangGraph ReAct agent",
+      "page": 316,
+      "level": 3
+    },
+    {
+      "title": "11.9.2 Running the prebuilt agent",
+      "page": 317,
+      "level": 3
+    },
+    {
+      "title": "11.9.3 Observing and debugging with LangSmith",
+      "page": 317,
+      "level": 3
+    },
+    {
+      "title": "11.9.4 Enabling LangSmith tracing",
+      "page": 317,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 319,
+      "level": 2
+    },
+    {
+      "title": "12 Multi-agent systems",
+      "page": 321,
+      "level": 1
+    },
+    {
+      "title": "12.1 Building an accommodation booking agent",
+      "page": 322,
+      "level": 2
+    },
+    {
+      "title": "12.1.1 Hotel booking tool",
+      "page": 322,
+      "level": 3
+    },
+    {
+      "title": "12.1.2 B&B booking tool",
+      "page": 323,
+      "level": 3
+    },
+    {
+      "title": "12.1.3 ReAct accommodation booking agent",
+      "page": 325,
+      "level": 3
+    },
+    {
+      "title": "12.2 Building a router-based travel assistant",
+      "page": 326,
+      "level": 2
+    },
+    {
+      "title": "12.2.1 Designing the router agent",
+      "page": 326,
+      "level": 3
+    },
+    {
+      "title": "12.2.2 Routing logic",
+      "page": 326,
+      "level": 3
+    },
+    {
+      "title": "12.2.3 Building the multi-agent graph",
+      "page": 328,
+      "level": 3
+    },
+    {
+      "title": "12.2.4 Trying out the router agent",
+      "page": 329,
+      "level": 3
+    },
+    {
+      "title": "12.3 Handling multi-agent requests with a Supervisor component",
+      "page": 330,
+      "level": 2
+    },
+    {
+      "title": "12.3.1 The Supervisor pattern: An agent of agents",
+      "page": 330,
+      "level": 3
+    },
+    {
+      "title": "12.3.2 From “one-way” to “return ticket” interactions",
+      "page": 332,
+      "level": 3
+    },
+    {
+      "title": "12.3.3 Trying out the Supervisor agent",
+      "page": 333,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 334,
+      "level": 2
+    },
+    {
+      "title": "13 Building and consuming MCP servers",
+      "page": 336,
+      "level": 1
+    },
+    {
+      "title": "13.1 Introduction to MCP servers",
+      "page": 337,
+      "level": 2
+    },
+    {
+      "title": "13.1.1 The problem: Context integration at scale",
+      "page": 337,
+      "level": 3
+    },
+    {
+      "title": "13.1.2 The solution: The Model Context Protocol",
+      "page": 338,
+      "level": 3
+    },
+    {
+      "title": "13.1.3 The MCP ecosystem",
+      "page": 339,
+      "level": 3
+    },
+    {
+      "title": "13.2 How to build MCP servers",
+      "page": 340,
+      "level": 2
+    },
+    {
+      "title": "13.2.1 Essential resources for MCP server development",
+      "page": 340,
+      "level": 3
+    },
+    {
+      "title": "13.2.2 Official language-specific MCP SDKs",
+      "page": 340,
+      "level": 3
+    },
+    {
+      "title": "13.2.3 Consuming MCP servers in LLM applications and agents",
+      "page": 341,
+      "level": 3
+    },
+    {
+      "title": "13.3 Building a weather MCP server",
+      "page": 342,
+      "level": 2
+    },
+    {
+      "title": "13.3.1 Implementing the MCP server",
+      "page": 342,
+      "level": 3
+    },
+    {
+      "title": "13.3.2 Trying out the MCP server with MCP Inspector",
+      "page": 344,
+      "level": 3
+    },
+    {
+      "title": "13.3.3 Consuming the MCP server from a test MCP host",
+      "page": 348,
+      "level": 3
+    },
+    {
+      "title": "13.4 Integrating the Weather MCP tool into an agent",
+      "page": 350,
+      "level": 2
+    },
+    {
+      "title": "13.4.1 Preparing the travel agent for live weather data",
+      "page": 351,
+      "level": 3
+    },
+    {
+      "title": "13.4.2 Integrating the AccuWeather MCP tool",
+      "page": 351,
+      "level": 3
+    },
+    {
+      "title": "13.4.3 Updating the agent chat loop",
+      "page": 351,
+      "level": 3
+    },
+    {
+      "title": "13.4.4 Combining local and remote tools",
+      "page": 352,
+      "level": 3
+    },
+    {
+      "title": "13.4.5 Testing and verification",
+      "page": 352,
+      "level": 3
+    },
+    {
+      "title": "13.4.6 Using the agent for complex queries",
+      "page": 353,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 353,
+      "level": 2
+    },
+    {
+      "title": "14 Productionizing AI agents: Memory, guardrails, and beyond",
+      "page": 355,
+      "level": 1
+    },
+    {
+      "title": "14.1 Memory",
+      "page": 356,
+      "level": 2
+    },
+    {
+      "title": "14.1.1 Types of memory",
+      "page": 356,
+      "level": 3
+    },
+    {
+      "title": "14.1.2 Why short-term memory is needed",
+      "page": 356,
+      "level": 3
+    },
+    {
+      "title": "14.1.3 Checkpoints in LangGraph",
+      "page": 357,
+      "level": 3
+    },
+    {
+      "title": "14.1.4 Adding short-term memory to our travel assistant",
+      "page": 359,
+      "level": 3
+    },
+    {
+      "title": "14.1.5 Executing the checkpointer-enabled assistant",
+      "page": 362,
+      "level": 3
+    },
+    {
+      "title": "14.1.6 Rewinding the state to a past checkpoint",
+      "page": 362,
+      "level": 3
+    },
+    {
+      "title": "14.2 Guardrails",
+      "page": 365,
+      "level": 2
+    },
+    {
+      "title": "14.2.1 Implementing guardrails to reject nontravel-related questions",
+      "page": 366,
+      "level": 3
+    },
+    {
+      "title": "14.2.2 Implementing more restrictive guardrails at the agent level",
+      "page": 371,
+      "level": 3
+    },
+    {
+      "title": "14.3 Beyond this chapter",
+      "page": 374,
+      "level": 2
+    },
+    {
+      "title": "14.3.1 Long-term user and application memory",
+      "page": 374,
+      "level": 3
+    },
+    {
+      "title": "14.3.2 Human-in-the-loop",
+      "page": 374,
+      "level": 3
+    },
+    {
+      "title": "14.3.3 Post-model guardrails",
+      "page": 375,
+      "level": 3
+    },
+    {
+      "title": "14.3.4 Evaluation of AI agents and applications",
+      "page": 375,
+      "level": 3
+    },
+    {
+      "title": "14.3.5 Deployment on the LangGraph platform and Open Agent Platform",
+      "page": 376,
+      "level": 3
+    },
+    {
+      "title": "Summary",
+      "page": 377,
+      "level": 2
+    },
+    {
+      "title": "appendix A Trying out LangChain",
+      "page": 379,
+      "level": 0
+    },
+    {
+      "title": "A.1 Trying out LangChain in a Jupyter Notebook environment",
+      "page": 379,
+      "level": 1
+    },
+    {
+      "title": "A.1.1 Sentence completion example",
+      "page": 381,
+      "level": 2
+    },
+    {
+      "title": "A.1.2 Prompt engineering examples",
+      "page": 382,
+      "level": 2
+    },
+    {
+      "title": "A.1.3 Creating chains and executing them with LCEL",
+      "page": 383,
+      "level": 2
+    },
+    {
+      "title": "appendix B Setting up a Jupyter Notebook environment",
+      "page": 385,
+      "level": 0
+    },
+    {
+      "title": "B.1 Installing the Python interpreter or a Python distribution",
+      "page": 385,
+      "level": 1
+    },
+    {
+      "title": "B.2 Creating a virtual environment with venv and upgrading pip",
+      "page": 386,
+      "level": 1
+    },
+    {
+      "title": "B.3 Setting up a Jupyter Notebook",
+      "page": 386,
+      "level": 1
+    },
+    {
+      "title": "appendix C Choosing an LLM",
+      "page": 388,
+      "level": 0
+    },
+    {
+      "title": "C.1 Popular large language models",
+      "page": 388,
+      "level": 1
+    },
+    {
+      "title": "C.1.1 OpenAI GPT series",
+      "page": 388,
+      "level": 2
+    },
+    {
+      "title": "C.1.2 Gemini",
+      "page": 389,
+      "level": 2
+    },
+    {
+      "title": "C.1.3 Gemma",
+      "page": 389,
+      "level": 2
+    },
+    {
+      "title": "C.1.4 Claude",
+      "page": 390,
+      "level": 2
+    },
+    {
+      "title": "C.1.5 Cohere",
+      "page": 390,
+      "level": 2
+    },
+    {
+      "title": "C.1.6 Llama",
+      "page": 390,
+      "level": 2
+    },
+    {
+      "title": "C.1.7 Falcon",
+      "page": 391,
+      "level": 2
+    },
+    {
+      "title": "C.1.8 Mistral",
+      "page": 391,
+      "level": 2
+    },
+    {
+      "title": "C.1.9 Qwen",
+      "page": 391,
+      "level": 2
+    },
+    {
+      "title": "C.1.10 Grok",
+      "page": 392,
+      "level": 2
+    },
+    {
+      "title": "C.1.11 Phi",
+      "page": 392,
+      "level": 2
+    },
+    {
+      "title": "C.1.12 DeepSeek",
+      "page": 392,
+      "level": 2
+    },
+    {
+      "title": "C.2 How to choose a model",
+      "page": 393,
+      "level": 1
+    },
+    {
+      "title": "C.2.1 Model purpose",
+      "page": 394,
+      "level": 2
+    },
+    {
+      "title": "C.2.2 Proprietary vs. open source",
+      "page": 394,
+      "level": 2
+    },
+    {
+      "title": "C.2.3 Model size (number of parameters)",
+      "page": 395,
+      "level": 2
+    },
+    {
+      "title": "C.2.4 Context window size",
+      "page": 395,
+      "level": 2
+    },
+    {
+      "title": "C.2.5 Multilingual support",
+      "page": 395,
+      "level": 2
+    },
+    {
+      "title": "C.2.6 Accuracy vs. speed",
+      "page": 396,
+      "level": 2
+    },
+    {
+      "title": "C.2.7 Cost and hardware requirements",
+      "page": 396,
+      "level": 2
+    },
+    {
+      "title": "C.2.8 Task suitability (standard benchmarks)",
+      "page": 396,
+      "level": 2
+    },
+    {
+      "title": "C.2.9 Safety and Bias",
+      "page": 399,
+      "level": 2
+    },
+    {
+      "title": "C.2.10 A practical example",
+      "page": 399,
+      "level": 2
+    },
+    {
+      "title": "C.3 A word of caution",
+      "page": 401,
+      "level": 1
+    },
+    {
+      "title": "appendix D Installing SQLite on Windows",
+      "page": 403,
+      "level": 0
+    },
+    {
+      "title": "D.1 Installing SQLite",
+      "page": 403,
+      "level": 1
+    },
+    {
+      "title": "appendix E Open source LLMs",
+      "page": 405,
+      "level": 0
+    },
+    {
+      "title": "E.1 Benefits of open source LLMs",
+      "page": 405,
+      "level": 1
+    },
+    {
+      "title": "E.1.1 Transparency",
+      "page": 406,
+      "level": 2
+    },
+    {
+      "title": "E.1.2 Privacy",
+      "page": 406,
+      "level": 2
+    },
+    {
+      "title": "E.1.3 Community driven",
+      "page": 406,
+      "level": 2
+    },
+    {
+      "title": "E.1.4 Cost savings",
+      "page": 407,
+      "level": 2
+    },
+    {
+      "title": "E.2 Popular open source LLMs",
+      "page": 407,
+      "level": 1
+    },
+    {
+      "title": "E.3 Considerations on running open source LLMs locally",
+      "page": 409,
+      "level": 1
+    },
+    {
+      "title": "E.3.1 Limitations of consumer hardware",
+      "page": 410,
+      "level": 2
+    },
+    {
+      "title": "E.3.2 Quantization",
+      "page": 410,
+      "level": 2
+    },
+    {
+      "title": "E.3.3 OpenAI REST API compatibility",
+      "page": 411,
+      "level": 2
+    },
+    {
+      "title": "E.4 Local inference engines",
+      "page": 414,
+      "level": 1
+    },
+    {
+      "title": "E.4.1 llama.cpp",
+      "page": 415,
+      "level": 2
+    },
+    {
+      "title": "E.4.2 Ollama",
+      "page": 417,
+      "level": 2
+    },
+    {
+      "title": "E.4.3 vLLM",
+      "page": 422,
+      "level": 2
+    },
+    {
+      "title": "E.4.4 llamafile",
+      "page": 423,
+      "level": 2
+    },
+    {
+      "title": "E.4.5 LM Studio",
+      "page": 425,
+      "level": 2
+    },
+    {
+      "title": "E.4.6 LocalAI",
+      "page": 429,
+      "level": 2
+    },
+    {
+      "title": "E.4.7 GPT4All",
+      "page": 430,
+      "level": 2
+    },
+    {
+      "title": "E.4.8 Comparing local inference engines",
+      "page": 432,
+      "level": 2
+    },
+    {
+      "title": "E.4.9 Choosing a local inference engine",
+      "page": 433,
+      "level": 2
+    },
+    {
+      "title": "E.5 Inference via the Hugging Face Transformers library",
+      "page": 434,
+      "level": 1
+    },
+    {
+      "title": "E.5.1 Hugging Face Transformers library",
+      "page": 434,
+      "level": 2
+    },
+    {
+      "title": "E.5.2 LangChain’s Hugging Face pipeline",
+      "page": 434,
+      "level": 2
+    },
+    {
+      "title": "E.6 Building a local summarization engine",
+      "page": 435,
+      "level": 1
+    },
+    {
+      "title": "E.6.1 Choosing the inference engine",
+      "page": 435,
+      "level": 2
+    },
+    {
+      "title": "E.6.2 Starting up the OpenAI-compatible server",
+      "page": 436,
+      "level": 2
+    },
+    {
+      "title": "E.6.3 Modifying the original solution",
+      "page": 436,
+      "level": 2
+    },
+    {
+      "title": "E.6.4 Running the summarization engine through the local LLM",
+      "page": 437,
+      "level": 2
+    },
+    {
+      "title": "E.6.5 Comparison between OpenAI and local LLM",
+      "page": 437,
+      "level": 2
+    },
+    {
+      "title": "index",
+      "page": 439,
+      "level": 0
+    },
+    {
+      "title": "A",
+      "page": 439,
+      "level": 1
+    },
+    {
+      "title": "B",
+      "page": 439,
+      "level": 1
+    },
+    {
+      "title": "C",
+      "page": 439,
+      "level": 1
+    },
+    {
+      "title": "D",
+      "page": 440,
+      "level": 1
+    },
+    {
+      "title": "E",
+      "page": 440,
+      "level": 1
+    },
+    {
+      "title": "F",
+      "page": 440,
+      "level": 1
+    },
+    {
+      "title": "G",
+      "page": 440,
+      "level": 1
+    },
+    {
+      "title": "H",
+      "page": 441,
+      "level": 1
+    },
+    {
+      "title": "I",
+      "page": 441,
+      "level": 1
+    },
+    {
+      "title": "J",
+      "page": 441,
+      "level": 1
+    },
+    {
+      "title": "K",
+      "page": 441,
+      "level": 1
+    },
+    {
+      "title": "L",
+      "page": 441,
+      "level": 1
+    },
+    {
+      "title": "M",
+      "page": 442,
+      "level": 1
+    },
+    {
+      "title": "N",
+      "page": 443,
+      "level": 1
+    },
+    {
+      "title": "O",
+      "page": 443,
+      "level": 1
+    },
+    {
+      "title": "P",
+      "page": 443,
+      "level": 1
+    },
+    {
+      "title": "Q",
+      "page": 444,
+      "level": 1
+    },
+    {
+      "title": "R",
+      "page": 444,
+      "level": 1
+    },
+    {
+      "title": "S",
+      "page": 445,
+      "level": 1
+    },
+    {
+      "title": "T",
+      "page": 446,
+      "level": 1
+    },
+    {
+      "title": "U",
+      "page": 446,
+      "level": 1
+    },
+    {
+      "title": "V",
+      "page": 446,
+      "level": 1
+    },
+    {
+      "title": "W",
+      "page": 447,
+      "level": 1
+    },
+    {
+      "title": "Z",
+      "page": 447,
+      "level": 1
+    },
+    {
+      "title": "AI Agents and Applications - back",
+      "page": 450,
+      "level": 0
+    }
+  ]
+}

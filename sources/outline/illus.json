@@ -1,0 +1,162 @@
+{
+  "id": "illus",
+  "title": "Maarten Grootendorst. An Illustrated Guide to AI Agents (ранний доступ)",
+  "pages": 97,
+  "sections": [
+    {
+      "title": "Brief Table of Contents (Not Yet Final)",
+      "page": 5,
+      "level": 0
+    },
+    {
+      "title": "1. Memory",
+      "page": 6,
+      "level": 0
+    },
+    {
+      "title": "Types of Memory",
+      "page": 9,
+      "level": 1
+    },
+    {
+      "title": "Short-Term Memory",
+      "page": 11,
+      "level": 1
+    },
+    {
+      "title": "Long-Term Memory",
+      "page": 16,
+      "level": 1
+    },
+    {
+      "title": "Retrieval-Augmented Generation (RAG)",
+      "page": 16,
+      "level": 2
+    },
+    {
+      "title": "Agentic RAG",
+      "page": 23,
+      "level": 2
+    },
+    {
+      "title": "Context Engineering",
+      "page": 32,
+      "level": 1
+    },
+    {
+      "title": "What is inside the context?",
+      "page": 37,
+      "level": 2
+    },
+    {
+      "title": "Context Engineering for Multi-Agent Systems",
+      "page": 42,
+      "level": 2
+    },
+    {
+      "title": "Optimizing the Context",
+      "page": 42,
+      "level": 2
+    },
+    {
+      "title": "Context as the Specification",
+      "page": 50,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 51,
+      "level": 1
+    },
+    {
+      "title": "2. Tool Usage, Learning, and Protocols",
+      "page": 53,
+      "level": 0
+    },
+    {
+      "title": "Tool Usage",
+      "page": 56,
+      "level": 1
+    },
+    {
+      "title": "Tool Creation",
+      "page": 57,
+      "level": 2
+    },
+    {
+      "title": "Tool Definition",
+      "page": 59,
+      "level": 2
+    },
+    {
+      "title": "Tool Selection",
+      "page": 63,
+      "level": 2
+    },
+    {
+      "title": "Tool Calling",
+      "page": 64,
+      "level": 2
+    },
+    {
+      "title": "Tool Output Processing",
+      "page": 66,
+      "level": 2
+    },
+    {
+      "title": "Tool Learning",
+      "page": 68,
+      "level": 1
+    },
+    {
+      "title": "In-context Learning",
+      "page": 68,
+      "level": 2
+    },
+    {
+      "title": "Supervised Fine-tuning",
+      "page": 76,
+      "level": 2
+    },
+    {
+      "title": "Reinforcement Learning",
+      "page": 81,
+      "level": 2
+    },
+    {
+      "title": "ToolRL",
+      "page": 82,
+      "level": 2
+    },
+    {
+      "title": "Search-R1",
+      "page": 84,
+      "level": 2
+    },
+    {
+      "title": "Model Context Protocol (MCP)",
+      "page": 88,
+      "level": 1
+    },
+    {
+      "title": "Core Components",
+      "page": 90,
+      "level": 2
+    },
+    {
+      "title": "The MCP Flow",
+      "page": 91,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 94,
+      "level": 1
+    },
+    {
+      "title": "About the Authors",
+      "page": 97,
+      "level": 0
+    }
+  ]
+}

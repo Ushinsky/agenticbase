@@ -1,0 +1,1077 @@
+{
+  "id": "lanham",
+  "title": "Micheal Lanham. AI Agents in Action, 2025",
+  "pages": 346,
+  "sections": [
+    {
+      "title": "AI Agents in Action",
+      "page": 1,
+      "level": 0
+    },
+    {
+      "title": "brief contents",
+      "page": 8,
+      "level": 0
+    },
+    {
+      "title": "contents",
+      "page": 9,
+      "level": 0
+    },
+    {
+      "title": "preface",
+      "page": 15,
+      "level": 0
+    },
+    {
+      "title": "acknowledgments",
+      "page": 17,
+      "level": 0
+    },
+    {
+      "title": "about this book",
+      "page": 19,
+      "level": 0
+    },
+    {
+      "title": "Who should read this book",
+      "page": 19,
+      "level": 1
+    },
+    {
+      "title": "How this book is organized: A road map",
+      "page": 20,
+      "level": 1
+    },
+    {
+      "title": "About the code",
+      "page": 21,
+      "level": 1
+    },
+    {
+      "title": "liveBook discussion forum",
+      "page": 22,
+      "level": 1
+    },
+    {
+      "title": "about the author",
+      "page": 23,
+      "level": 0
+    },
+    {
+      "title": "about the cover illustration",
+      "page": 24,
+      "level": 0
+    },
+    {
+      "title": "1 Introduction to agents and their world",
+      "page": 25,
+      "level": 0
+    },
+    {
+      "title": "1.1 Defining agents",
+      "page": 25,
+      "level": 1
+    },
+    {
+      "title": "1.2 Understanding the component systems of an agent",
+      "page": 28,
+      "level": 1
+    },
+    {
+      "title": "1.3 Examining the rise of the agent era: Why agents?",
+      "page": 33,
+      "level": 1
+    },
+    {
+      "title": "1.4 Peeling back the AI interface",
+      "page": 35,
+      "level": 1
+    },
+    {
+      "title": "1.5 Navigating the agent landscape",
+      "page": 36,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 36,
+      "level": 1
+    },
+    {
+      "title": "2 Harnessing the power of large language models",
+      "page": 38,
+      "level": 0
+    },
+    {
+      "title": "2.1 Mastering the OpenAI API",
+      "page": 40,
+      "level": 1
+    },
+    {
+      "title": "2.1.1 Connecting to the chat completions model",
+      "page": 40,
+      "level": 2
+    },
+    {
+      "title": "2.1.2 Understanding the request and response",
+      "page": 42,
+      "level": 2
+    },
+    {
+      "title": "2.2 Exploring open source LLMs with LM Studio",
+      "page": 44,
+      "level": 1
+    },
+    {
+      "title": "2.2.1 Installing and running LM Studio",
+      "page": 44,
+      "level": 2
+    },
+    {
+      "title": "2.2.2 Serving an LLM locally with LM Studio",
+      "page": 47,
+      "level": 2
+    },
+    {
+      "title": "2.3 Prompting LLMs with prompt engineering",
+      "page": 49,
+      "level": 1
+    },
+    {
+      "title": "2.3.1 Creating detailed queries",
+      "page": 52,
+      "level": 2
+    },
+    {
+      "title": "2.3.2 Adopting personas",
+      "page": 53,
+      "level": 2
+    },
+    {
+      "title": "2.3.3 Using delimiters",
+      "page": 54,
+      "level": 2
+    },
+    {
+      "title": "2.3.4 Specifying steps",
+      "page": 55,
+      "level": 2
+    },
+    {
+      "title": "2.3.5 Providing examples",
+      "page": 56,
+      "level": 2
+    },
+    {
+      "title": "2.3.6 Specifying output length",
+      "page": 57,
+      "level": 2
+    },
+    {
+      "title": "2.4 Choosing the optimal LLM for your specific needs",
+      "page": 58,
+      "level": 1
+    },
+    {
+      "title": "2.5 Exercises",
+      "page": 60,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 61,
+      "level": 1
+    },
+    {
+      "title": "3 Engaging GPT assistants",
+      "page": 63,
+      "level": 0
+    },
+    {
+      "title": "3.1 Exploring GPT assistants through ChatGPT",
+      "page": 64,
+      "level": 1
+    },
+    {
+      "title": "3.2 Building a GPT that can do data science",
+      "page": 68,
+      "level": 1
+    },
+    {
+      "title": "3.3 Customizing a GPT and adding custom actions",
+      "page": 73,
+      "level": 1
+    },
+    {
+      "title": "3.3.1 Creating an assistant to build an assistant",
+      "page": 73,
+      "level": 2
+    },
+    {
+      "title": "3.3.2 Connecting the custom action to an assistant",
+      "page": 77,
+      "level": 2
+    },
+    {
+      "title": "3.4 Extending an assistant’s knowledge using file uploads",
+      "page": 80,
+      "level": 1
+    },
+    {
+      "title": "3.4.1 Building the Calculus Made Easy GPT",
+      "page": 80,
+      "level": 2
+    },
+    {
+      "title": "3.4.2 Knowledge search and more with file uploads",
+      "page": 82,
+      "level": 2
+    },
+    {
+      "title": "3.5 Publishing your GPT",
+      "page": 85,
+      "level": 1
+    },
+    {
+      "title": "3.5.1 Expensive GPT assistants",
+      "page": 86,
+      "level": 2
+    },
+    {
+      "title": "3.5.2 Understanding the economics of GPTs",
+      "page": 87,
+      "level": 2
+    },
+    {
+      "title": "3.5.3 Releasing the GPT",
+      "page": 87,
+      "level": 2
+    },
+    {
+      "title": "3.6 Exercises",
+      "page": 89,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 90,
+      "level": 1
+    },
+    {
+      "title": "4 Exploring multi-agent systems",
+      "page": 92,
+      "level": 0
+    },
+    {
+      "title": "4.1 Introducing multi-agent systems with AutoGen Studio",
+      "page": 93,
+      "level": 1
+    },
+    {
+      "title": "4.1.1 Installing and using AutoGen Studio",
+      "page": 94,
+      "level": 2
+    },
+    {
+      "title": "4.1.2 Adding skills in AutoGen Studio",
+      "page": 97,
+      "level": 2
+    },
+    {
+      "title": "4.2 Exploring AutoGen",
+      "page": 101,
+      "level": 1
+    },
+    {
+      "title": "4.2.1 Installing and consuming AutoGen",
+      "page": 101,
+      "level": 2
+    },
+    {
+      "title": "4.2.2 Enhancing code output with agent critics",
+      "page": 103,
+      "level": 2
+    },
+    {
+      "title": "4.2.3 Understanding the AutoGen cache",
+      "page": 105,
+      "level": 2
+    },
+    {
+      "title": "4.3 Group chat with agents and AutoGen",
+      "page": 106,
+      "level": 1
+    },
+    {
+      "title": "4.4 Building an agent crew with CrewAI",
+      "page": 108,
+      "level": 1
+    },
+    {
+      "title": "4.4.1 Creating a jokester crew of CrewAI agents",
+      "page": 108,
+      "level": 2
+    },
+    {
+      "title": "4.4.2 Observing agents working with AgentOps",
+      "page": 111,
+      "level": 2
+    },
+    {
+      "title": "4.5 Revisiting coding agents with CrewAI",
+      "page": 114,
+      "level": 1
+    },
+    {
+      "title": "4.6 Exercises",
+      "page": 119,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 120,
+      "level": 1
+    },
+    {
+      "title": "5 Empowering agents with actions",
+      "page": 122,
+      "level": 0
+    },
+    {
+      "title": "5.1 Defining agent actions",
+      "page": 123,
+      "level": 1
+    },
+    {
+      "title": "5.2 Executing OpenAI functions",
+      "page": 125,
+      "level": 1
+    },
+    {
+      "title": "5.2.1 Adding functions to LLM API calls",
+      "page": 125,
+      "level": 2
+    },
+    {
+      "title": "5.2.2 Actioning function calls",
+      "page": 127,
+      "level": 2
+    },
+    {
+      "title": "5.3 Introducing Semantic Kernel",
+      "page": 131,
+      "level": 1
+    },
+    {
+      "title": "5.3.1 Getting started with SK semantic functions",
+      "page": 132,
+      "level": 2
+    },
+    {
+      "title": "5.3.2 Semantic functions and context variables",
+      "page": 133,
+      "level": 2
+    },
+    {
+      "title": "5.4 Synergizing semantic and native functions",
+      "page": 135,
+      "level": 1
+    },
+    {
+      "title": "5.4.1 Creating and registering a semantic skill/plugin",
+      "page": 135,
+      "level": 2
+    },
+    {
+      "title": "5.4.2 Applying native functions",
+      "page": 139,
+      "level": 2
+    },
+    {
+      "title": "5.4.3 Embedding native functions within semantic functions",
+      "page": 141,
+      "level": 2
+    },
+    {
+      "title": "5.5 Semantic Kernel as an interactive service agent",
+      "page": 142,
+      "level": 1
+    },
+    {
+      "title": "5.5.1 Building a semantic GPT interface",
+      "page": 143,
+      "level": 2
+    },
+    {
+      "title": "5.5.2 Testing semantic services",
+      "page": 145,
+      "level": 2
+    },
+    {
+      "title": "5.5.3 Interactive chat with the semantic service layer",
+      "page": 146,
+      "level": 2
+    },
+    {
+      "title": "5.6 Thinking semantically when writing semantic services",
+      "page": 149,
+      "level": 1
+    },
+    {
+      "title": "5.7 Exercises",
+      "page": 151,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 152,
+      "level": 1
+    },
+    {
+      "title": "6 Building autonomous assistants",
+      "page": 153,
+      "level": 0
+    },
+    {
+      "title": "6.1 Introducing behavior trees",
+      "page": 154,
+      "level": 1
+    },
+    {
+      "title": "6.1.1 Understanding behavior tree execution",
+      "page": 155,
+      "level": 2
+    },
+    {
+      "title": "6.1.2 Deciding on behavior trees",
+      "page": 156,
+      "level": 2
+    },
+    {
+      "title": "6.1.3 Running behavior trees with Python and py_trees",
+      "page": 158,
+      "level": 2
+    },
+    {
+      "title": "6.2 Exploring the GPT Assistants Playground",
+      "page": 160,
+      "level": 1
+    },
+    {
+      "title": "6.2.1 Installing and running the Playground",
+      "page": 160,
+      "level": 2
+    },
+    {
+      "title": "6.2.2 Using and building custom actions",
+      "page": 162,
+      "level": 2
+    },
+    {
+      "title": "6.2.3 Installing the assistants database",
+      "page": 164,
+      "level": 2
+    },
+    {
+      "title": "6.2.4 Getting an assistant to run code locally",
+      "page": 164,
+      "level": 2
+    },
+    {
+      "title": "6.2.5 Investigating the assistant process through logs",
+      "page": 166,
+      "level": 2
+    },
+    {
+      "title": "6.3 Introducing agentic behavior trees",
+      "page": 167,
+      "level": 1
+    },
+    {
+      "title": "6.3.1 Managing assistants with assistants",
+      "page": 167,
+      "level": 2
+    },
+    {
+      "title": "6.3.2 Building a coding challenge ABT",
+      "page": 169,
+      "level": 2
+    },
+    {
+      "title": "6.3.3 Conversational AI systems vs. other methods",
+      "page": 173,
+      "level": 2
+    },
+    {
+      "title": "6.3.4 Posting YouTube videos to X",
+      "page": 174,
+      "level": 2
+    },
+    {
+      "title": "6.3.5 Required X setup",
+      "page": 175,
+      "level": 2
+    },
+    {
+      "title": "6.4 Building conversational autonomous multi-agents",
+      "page": 177,
+      "level": 1
+    },
+    {
+      "title": "6.5 Building ABTs with back chaining",
+      "page": 179,
+      "level": 1
+    },
+    {
+      "title": "6.6 Exercises",
+      "page": 180,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 182,
+      "level": 1
+    },
+    {
+      "title": "7 Assembling and using an agent platform",
+      "page": 184,
+      "level": 0
+    },
+    {
+      "title": "7.1 Introducing Nexus, not just another agent platform",
+      "page": 185,
+      "level": 1
+    },
+    {
+      "title": "7.1.1 Running Nexus",
+      "page": 186,
+      "level": 2
+    },
+    {
+      "title": "7.1.2 Developing Nexus",
+      "page": 187,
+      "level": 2
+    },
+    {
+      "title": "7.2 Introducing Streamlit for chat application development",
+      "page": 189,
+      "level": 1
+    },
+    {
+      "title": "7.2.1 Building a Streamlit chat application",
+      "page": 189,
+      "level": 2
+    },
+    {
+      "title": "7.2.2 Creating a streaming chat application",
+      "page": 192,
+      "level": 2
+    },
+    {
+      "title": "7.3 Developing profiles and personas for agents",
+      "page": 194,
+      "level": 1
+    },
+    {
+      "title": "7.4 Powering the agent and understanding the agent engine",
+      "page": 196,
+      "level": 1
+    },
+    {
+      "title": "7.5 Giving an agent actions and tools",
+      "page": 198,
+      "level": 1
+    },
+    {
+      "title": "7.6 Exercises",
+      "page": 202,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 203,
+      "level": 1
+    },
+    {
+      "title": "8 Understanding agent memory and knowledge",
+      "page": 204,
+      "level": 0
+    },
+    {
+      "title": "8.1 Understanding retrieval in AI applications",
+      "page": 205,
+      "level": 1
+    },
+    {
+      "title": "8.2 The basics of retrieval augmented generation (RAG)",
+      "page": 206,
+      "level": 1
+    },
+    {
+      "title": "8.3 Delving into semantic search and document indexing",
+      "page": 208,
+      "level": 1
+    },
+    {
+      "title": "8.3.1 Applying vector similarity search",
+      "page": 208,
+      "level": 2
+    },
+    {
+      "title": "8.3.2 Vector databases and similarity search",
+      "page": 212,
+      "level": 2
+    },
+    {
+      "title": "8.3.3 Demystifying document embeddings",
+      "page": 213,
+      "level": 2
+    },
+    {
+      "title": "8.3.4 Querying document embeddings from Chroma",
+      "page": 214,
+      "level": 2
+    },
+    {
+      "title": "8.4 Constructing RAG with LangChain",
+      "page": 216,
+      "level": 1
+    },
+    {
+      "title": "8.4.1 Splitting and loading documents with LangChain",
+      "page": 216,
+      "level": 2
+    },
+    {
+      "title": "8.4.2 Splitting documents by token with LangChain",
+      "page": 219,
+      "level": 2
+    },
+    {
+      "title": "8.5 Applying RAG to building agent knowledge",
+      "page": 220,
+      "level": 1
+    },
+    {
+      "title": "8.6 Implementing memory in agentic systems",
+      "page": 224,
+      "level": 1
+    },
+    {
+      "title": "8.6.1 Consuming memory stores in Nexus",
+      "page": 226,
+      "level": 2
+    },
+    {
+      "title": "8.6.2 Semantic memory and applications to semantic, episodic, and procedural memory",
+      "page": 228,
+      "level": 2
+    },
+    {
+      "title": "8.7 Understanding memory and knowledge compression",
+      "page": 231,
+      "level": 1
+    },
+    {
+      "title": "8.8 Exercises",
+      "page": 233,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 234,
+      "level": 1
+    },
+    {
+      "title": "9 Mastering agent prompts with prompt flow",
+      "page": 236,
+      "level": 0
+    },
+    {
+      "title": "9.1 Why we need systematic prompt engineering",
+      "page": 237,
+      "level": 1
+    },
+    {
+      "title": "9.2 Understanding agent profiles and personas",
+      "page": 240,
+      "level": 1
+    },
+    {
+      "title": "9.3 Setting up your first prompt flow",
+      "page": 241,
+      "level": 1
+    },
+    {
+      "title": "9.3.1 Getting started",
+      "page": 242,
+      "level": 2
+    },
+    {
+      "title": "9.3.2 Creating profiles with Jinja2 templates",
+      "page": 246,
+      "level": 2
+    },
+    {
+      "title": "9.3.3 Deploying a prompt flow API",
+      "page": 247,
+      "level": 2
+    },
+    {
+      "title": "9.4 Evaluating profiles: Rubrics and grounding",
+      "page": 248,
+      "level": 1
+    },
+    {
+      "title": "9.5 Understanding rubrics and grounding",
+      "page": 252,
+      "level": 1
+    },
+    {
+      "title": "9.6 Grounding evaluation with an LLM profile",
+      "page": 254,
+      "level": 1
+    },
+    {
+      "title": "9.7 Comparing profiles: Getting the perfect profile",
+      "page": 256,
+      "level": 1
+    },
+    {
+      "title": "9.7.1 Parsing the LLM evaluation output",
+      "page": 256,
+      "level": 2
+    },
+    {
+      "title": "9.7.2 Running batch processing in prompt flow",
+      "page": 259,
+      "level": 2
+    },
+    {
+      "title": "9.7.3 Creating an evaluation flow for grounding",
+      "page": 262,
+      "level": 2
+    },
+    {
+      "title": "9.7.4 Exercises",
+      "page": 266,
+      "level": 2
+    },
+    {
+      "title": "Summary",
+      "page": 267,
+      "level": 1
+    },
+    {
+      "title": "10 Agent reasoning and evaluation",
+      "page": 268,
+      "level": 0
+    },
+    {
+      "title": "10.1 Understanding direct solution prompting",
+      "page": 269,
+      "level": 1
+    },
+    {
+      "title": "10.1.1 Question-and-answer prompting",
+      "page": 270,
+      "level": 2
+    },
+    {
+      "title": "10.1.2 Implementing few-shot prompting",
+      "page": 272,
+      "level": 2
+    },
+    {
+      "title": "10.1.3 Extracting generalities with zero-shot prompting",
+      "page": 274,
+      "level": 2
+    },
+    {
+      "title": "10.2 Reasoning in prompt engineering",
+      "page": 276,
+      "level": 1
+    },
+    {
+      "title": "10.2.1 Chain of thought prompting",
+      "page": 277,
+      "level": 2
+    },
+    {
+      "title": "10.2.2 Zero-shot CoT prompting",
+      "page": 281,
+      "level": 2
+    },
+    {
+      "title": "10.2.3 Step by step with prompt chaining",
+      "page": 282,
+      "level": 2
+    },
+    {
+      "title": "10.3 Employing evaluation for consistent solutions",
+      "page": 285,
+      "level": 1
+    },
+    {
+      "title": "10.3.1 Evaluating self-consistency prompting",
+      "page": 286,
+      "level": 2
+    },
+    {
+      "title": "10.3.2 Evaluating tree of thought prompting",
+      "page": 290,
+      "level": 2
+    },
+    {
+      "title": "10.4 Exercises",
+      "page": 294,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 295,
+      "level": 1
+    },
+    {
+      "title": "11 Agent planning and feedback",
+      "page": 296,
+      "level": 0
+    },
+    {
+      "title": "11.1 Planning: The essential tool for all agents/assistants",
+      "page": 297,
+      "level": 1
+    },
+    {
+      "title": "11.2 Understanding the sequential planning process",
+      "page": 301,
+      "level": 1
+    },
+    {
+      "title": "11.3 Building a sequential planner",
+      "page": 302,
+      "level": 1
+    },
+    {
+      "title": "11.4 Reviewing a stepwise planner: OpenAI Strawberry",
+      "page": 309,
+      "level": 1
+    },
+    {
+      "title": "11.5 Applying planning, reasoning, evaluation, and feedback to assistant and agentic systems",
+      "page": 312,
+      "level": 1
+    },
+    {
+      "title": "11.5.1 Application of assistant/agentic planning",
+      "page": 312,
+      "level": 2
+    },
+    {
+      "title": "11.5.2 Application of assistant/agentic reasoning",
+      "page": 314,
+      "level": 2
+    },
+    {
+      "title": "11.5.3 Application of evaluation to agentic systems",
+      "page": 315,
+      "level": 2
+    },
+    {
+      "title": "11.5.4 Application of feedback to agentic/assistant applications",
+      "page": 317,
+      "level": 2
+    },
+    {
+      "title": "11.6 Exercises",
+      "page": 320,
+      "level": 1
+    },
+    {
+      "title": "Summary",
+      "page": 321,
+      "level": 1
+    },
+    {
+      "title": "appendix A—Accessing OpenAI large language models",
+      "page": 323,
+      "level": 0
+    },
+    {
+      "title": "A.1 Accessing OpenAI accounts and keys",
+      "page": 323,
+      "level": 1
+    },
+    {
+      "title": "A.2 Azure OpenAI Studio, keys, and deployments",
+      "page": 326,
+      "level": 1
+    },
+    {
+      "title": "appendix B—Python development environment",
+      "page": 329,
+      "level": 0
+    },
+    {
+      "title": "B.1 Downloading the source code",
+      "page": 329,
+      "level": 1
+    },
+    {
+      "title": "B.2 Installing Python",
+      "page": 330,
+      "level": 1
+    },
+    {
+      "title": "B.3 Installing VS Code",
+      "page": 330,
+      "level": 1
+    },
+    {
+      "title": "B.4 Installing VS Code Python extensions",
+      "page": 330,
+      "level": 1
+    },
+    {
+      "title": "B.5 Creating a new Python environment with VS Code",
+      "page": 332,
+      "level": 1
+    },
+    {
+      "title": "B.6 Using VS Code Dev Containers (Docker)",
+      "page": 333,
+      "level": 1
+    },
+    {
+      "title": "index",
+      "page": 335,
+      "level": 0
+    },
+    {
+      "title": "A",
+      "page": 335,
+      "level": 1
+    },
+    {
+      "title": "B",
+      "page": 336,
+      "level": 1
+    },
+    {
+      "title": "C",
+      "page": 336,
+      "level": 1
+    },
+    {
+      "title": "D",
+      "page": 337,
+      "level": 1
+    },
+    {
+      "title": "E",
+      "page": 337,
+      "level": 1
+    },
+    {
+      "title": "F",
+      "page": 337,
+      "level": 1
+    },
+    {
+      "title": "G",
+      "page": 337,
+      "level": 1
+    },
+    {
+      "title": "I",
+      "page": 337,
+      "level": 1
+    },
+    {
+      "title": "J",
+      "page": 338,
+      "level": 1
+    },
+    {
+      "title": "K",
+      "page": 338,
+      "level": 1
+    },
+    {
+      "title": "L",
+      "page": 338,
+      "level": 1
+    },
+    {
+      "title": "M",
+      "page": 338,
+      "level": 1
+    },
+    {
+      "title": "N",
+      "page": 338,
+      "level": 1
+    },
+    {
+      "title": "O",
+      "page": 338,
+      "level": 1
+    },
+    {
+      "title": "P",
+      "page": 339,
+      "level": 1
+    },
+    {
+      "title": "Q",
+      "page": 339,
+      "level": 1
+    },
+    {
+      "title": "R",
+      "page": 339,
+      "level": 1
+    },
+    {
+      "title": "S",
+      "page": 340,
+      "level": 1
+    },
+    {
+      "title": "T",
+      "page": 340,
+      "level": 1
+    },
+    {
+      "title": "U",
+      "page": 340,
+      "level": 1
+    },
+    {
+      "title": "V",
+      "page": 340,
+      "level": 1
+    },
+    {
+      "title": "W",
+      "page": 341,
+      "level": 1
+    },
+    {
+      "title": "X",
+      "page": 341,
+      "level": 1
+    },
+    {
+      "title": "Y",
+      "page": 341,
+      "level": 1
+    },
+    {
+      "title": "Z",
+      "page": 341,
+      "level": 1
+    }
+  ]
+}

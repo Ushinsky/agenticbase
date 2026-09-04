@@ -27,8 +27,12 @@ jobs:
         run: |
           mkdir -p site
           rsync -a \
+            --include='GLOSSARY.md' \
+            --exclude='*.md' \
             --exclude='.git' \
             --exclude='.github' \
+            --exclude='.claude' \
+            --exclude='.gitignore' \
             --exclude='learning-records' \
             --exclude='*.pdf' \
             --exclude='site' \

@@ -10,7 +10,6 @@
 Большой источник разбирают этапами, но ни одна его часть не остается
 без разбора: команда cover показывает, что еще не читалось.
 """
-
 import io
 import json
 import os
@@ -117,11 +116,35 @@ def show(ranges):
     return ", ".join("%d-%d" % (a, b) if a != b else str(a) for a, b in ranges)
 
 
+def report_units(source):
+    """Прочитанное у источника, состоящего из именованных частей.
+
+    У репозитория или подборки статей страниц нет, но части есть, и правило
+    то же: разбирать можно этапами, пропускать части нельзя. Полный состав
+    хранится в units, разобранное - в covered.
+    """
+    units = source.get("units")
+    if not units:
+        print("\nСостав источника не описан — полноту разбора проверить нечем.")
+        print("Заполните units в kb/manifest.json, иначе пропуск части не виден.")
+        return
+    done = [u for u in units if u in set(source.get("covered", []))]
+    left = [u for u in units if u not in set(source.get("covered", []))]
+    print("\nРазобрано частей: %d из %d" % (len(done), len(units)))
+    if left:
+        print("Не читалось — следующие этапы:")
+        for u in left:
+            print("  - %s" % u)
+    else:
+        print("Источник разобран целиком.")
+
+
 def report_coverage(source):
     """Прочитанное и непрочитанное по страницам. Большой источник берут этапами,
     но ни одна часть не остается без разбора."""
     total = source_pages(source["id"])
     if not total:
+        report_units(source)
         return
     covered = parse_ranges(source.get("covered", []))
     print("\nПрочитано: %s из %d страниц" % (show(merge_ranges(covered)) or "ничего", total))
@@ -138,11 +161,22 @@ def cover(source_id, ranges):
     source = next((s for s in manifest["sources"] if s["id"] == source_id), None)
     if source is None:
         raise SystemExit("нет такого источника: %s" % source_id)
-    existing = parse_ranges(source.get("covered", []))
-    source["covered"] = [
-        "%d-%d" % (a, b) if a != b else str(a)
-        for a, b in merge_ranges(existing + parse_ranges(ranges))
-    ]
+    if source.get("units") is not None:
+        known = set(source["units"])
+        unknown = [r for r in ranges if r not in known]
+        if unknown:
+            raise SystemExit(
+                "нет таких частей у %s: %s. Состав перечислен в units."
+                % (source_id, ", ".join(unknown))
+            )
+        have = set(source.get("covered", []))
+        source["covered"] = [u for u in source["units"] if u in have or u in set(ranges)]
+    else:
+        existing = parse_ranges(source.get("covered", []))
+        source["covered"] = [
+            "%d-%d" % (a, b) if a != b else str(a)
+            for a, b in merge_ranges(existing + parse_ranges(ranges))
+        ]
     with io.open(MANIFEST, "w", encoding="utf-8", newline="\n") as fh:
         json.dump(manifest, fh, ensure_ascii=False, indent=2)
         fh.write("\n")
@@ -164,6 +198,7 @@ def report_source(manifest, source_id):
     print("Состояние источника: %s" % source.get("checked_at", "не указано"))
     print("Сильные стороны: %s" % ", ".join(source.get("strengths", [])))
     print("\nСверено: %d из %d опубликованных материалов" % (len(done), len(nodes)))
+    report_coverage(source)
 
     if done:
         print("\nУже сверено:")

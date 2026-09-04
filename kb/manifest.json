@@ -66,7 +66,29 @@
       "gaps": [
         "сильный крен в продукты Microsoft Foundry"
       ],
-      "checked_at": "2026-08-14"
+      "checked_at": "2026-08-14",
+      "url": "https://github.com/microsoft/ai-agents-for-beginners",
+      "units": [
+        "00-course-setup",
+        "01-intro-to-ai-agents",
+        "02-explore-agentic-frameworks",
+        "03-agentic-design-patterns",
+        "04-tool-use",
+        "05-agentic-rag",
+        "06-building-trustworthy-agents",
+        "07-planning-design",
+        "08-multi-agent",
+        "09-metacognition",
+        "10-ai-agents-production",
+        "11-agentic-protocols",
+        "12-context-engineering",
+        "13-agent-memory",
+        "14-microsoft-agent-framework",
+        "15-browser-use",
+        "16-deploying-scalable-agents",
+        "17-creating-local-ai-agents",
+        "18-securing-ai-agents"
+      ]
     },
     {
       "id": "ibm",

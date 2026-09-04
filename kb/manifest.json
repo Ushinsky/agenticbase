@@ -154,7 +154,10 @@
         "протоколы связи между агентами не раскрыты"
       ],
       "checked_at": "2026-08-18",
-      "file": "Lanham Micheal - AI Agents in Action - 2025.pdf"
+      "file": "Lanham Micheal - AI Agents in Action - 2025.pdf",
+      "covered": [
+        "1-62"
+      ]
     }
   ],
   "modules": [
@@ -532,7 +535,8 @@
         "эмоциональные добавки",
         "ролевой набор",
         "набор для разовой задачи",
-        "процедурная память"
+        "процедурная память",
+        "граница чужого текста"
       ],
       "requires": [
         "promty-osnovy"
@@ -545,14 +549,16 @@
       ],
       "sources": [
         "book",
-        "infante"
+        "infante",
+        "lanham"
       ],
       "path": "articles/strukturirovannye-promty.html",
       "figures": [
         "Схема 1: семь блоков, обязательные и необязательные"
       ],
       "audited": {
-        "infante": "2026-09-04"
+        "infante": "2026-09-04",
+        "lanham": "2026-09-04"
       }
     },
     {

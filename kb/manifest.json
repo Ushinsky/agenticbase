@@ -212,11 +212,14 @@
         "ai-agents-vs-ai-assistants",
         "ai-agent-communication",
         "ai-agent-perception",
+        "agentic-architecture",
         "agent-gateway",
         "agent-control-plane",
         "rewoo",
+        "ai-agent-protocols",
         "agent-development-lifecycle-adlc",
         "ai-agent-evaluation",
+        "ai-agent-management",
         "ai-agent-sprawl",
         "agentic-chunking"
       ]
@@ -1160,7 +1163,8 @@
       "audited": {
         "illus": "2026-08-29",
         "infante": "2026-09-04",
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1178,7 +1182,8 @@
         "задача",
         "артефакт",
         "данные структурой, переговоры прозой",
-        "как узнать о завершении задачи"
+        "как узнать о завершении задачи",
+        "протокол это не схема координации"
       ],
       "requires": [
         "mcp"
@@ -1292,7 +1297,8 @@
       "audited": {
         "infante": "2026-09-04",
         "book": "2026-09-04",
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1627,10 +1633,12 @@
         "ekspluataciya-parka"
       ],
       "sources": [
-        "ms"
+        "ms",
+        "ibm"
       ],
       "audited": {
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {

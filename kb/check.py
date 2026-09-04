@@ -7,7 +7,7 @@
 останавливается (см. .github/workflows/deploy.yml). Список проверок
 описан в NOTES.md, раздел «Жесткие правила подачи».
 """
-
+import io
 import os
 import re
 import sys
@@ -206,6 +206,46 @@ def check_publication_surface():
     return problems
 
 
+def check_css_classes():
+    """Каждый класс в разметке должен быть описан в стилях.
+
+    Придуманный на ходу класс не ломает сборку и не виден в проверках —
+    блок просто отрисовывается без оформления. Дважды за одну сессию
+    появлялись .steps и .steps-note, которых в стилях нет, поэтому
+    несоответствие ловится здесь, а не глазами.
+    """
+    problems = []
+
+    css = []
+    css_dir = os.path.join(BASE, "assets")
+    if os.path.isdir(css_dir):
+        for name in sorted(os.listdir(css_dir)):
+            if name.endswith(".css"):
+                with io.open(os.path.join(css_dir, name), encoding="utf-8") as fh:
+                    css.append(fh.read())
+    known = set(re.findall(r"\.([a-zA-Z][\w-]*)", "\n".join(css)))
+
+    for folder in PUBLIC_DIRS:
+        root = os.path.join(BASE, folder)
+        if not os.path.isdir(root):
+            continue
+        for name in sorted(os.listdir(root)):
+            if not name.endswith(".html"):
+                continue
+            path = os.path.join(root, name)
+            with io.open(path, encoding="utf-8") as fh:
+                markup = fh.read()
+            used = set()
+            for value in re.findall(r'class="([^"]*)"', markup):
+                used.update(value.split())
+            for cls in sorted(used - known):
+                problems.append(
+                    "%s/%s: класс %s не описан ни в одном файле стилей" % (folder, name, cls)
+                )
+
+    return problems
+
+
 def main():
     checks = [
         ("запрещенная буква", check_yo),
@@ -213,6 +253,7 @@ def main():
         ("внутренние ссылки", check_internal_links),
         ("пути в манифесте", check_manifest_paths),
         ("состав публикации", check_publication_surface),
+        ("классы в разметке", check_css_classes),
     ]
 
     all_problems = []

@@ -126,9 +126,11 @@
         "протоколы"
       ],
       "gaps": [
-        "маркетинговый слой вокруг собственных продуктов"
+        "маркетинговый слой вокруг собственных продуктов",
+        "отраслевые статьи — перечни выгод без ограничений",
+        "статьи о продуктах повторяют общие принципы без своих приемов"
       ],
-      "checked_at": "2026-08-14",
+      "checked_at": "2026-09-04",
       "url": "https://www.ibm.com/think/topics/ai-agents",
       "units": [
         "ai-agents",
@@ -271,7 +273,19 @@
         "ai-agent-security",
         "ai-agent-sprawl",
         "agentic-rag",
-        "agentic-chunking"
+        "agentic-chunking",
+        "ai-agent-use-cases",
+        "agentic-automation",
+        "ai-agents-in-customer-service",
+        "ai-agents-in-finance",
+        "ai-agents-healthcare",
+        "ai-agents-in-human-resources",
+        "agentic-ai-manufacturing",
+        "ai-agents-in-marketing",
+        "ai-agents-in-procurement",
+        "ai-agents-revops",
+        "ai-agents-in-sales",
+        "ai-agents-supply-chain"
       ],
       "units_gone": {
         "insights/top-ai-agent-frameworks": "адрес из навигации отдает 404 на 2026-09-04; отдельные статьи группы читаются напрямую, обзор недоступен",
@@ -639,7 +653,9 @@
       "figures": [
         "Схема 1: промахи по этапам, на которых их ловят"
       ],
-      "audited": {}
+      "audited": {
+        "ibm": "2026-09-04"
+      }
     },
     {
       "id": "analiz-trebovaniy",
@@ -1972,7 +1988,7 @@
         "ibm"
       ],
       "audited": {
-        "ibm": "2026-09-03"
+        "ibm": "2026-09-04"
       }
     },
     {

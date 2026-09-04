@@ -88,6 +88,12 @@
         "16-deploying-scalable-agents",
         "17-creating-local-ai-agents",
         "18-securing-ai-agents"
+      ],
+      "covered": [
+        "00-course-setup",
+        "01-intro-to-ai-agents",
+        "02-explore-agentic-frameworks",
+        "03-agentic-design-patterns"
       ]
     },
     {
@@ -339,7 +345,9 @@
         "Схема 1: три ступени и кто выбирает следующий шаг"
       ],
       "quiz": "0002-a",
-      "audited": {}
+      "audited": {
+        "ms": "2026-09-04"
+      }
     },
     {
       "id": "tipy-agentov",
@@ -374,7 +382,8 @@
       ],
       "sources": [
         "ibm",
-        "book"
+        "book",
+        "ms"
       ],
       "path": "articles/tipy-agentov.html",
       "figures": [
@@ -382,7 +391,8 @@
         "Схема 2: три типа слоями над одним оборудованием"
       ],
       "audited": {
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ms": "2026-09-04"
       }
     },
     {
@@ -1211,7 +1221,8 @@
       ],
       "audited": {
         "ibm": "2026-08-28",
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ms": "2026-09-04"
       }
     },
     {
@@ -1399,7 +1410,8 @@
         "уровень риска",
         "точка подтверждения",
         "системное ограничение",
-        "прерывание с сохранением"
+        "прерывание с сохранением",
+        "раскрытие перед человеком"
       ],
       "requires": [
         "promahi-so-stupenyu",
@@ -1414,7 +1426,7 @@
         "infante"
       ],
       "audited": {
-        "ms": "2026-09-02",
+        "ms": "2026-09-04",
         "infante": "2026-09-04"
       }
     },

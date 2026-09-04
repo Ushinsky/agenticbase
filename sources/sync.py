@@ -213,6 +213,18 @@ def bucket_pdfs(client):
     return found
 
 
+def near_miss(name, known_ids):
+    """Похоже ли имя на опечатку в известном идентификаторе.
+
+    Чистое имя, которого нет в реестре, обычно означает новый источник.
+    Но bbook.pdf при существующем book - это не новый источник, а лишняя
+    буква, и заводить по ней вторую запись хуже, чем остановиться.
+    """
+    import difflib
+
+    return bool(difflib.get_close_matches(name, sorted(known_ids), n=1, cutoff=0.85))
+
+
 def resolve_id(raw_name, known_ids):
     """Идентификатор источника по имени файла.
 
@@ -223,7 +235,7 @@ def resolve_id(raw_name, known_ids):
     """
     name = raw_name.lower()
     if ID_SHAPE.match(name):
-        return name
+        return name if name in known_ids or not near_miss(name, known_ids) else None
     words = set(re.split(r"[^a-z0-9]+", name))
     matched = sorted(known_ids & words)
     return matched[0] if len(matched) == 1 else None
@@ -284,7 +296,10 @@ def sync_from_bucket(client):
     if bad_names:
         print("\nимя файла должно быть идентификатором источника: строчные латинские")
         print("буквы, цифры, дефис или подчеркивание, и расширение .pdf. Например")
-        print("lanham.pdf. Имя с лишними словами тоже годится, если один")
+        print("lanham.pdf. Имя, похожее на известный источник с точностью")
+        print("до опечатки, тоже отвергается: bbook при существующем book -")
+        print("это лишняя буква, а не новый источник.")
+        print("Имя с лишними словами годится, если один")
         print("из известных источников входит в него отдельным словом.")
         print("Переименовать объект в R2 нельзя, такой операции там нет:")
         print("переименуйте файл у себя и залейте заново. Не разобраны:")

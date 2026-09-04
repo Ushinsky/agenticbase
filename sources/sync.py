@@ -213,6 +213,22 @@ def bucket_pdfs(client):
     return found
 
 
+def resolve_id(raw_name, known_ids):
+    """Идентификатор источника по имени файла.
+
+    Чистое имя годится как есть: lanham.pdf даст lanham. Если имя содержит
+    лишнее, оно сверяется с реестром: "Lanham Micheal.pdf" опознается как
+    lanham, потому что ровно один известный источник встречается в имени
+    отдельным словом. Двусмысленность идентификатор не дает.
+    """
+    name = raw_name.lower()
+    if ID_SHAPE.match(name):
+        return name
+    words = set(re.split(r"[^a-z0-9]+", name))
+    matched = sorted(known_ids & words)
+    return matched[0] if len(matched) == 1 else None
+
+
 def sync_from_bucket(client):
     """Разбирает PDF из бакета: текст обратно в R2, оглавление в репозиторий."""
     titles = {source["id"]: source["title"] for source in manifest_sources()}
@@ -228,9 +244,9 @@ def sync_from_bucket(client):
     done = 0
 
     for entry in objects:
-        source_id = entry["id"]
+        source_id = resolve_id(entry["id"], set(titles))
 
-        if not ID_SHAPE.match(source_id):
+        if source_id is None:
             bad_names.append(entry["key"])
             continue
 
@@ -268,8 +284,10 @@ def sync_from_bucket(client):
     if bad_names:
         print("\nимя файла должно быть идентификатором источника: строчные латинские")
         print("буквы, цифры, дефис или подчеркивание, и расширение .pdf. Например")
-        print("lanham.pdf. Переименовать объект в R2 нельзя, такой операции")
-        print("там нет: переименуйте файл у себя и залейте заново. Не разобраны:")
+        print("lanham.pdf. Имя с лишними словами тоже годится, если один")
+        print("из известных источников входит в него отдельным словом.")
+        print("Переименовать объект в R2 нельзя, такой операции там нет:")
+        print("переименуйте файл у себя и залейте заново. Не разобраны:")
         for key in bad_names:
             print("  - %s" % key)
 

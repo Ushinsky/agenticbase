@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-16",
+  "updated": "2026-09-04",
   "course": {
     "title": "Запуск ИИ-агентов",
     "subtitle": "База знаний и учебная программа",
@@ -16,6 +16,10 @@
     "article": "Справочная статья без ограничения объема: тема раскрыта целиком, служит опорой для уроков.",
     "reference": "Рабочий лист для повседневного применения: шпаргалка, шаблон, диагностическая таблица.",
     "index": "Навигационная страница базы знаний."
+  },
+  "audit": {
+    "note": "Журнал сверки. audited на узле — даты, когда материал реально сверялся с конкретным источником. checked_at на источнике — дата, на которую подтверждено содержимое самого источника; двигается только при его изменении, не при каждом чтении. Сверка считается устаревшей, когда checked_at источника новее даты в audited.",
+    "empty_means": "Пустой audited означает, что материал под учетом, но ни разу не сверялся. Задним числом даты не проставляются."
   },
   "sources": [
     {
@@ -36,7 +40,8 @@
         "наблюдаемость",
         "протоколы",
         "безопасность"
-      ]
+      ],
+      "checked_at": "2026-08-14"
     },
     {
       "id": "ms",
@@ -56,7 +61,8 @@
       ],
       "gaps": [
         "сильный крен в продукты Microsoft Foundry"
-      ]
+      ],
+      "checked_at": "2026-08-14"
     },
     {
       "id": "ibm",
@@ -74,7 +80,8 @@
       ],
       "gaps": [
         "маркетинговый слой вокруг собственных продуктов"
-      ]
+      ],
+      "checked_at": "2026-08-14"
     },
     {
       "id": "illus",
@@ -94,7 +101,8 @@
       "gaps": [
         "ранний доступ, часть глав еще не написана",
         "нет процесса разработки и эксплуатации"
-      ]
+      ],
+      "checked_at": "2026-08-18"
     },
     {
       "id": "infante",
@@ -115,7 +123,8 @@
         "привязана к одному фреймворку",
         "не покрывает визуальные конструкторы и no-code платформы",
         "протоколы связи между агентами за пределами MCP не раскрыты"
-      ]
+      ],
+      "checked_at": "2026-08-18"
     },
     {
       "id": "lanham",
@@ -134,7 +143,8 @@
         "привязана к конкретным инструментам и фреймворкам",
         "слабо про эксплуатацию и продакшн после развертывания",
         "протоколы связи между агентами не раскрыты"
-      ]
+      ],
+      "checked_at": "2026-08-18"
     }
   ],
   "modules": [
@@ -244,7 +254,8 @@
         "Схема 1: цикл из пяти тактов с линией возврата",
         "Схема 2: состав контекста"
       ],
-      "quiz": "0001-a"
+      "quiz": "0001-a",
+      "audited": {}
     },
     {
       "id": "lestnitsa-avtonomii",
@@ -287,7 +298,8 @@
       "figures": [
         "Схема 1: три ступени и кто выбирает следующий шаг"
       ],
-      "quiz": "0002-a"
+      "quiz": "0002-a",
+      "audited": {}
     },
     {
       "id": "tipy-agentov",
@@ -328,7 +340,8 @@
       "figures": [
         "Схема 1: способности пяти типов",
         "Схема 2: три типа слоями над одним оборудованием"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "evolyutsiya-agentov",
@@ -366,7 +379,10 @@
       "path": "articles/evolyutsiya-agentov.html",
       "figures": [
         "Схема 1: три волны и что в каждой задавало поведение"
-      ]
+      ],
+      "audited": {
+        "lanham": "2026-08-29"
+      }
     },
     {
       "id": "promahi-so-stupenyu",
@@ -402,7 +418,8 @@
       "path": "articles/promahi-so-stupenyu.html",
       "figures": [
         "Схема 1: промахи по этапам, на которых их ловят"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "analiz-trebovaniy",
@@ -436,7 +453,8 @@
         "ibm"
       ],
       "rework": "Добавить схему четырех ролей и раздел про оценку сроков.",
-      "quiz": "0003-a"
+      "quiz": "0003-a",
+      "audited": {}
     },
     {
       "id": "promty-osnovy",
@@ -474,7 +492,10 @@
       "path": "articles/promty-osnovy.html",
       "figures": [
         "Схема 1: шесть приемов по частоте применения"
-      ]
+      ],
+      "audited": {
+        "infante": "2026-08-29"
+      }
     },
     {
       "id": "strukturirovannye-promty",
@@ -513,7 +534,8 @@
       "path": "articles/strukturirovannye-promty.html",
       "figures": [
         "Схема 1: семь блоков, обязательные и необязательные"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "kontekst-inzhiniring",
@@ -560,7 +582,10 @@
       "figures": [
         "Схема 1: виды памяти и где они живут",
         "Схема 2: конвейер контекста и отказы по стадиям"
-      ]
+      ],
+      "audited": {
+        "illus": "2026-08-29"
+      }
     },
     {
       "id": "shablony-proektirovaniya",
@@ -598,7 +623,6 @@
       ],
       "sources": [
         "book",
-        "ms",
         "ms"
       ],
       "path": "articles/shablony-proektirovaniya.html",
@@ -606,7 +630,10 @@
         "Схема 1: цикл рефлексии",
         "Схема 2: планирование и выполнение",
         "Схема 3: три схемы мультиагентной работы"
-      ]
+      ],
+      "audited": {
+        "infante": "2026-08-29"
+      }
     },
     {
       "id": "instrumenty",
@@ -638,7 +665,10 @@
         "ms",
         "ibm",
         "illus"
-      ]
+      ],
+      "audited": {
+        "illus": "2026-08-29"
+      }
     },
     {
       "id": "pamyat-agenta",
@@ -667,7 +697,8 @@
         "ms",
         "ibm",
         "illus"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "baza-znaniy",
@@ -696,7 +727,8 @@
       "sources": [
         "book",
         "ibm"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "agentnyy-rag",
@@ -726,7 +758,10 @@
         "ms",
         "ibm",
         "illus"
-      ]
+      ],
+      "audited": {
+        "illus": "2026-08-29"
+      }
     },
     {
       "id": "rassuzhdenie",
@@ -755,7 +790,8 @@
         "lanham",
         "ms",
         "ibm"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "planirovanie",
@@ -783,7 +819,8 @@
         "ibm",
         "book",
         "lanham"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "metakognitsiya",
@@ -810,7 +847,10 @@
       "sources": [
         "ms",
         "ibm"
-      ]
+      ],
+      "audited": {
+        "lanham": "2026-08-29"
+      }
     },
     {
       "id": "agentnye-protsessy",
@@ -836,7 +876,8 @@
       "sources": [
         "book",
         "ibm"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "mcp",
@@ -865,7 +906,10 @@
         "ms",
         "ibm",
         "illus"
-      ]
+      ],
+      "audited": {
+        "illus": "2026-08-29"
+      }
     },
     {
       "id": "obmen-mezhdu-agentami",
@@ -891,7 +935,8 @@
       "sources": [
         "ms",
         "ibm"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "shlyuz-agentov",
@@ -917,7 +962,8 @@
       ],
       "sources": [
         "ibm"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "multiagent-osnovy",
@@ -946,7 +992,8 @@
         "book",
         "ms",
         "ibm"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "multiagent-shablony",
@@ -972,7 +1019,10 @@
         "ms",
         "ibm",
         "book"
-      ]
+      ],
+      "audited": {
+        "infante": "2026-08-29"
+      }
     },
     {
       "id": "platformy-obzor",
@@ -998,7 +1048,8 @@
       "sources": [
         "book",
         "ibm"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "frameworks",
@@ -1024,7 +1075,10 @@
       "sources": [
         "ms",
         "ibm"
-      ]
+      ],
+      "audited": {
+        "ibm": "2026-08-28"
+      }
     },
     {
       "id": "pervyy-agent",
@@ -1053,7 +1107,8 @@
       "sources": [
         "book",
         "ms"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "testirovanie-agentov",
@@ -1081,7 +1136,11 @@
       "sources": [
         "book",
         "ms"
-      ]
+      ],
+      "audited": {
+        "book": "2026-08-29",
+        "ms": "2026-08-29"
+      }
     },
     {
       "id": "otsenka-agentov",
@@ -1111,7 +1170,12 @@
         "ms",
         "infante",
         "lanham"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-08-29",
+        "infante": "2026-08-29",
+        "lanham": "2026-08-29"
+      }
     },
     {
       "id": "nablyudaemost",
@@ -1139,7 +1203,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-08-29"
+      }
     },
     {
       "id": "ogranicheniya-agentov",
@@ -1169,7 +1236,10 @@
       ],
       "sources": [
         "book"
-      ]
+      ],
+      "audited": {
+        "book": "2026-08-29"
+      }
     },
     {
       "id": "doverie-i-chelovek",
@@ -1198,7 +1268,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-02"
+      }
     },
     {
       "id": "bezopasnost-agentov",
@@ -1226,7 +1299,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-02"
+      }
     },
     {
       "id": "upravlenie-agentami",
@@ -1253,7 +1329,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-02"
+      }
     },
     {
       "id": "zhiznennyy-tsikl",
@@ -1280,7 +1359,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-03"
+      }
     },
     {
       "id": "razvertyvanie",
@@ -1310,7 +1392,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-03"
+      }
     },
     {
       "id": "masshtabirovanie",
@@ -1337,7 +1422,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-03"
+      }
     },
     {
       "id": "stoimost-agenta",
@@ -1364,7 +1452,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-03"
+      }
     },
     {
       "id": "ekspluataciya-parka",
@@ -1391,7 +1482,10 @@
       ],
       "sources": [
         "ibm"
-      ]
+      ],
+      "audited": {
+        "ibm": "2026-09-03"
+      }
     },
     {
       "id": "lokalnye-agenty",
@@ -1417,7 +1511,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-03"
+      }
     },
     {
       "id": "kompyuternye-agenty",
@@ -1444,7 +1541,10 @@
       ],
       "sources": [
         "ms"
-      ]
+      ],
+      "audited": {
+        "ms": "2026-09-03"
+      }
     },
     {
       "id": "otraslevye-stsenarii",
@@ -1469,7 +1569,10 @@
       ],
       "sources": [
         "ibm"
-      ]
+      ],
+      "audited": {
+        "ibm": "2026-09-03"
+      }
     },
     {
       "id": "ref-tsikl-agenta",
@@ -1493,7 +1596,8 @@
       "sources": [
         "book",
         "ms"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "ref-specifikaciya",
@@ -1515,7 +1619,8 @@
       ],
       "sources": [
         "book"
-      ]
+      ],
+      "audited": {}
     },
     {
       "id": "ref-diagnostika",
@@ -1543,7 +1648,11 @@
       "sources": [
         "book",
         "ms"
-      ]
+      ],
+      "audited": {
+        "book": "2026-08-29",
+        "ms": "2026-08-29"
+      }
     },
     {
       "id": "glossary",
@@ -1557,7 +1666,8 @@
       "concepts": [],
       "requires": [],
       "links": [],
-      "sources": []
+      "sources": [],
+      "audited": {}
     }
   ],
   "figures_note": "Схемы нумеруются в пределах страницы, а не сквозно по курсу: страницы читаются по отдельности, и сквозная нумерация сдвигалась бы при каждой новой схеме."

@@ -215,10 +215,16 @@
         "insights/agentic-ai",
         "agentic-ai-vs-generative-ai",
         "ai-agent-development",
+        "agentic-coding",
         "agentic-engineering",
         "agentops",
         "how-to-build-an-ai-agent",
         "evolution-of-ai-agents",
+        "ai-agent-types",
+        "goal-based-agent",
+        "model-based-reflex-agent",
+        "simple-reflex-agent",
+        "utility-based-agent",
         "components-of-ai-agents",
         "agentic-workflows",
         "ai-agent-communication",
@@ -230,6 +236,7 @@
         "agentic-architecture",
         "agent-gateway",
         "agent-control-plane",
+        "react-agent",
         "rewoo",
         "ai-agent-protocols",
         "agent-development-lifecycle-adlc",
@@ -252,6 +259,7 @@
         "ai-agent-management",
         "ai-agent-security",
         "ai-agent-sprawl",
+        "agentic-rag",
         "agentic-chunking"
       ],
       "units_gone": {
@@ -1033,7 +1041,8 @@
       "audited": {
         "illus": "2026-08-29",
         "infante": "2026-09-04",
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1608,7 +1617,8 @@
         "системное ограничение",
         "прерывание с сохранением",
         "раскрытие перед человеком",
-        "содержание точки подтверждения"
+        "содержание точки подтверждения",
+        "износ проверяющего"
       ],
       "requires": [
         "promahi-so-stupenyu",

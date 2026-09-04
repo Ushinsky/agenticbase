@@ -1,0 +1,55 @@
+name: Разобрать источники из R2
+
+# Источник попадает в базу так: PDF кладут в бакет через панель Cloudflare,
+# имя файла служит идентификатором (lanham.pdf -> источник lanham). Дальше
+# работает этот воркфлоу: находит непрочитанные файлы, извлекает из них текст
+# обратно в R2 и коммитит оглавления в репозиторий.
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sources
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Забрать код
+        uses: actions/checkout@v5
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Зависимости
+        run: pip install --quiet boto3 pypdf
+
+      - name: Разобрать новые файлы
+        id: sync
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: python sources/sync.py --from-bucket
+
+      - name: Закоммитить оглавления
+        if: always()
+        run: |
+          if [ -z "$(git status --porcelain sources/outline)" ]; then
+            echo "новых оглавлений нет"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sources/outline
+          git commit -m "Оглавления источников из R2"
+          git push

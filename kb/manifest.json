@@ -222,9 +222,11 @@
         "ai-agent-protocols",
         "agent-development-lifecycle-adlc",
         "insights/top-ai-agent-frameworks",
+        "autogen",
         "autogpt",
         "crew-ai",
         "langgraph",
+        "metagpt",
         "ai-agent-evaluation",
         "ai-agent-management",
         "ai-agent-sprawl",
@@ -611,7 +613,8 @@
         "критерий приемки",
         "необратимое действие",
         "красный флаг",
-        "необратимый вызов внутри цепочки вызовов"
+        "необратимый вызов внутри цепочки вызовов",
+        "действующий регламент как черновик"
       ],
       "requires": [
         "tsikl-agenta",
@@ -629,7 +632,8 @@
       "rework": "Добавить схему четырех ролей и раздел про оценку сроков.",
       "quiz": "0003-a",
       "audited": {
-        "book": "2026-09-04"
+        "book": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {
@@ -1277,7 +1281,8 @@
       ],
       "audited": {
         "book": "2026-09-04",
-        "ms": "2026-09-04"
+        "ms": "2026-09-04",
+        "ibm": "2026-09-04"
       }
     },
     {

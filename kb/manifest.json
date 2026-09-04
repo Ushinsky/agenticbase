@@ -128,7 +128,90 @@
       "gaps": [
         "маркетинговый слой вокруг собственных продуктов"
       ],
-      "checked_at": "2026-08-14"
+      "checked_at": "2026-08-14",
+      "url": "https://www.ibm.com/think/topics/ai-agents",
+      "units": [
+        "ai-agents",
+        "ai-agents-vs-ai-assistants",
+        "agentic-ai",
+        "insights/agentic-ai",
+        "agentic-ai-vs-generative-ai",
+        "ai-agent-development",
+        "agentic-coding",
+        "agentic-engineering",
+        "agentops",
+        "how-to-build-an-ai-agent",
+        "evolution-of-ai-agents",
+        "ai-agent-types",
+        "goal-based-agent",
+        "model-based-reflex-agent",
+        "simple-reflex-agent",
+        "utility-based-agent",
+        "components-of-ai-agents",
+        "agentic-workflows",
+        "ai-agent-communication",
+        "ai-agent-learning",
+        "ai-agent-memory",
+        "ai-agent-perception",
+        "ai-agent-planning",
+        "agentic-reasoning",
+        "tool-calling",
+        "agentic-architecture",
+        "ai-agent-orchestration",
+        "agent-gateway",
+        "agent-control-plane",
+        "hierarchical-ai-agents",
+        "multiagent-system",
+        "multi-agent-collaboration",
+        "react-agent",
+        "rewoo",
+        "ai-agent-protocols",
+        "agent-communication-protocol",
+        "agent2agent-protocol",
+        "model-context-protocol",
+        "agent-development-lifecycle-adlc",
+        "agent-lifecycle-management",
+        "ai-agent-deployment",
+        "ai-agent-testing",
+        "insights/top-ai-agent-frameworks",
+        "agentgpt",
+        "autogen",
+        "autogpt",
+        "babyagi",
+        "beeai",
+        "chatdev",
+        "crew-ai",
+        "watsonx-agents",
+        "langchain",
+        "langgraph",
+        "langflow",
+        "metagpt",
+        "insights/ai-agent-governance",
+        "insights/ai-agent-ethics",
+        "ai-agent-evaluation",
+        "ai-agent-management",
+        "ai-agent-security",
+        "ai-agent-sprawl",
+        "agentic-rag",
+        "agentic-chunking",
+        "ai-agent-use-cases",
+        "agentic-automation",
+        "ai-agents-in-customer-service",
+        "ai-agents-in-finance",
+        "ai-agents-healthcare",
+        "ai-agents-in-human-resources",
+        "agentic-ai-manufacturing",
+        "ai-agents-in-marketing",
+        "ai-agents-in-procurement",
+        "ai-agents-revops",
+        "ai-agents-in-sales",
+        "ai-agents-supply-chain"
+      ],
+      "units_note": "Состав восстановлен из навигации раздела 2026-09-04. Совпал по числу с записью в usage: 75 статей.",
+      "covered": [
+        "agent-gateway",
+        "ai-agent-sprawl"
+      ]
     },
     {
       "id": "illus",
@@ -1114,7 +1197,8 @@
         "шлюз агентов",
         "пульт управления",
         "политика доступа",
-        "реестр инструментов"
+        "реестр инструментов",
+        "шлюз к моделям это не шлюз агентов"
       ],
       "requires": [
         "mcp"
@@ -1126,7 +1210,9 @@
       "sources": [
         "ibm"
       ],
-      "audited": {}
+      "audited": {
+        "ibm": "2026-09-04"
+      }
     },
     {
       "id": "multiagent-osnovy",
@@ -1668,7 +1754,8 @@
         "разрастание парка",
         "реестр агентов",
         "владелец агента",
-        "сопровождение"
+        "сопровождение",
+        "агенты в обход"
       ],
       "requires": [
         "razvertyvanie",
@@ -1682,7 +1769,7 @@
         "ibm"
       ],
       "audited": {
-        "ibm": "2026-09-03"
+        "ibm": "2026-09-04"
       }
     },
     {

@@ -163,10 +163,14 @@ def r2_client():
         if not os.environ.get(name)
     ]
     if missing:
-        raise SystemExit(
-            "не заданы доступы: %s. Положите их в .env в корне (файл в .gitignore)."
-            % ", ".join(missing)
+        where = (
+            "Настройки репозитория, Secrets and variables, Actions, "
+            "New repository secret — именно repository secret, а не environment: "
+            "секрет окружения заданию без environment не виден, и подставится пустая строка"
+            if os.environ.get("GITHUB_ACTIONS")
+            else ".env в корне репозитория (файл в .gitignore)"
         )
+        raise SystemExit("не заданы доступы: %s. Где их задать: %s." % (", ".join(missing), where))
 
     return boto3.client(
         "s3",

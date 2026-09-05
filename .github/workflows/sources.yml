@@ -44,12 +44,12 @@ jobs:
       - name: Закоммитить оглавления
         if: always()
         run: |
-          if [ -z "$(git status --porcelain sources/outline)" ]; then
+          if [ -z "$(git status --porcelain sources/outline sources/unresolved.json)" ]; then
             echo "новых оглавлений нет"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sources/outline
+          git add sources/outline sources/unresolved.json
           git commit -m "Оглавления источников из R2"
           git push

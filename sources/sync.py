@@ -18,6 +18,11 @@
 перезалили, скачивает их, извлекает текст обратно в R2 и записывает
 оглавления в репозиторий.
 
+Объект с именем, из которого идентификатор не выводится, роняет запуск —
+это способ сообщить о нем письмом. Такие имена запоминаются в
+sources/unresolved.json, и повторно из-за них запуск не падает: иначе
+один забытый в бакете файл слал бы письмо каждый час.
+
 Запасной — разобрать файл, лежащий на диске рядом с репозиторием. Путь
 берется из поля file в kb/manifest.json:
 
@@ -39,6 +44,7 @@ import sys
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(BASE, "kb", "manifest.json")
 OUTLINE_DIR = os.path.join(BASE, "sources", "outline")
+UNRESOLVED = os.path.join(BASE, "sources", "unresolved.json")
 
 PAGE_MARK = "=== СТРАНИЦА %d ==="
 RAW_PREFIX = "raw/"
@@ -225,6 +231,22 @@ def near_miss(name, known_ids):
     return bool(difflib.get_close_matches(name, sorted(known_ids), n=1, cutoff=0.85))
 
 
+def known_unresolved():
+    """Объекты с непонятным именем, о которых уже сообщали в прошлый раз."""
+    if not os.path.exists(UNRESOLVED):
+        return []
+    try:
+        with io.open(UNRESOLVED, encoding="utf-8") as fh:
+            return json.load(fh)
+    except Exception:
+        return []
+
+
+def remember_unresolved(keys):
+    with io.open(UNRESOLVED, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(sorted(keys), ensure_ascii=False, indent=2) + "\n")
+
+
 def resolve_id(raw_name, known_ids):
     """Идентификатор источника по имени файла.
 
@@ -293,6 +315,12 @@ def sync_from_bucket(client):
 
     print("\nразобрано: %d" % done)
 
+    # Об объекте с непонятным именем сообщаем один раз — падением запуска,
+    # чтобы пришло письмо. Дальше он остается в бакете сколько угодно, но
+    # запуск больше не роняет: иначе о нем приходило бы письмо каждый час.
+    fresh = sorted(set(bad_names) - set(known_unresolved()))
+    remember_unresolved(bad_names)
+
     if bad_names:
         print("\nимя файла должно быть идентификатором источника: строчные латинские")
         print("буквы, цифры, дефис или подчеркивание, и расширение .pdf. Например")
@@ -304,7 +332,7 @@ def sync_from_bucket(client):
         print("Переименовать объект в R2 нельзя, такой операции там нет:")
         print("переименуйте файл у себя и залейте заново. Не разобраны:")
         for key in bad_names:
-            print("  - %s" % key)
+            print("  - %s%s" % (key, "" if key in fresh else "  (сообщалось раньше)"))
 
     if stray:
         print("\nэти объекты лежали не на своем месте и скопированы в raw/.")
@@ -318,7 +346,7 @@ def sync_from_bucket(client):
         for source_id in need_manifest:
             print("  - %s" % source_id)
 
-    return 1 if (bad_names or need_manifest) else 0
+    return 1 if (fresh or need_manifest) else 0
 
 
 def sync_from_disk(only, outline_only, skip_raw):

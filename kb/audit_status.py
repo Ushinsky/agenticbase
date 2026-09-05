@@ -153,6 +153,9 @@ def report_coverage(source):
         print("Не читалось — следующие этапы: %s" % show(left))
     else:
         print("Источник разобран целиком.")
+    note = source.get("covered_note")
+    if note:
+        print("Оговорка к учету: %s" % note)
 
 
 def cover(source_id, ranges):

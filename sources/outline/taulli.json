@@ -1,0 +1,728 @@
+{
+  "id": "taulli",
+  "title": "Tom Taulli, Gaurav Deshmukh. Building Generative AI Agents, 2025",
+  "pages": 278,
+  "sections": [
+    {
+      "title": "Table of Contents",
+      "page": 4,
+      "level": 0
+    },
+    {
+      "title": "About the Authors",
+      "page": 10,
+      "level": 0
+    },
+    {
+      "title": "Chapter 1: Introduction to AI Agents",
+      "page": 11,
+      "level": 0
+    },
+    {
+      "title": "What Are AI Agents?",
+      "page": 14,
+      "level": 1
+    },
+    {
+      "title": "Reflection",
+      "page": 15,
+      "level": 2
+    },
+    {
+      "title": "Tools",
+      "page": 16,
+      "level": 2
+    },
+    {
+      "title": "Memory",
+      "page": 17,
+      "level": 2
+    },
+    {
+      "title": "Planning",
+      "page": 19,
+      "level": 2
+    },
+    {
+      "title": "Multi-agent Collaboration",
+      "page": 20,
+      "level": 2
+    },
+    {
+      "title": "Autonomy",
+      "page": 21,
+      "level": 2
+    },
+    {
+      "title": "UI and UX",
+      "page": 22,
+      "level": 1
+    },
+    {
+      "title": "New Approaches to Development",
+      "page": 24,
+      "level": 1
+    },
+    {
+      "title": "Flavors of AI Agents",
+      "page": 26,
+      "level": 1
+    },
+    {
+      "title": "Brief History",
+      "page": 27,
+      "level": 1
+    },
+    {
+      "title": "LLMs, Copilots, and RPA",
+      "page": 29,
+      "level": 1
+    },
+    {
+      "title": "Use Cases",
+      "page": 31,
+      "level": 2
+    },
+    {
+      "title": "Sierra",
+      "page": 32,
+      "level": 1
+    },
+    {
+      "title": "Enso",
+      "page": 33,
+      "level": 1
+    },
+    {
+      "title": "Asana",
+      "page": 34,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 35,
+      "level": 1
+    },
+    {
+      "title": "Chapter 2: Generative AI Foundations",
+      "page": 37,
+      "level": 0
+    },
+    {
+      "title": "Pretrained Models",
+      "page": 38,
+      "level": 1
+    },
+    {
+      "title": "Transformer Models",
+      "page": 39,
+      "level": 1
+    },
+    {
+      "title": "Transfer Learning",
+      "page": 41,
+      "level": 1
+    },
+    {
+      "title": "Alignment in Language Models",
+      "page": 42,
+      "level": 1
+    },
+    {
+      "title": "Multimodal LLMs",
+      "page": 43,
+      "level": 1
+    },
+    {
+      "title": "Types of Models",
+      "page": 44,
+      "level": 1
+    },
+    {
+      "title": "Proprietary LLMs",
+      "page": 45,
+      "level": 1
+    },
+    {
+      "title": "Open Source LLMs and SLMs",
+      "page": 48,
+      "level": 1
+    },
+    {
+      "title": "Prompt Engineering",
+      "page": 51,
+      "level": 1
+    },
+    {
+      "title": "Be Clear",
+      "page": 52,
+      "level": 2
+    },
+    {
+      "title": "Details",
+      "page": 52,
+      "level": 2
+    },
+    {
+      "title": "Persona",
+      "page": 52,
+      "level": 2
+    },
+    {
+      "title": "Use Delimiters",
+      "page": 53,
+      "level": 2
+    },
+    {
+      "title": "Steps for a Task",
+      "page": 53,
+      "level": 2
+    },
+    {
+      "title": "Time to Think",
+      "page": 54,
+      "level": 1
+    },
+    {
+      "title": "Length of Output",
+      "page": 55,
+      "level": 2
+    },
+    {
+      "title": "Going Beyond the Transformer",
+      "page": 55,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 56,
+      "level": 1
+    },
+    {
+      "title": "Chapter 3: Types of Agents",
+      "page": 57,
+      "level": 0
+    },
+    {
+      "title": "Simple Reflex Agents",
+      "page": 58,
+      "level": 1
+    },
+    {
+      "title": "Model-Based Reflex Agents",
+      "page": 59,
+      "level": 1
+    },
+    {
+      "title": "Goal-Based Agents",
+      "page": 60,
+      "level": 1
+    },
+    {
+      "title": "Utility-Based Agents",
+      "page": 61,
+      "level": 1
+    },
+    {
+      "title": "Learning Agents",
+      "page": 62,
+      "level": 1
+    },
+    {
+      "title": "Hierarchical Agents",
+      "page": 63,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 65,
+      "level": 1
+    },
+    {
+      "title": "Chapter 4: OpenAI GPTs and the Assistants API",
+      "page": 66,
+      "level": 0
+    },
+    {
+      "title": "Registering for the OpenAI API Key",
+      "page": 66,
+      "level": 1
+    },
+    {
+      "title": "GPTs",
+      "page": 67,
+      "level": 2
+    },
+    {
+      "title": "Pricing and Tokens",
+      "page": 70,
+      "level": 2
+    },
+    {
+      "title": "OpenAI API",
+      "page": 73,
+      "level": 2
+    },
+    {
+      "title": "Assistants API",
+      "page": 75,
+      "level": 2
+    },
+    {
+      "title": "Playground",
+      "page": 77,
+      "level": 2
+    },
+    {
+      "title": "Assistants API",
+      "page": 81,
+      "level": 2
+    },
+    {
+      "title": "Recent Advancements",
+      "page": 85,
+      "level": 2
+    },
+    {
+      "title": "Conclusion",
+      "page": 88,
+      "level": 2
+    },
+    {
+      "title": "Chapter 5: Developing Agents",
+      "page": 89,
+      "level": 0
+    },
+    {
+      "title": "Jupyter Notebook, VS Code, and Google Colab",
+      "page": 90,
+      "level": 1
+    },
+    {
+      "title": "Jupyter Notebook",
+      "page": 90,
+      "level": 2
+    },
+    {
+      "title": "Visual Studio Code (VS Code)",
+      "page": 90,
+      "level": 2
+    },
+    {
+      "title": "Google Colab",
+      "page": 91,
+      "level": 2
+    },
+    {
+      "title": "How to Use Jupyter Notebooks",
+      "page": 91,
+      "level": 1
+    },
+    {
+      "title": "Google Colab",
+      "page": 94,
+      "level": 1
+    },
+    {
+      "title": "Streamlit, Gradio, and Jupyter Widgets",
+      "page": 97,
+      "level": 1
+    },
+    {
+      "title": "Hugging Face",
+      "page": 98,
+      "level": 1
+    },
+    {
+      "title": "Languages",
+      "page": 100,
+      "level": 1
+    },
+    {
+      "title": "Using LLMs (Large Language Models)",
+      "page": 101,
+      "level": 1
+    },
+    {
+      "title": "Using an API from an LLM Provider",
+      "page": 101,
+      "level": 2
+    },
+    {
+      "title": "Using a Service like Ollama",
+      "page": 102,
+      "level": 2
+    },
+    {
+      "title": "Using a Cloud Service like Azure, Google Cloud, or AWS",
+      "page": 103,
+      "level": 2
+    },
+    {
+      "title": "Setting Up and Using Ollama",
+      "page": 104,
+      "level": 1
+    },
+    {
+      "title": "Using Ollama with Google Colab",
+      "page": 105,
+      "level": 1
+    },
+    {
+      "title": "Customizing LLMs",
+      "page": 106,
+      "level": 1
+    },
+    {
+      "title": "Fine-Tuning",
+      "page": 106,
+      "level": 2
+    },
+    {
+      "title": "Retrieval-Augmented Generation (RAG)",
+      "page": 108,
+      "level": 2
+    },
+    {
+      "title": "Conclusion",
+      "page": 109,
+      "level": 1
+    },
+    {
+      "title": "Chapter 6: CrewAI",
+      "page": 110,
+      "level": 0
+    },
+    {
+      "title": "The Basics",
+      "page": 111,
+      "level": 1
+    },
+    {
+      "title": "Agents",
+      "page": 111,
+      "level": 1
+    },
+    {
+      "title": "Tasks",
+      "page": 114,
+      "level": 1
+    },
+    {
+      "title": "Tools",
+      "page": 116,
+      "level": 1
+    },
+    {
+      "title": "Crews",
+      "page": 118,
+      "level": 1
+    },
+    {
+      "title": "Processes",
+      "page": 119,
+      "level": 1
+    },
+    {
+      "title": "Memory",
+      "page": 120,
+      "level": 1
+    },
+    {
+      "title": "Financial Planning Agent",
+      "page": 122,
+      "level": 1
+    },
+    {
+      "title": "Product Launch Orchestrator",
+      "page": 130,
+      "level": 1
+    },
+    {
+      "title": "Customer Call Center Processing",
+      "page": 137,
+      "level": 1
+    },
+    {
+      "title": "Retrieval-Augmented Generation (RAG)",
+      "page": 148,
+      "level": 1
+    },
+    {
+      "title": "Connecting LLMs",
+      "page": 150,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 152,
+      "level": 1
+    },
+    {
+      "title": "Chapter 7: AutoGen",
+      "page": 153,
+      "level": 0
+    },
+    {
+      "title": "ConversableAgent",
+      "page": 154,
+      "level": 1
+    },
+    {
+      "title": "Reflection Agent",
+      "page": 156,
+      "level": 1
+    },
+    {
+      "title": "Tool Use",
+      "page": 163,
+      "level": 1
+    },
+    {
+      "title": "Group Chat",
+      "page": 168,
+      "level": 1
+    },
+    {
+      "title": "Web Search Agent",
+      "page": 171,
+      "level": 1
+    },
+    {
+      "title": "Retrieval-Augmented Generation (RAG)",
+      "page": 173,
+      "level": 1
+    },
+    {
+      "title": "Using Ollama",
+      "page": 176,
+      "level": 1
+    },
+    {
+      "title": "AutoGen Studio",
+      "page": 177,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 183,
+      "level": 1
+    },
+    {
+      "title": "Chapter 8: LangChain",
+      "page": 184,
+      "level": 0
+    },
+    {
+      "title": "Background",
+      "page": 185,
+      "level": 1
+    },
+    {
+      "title": "The Components",
+      "page": 186,
+      "level": 1
+    },
+    {
+      "title": "Models",
+      "page": 187,
+      "level": 1
+    },
+    {
+      "title": "Prompt Templates",
+      "page": 189,
+      "level": 1
+    },
+    {
+      "title": "Output Parsers",
+      "page": 190,
+      "level": 1
+    },
+    {
+      "title": "Document Loaders",
+      "page": 193,
+      "level": 1
+    },
+    {
+      "title": "Text Splitters",
+      "page": 195,
+      "level": 1
+    },
+    {
+      "title": "Memory",
+      "page": 198,
+      "level": 1
+    },
+    {
+      "title": "Key Concepts of LangChain Agents",
+      "page": 203,
+      "level": 1
+    },
+    {
+      "title": "Types of Agents",
+      "page": 204,
+      "level": 1
+    },
+    {
+      "title": "Tool Calling Agent",
+      "page": 204,
+      "level": 2
+    },
+    {
+      "title": "XML Agent",
+      "page": 205,
+      "level": 2
+    },
+    {
+      "title": "JSON Chat Agent",
+      "page": 205,
+      "level": 2
+    },
+    {
+      "title": "Structured Chat Agent",
+      "page": 205,
+      "level": 2
+    },
+    {
+      "title": "Self-Ask with Search Agent",
+      "page": 206,
+      "level": 2
+    },
+    {
+      "title": "ReAct Agent",
+      "page": 206,
+      "level": 1
+    },
+    {
+      "title": "Agent Program",
+      "page": 207,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 213,
+      "level": 1
+    },
+    {
+      "title": "Chapter 9: Introduction to LangGraph",
+      "page": 214,
+      "level": 0
+    },
+    {
+      "title": "Benefits of Combining LangChain with LangGraph",
+      "page": 215,
+      "level": 1
+    },
+    {
+      "title": "Pros and Cons of LangGraph",
+      "page": 217,
+      "level": 1
+    },
+    {
+      "title": "Graphs",
+      "page": 219,
+      "level": 2
+    },
+    {
+      "title": "State",
+      "page": 220,
+      "level": 2
+    },
+    {
+      "title": "Nodes",
+      "page": 221,
+      "level": 2
+    },
+    {
+      "title": "Edges",
+      "page": 223,
+      "level": 2
+    },
+    {
+      "title": "Reflection Agent",
+      "page": 224,
+      "level": 2
+    },
+    {
+      "title": "Persistence",
+      "page": 230,
+      "level": 2
+    },
+    {
+      "title": "LangSmith",
+      "page": 235,
+      "level": 2
+    },
+    {
+      "title": "Assistant-UI",
+      "page": 237,
+      "level": 2
+    },
+    {
+      "title": "LangGraph Studio",
+      "page": 239,
+      "level": 2
+    },
+    {
+      "title": "Conclusion",
+      "page": 240,
+      "level": 2
+    },
+    {
+      "title": "Chapter 10: Haystack",
+      "page": 241,
+      "level": 0
+    },
+    {
+      "title": "Haystack Program",
+      "page": 242,
+      "level": 1
+    },
+    {
+      "title": "Haystack Agent with Function Calling",
+      "page": 246,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 253,
+      "level": 1
+    },
+    {
+      "title": "Chapter 11: Takeaways",
+      "page": 254,
+      "level": 0
+    },
+    {
+      "title": "Rethinking Software",
+      "page": 256,
+      "level": 1
+    },
+    {
+      "title": "The Challenges",
+      "page": 258,
+      "level": 1
+    },
+    {
+      "title": "AI Agent Frameworks",
+      "page": 259,
+      "level": 1
+    },
+    {
+      "title": "Conclusion",
+      "page": 263,
+      "level": 1
+    },
+    {
+      "title": "Glossary",
+      "page": 264,
+      "level": 0
+    },
+    {
+      "title": "Index",
+      "page": 270,
+      "level": 0
+    }
+  ],
+  "etag": "4e3e9a5fc56f8274bcc0d53d5d8cd80d"
+}

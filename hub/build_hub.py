@@ -1,6 +1,6 @@
 """Сборка каталога агентов из hub/agents.json.
 
-agents.json — источник правды, как kb/manifest.json и news/feed.json
+agents.json — источник правды, как kb/manifest.json и news/digest.json
 для своих разделов. hub/index.html не правится руками.
 
 Как в новостях, здесь разрешены имена продуктов и ссылки — раздел

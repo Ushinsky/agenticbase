@@ -262,3 +262,59 @@
   .digest-grid { grid-template-columns: 1fr; }
   .digest-mascot { width: 12.6rem; }
 }
+
+/* ------------------------------------------------------------
+   Выводы, ожидаемый результат и ограничения — поля, которые
+   появились вместе с новым конвейером Ленты. У архивных выпусков
+   их нет, разметка тогда просто не выводится.
+
+   Блоки различаются подписью, а не цветной полосой сбоку:
+   вертикальные акценты у карточек в этом проекте не используются.
+   ------------------------------------------------------------ */
+
+.digest-takeaways {
+  margin: var(--sp-3) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.digest-takeaways li {
+  position: relative;
+  padding-left: 1.05rem;
+  margin: 0 0 0.3rem;
+}
+
+.digest-takeaways li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.digest-note {
+  margin: var(--sp-2) 0 0;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.digest-note span {
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.digest-limits span { color: var(--text-muted); }

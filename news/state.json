@@ -1,11 +1,38 @@
 {
   "_comment": "Служебная память Ленты. Коммитится вместе с выпуском, поэтому у нее есть история, ее можно посмотреть глазами и откатить. seen_* — что уже публиковалось, rejected — что забраковано вручную и больше не должно предлагаться, channel_last_featured — когда источник последний раз был в выпуске (кулдаун), carryover — свежие материалы, отложенные до следующего выпуска, пока не набрались просмотры.",
-
   "updated": "2026-09-08",
-
-  "seen_video_ids": [],
-  "seen_urls": [],
-
+  "seen_video_ids": [
+    "KcshxSB3sNY",
+    "0ZfHnZf_VMc",
+    "S-sYlFiGFv8",
+    "uQwJb2wefoA",
+    "n9xKblqyQ28",
+    "z1oVsxR-yXQ",
+    "ZZpYpLgAbEQ",
+    "s2u6ImvZwfs",
+    "oe0KXL7nPds",
+    "p5-hHg2YRTA"
+  ],
+  "seen_urls": [
+    "https://youtube.com/watch?v=KcshxSB3sNY",
+    "https://youtube.com/watch?v=0ZfHnZf_VMc",
+    "https://youtube.com/watch?v=S-sYlFiGFv8",
+    "https://youtube.com/watch?v=uQwJb2wefoA",
+    "https://youtube.com/watch?v=n9xKblqyQ28",
+    "https://youtube.com/watch?v=z1oVsxR-yXQ",
+    "https://youtube.com/watch?v=ZZpYpLgAbEQ",
+    "https://youtube.com/watch?v=s2u6ImvZwfs",
+    "https://youtube.com/watch?v=oe0KXL7nPds",
+    "https://youtube.com/watch?v=p5-hHg2YRTA",
+    "https://armature.tech/blog/which-tools-coding-agents-install",
+    "https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment",
+    "https://agentconnect.md/blog/grep-beat-lsp-harness",
+    "http://arxiv.org/abs/2609.04711v1",
+    "https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos",
+    "https://infoq.com/news/2026/09/gitlab-ai-sandbox-access",
+    "http://arxiv.org/abs/2609.05339v1",
+    "http://arxiv.org/abs/2609.04915v1"
+  ],
   "rejected": [
     {
       "url": "https://youtube.com/watch?v=yFvl2x8_9gI",
@@ -26,7 +53,19 @@
       "причина": "пересказ из вторых рук: InfoQ излагает доклад Figma, а не Figma рассказывает сама. ПРИЧИНА ПРЕДПОЛОЖЕНА агентом, пользователь ее не называл — при случае уточнить"
     }
   ],
-
-  "channel_last_featured": {},
+  "channel_last_featured": {
+    "UC6YYHJzM6PhZ2Yey9BQiUaw": "2026-09-08T17:05:02.698683+00:00",
+    "UC71msi5AXOXZWCpzPr9zuZQ": "2026-09-08T17:05:02.698683+00:00",
+    "UCV03SRZXJEz-hchIAogeJOg": "2026-09-08T17:05:02.698683+00:00",
+    "UCdXorgCT87YlFRN9n8oJ7_A": "2026-09-08T17:05:02.698683+00:00",
+    "UCcefcZRL2oaA_uBNeo5UOWg": "2026-09-08T17:05:02.698683+00:00",
+    "UCWWO3yt3b5R_LrWHReU0b-g": "2026-09-08T17:05:02.698683+00:00",
+    "UCTLyZbX-h91QEkgz3_Tspwg": "2026-09-08T17:05:02.698683+00:00",
+    "UCvr1pdvR6vDzlCB064RTA-w": "2026-09-08T17:05:02.698683+00:00",
+    "UCmeU2DYiVy80wMBGZzEWnbw": "2026-09-08T17:05:02.698683+00:00",
+    "UCIQzTfzErmrixae2oFqRxyg": "2026-09-08T17:05:02.698683+00:00",
+    "Simon Willison": "2026-09-08T17:05:02.698683+00:00",
+    "InfoQ AI/ML": "2026-09-08T17:05:02.698683+00:00"
+  },
   "carryover": []
 }

@@ -38,10 +38,13 @@ jobs:
             --exclude='*.pdf' \
             --exclude='site' \
             --exclude='*.py' \
+            --exclude='requirements.txt' \
             --exclude='__pycache__' \
             --exclude='kb/manifest.json' \
-            --exclude='news/feed.json' \
             --exclude='news/digest.json' \
+            --exclude='news/state.json' \
+            --exclude='news/sources.json' \
+            --exclude='news/taste.md' \
             --exclude='hub/agents.json' \
             . site/
 

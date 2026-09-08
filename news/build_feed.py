@@ -96,6 +96,25 @@ def load_digest():
         return json.load(fh)
 
 
+def render_details(item):
+    """Выводы, ожидаемый результат и ограничения.
+
+    Через .get() с пустыми значениями по умолчанию: у архивных выпусков этих
+    полей нет, и они должны продолжать рисоваться как раньше, а не падать.
+    """
+    parts = []
+    takeaways = item.get("takeaways") or []
+    if takeaways:
+        points = "".join("<li>%s</li>" % esc(point) for point in takeaways)
+        parts.append("<ul class=\"digest-takeaways\">%s</ul>" % points)
+    if item.get("expected"):
+        parts.append("<p class=\"digest-note\"><span>Что даст</span> %s</p>" % esc(item["expected"]))
+    if item.get("limits"):
+        parts.append("<p class=\"digest-note digest-limits\"><span>Где не сработает</span> %s</p>"
+                     % esc(item["limits"]))
+    return "".join(parts)
+
+
 def render_video_card(video):
     thumb = video.get("thumbnail_url")
     image = f"<img src='{esc(thumb)}' alt=''>" if thumb else ""
@@ -109,6 +128,7 @@ def render_video_card(video):
         f"<div class=\"digest-card-body\">"
         f"<h3><a href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\">{esc(video['title'])}</a></h3>"
         f"<p class=\"digest-summary\">{esc(video['summary_ru'])}</p>"
+        f"{render_details(video)}"
         f"</div></article>"
     )
 
@@ -117,10 +137,11 @@ def render_web_item(article):
     return (
         "<li><p class=\"digest-meta\">%s &middot; %s &middot; %s &middot; <span class=\"digest-score\">%s/100</span></p>"
         "<h3><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s</a></h3>"
-        "<p class=\"digest-summary\">%s</p></li>"
+        "<p class=\"digest-summary\">%s</p>%s</li>"
     ) % (
         esc(article["source_type"]), esc(domain_of(article["url"])), format_date(article["published_at"]),
         article["score"], esc(article["url"]), esc(article["title"]), esc(article["summary_ru"]),
+        render_details(article),
     )
 
 

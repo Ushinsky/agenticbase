@@ -1,6 +1,6 @@
 """Сборка портальной главной страницы (корневой index.html).
 
-Собирает превью из двух разделов: kb/manifest.json, news/feed.json.
+Собирает превью из двух разделов: kb/manifest.json, news/digest.json.
 Сама ничего не решает — только показывает, что уже собрано их
 собственными скриптами. Запускать после них:
 
@@ -44,12 +44,16 @@ ICON_NEWS = '<img src="assets/brand/icon-news.png" alt="">'
 
 def build():
     manifest = load("kb/manifest.json") or {"nodes": [], "course": {"title": "Запуск ИИ-агентов"}, "modules": []}
-    feed = load("news/feed.json") or {"items": []}
+    # Источник правды для Ленты — news/digest.json, тот же, из которого
+    # собираются сами страницы раздела. Прежний news/feed.json жил параллельно
+    # и разошелся с разделом: на главной висело одно, в Ленте другое.
+    digest = load("news/digest.json") or {"current": {"videos": [], "web": []}}
 
     nodes = manifest["nodes"]
     modules = manifest.get("modules", [])
     lesson_count = sum(1 for n in nodes if n.get("type") == "lesson")
-    feed_items = feed.get("items", [])
+    current = digest.get("current") or {"videos": [], "web": []}
+    feed_items = list(current.get("videos", [])) + list(current.get("web", []))
 
     out = []
     add = out.append

@@ -15,7 +15,7 @@ import sys
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEXT_EXT = (".html", ".md", ".py", ".json", ".css", ".js")
-SKIP_DIRS = {".git", "__pycache__", "node_modules"}
+SKIP_DIRS = {".git", "__pycache__", "node_modules", ".cache"}
 
 # Страницы, которые видит ученик, — источники там не называются никогда.
 PUBLIC_DIRS = ("lessons", "articles", "reference")

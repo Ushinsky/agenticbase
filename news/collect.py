@@ -214,6 +214,24 @@ def candidate(kind, source, title, url, published, **extra):
 # YouTube
 # --------------------------------------------------------------------------
 
+# Причины 403, означающие «на сегодня хватит», а не «сломано».
+QUOTA_REASONS = {"quotaExceeded", "dailyLimitExceeded", "rateLimitExceeded", "userRateLimitExceeded"}
+
+
+def youtube_error_reason(error):
+    """Достаёт машинную причину отказа из тела ответа Google.
+
+    Google кладёт в 403 поле reason: quotaExceeded, accessNotConfigured,
+    ipRefererBlocked и так далее. Различать их обязательно — иначе невключённый
+    в проекте API выглядит как исчерпанный лимит, и отчёт врёт.
+    """
+    try:
+        body = json.loads(error.read().decode("utf-8"))
+        return body.get("error", {}).get("errors", [{}])[0].get("reason", "")
+    except Exception:  # noqa: BLE001 — диагностика не должна ронять прогон
+        return ""
+
+
 def youtube_search(api_key, config, quota, since):
     """Поиск по матрице запросов. Возвращает список id роликов."""
     video_ids = []
@@ -236,10 +254,17 @@ def youtube_search(api_key, config, quota, since):
         try:
             data = fetch_json("https://www.googleapis.com/youtube/v3/search?" + params)
         except urllib.error.HTTPError as error:
-            # 403 обычно означает исчерпанную квоту — дальше идти бессмысленно
-            if error.code == 403:
+            # 403 у YouTube означает разное. Кончилась квота — молча
+            # останавливаемся, это штатный конец рабочего дня. Всё остальное
+            # (API не включён в проекте, ключ ограничен по адресу) — настоящая
+            # поломка, и она должна попасть в отчёт своими словами, а не
+            # притвориться исчерпанным лимитом.
+            reason = youtube_error_reason(error) if error.code == 403 else ""
+            if reason in QUOTA_REASONS and reason:
                 quota.spend(quota.limit)
                 break
+            if reason:
+                raise RuntimeError("YouTube отказал, причина «%s» (запрос: %s)" % (reason, query))
             raise
         quota.spend(QUOTA_SEARCH)
         for entry in data.get("items", []):
@@ -566,6 +591,8 @@ def main():
             if video_ids:
                 gather("youtube", youtube_enrich, api_key, video_ids, quota,
                        note="%d id из поиска" % len(video_ids))
+            elif video_ids is not None:
+                report.ok("youtube", 0, "поиск не вернул ни одного ролика")
 
     # --- Ленты -------------------------------------------------------------
     if wanted("feeds"):

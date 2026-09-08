@@ -63,11 +63,16 @@ def check(item, state, now):
     """
     seen_ids = set(state.get("seen_video_ids", []))
     seen_urls = set(state.get("seen_urls", []))
+    rejected = {entry["url"] for entry in state.get("rejected", []) if entry.get("url")}
 
     if item.get("video_id") and item["video_id"] in seen_ids:
         return "уже публиковалось"
     if item.get("url_key") in seen_urls:
         return "уже публиковалось"
+    if item.get("url_key") in rejected:
+        # Забраковано вручную. Отсекаем здесь, на самом дешевом ярусе, чтобы
+        # не платить за классификацию и оценку того, что уже решено.
+        return "забраковано вручную"
     if not item.get("title"):
         return "нет заголовка"
     if not item.get("url"):

@@ -137,11 +137,17 @@ def select(items, state, want_videos, want_web):
     chosen = {"video": [], "web": []}
     used_owners, skipped = set(), []
     aggregator_taken = defaultdict(int)
+    rejected = {entry["url"] for entry in state.get("rejected", []) if entry.get("url")}
 
     for item in ranked:
         kind = item["kind"]
         want = want_videos if kind == "video" else want_web
         if len(chosen[kind]) >= want:
+            continue
+        if item.get("url_key") in rejected:
+            # Продублировано с filter.py намеренно: при повторном прогоне отбора
+            # на уже собранных данных первый ярус не выполняется заново.
+            skipped.append((item, "забраковано вручную"))
             continue
         if item["оценка"]["качество"] < MIN_SCORE:
             skipped.append((item, "балл ниже порога %d" % MIN_SCORE))

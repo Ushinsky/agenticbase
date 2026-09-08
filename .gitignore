@@ -9,3 +9,7 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# Кэш сборщика Ленты — промежуточные кандидаты, в репозитории не нужны
+news/.cache/
+artifacts/

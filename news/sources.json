@@ -1,0 +1,107 @@
+{
+  "_comment": "Реестр источников Ленты. Правится руками. Каждый источник обрабатывается отдельно: падение одного не мешает остальным.",
+
+  "window_days": 8,
+
+  "youtube": {
+    "enabled": true,
+    "search_query_limit": 40,
+    "results_per_query": 25,
+    "queries": [
+      "AI agent tutorial",
+      "build AI agent from scratch",
+      "MCP server tutorial",
+      "model context protocol",
+      "LangGraph tutorial",
+      "LangGraph multi agent",
+      "CrewAI tutorial",
+      "AutoGen agents",
+      "OpenAI Agents SDK",
+      "Claude Code agent",
+      "agentic workflow build",
+      "AI agent memory",
+      "agent context engineering",
+      "AI agent evaluation",
+      "agent observability tracing",
+      "LLM agent production",
+      "AI agent deployment",
+      "multi agent system LLM",
+      "agent tool calling",
+      "RAG agent tutorial",
+      "n8n AI agent",
+      "browser use agent",
+      "computer use agent",
+      "prompt injection agent security",
+      "AI agent cost optimization",
+      "vector database agent",
+      "A2A protocol agents",
+      "agent orchestration framework",
+      "fine tuning agent tool use",
+      "voice AI agent build",
+      "ИИ агент разбор",
+      "AI агент туториал",
+      "LLM агент практика",
+      "MCP сервер разбор",
+      "мультиагентная система"
+    ]
+  },
+
+  "_feeds_comment": "Проверено 2026-09-08. У Anthropic, LangChain и LlamaIndex публичного RSS нет — отдают HTML на всех известных путях. Их материалы стабильно всплывают через Simon Willison, Hacker News и Reddit, поэтому отдельные ленты не нужны.",
+
+  "feeds": [
+    { "name": "OpenAI News", "url": "https://openai.com/news/rss.xml" },
+    { "name": "Google DeepMind", "url": "https://deepmind.google/blog/rss.xml" },
+    { "name": "Google AI Blog", "url": "https://blog.google/technology/ai/rss/" },
+    { "name": "Lilian Weng", "url": "https://lilianweng.github.io/index.xml" },
+    { "name": "Meta Engineering", "url": "https://engineering.fb.com/feed/" },
+    { "name": "Stripe Blog", "url": "https://stripe.com/blog/feed.rss" },
+    { "name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/" },
+    { "name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml" },
+    { "name": "Chip Huyen", "url": "https://huyenchip.com/feed.xml" },
+    { "name": "Eugene Yan", "url": "https://eugeneyan.com/rss/" },
+    { "name": "Latent Space", "url": "https://www.latent.space/feed" },
+    { "name": "Interconnects", "url": "https://www.interconnects.ai/feed" },
+    { "name": "AWS Machine Learning", "url": "https://aws.amazon.com/blogs/machine-learning/feed/" },
+    { "name": "Cloudflare Blog", "url": "https://blog.cloudflare.com/rss/" },
+    { "name": "InfoQ AI/ML", "url": "https://feed.infoq.com/ai-ml-data-eng/" },
+    { "name": "Martin Fowler", "url": "https://martinfowler.com/feed.atom" },
+    { "name": "GitHub Engineering", "url": "https://github.blog/engineering/feed/" },
+    { "name": "Vercel Blog", "url": "https://vercel.com/atom" },
+    { "name": "Pragmatic Engineer", "url": "https://newsletter.pragmaticengineer.com/feed" },
+    { "name": "Microsoft Research", "url": "https://www.microsoft.com/en-us/research/feed/" },
+    { "name": "Netflix Tech Blog", "url": "https://netflixtechblog.com/feed" }
+  ],
+
+  "feed_keywords": [
+    "agent", "agentic", "mcp", "model context protocol", "langgraph", "langchain",
+    "crewai", "autogen", "tool use", "tool calling", "multi-agent", "multiagent",
+    "orchestration", "rag", "llm app", "copilot", "a2a", "computer use", "browser use"
+  ],
+
+  "hackernews": {
+    "enabled": true,
+    "min_points": 30,
+    "queries": ["AI agent", "agentic", "MCP protocol", "LLM agent", "multi-agent"]
+  },
+
+  "arxiv": {
+    "_comment": "arXiv разбирает булеву логику вольно, скобки и AND между группами игнорирует — поэтому запрос к API широкий по категориям, а отбор по теме делает keywords уже на нашей стороне.",
+    "enabled": true,
+    "max_results": 300,
+    "search": "cat:cs.MA OR cat:cs.AI OR cat:cs.CL OR cat:cs.SE",
+    "keywords": [
+      "llm agent", "language model agent", "agentic", "tool-calling", "tool calling",
+      "tool use", "agent memory", "multi-agent llm", "llm-based agent", "autonomous agent",
+      "gui agent", "computer-use agent", "coding agent", "retrieval-augmented",
+      "model context protocol", "agent benchmark", "agent evaluation"
+    ]
+  },
+
+  "reddit": {
+    "_comment": "JSON-эндпойнт Reddit отдаёт 403 любому серверному клиенту, RSS работает. Из RSS не приходит счёт голосов, поэтому порога по очкам нет — выдача /top за неделю уже отсортирована по популярности, берём первые limit записей.",
+    "enabled": true,
+    "period": "week",
+    "limit": 25,
+    "subreddits": ["AI_Agents", "LocalLLaMA", "LangChain", "MachineLearning"]
+  }
+}

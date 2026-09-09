@@ -71,32 +71,18 @@
   align-self: flex-start;
 }
 
-/* ---------- Тулбар фильтров ---------- */
+/* ---------- Заголовки секций выпуска ---------- */
 
-.digest-toolbar {
-  display: flex;
-  gap: var(--sp-5);
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0 0 var(--sp-5);
+.digest-section {
   font-family: var(--sans);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink-2);
-}
-
-.digest-toolbar select {
-  margin-left: 0.4rem;
-  font: inherit;
-  padding: 0.3rem 0.55rem;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--text);
-}
-
-.digest-toolbar select:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  margin: 0 0 var(--sp-4);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--rule);
 }
 
 /* ---------- Сетка видео ---------- */
@@ -106,7 +92,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-5);
   margin: 0 0 var(--sp-8);
-  align-items: stretch;
+  /* Карточки выравниваются по высоте внутри ряда (height: 100% ниже) —
+     для сетки с картинками это правильно, рваные низы смотрятся неряшливо.
+     Прежняя проблема была не в выравнивании, а в объеме: на карточке лежал
+     весь разбор, и она вырастала до 856 пикселей. Разбор убран — осталось
+     около пятисот. */
 }
 
 .digest-card {
@@ -135,9 +125,10 @@
 .digest-card-body h3 {
   margin: 0 0 var(--sp-2);
   font-family: var(--sans);
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
 }
 
 .digest-card-body h3 a { border-bottom-color: transparent; }
@@ -162,26 +153,75 @@
   text-align: center;
 }
 
-/* ---------- Веб-материалы ---------- */
+/* ---------- Статьи недели ----------
 
-.digest-web-list {
-  list-style: decimal;
-  padding-left: 1.4rem;
-  margin: 0;
-  display: grid;
-  gap: var(--sp-5);
-  font-family: var(--sans);
+   Главная статья набирается серифом — тем же, которым набраны уроки. Это
+   единственное место раздела, где сетка ломается намеренно: порядок статей
+   задает оценка по рубрике, и первая действительно первая. Сериф связывает
+   статьи с чтением, а гротеск оставляет видео интерфейсу.
+
+   Нумерации нет: она обещала бы рейтинг, которого выпуск не заявляет.
+
+   Селекторы заголовков намеренно идут от .digest-issue-articles: в
+   lesson.css есть .sheet.wide h3, и правило с одним классом ему проигрывает
+   по специфичности. Карточки видео работают только потому, что
+   .digest-card-body h3 весит столько же и выигрывает порядком подключения —
+   на такое совпадение лучше не опираться.
+   ------------------------------------------------------------------- */
+
+.digest-lead {
+  margin: 0 0 var(--sp-6);
+  padding-bottom: var(--sp-6);
+  border-bottom: 1px solid var(--rule);
 }
 
-.digest-web-list li {
+.digest-issue-articles .digest-lead h3 {
+  margin: 0 0 var(--sp-3);
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  max-width: 22em;
+}
+
+.digest-issue-articles .digest-lead h3 a { border-bottom-color: transparent; }
+.digest-issue-articles .digest-lead h3 a:hover { border-bottom-color: currentColor; background: none; }
+
+.digest-lead-summary {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 42em;
+}
+
+.digest-articles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-5) var(--sp-7);
+  align-items: start;
+}
+
+.digest-article {
   padding-bottom: var(--sp-5);
   border-bottom: 1px solid var(--rule-soft);
 }
 
-.digest-web-list h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1rem;
+.digest-issue-articles .digest-article h3 {
+  margin: 0 0 0.4rem;
+  font-family: var(--sans);
+  font-size: 1.02rem;
   font-weight: 700;
+  line-height: 1.32;
+}
+
+.digest-issue-articles .digest-article h3 a { border-bottom-color: transparent; }
+.digest-issue-articles .digest-article h3 a:hover { border-bottom-color: currentColor; background: none; }
+
+@media (max-width: 720px) {
+  .digest-articles { grid-template-columns: 1fr; }
 }
 
 .digest-meta {
@@ -190,7 +230,6 @@
   color: var(--ink-2);
 }
 
-.digest-score { font-weight: 700; color: var(--accent); }
 
 /* ---------- Архив ---------- */
 
@@ -263,58 +302,3 @@
   .digest-mascot { width: 12.6rem; }
 }
 
-/* ------------------------------------------------------------
-   Выводы, ожидаемый результат и ограничения — поля, которые
-   появились вместе с новым конвейером Ленты. У архивных выпусков
-   их нет, разметка тогда просто не выводится.
-
-   Блоки различаются подписью, а не цветной полосой сбоку:
-   вертикальные акценты у карточек в этом проекте не используются.
-   ------------------------------------------------------------ */
-
-.digest-takeaways {
-  margin: var(--sp-3) 0 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--sans);
-  font-size: 0.84rem;
-  line-height: 1.5;
-  color: var(--ink-2);
-}
-
-.digest-takeaways li {
-  position: relative;
-  padding-left: 1.05rem;
-  margin: 0 0 0.3rem;
-}
-
-.digest-takeaways li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 0.32rem;
-  height: 0.32rem;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.digest-note {
-  margin: var(--sp-2) 0 0;
-  font-family: var(--sans);
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: var(--ink-2);
-}
-
-.digest-note span {
-  display: inline-block;
-  margin-right: 0.4rem;
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.digest-limits span { color: var(--text-muted); }

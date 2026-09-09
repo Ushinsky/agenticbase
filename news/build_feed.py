@@ -1,9 +1,9 @@
 """Сборка Ленты — еженедельного дайджеста ИИ-агентов.
 
-Источник данных — news/digest.json: снимок текущей и закрытых недель,
-экспортированный из отдельного локального проекта дайджеста (сам этот
-проект и его база данных в репозитории не хранятся, только снимок).
-Здесь только рендер — три вида страниц:
+Источник данных — news/digest.json, который собирает news/publish.py в конце
+конвейера (collect -> filter -> classify -> score -> write -> publish). Прежний
+внешний проект дайджеста, из которого снимок приходил раньше, больше не
+существует. Здесь только рендер — три вида страниц:
 
     news/index.html          — текущая (незакрытая) неделя
     news/archive/index.html  — архив закрытых недель по месяцам
@@ -25,7 +25,6 @@ import json
 import os
 import sys
 from datetime import datetime
-from urllib.parse import urlparse
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "kb"))
@@ -45,48 +44,8 @@ MONTHS_NOM = [
     "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь",
 ]
 
-# Оценщик дайджеста пишет content_type свободным текстом ("technical
-# webinar / AI infrastructure", "интервью/подкаст о ...") — не по
-# фиксированному словарю. Раскладываем по ключевым словам на несколько
-# стабильных категорий для фильтра вместо десятков почти дублирующихся
-# вариантов.
-TYPE_BUCKETS = [
-    ("tutorial", "Туториалы", ("tutorial", "how to", "how-to", "guide", "course", "webinar", "workshop", "educational", "explainer", "lecture", "обучающ", "гайд", "курс", "туториал")),
-    ("interview", "Интервью и подкасты", ("interview", "podcast", "talk", "discussion", "meetup", "presentation", "интервью", "подкаст", "беседа", "выступлен")),
-    ("analysis", "Обзоры и аналитика", ("review", "analysis", "commentary", "research", "study", "разбор", "обзор", "аналитик", "исследован")),
-    ("news", "Новости и бизнес", ("news", "business", "release", "launch", "announcement", "finance", "новост", "бизнес", "финанс", "релиз")),
-]
-LANGUAGE_OPTIONS = [
-    ("ru", "Русский"), ("en", "Английский"), ("de", "Немецкий"),
-    ("fr", "Французский"), ("es", "Испанский"), ("other", "Другие"),
-]
-
-
 def esc(value):
     return html.escape(str(value), quote=True)
-
-
-def type_bucket(content_type):
-    lowered = (content_type or "").lower()
-    for key, _label, keywords in TYPE_BUCKETS:
-        if any(keyword in lowered for keyword in keywords):
-            return key
-    return "other"
-
-
-def lang_bucket(language):
-    code = (language or "").split("-")[0].lower()
-    return code if code in {"ru", "en", "de", "fr", "es"} else "other"
-
-
-def format_date(iso_value):
-    dt = datetime.fromisoformat(iso_value)
-    return dt.date().isoformat()
-
-
-def domain_of(url):
-    netloc = urlparse(url).netloc
-    return netloc[4:] if netloc.startswith("www.") else netloc
 
 
 def load_digest():
@@ -96,117 +55,74 @@ def load_digest():
         return json.load(fh)
 
 
-def render_details(item):
-    """Выводы, ожидаемый результат и ограничения.
-
-    Через .get() с пустыми значениями по умолчанию: у архивных выпусков этих
-    полей нет, и они должны продолжать рисоваться как раньше, а не падать.
-    """
-    parts = []
-    takeaways = item.get("takeaways") or []
-    if takeaways:
-        points = "".join("<li>%s</li>" % esc(point) for point in takeaways)
-        parts.append("<ul class=\"digest-takeaways\">%s</ul>" % points)
-    if item.get("expected"):
-        parts.append("<p class=\"digest-note\"><span>Что даст</span> %s</p>" % esc(item["expected"]))
-    if item.get("limits"):
-        parts.append("<p class=\"digest-note digest-limits\"><span>Где не сработает</span> %s</p>"
-                     % esc(item["limits"]))
-    return "".join(parts)
-
-
 def render_video_card(video):
+    """Карточка ролика: превью, заголовок, анонс. Больше ничего.
+
+    Выводы, ожидаемый результат и ограничения по-прежнему лежат в digest.json,
+    но на странице не показываются: карточка — это анонс, по которому решают,
+    открывать или нет, а не сам разбор. Когда все это выводилось разом, карточка
+    вырастала до 856 пикселей, а выпуск — до восьми тысяч.
+    """
     thumb = video.get("thumbnail_url")
-    image = f"<img src='{esc(thumb)}' alt=''>" if thumb else ""
-    date = format_date(video["published_at"])
-    views = video.get("view_count") or 0
+    image = f"<img src='{esc(thumb)}' alt='' loading='lazy'>" if thumb else ""
     url = "https://www.youtube.com/watch?v=%s" % esc(video["video_id"])
     return (
-        f"<article class=\"card digest-card\" data-type=\"{type_bucket(video['content_type'])}\" "
-        f"data-lang=\"{lang_bucket(video.get('language'))}\" data-score=\"{video['score']}\" "
-        f"data-views=\"{views}\" data-date=\"{date}\">{image}"
+        f"<article class=\"card digest-card\">{image}"
         f"<div class=\"digest-card-body\">"
         f"<h3><a href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\">{esc(video['title'])}</a></h3>"
         f"<p class=\"digest-summary\">{esc(video['summary_ru'])}</p>"
-        f"{render_details(video)}"
         f"</div></article>"
     )
 
 
 def render_web_item(article):
     return (
-        "<li><p class=\"digest-meta\">%s &middot; %s &middot; %s &middot; <span class=\"digest-score\">%s/100</span></p>"
+        "<article class=\"digest-article\">"
         "<h3><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s</a></h3>"
-        "<p class=\"digest-summary\">%s</p>%s</li>"
-    ) % (
-        esc(article["source_type"]), esc(domain_of(article["url"])), format_date(article["published_at"]),
-        article["score"], esc(article["url"]), esc(article["title"]), esc(article["summary_ru"]),
-        render_details(article),
-    )
+        "<p class=\"digest-summary\">%s</p></article>"
+    ) % (esc(article["url"]), esc(article["title"]), esc(article["summary_ru"]))
+
+
+def render_lead_article(article):
+    """Главная статья выпуска — единственное место, где ломается ровная сетка.
+
+    Набирается серифом, тем же, которым набраны уроки: это связывает статьи с
+    чтением, а видео оставляет интерфейсу. Порядок статей задает конвейер
+    оценкой по рубрике, и первая в списке действительно первая по баллу —
+    верстка просто перестает эту разницу прятать.
+    """
+    return (
+        "<article class=\"digest-lead\">"
+        "<h3><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s</a></h3>"
+        "<p class=\"digest-lead-summary\">%s</p></article>"
+    ) % (esc(article["url"]), esc(article["title"]), esc(article["summary_ru"]))
 
 
 def render_issue_page(issue, is_closed=False):
     videos = issue["videos"]
     web = issue["web"]
 
-    type_options = "".join('<option value="%s">%s</option>' % (key, esc(label)) for key, label, _kw in TYPE_BUCKETS)
-    type_options += '<option value="other">Другое</option>'
-    lang_options = "".join('<option value="%s">%s</option>' % (code, esc(label)) for code, label in LANGUAGE_OPTIONS)
-
     videos_html = "".join(render_video_card(v) for v in videos)
     videos_empty = "" if videos else "<p class='digest-empty'>За эту неделю подходящих роликов не нашлось.</p>"
-    toolbar = "" if not videos else (
-        '<div class="digest-toolbar">'
-        '<label>Тип <select id="f-type"><option value="">Все</option>%s</select></label>'
-        '<label>Язык <select id="f-lang"><option value="">Все языки</option>%s</select></label>'
-        '<label>Сортировка <select id="f-sort"><option value="score">По оценке</option>'
-        '<option value="views">По просмотрам</option><option value="date">По дате</option></select></label>'
-        '</div>'
-    ) % (type_options, lang_options)
 
     if web:
-        web_body = "<ol class='digest-web-list'>%s</ol>" % "".join(render_web_item(a) for a in web)
+        web_body = render_lead_article(web[0])
+        if len(web) > 1:
+            web_body += "<div class='digest-articles'>%s</div>" % "".join(
+                render_web_item(article) for article in web[1:])
     else:
-        web_body = "<p class='digest-empty'>За эту неделю качественных веб-материалов не нашлось.</p>"
+        web_body = "<p class='digest-empty'>За эту неделю качественных статей не нашлось.</p>"
 
     crumb = ""
     if is_closed:
         crumb = '<p class="digest-crumb"><a href="/news/">Лента</a> / <a href="/news/archive/">Архив</a> / %s</p>' % esc(issue["period_label"])
         lede = "Архивный выпуск — материалы этой недели больше не меняются."
     else:
-        lede = "Что нового у ИИ-агентов на YouTube и в вебе — с оценкой и коротким анонсом на русском."
+        lede = "Что нового у ИИ-агентов на YouTube и в вебе — коротко, на русском, со ссылкой на первоисточник."
         crumb = '<p class="digest-crumb"><a href="/news/archive/">Архив прошлых недель &rarr;</a></p>'
 
-    script = "" if not videos else """
-<script>
-(function(){
-var grid = document.querySelector('.digest-grid');
-if (!grid) return;
-var cards = Array.prototype.slice.call(grid.children);
-var typeSel = document.getElementById('f-type');
-var langSel = document.getElementById('f-lang');
-var sortSel = document.getElementById('f-sort');
-if (!typeSel || !langSel || !sortSel) return;
-function apply(){
-  var type = typeSel.value, lang = langSel.value, sort = sortSel.value;
-  cards.forEach(function(c){
-    var show = (!type || c.dataset.type === type) && (!lang || c.dataset.lang === lang);
-    c.style.display = show ? '' : 'none';
-  });
-  var sorted = cards.slice().sort(function(a, b){
-    if (sort === 'views') return (Number(b.dataset.views) || 0) - (Number(a.dataset.views) || 0);
-    if (sort === 'date') return (b.dataset.date || '').localeCompare(a.dataset.date || '');
-    return (Number(b.dataset.score) || 0) - (Number(a.dataset.score) || 0);
-  });
-  sorted.forEach(function(c){ grid.appendChild(c); });
-}
-typeSel.addEventListener('change', apply);
-langSel.addEventListener('change', apply);
-sortSel.addEventListener('change', apply);
-})();
-</script>
-"""
-
+    # Панель фильтров и сортировки убрана вместе со скриптом: на десяти роликах
+    # она предлагала работу вместо чтения, а порядок и так задан оценкой.
     title = "Лента — %s — Запуск ИИ-агентов" % issue["period_label"]
 
     return "\n".join([
@@ -228,17 +144,17 @@ sortSel.addEventListener('change', apply);
         crumb,
         "<h1>%s</h1>" % esc(issue["period_label"]),
         '<p class="digest-lede">%s</p>' % lede,
-        '<div class="digest-stats"><span><strong>%d</strong>видео</span><span><strong>%d</strong>веб-материалов</span></div>' % (len(videos), len(web)),
+        '<div class="digest-stats"><span><strong>%d</strong>видео</span><span><strong>%d</strong>статей</span></div>' % (len(videos), len(web)),
         "</div>",
         '<img class="digest-mascot" src="/assets/brand/news-octopus.png" alt="Осьминог — талисман Ленты">',
         "</div>",
         '<section aria-label="Видео недели">',
-        toolbar,
+        '<h2 class="digest-section">Видео недели</h2>',
         videos_empty,
         '<div class="digest-grid">%s</div>' % videos_html,
         "</section>",
-        '<section aria-label="Веб-материалы недели">',
-        "<h2>Веб-материалы недели</h2>",
+        '<section class="digest-issue-articles" aria-label="Статьи недели">',
+        '<h2 class="digest-section">Статьи недели</h2>',
         web_body,
         "</section>",
         '<footer class="colophon">',
@@ -248,7 +164,6 @@ sortSel.addEventListener('change', apply);
         "</nav>",
         "</footer>",
         "</article>",
-        script,
         "</body>",
         "</html>",
     ]) + "\n"
@@ -313,7 +228,7 @@ def _archive_week_card(week):
     return (
         '<article class="digest-week-card"><div class="digest-collage">%s</div>'
         '<div class="digest-week-body"><h3>%s</h3>'
-        '<p class="digest-meta">%d видео &middot; %d веб-материалов</p></div>'
+        '<p class="digest-meta">%d видео &middot; %d статей</p></div>'
         '<a class="digest-open-link" href="/%s">Открыть выпуск &rarr;</a></article>'
     ) % (collage, esc(week["period_label"]), len(week["videos"]), len(week["web"]), esc(week["html_path"]))
 

@@ -1,9 +1,10 @@
 {
-  "generated_at": "2026-09-08T17:05:02.686960+00:00",
+  "generated_at": "2026-09-09T16:28:35.822099+00:00",
   "current": {
-    "week_start": "2026-09-01T07:00:00+00:00",
-    "week_end": "2026-09-08T07:00:00+00:00",
-    "period_label": "1-7 сентября",
+    "number": 1,
+    "week_start": "2026-09-02T07:00:00+00:00",
+    "week_end": "2026-09-09T07:00:00+00:00",
+    "period_label": "2-8 сентября",
     "videos": [
       {
         "video_id": "KcshxSB3sNY",
@@ -13,7 +14,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/KcshxSB3sNY/hqdefault.jpg",
         "language": "en-US",
         "view_count": 31091,
-        "content_type": "туториал",
+        "duration_sec": 3628,
         "score": 79,
         "summary_ru": "Официальный воркшоп Cursor про то, за что именно списываются токены в кодовом агенте: четыре типа токенов, поведение кэша и момент, когда контекст начинает сжиматься. Стоит открыть, если счет за агента растет, а понимания, откуда он берется, нет.",
         "takeaways": [
@@ -32,7 +33,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/0ZfHnZf_VMc/hqdefault.jpg",
         "language": "en",
         "view_count": 90,
-        "content_type": "туториал",
+        "duration_sec": 7834,
         "score": 78,
         "summary_ru": "Двухчасовая сессия живого кодирования: кодовый агент собирается с нуля без фреймворков, от голого вызова модели до инструментов, истории диалога и ограничителей. Каждый шаг добавляется после того, как показано конкретное ограничение предыдущего.",
         "takeaways": [
@@ -51,7 +52,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/S-sYlFiGFv8/hqdefault.jpg",
         "language": "en",
         "view_count": 171590,
-        "content_type": "туториал",
+        "duration_sec": 1343,
         "score": 78,
         "summary_ru": "Трое из команды Claude Code рассказывают, как сами им пользуются: почему ставят цели вместо задач, как гоняют циклы и рутины удаленно и почему удаляют возможности харнесса, когда модели их перерастают. Опыт из первых рук от тех, кто продукт и делает.",
         "takeaways": [
@@ -70,7 +71,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/uQwJb2wefoA/hqdefault.jpg",
         "language": "en",
         "view_count": 875,
-        "content_type": "туториал",
+        "duration_sec": 469,
         "score": 78,
         "summary_ru": "Короткий технический разбор: внешний агент на Google ADK регистрируется в ServiceNow и вызывается по протоколу A2A. Полезен тем, кто разбирается с A2A на практике и упирается в детали регистрации и аутентификации.",
         "takeaways": [
@@ -89,7 +90,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/n9xKblqyQ28/hqdefault.jpg",
         "language": "en-US",
         "view_count": 95868,
-        "content_type": "доклад",
+        "duration_sec": 3611,
         "score": 76,
         "summary_ru": "Разбор состояния харнессов: те же веса дают 30% и 95% на ARC-AGI при разной обвязке. Внутри — история харнессов, самоулучшающиеся схемы, контекст как многоуровневый кэш и опыт YC по агенту для каждого сотрудника.",
         "takeaways": [
@@ -108,7 +109,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/z1oVsxR-yXQ/hqdefault.jpg",
         "language": "en",
         "view_count": 1763,
-        "content_type": "туториал",
+        "duration_sec": 4173,
         "score": 76,
         "summary_ru": "Семидесятиминутный практический лаб: агентный стек целиком поднимается на Amazon EKS без управляемых сервисов — vLLM на Inferentia, LiteLLM, Strands, Langfuse, Milvus, Neo4j, инструменты через MCP и специализированные агенты через A2A. Открывать, если хотите увидеть все слои, которые обычно скрыты за managed-обвязкой.",
         "takeaways": [
@@ -127,7 +128,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/ZZpYpLgAbEQ/hqdefault.jpg",
         "language": "en",
         "view_count": 297,
-        "content_type": "туториал",
+        "duration_sec": 1119,
         "score": 76,
         "summary_ru": "Разбор MemOS 2.0 — открытой памяти для агентов с единым API на добавление, поиск, правку и удаление, где записи хранятся как читаемые структуры, а не как непрозрачный набор эмбеддингов. Автор ставит все локально на RTX 4090 с Qwen2.5-3B и Qdrant и прогоняет цикл извлечение — эмбеддинг — хранение — вспоминание целиком.",
         "takeaways": [
@@ -146,7 +147,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/s2u6ImvZwfs/hqdefault.jpg",
         "language": "en",
         "view_count": 138,
-        "content_type": "туториал",
+        "duration_sec": 4265,
         "score": 75,
         "summary_ru": "Разбор бэкенда мультиагентной поддержки на LangGraph по реальному коду: state.py, graph.py, nodes.py, tools.py, живой трейс в LangSmith и пайплайн оценки, который сравнивает роутер с базовой линией. Полезно тем, кто строит маршрутизацию запросов между специализированными агентами и передачу человеку.",
         "takeaways": [
@@ -165,7 +166,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/oe0KXL7nPds/hqdefault.jpg",
         "language": "en",
         "view_count": 40702,
-        "content_type": "туториал",
+        "duration_sec": 782,
         "score": 72,
         "summary_ru": "Сравнение встроенных браузеров Claude Cowork и ChatGPT Work: скорость, качество задач, заполнение форм, покупки, история и автозаполнение. Материал ближе к потребительскому обзору, чем к разбору агентной механики.",
         "takeaways": [
@@ -184,7 +185,7 @@
         "thumbnail_url": "https://i.ytimg.com/vi/p5-hHg2YRTA/hqdefault.jpg",
         "language": "en",
         "view_count": 2356,
-        "content_type": "туториал",
+        "duration_sec": 1232,
         "score": 72,
         "summary_ru": "Автор строит harness для агента и прогоняет через него контролируемые сравнения: pdfplumber против Docling, плотный поиск против гибридного с реранкером, прямой ответ против evidence-first, разные модели и стратегии чанкинга — на примере юридического агента.",
         "takeaways": [
@@ -198,8 +199,9 @@
     ],
     "web": [
       {
-        "source_type": "статья",
+        "type": "обсуждение",
         "source": "hackernews",
+        "domain": "armature.tech",
         "title": "Which tools do Claude, Codex and Cursor choose? We measured 17k runs to find out",
         "url": "https://armature.tech/blog/which-tools-coding-agents-install",
         "published_at": "2026-09-03T21:20:34+00:00",
@@ -214,8 +216,9 @@
         "limits": "Данные привязаны к конкретным версиям агентов на момент замера, перенос на другие обвязки не гарантирован."
       },
       {
-        "source_type": "статья",
+        "type": "обсуждение",
         "source": "hackernews",
+        "domain": "openai.com",
         "title": "How we monitor internal coding agents for misalignment",
         "url": "https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/",
         "published_at": "2026-09-06T16:37:55+00:00",
@@ -230,8 +233,9 @@
         "limits": "Это описание внутренней практики одной компании со своим масштабом и инфраструктурой, детали воспроизводимости из описания не ясны."
       },
       {
-        "source_type": "другое",
+        "type": "обсуждение",
         "source": "hackernews",
+        "domain": "agentconnect.md",
         "title": "Grep beats LSP? Why coding agents ignore your fancier tools",
         "url": "https://www.agentconnect.md/blog/grep-beat-lsp-harness/",
         "published_at": "2026-09-04T03:40:26+00:00",
@@ -246,8 +250,9 @@
         "limits": "Выводы сделаны про кодовые агенты и работу с репозиторием, на другие домены переносятся не напрямую."
       },
       {
-        "source_type": "статья",
+        "type": "научная работа",
         "source": "arxiv",
+        "domain": "arxiv.org",
         "title": "Building a research-software catalog with a coding agent: from hackathon prototype to public deployment",
         "url": "http://arxiv.org/abs/2609.04711v1",
         "published_at": "2026-09-04T04:31:51+00:00",
@@ -262,8 +267,9 @@
         "limits": "Контекст академический, каталог исследовательского ПО; нагрузочные и стоимостные аспекты в описании не затронуты."
       },
       {
-        "source_type": "туториал",
+        "type": "блог практика",
         "source": "Simon Willison",
+        "domain": "simonwillison.net",
         "title": "Using Blender with coding agents on macOS",
         "url": "https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos/",
         "published_at": "2026-09-05T15:51:09+00:00",
@@ -278,8 +284,9 @@
         "limits": "Это заметка формата TIL про один сценарий на macOS, без разбора надежности и границ подхода."
       },
       {
-        "source_type": "статья",
+        "type": "отраслевое издание",
         "source": "InfoQ AI/ML",
+        "domain": "infoq.com",
         "title": "GitLab Warns That AI Agent Sandboxes Are Only as Secure as Their Network Access",
         "url": "https://www.infoq.com/news/2026/09/gitlab-ai-sandbox-access/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=AI%2C+ML+%26+Data+Engineering",
         "published_at": "2026-09-08T12:00:00+00:00",
@@ -294,8 +301,9 @@
         "limits": "Это заметка InfoQ о разборе GitLab, а не полный технический отчет: деталей воспроизведения атаки и мер защиты в описании нет."
       },
       {
-        "source_type": "статья",
+        "type": "научная работа",
         "source": "arxiv",
+        "domain": "arxiv.org",
         "title": "Does Your Agent's Memory Survive a Model Upgrade? A Controlled Study of Memory Portability",
         "url": "http://arxiv.org/abs/2609.05339v1",
         "published_at": "2026-09-04T16:44:17+00:00",
@@ -310,8 +318,9 @@
         "limits": "Эксперименты на 48 синтетических историях и двух открытых моделях меньше 10 млрд параметров — перенос на крупные модели и реальные логи не проверен."
       },
       {
-        "source_type": "статья",
+        "type": "научная работа",
         "source": "arxiv",
+        "domain": "arxiv.org",
         "title": "Compact-Memory LLM Agents via Online Max-Member Clustering and Atom-Aware Packing",
         "url": "http://arxiv.org/abs/2609.04915v1",
         "published_at": "2026-09-04T09:19:00+00:00",

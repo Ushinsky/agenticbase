@@ -1,8 +1,6 @@
 {
   "_comment": "Реестр источников Ленты. Правится руками. Каждый источник обрабатывается отдельно: падение одного не мешает остальным.",
-
   "window_days": 8,
-
   "youtube": {
     "enabled": true,
     "search_query_limit": 40,
@@ -45,63 +43,187 @@
       "мультиагентная система"
     ]
   },
-
   "_feeds_comment": "Проверено 2026-09-08. У Anthropic, LangChain и LlamaIndex публичного RSS нет — отдают HTML на всех известных путях. Их материалы стабильно всплывают через Simon Willison, Hacker News и Reddit, поэтому отдельные ленты не нужны.",
-
   "feeds": [
-    { "name": "OpenAI News", "url": "https://openai.com/news/rss.xml" },
-    { "name": "Google DeepMind", "url": "https://deepmind.google/blog/rss.xml" },
-    { "name": "Google AI Blog", "url": "https://blog.google/technology/ai/rss/" },
-    { "name": "Lilian Weng", "url": "https://lilianweng.github.io/index.xml" },
-    { "name": "Meta Engineering", "url": "https://engineering.fb.com/feed/" },
-    { "name": "Stripe Blog", "url": "https://stripe.com/blog/feed.rss" },
-    { "name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/" },
-    { "name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml" },
-    { "name": "Chip Huyen", "url": "https://huyenchip.com/feed.xml" },
-    { "name": "Eugene Yan", "url": "https://eugeneyan.com/rss/" },
-    { "name": "Latent Space", "url": "https://www.latent.space/feed" },
-    { "name": "Interconnects", "url": "https://www.interconnects.ai/feed" },
-    { "name": "AWS Machine Learning", "url": "https://aws.amazon.com/blogs/machine-learning/feed/" },
-    { "name": "Cloudflare Blog", "url": "https://blog.cloudflare.com/rss/" },
-    { "name": "InfoQ AI/ML", "url": "https://feed.infoq.com/ai-ml-data-eng/" },
-    { "name": "Martin Fowler", "url": "https://martinfowler.com/feed.atom" },
-    { "name": "GitHub Engineering", "url": "https://github.blog/engineering/feed/" },
-    { "name": "Vercel Blog", "url": "https://vercel.com/atom" },
-    { "name": "Pragmatic Engineer", "url": "https://newsletter.pragmaticengineer.com/feed" },
-    { "name": "Microsoft Research", "url": "https://www.microsoft.com/en-us/research/feed/" },
-    { "name": "Netflix Tech Blog", "url": "https://netflixtechblog.com/feed" }
+    {
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/rss.xml",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Google DeepMind",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google/technology/ai/rss/",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Lilian Weng",
+      "url": "https://lilianweng.github.io/index.xml",
+      "type": "блог практика"
+    },
+    {
+      "name": "Meta Engineering",
+      "url": "https://engineering.fb.com/feed/",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Stripe Blog",
+      "url": "https://stripe.com/blog/feed.rss",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net/atom/everything/",
+      "type": "блог практика"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Chip Huyen",
+      "url": "https://huyenchip.com/feed.xml",
+      "type": "блог практика"
+    },
+    {
+      "name": "Eugene Yan",
+      "url": "https://eugeneyan.com/rss/",
+      "type": "блог практика"
+    },
+    {
+      "name": "Latent Space",
+      "url": "https://www.latent.space/feed",
+      "type": "отраслевое издание"
+    },
+    {
+      "name": "Interconnects",
+      "url": "https://www.interconnects.ai/feed",
+      "type": "отраслевое издание"
+    },
+    {
+      "name": "AWS Machine Learning",
+      "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Cloudflare Blog",
+      "url": "https://blog.cloudflare.com/rss/",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "InfoQ AI/ML",
+      "url": "https://feed.infoq.com/ai-ml-data-eng/",
+      "type": "отраслевое издание"
+    },
+    {
+      "name": "Martin Fowler",
+      "url": "https://martinfowler.com/feed.atom",
+      "type": "блог практика"
+    },
+    {
+      "name": "GitHub Engineering",
+      "url": "https://github.blog/engineering/feed/",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Vercel Blog",
+      "url": "https://vercel.com/atom",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Pragmatic Engineer",
+      "url": "https://newsletter.pragmaticengineer.com/feed",
+      "type": "отраслевое издание"
+    },
+    {
+      "name": "Microsoft Research",
+      "url": "https://www.microsoft.com/en-us/research/feed/",
+      "type": "инженерный блог"
+    },
+    {
+      "name": "Netflix Tech Blog",
+      "url": "https://netflixtechblog.com/feed",
+      "type": "инженерный блог"
+    }
   ],
-
   "feed_keywords": [
-    "agent", "agentic", "mcp", "model context protocol", "langgraph", "langchain",
-    "crewai", "autogen", "tool use", "tool calling", "multi-agent", "multiagent",
-    "orchestration", "rag", "llm app", "copilot", "a2a", "computer use", "browser use"
+    "agent",
+    "agentic",
+    "mcp",
+    "model context protocol",
+    "langgraph",
+    "langchain",
+    "crewai",
+    "autogen",
+    "tool use",
+    "tool calling",
+    "multi-agent",
+    "multiagent",
+    "orchestration",
+    "rag",
+    "llm app",
+    "copilot",
+    "a2a",
+    "computer use",
+    "browser use"
   ],
-
   "hackernews": {
     "enabled": true,
     "min_points": 30,
-    "queries": ["AI agent", "agentic", "MCP protocol", "LLM agent", "multi-agent"]
+    "queries": [
+      "AI agent",
+      "agentic",
+      "MCP protocol",
+      "LLM agent",
+      "multi-agent"
+    ]
   },
-
   "arxiv": {
     "_comment": "arXiv разбирает булеву логику вольно, скобки и AND между группами игнорирует — поэтому запрос к API широкий по категориям, а отбор по теме делает keywords уже на нашей стороне.",
     "enabled": true,
     "max_results": 300,
     "search": "cat:cs.MA OR cat:cs.AI OR cat:cs.CL OR cat:cs.SE",
     "keywords": [
-      "llm agent", "language model agent", "agentic", "tool-calling", "tool calling",
-      "tool use", "agent memory", "multi-agent llm", "llm-based agent", "autonomous agent",
-      "gui agent", "computer-use agent", "coding agent", "retrieval-augmented",
-      "model context protocol", "agent benchmark", "agent evaluation"
+      "llm agent",
+      "language model agent",
+      "agentic",
+      "tool-calling",
+      "tool calling",
+      "tool use",
+      "agent memory",
+      "multi-agent llm",
+      "llm-based agent",
+      "autonomous agent",
+      "gui agent",
+      "computer-use agent",
+      "coding agent",
+      "retrieval-augmented",
+      "model context protocol",
+      "agent benchmark",
+      "agent evaluation"
     ]
   },
-
   "reddit": {
     "_comment": "JSON-эндпойнт Reddit отдает 403 любому серверному клиенту, RSS работает. Из RSS не приходит счет голосов, поэтому порога по очкам нет — выдача /top за неделю уже отсортирована по популярности, берем первые limit записей.",
     "enabled": true,
     "period": "week",
     "limit": 25,
-    "subreddits": ["AI_Agents", "LocalLLaMA", "LangChain", "MachineLearning"]
+    "subreddits": [
+      "AI_Agents",
+      "LocalLLaMA",
+      "LangChain",
+      "MachineLearning"
+    ]
+  },
+  "_types_comment": "Тип материала задается здесь, а не выводится из домена: домен меняется, а природа источника нет. Пять типов, каждому в верстке отвечает своя иконка. Новый источник заводится сразу с типом — угадывать нечего.",
+  "aggregator_types": {
+    "arxiv": "научная работа",
+    "hackernews": "обсуждение",
+    "reddit": "обсуждение"
   }
 }

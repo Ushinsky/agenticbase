@@ -19,10 +19,14 @@ import json
 import os
 import sys
 from datetime import datetime, timedelta, timezone
+from urllib.parse import urlsplit
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIGEST_PATH = os.path.join(BASE, "news", "digest.json")
 STATE_PATH = os.path.join(BASE, "news", "state.json")
+SOURCES_PATH = os.path.join(BASE, "news", "sources.json")
+
+TYPE_FALLBACK = "отраслевое издание"
 
 MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня",
           "июля", "августа", "сентября", "октября", "ноября", "декабря"]
@@ -37,6 +41,38 @@ def period_label(start, end):
     if start.month == last.month:
         return "%d-%d %s" % (start.day, last.day, MONTHS[start.month - 1])
     return "%d %s - %d %s" % (start.day, MONTHS[start.month - 1], last.day, MONTHS[last.month - 1])
+
+
+def load_types():
+    """Карта «источник -> тип материала» из реестра.
+
+    Тип берется из реестра, а не выводится из домена: домен у источника может
+    смениться, а природа его — нет. Пять типов, каждому в верстке отвечает
+    своя иконка.
+    """
+    registry = load_json(SOURCES_PATH, {})
+    mapping = {feed["name"]: feed.get("type", TYPE_FALLBACK)
+               for feed in registry.get("feeds", [])}
+    mapping.update(registry.get("aggregator_types", {}))
+    return mapping
+
+
+def type_of(item, types):
+    source = item.get("source") or ""
+    if source in types:
+        return types[source]
+    # Сабреддиты приходят как "reddit/AI_Agents" — тип задан корню.
+    root = source.split("/")[0]
+    return types.get(root, TYPE_FALLBACK)
+
+
+def domain_of(url):
+    """Домен для служебной строки. У arXiv показываем сам arXiv, а не хост."""
+    try:
+        host = urlsplit(url).netloc.lower()
+    except ValueError:
+        return ""
+    return host[4:] if host.startswith("www.") else host
 
 
 def texts_of(item):
@@ -59,16 +95,17 @@ def as_video(item):
         "thumbnail_url": item.get("thumbnail_url"),
         "language": item.get("language") or "en",
         "view_count": item.get("view_count", 0),
-        "content_type": (item.get("ярус2") or {}).get("формат", "материал"),
+        "duration_sec": item.get("duration_sec") or 0,
         "score": int(round(item.get("итог", 0))),
         **texts_of(item),
     }
 
 
-def as_web(item):
+def as_web(item, types):
     return {
-        "source_type": (item.get("ярус2") or {}).get("формат", "материал"),
+        "type": type_of(item, types),
         "source": item.get("source", ""),
+        "domain": domain_of(item.get("url", "")),
         "title": item["title"],
         "url": item["url"],
         "published_at": item.get("published_at"),
@@ -109,6 +146,7 @@ def main():
 
     previous = load_json(DIGEST_PATH, {"current": None, "closed": []})
     closed = [] if arguments.fresh else list(previous.get("closed", []))
+    number = 1
 
     if not arguments.fresh and previous.get("current"):
         old = previous["current"]
@@ -116,15 +154,21 @@ def main():
             label = datetime.fromisoformat(old["week_start"]).strftime("%Y-W%V")
             old["html_path"] = "weeks/%s.html" % label
             closed.insert(0, old)
+            number = old.get("number", 0) + 1
+        else:
+            # Пересборка той же недели — номер не меняется.
+            number = old.get("number", 1)
 
+    types = load_types()
     digest = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "current": {
+            "number": number,
             "week_start": start.isoformat(),
             "week_end": end.isoformat(),
             "period_label": period_label(start, end),
             "videos": [as_video(i) for i in issue.get("videos", [])],
-            "web": [as_web(i) for i in issue.get("web", [])],
+            "web": [as_web(i, types) for i in issue.get("web", [])],
         },
         "closed": closed,
     }

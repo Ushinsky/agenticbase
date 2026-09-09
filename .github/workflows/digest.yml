@@ -1,0 +1,119 @@
+name: Лента — сборка выпуска
+
+# Раз в неделю собирает выпуск целиком и открывает пулл-реквест. В main
+# ничего не попадает само: выпуск публикуется, когда его сливают руками.
+#
+# Почему не ежедневный сбор. Поиск идет по окну в восемь дней и сортируется по
+# релевантности, поэтому в один заход приходят и свежие материалы, и те, что
+# успели вылежаться и набрать просмотры. Проверено на живых данных: медиана
+# просмотров 144 при разбросе до 3,6 миллиона. Ежедневный сбор дал бы семь
+# точек отказа вместо одной, не решая ни одной существующей задачи.
+#
+# Ручной запуск оставлен: пересобрать выпуск, не дожидаясь субботы.
+
+on:
+  schedule:
+    # 06:00 UTC по субботам — 09:00 по Москве. Окно сбора закрывает неделю.
+    - cron: "0 6 * * 6"
+  workflow_dispatch:
+    inputs:
+      videos:
+        description: "Сколько видео в выпуске"
+        required: false
+        default: "10"
+      articles:
+        description: "Сколько статей в выпуске"
+        required: false
+        default: "8"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: digest
+  cancel-in-progress: false
+
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Забрать код
+        uses: actions/checkout@v5
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Зависимости
+        run: pip install --quiet -r requirements.txt
+
+      - name: Собрать кандидатов
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python news/collect.py --out .cache
+
+      - name: Механический отсев
+        run: python news/filter.py .cache/candidates-$(date -u +%F).json --out .cache
+
+      - name: Классификация
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python news/classify.py .cache/filtered-$(date -u +%F).json --out .cache
+
+      - name: Оценка по рубрике
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python news/score.py .cache/classified-$(date -u +%F).json --out .cache
+
+      - name: Отбор и тексты
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python news/write.py .cache/scored-$(date -u +%F).json --out .cache \
+            --videos "${{ inputs.videos || '10' }}" \
+            --web "${{ inputs.articles || '8' }}"
+
+      - name: Собрать выпуск и сайт
+        run: |
+          python news/publish.py .cache/issue-$(date -u +%F).json
+          python build.py
+
+      - name: Проверить базу
+        # Те же ворота, что и на выкладке: не прошла проверка — нет и выпуска.
+        run: python kb/check.py
+
+      - name: Собрать сводку для пулл-реквеста
+        id: summary
+        run: python news/summary.py .cache/issue-$(date -u +%F).json > pr-body.md
+
+      - name: Открыть пулл-реквест
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: digest/auto
+          base: main
+          title: "Лента: выпуск за неделю"
+          body-path: pr-body.md
+          commit-message: "Лента: очередной выпуск"
+          delete-branch: true
+          add-paths: |
+            news/digest.json
+            news/state.json
+            news/index.html
+            news/archive/index.html
+            news/weeks
+            index.html
+            sitemap.xml
+            kb/index.html
+            hub/index.html
+
+      - name: Сохранить журналы прогона
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: digest-logs
+          path: .cache/
+          retention-days: 14
+          if-no-files-found: warn

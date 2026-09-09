@@ -17,7 +17,7 @@ import sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "kb"))
-from sitenav import render_sitenav
+from sitenav import render_sitenav, asset_url
 
 AGENTS = os.path.join(BASE, "hub", "agents.json")
 OUT = os.path.join(BASE, "hub", "index.html")
@@ -59,8 +59,8 @@ def build():
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
     add('<link rel="icon" href="/favicon.ico">')
     add("<title>Хаб агентов — Запуск ИИ-агентов</title>")
-    add('<link rel="stylesheet" href="../assets/lesson.css">')
-    add('<link rel="stylesheet" href="../assets/hub.css">')
+    add('<link rel="stylesheet" href="%s">' % asset_url('../assets/lesson.css'))
+    add('<link rel="stylesheet" href="%s">' % asset_url('../assets/hub.css'))
     add("</head>")
     add("<body>")
     add(render_sitenav("hub"))

@@ -21,7 +21,7 @@ import sys
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(BASE, "kb"))
-from sitenav import render_sitenav
+from sitenav import render_sitenav, asset_url
 
 OUT = os.path.join(BASE, "index.html")
 
@@ -65,8 +65,8 @@ def build():
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
     add('<link rel="icon" href="/favicon.ico">')
     add("<title>%s</title>" % esc(manifest["course"]["title"]))
-    add('<link rel="stylesheet" href="assets/lesson.css">')
-    add('<link rel="stylesheet" href="assets/portal.css">')
+    add('<link rel="stylesheet" href="%s">' % asset_url('assets/lesson.css'))
+    add('<link rel="stylesheet" href="%s">' % asset_url('assets/portal.css'))
     add("</head>")
     add("<body>")
     add(render_sitenav(None))

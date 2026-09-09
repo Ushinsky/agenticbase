@@ -19,7 +19,7 @@ from datetime import datetime
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "kb"))
-from sitenav import render_sitenav
+from sitenav import render_sitenav, asset_url
 
 MANIFEST = os.path.join(BASE, "kb", "manifest.json")
 OUT = os.path.join(BASE, "kb", "index.html")
@@ -119,8 +119,8 @@ def build():
     add('<meta name="viewport" content="width=device-width, initial-scale=1">')
     add('<link rel="icon" href="/favicon.ico">')
     add("<title>%s</title>" % esc(course["title"]))
-    add('<link rel="stylesheet" href="../assets/lesson.css">')
-    add('<link rel="stylesheet" href="../assets/home.css">')
+    add('<link rel="stylesheet" href="%s">' % asset_url('../assets/lesson.css'))
+    add('<link rel="stylesheet" href="%s">' % asset_url('../assets/home.css'))
     add("</head>")
     add("<body>")
     add(render_sitenav("kb"))

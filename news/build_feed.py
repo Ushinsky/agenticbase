@@ -36,7 +36,7 @@ from datetime import datetime
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "kb"))
-from sitenav import render_sitenav
+from sitenav import render_sitenav, asset_url
 
 DIGEST = os.path.join(BASE, "news", "digest.json")
 ICONS_DIR = os.path.join(BASE, "assets", "icons", "types")
@@ -259,8 +259,8 @@ def render_issue_page(issue, is_closed=False):
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<link rel="icon" href="/favicon.ico">',
         "<title>%s</title>" % esc(title),
-        '<link rel="stylesheet" href="/assets/lesson.css">',
-        '<link rel="stylesheet" href="/assets/news.css">',
+        '<link rel="stylesheet" href="%s">' % asset_url('/assets/lesson.css'),
+        '<link rel="stylesheet" href="%s">' % asset_url('/assets/news.css'),
         "</head>",
         "<body>",
         render_sitenav("news"),
@@ -424,8 +424,8 @@ def render_archive(current, closed_weeks):
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<link rel="icon" href="/favicon.ico">',
         "<title>Архив Ленты — Запуск ИИ-агентов</title>",
-        '<link rel="stylesheet" href="/assets/lesson.css">',
-        '<link rel="stylesheet" href="/assets/news.css">',
+        '<link rel="stylesheet" href="%s">' % asset_url('/assets/lesson.css'),
+        '<link rel="stylesheet" href="%s">' % asset_url('/assets/news.css'),
         "</head>",
         "<body>",
         render_sitenav("news"),
@@ -459,8 +459,8 @@ def render_empty_index():
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<link rel="icon" href="/favicon.ico">',
         "<title>Лента — Запуск ИИ-агентов</title>",
-        '<link rel="stylesheet" href="/assets/lesson.css">',
-        '<link rel="stylesheet" href="/assets/news.css">',
+        '<link rel="stylesheet" href="%s">' % asset_url('/assets/lesson.css'),
+        '<link rel="stylesheet" href="%s">' % asset_url('/assets/news.css'),
         "</head>",
         "<body>",
         render_sitenav("news"),

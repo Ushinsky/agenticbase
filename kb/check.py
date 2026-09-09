@@ -93,6 +93,13 @@ def check_internal_links():
             for target in link_re.findall(text):
                 if target.startswith(("http://", "https://", "mailto:")):
                     continue
+                # Ссылки на статику несут отпечаток содержимого
+                # (assets/news.css?v=8661a05b) — он ломает недельный кеш
+                # Beget. На диске такого файла нет, поэтому query отбрасываем
+                # перед проверкой. Якорь отбрасываем по той же причине.
+                target = target.split("?", 1)[0].split("#", 1)[0]
+                if not target:
+                    continue
                 if target.startswith("/"):
                     # Абсолютный путь от корня сайта — навигация в шапке.
                     resolved = os.path.normpath(os.path.join(BASE, target.lstrip("/")))

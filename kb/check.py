@@ -253,6 +253,32 @@ def check_css_classes():
     return problems
 
 
+def check_page_metadata():
+    """У каждой страницы есть описание и канонический адрес.
+
+    Оба проставляет seo.py при сборке. Проверка ловит случай, когда страницу
+    добавили, а сборку не прогнали, — тогда поисковик сам выберет, что
+    показать в выдаче, и выберет он обычно первую попавшуюся строку.
+    """
+    problems = []
+    skip_dirs = SKIP_DIRS | {"site", "sources", "learning-records", "assets", ".claude", ".github"}
+    for dirpath, dirnames, filenames in os.walk(BASE):
+        dirnames[:] = [d for d in dirnames if d not in skip_dirs]
+        for name in sorted(filenames):
+            if not name.endswith(".html"):
+                continue
+            path = os.path.join(dirpath, name)
+            with io.open(path, encoding="utf-8") as fh:
+                text = fh.read()
+            where = rel(path)
+            if 'name="description"' not in text:
+                problems.append("%s: нет описания страницы" % where)
+            noindex = 'name="robots" content="noindex"' in text
+            if not noindex and 'rel="canonical"' not in text:
+                problems.append("%s: нет канонического адреса" % where)
+    return problems
+
+
 def main():
     checks = [
         ("запрещенная буква", check_yo),
@@ -261,6 +287,7 @@ def main():
         ("пути в манифесте", check_manifest_paths),
         ("состав публикации", check_publication_surface),
         ("классы в разметке", check_css_classes),
+        ("метаданные страниц", check_page_metadata),
     ]
 
     all_problems = []

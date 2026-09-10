@@ -2163,7 +2163,7 @@
       "order": 91,
       "title": "Глоссарий",
       "status": "published",
-      "path": "GLOSSARY.md",
+      "path": "glossary/index.html",
       "summary": "Канонический язык базы знаний. Термин попадает сюда после того, как подтвержден практикой.",
       "concepts": [],
       "requires": [],

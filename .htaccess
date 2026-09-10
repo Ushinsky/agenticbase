@@ -1,13 +1,31 @@
-# Чистые URL без .html — файлы на диске остаются как есть.
-# Запрос на /lessons/0001-tsikl-agenta отдает lessons/0001-tsikl-agenta.html,
-# если такого файла или папки с этим именем нет.
+# Правила сервера: один канонический адрес, заголовки безопасности,
+# кеширование статики и своя страница 404.
 
 RewriteEngine On
 
+# 1. Один домен. www и голый домен отдавали одно и то же содержимое,
+# и для поисковика это два разных сайта с полным дублем страниц.
+# Основной — без www: он стоит в sitemap.xml, в robots.txt и в canonical.
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://agenticbase.ru%{REQUEST_URI} [R=301,L]
+
+# 2. Глоссарий раньше публиковался как GLOSSARY.md и отдавался
+# простым текстом — без заголовка, описания и шапки сайта.
+# Теперь это обычная страница; старый адрес уводим на нее.
+RewriteRule ^GLOSSARY\.md$ /glossary/ [R=301,L,NC]
+
+# 3. Чистые URL без .html — файлы на диске остаются как есть.
+# Запрос на /lessons/0001-tsikl-agenta отдает lessons/0001-tsikl-agenta.html,
+# если такого файла или папки с этим именем нет.
+
 # Если кто-то явно открыл адрес с .html — увести на короткий,
 # чтобы в индексе и в адресной строке всегда был один канонический вариант.
+# Протокол здесь задан явно. Раньше цель была записана как /%1, и сервер,
+# стоящий за прокси Beget, достраивал ее до http:// — запрос по https
+# уводил посетителя на незащищенное соединение. Проверяется одной командой:
+# curl -sSI https://agenticbase.ru/lessons/0001-tsikl-agenta.html
 RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
-RewriteRule ^ /%1 [R=301,L]
+RewriteRule ^ https://agenticbase.ru/%1 [R=301,L]
 
 # Короткий адрес без расширения — если нет ни файла, ни папки с таким именем,
 # но есть одноименный .html — отдаем его без редиректа.
@@ -15,3 +33,35 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)$ $1.html [L]
+
+# 4. Своя страница вместо технической заглушки сервера.
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  # 5. Заголовки безопасности.
+  # Content-Security-Policy перечисляет, откуда странице разрешено брать
+  # содержимое. Список короткий, потому что сайт почти все держит у себя:
+  # ни одного встроенного скрипта или стиля в разметке нет, шрифт свой,
+  # снаружи приходят только превью роликов с i.ytimg.com.
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: https://i.ytimg.com; script-src 'self'; style-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+  # HSTS выдается только на защищенном соединении — за это отвечает env=HTTPS.
+  # По http этот заголовок бессмысленен, а условие через env, а не через
+  # блок <If>, выбрано намеренно: <If> есть не на всякой версии сервера,
+  # и на старой он кладет сайт целиком, а не просто не срабатывает.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # 6. Кеширование. У статики в ссылках стоит отпечаток содержимого
+  # (assets/lesson.css?v=53a48dcf), поэтому ее можно держать в кеше долго:
+  # при правке файла меняется отпечаток, а значит и адрес. Страницы
+  # кешировать надолго нельзя — их адреса постоянны.
+  <FilesMatch "\.(css|js|woff2|png|jpg|jpeg|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "public, max-age=600, must-revalidate"
+  </FilesMatch>
+</IfModule>

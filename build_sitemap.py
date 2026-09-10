@@ -29,6 +29,10 @@ def build():
             path = path.replace("\\", "/")
             if path.endswith(".html"):
                 path = path[: -len(".html")]
+            # Страница, лежащая как папка/index.html, живет по адресу папки:
+            # glossary/index.html открывается как /glossary/, а не /glossary/index.
+            if path.endswith("/index"):
+                path = path[: -len("index")]
             urls.append("/" + path)
 
     digest_path = os.path.join(BASE, "news", "digest.json")

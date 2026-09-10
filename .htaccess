@@ -12,7 +12,7 @@ RewriteRule ^ https://agenticbase.ru%{REQUEST_URI} [R=301,L]
 # 2. Глоссарий раньше публиковался как GLOSSARY.md и отдавался
 # простым текстом — без заголовка, описания и шапки сайта.
 # Теперь это обычная страница; старый адрес уводим на нее.
-RewriteRule ^GLOSSARY\.md$ /glossary/ [R=301,L,NC]
+RewriteRule ^GLOSSARY\.md$ https://agenticbase.ru/glossary/ [R=301,L,NC]
 
 # 3. Чистые URL без .html — файлы на диске остаются как есть.
 # Запрос на /lessons/0001-tsikl-agenta отдает lessons/0001-tsikl-agenta.html,

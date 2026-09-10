@@ -137,14 +137,23 @@ def check_manifest_paths():
 
 # Что вообще имеет право уехать на сайт. Все остальное — служебное
 # и должно попадать под исключения деплоя.
-PUBLIC_DIRS_ON_SITE = ("articles", "lessons", "reference", "assets", "kb", "news", "hub")
+PUBLIC_DIRS_ON_SITE = (
+    "articles",
+    "lessons",
+    "reference",
+    "assets",
+    "kb",
+    "news",
+    "hub",
+    "glossary",
+)
 PUBLIC_ROOT_FILES = {
     "index.html",
+    "404.html",
     "favicon.ico",
     "robots.txt",
     "sitemap.xml",
     ".htaccess",
-    "GLOSSARY.md",
 }
 DEPLOY_WORKFLOW = os.path.join(".github", "workflows", "deploy.yml")
 

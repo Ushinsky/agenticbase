@@ -68,6 +68,36 @@ EXTRA = {
 
 NOINDEX = ("404.html",)
 
+# Семейства страниц, которые генератор создает по одной на сущность: перечислять
+# их поштучно в EXTRA нельзя — список рос бы с каждым выпуском. Описание для
+# такой страницы собирается из ее заголовка.
+#
+# news/weeks/<label>.html — архивный выпуск Ленты. Заголовок вида
+# «Выпуск 7 — 5-11 сентября — Запуск ИИ-агентов», из него и берем период.
+FAMILIES = (
+    (
+        re.compile(r"^news/weeks/[^/]+\.html$"),
+        re.compile(r"^(Выпуск\s+\d+)\s+—\s+([^—]+?)\s+—"),
+        "Архивный выпуск ленты за %s: ролики и статьи про ИИ-агентов, "
+        "отобранные и коротко пересказанные. Материалы выпуска больше не меняются.",
+        "CollectionPage",
+    ),
+)
+
+
+def family_meta(relpath, text):
+    """Заголовок, описание и тип для страницы из генерируемого семейства."""
+    for path_re, title_re, template, kind in FAMILIES:
+        if not path_re.match(relpath):
+            continue
+        match = re.search(r"<title>(.*?)</title>", text, re.S)
+        raw = match.group(1).strip() if match else ""
+        parts = title_re.match(raw)
+        if not parts:
+            continue
+        return parts.group(1), template % parts.group(2), kind
+    return None
+
 
 def esc(text):
     return (
@@ -196,6 +226,8 @@ def apply(relpath, known):
         title, description, kind = known[relpath]
     elif relpath in EXTRA:
         title, description, kind = EXTRA[relpath]
+    elif family_meta(relpath, text):
+        title, description, kind = family_meta(relpath, text)
     else:
         match = re.search(r"<title>(.*?)</title>", text, re.S)
         title = match.group(1).strip() if match else SITE

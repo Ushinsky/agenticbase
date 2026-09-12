@@ -1,6 +1,6 @@
 {
   "_comment": "Служебная память Ленты. Коммитится вместе с выпуском, поэтому у нее есть история, ее можно посмотреть глазами и откатить. seen_* — что уже публиковалось, rejected — что забраковано вручную и больше не должно предлагаться, channel_last_featured — когда источник последний раз был в выпуске (кулдаун), carryover — свежие материалы, отложенные до следующего выпуска, пока не набрались просмотры.",
-  "updated": "2026-09-09",
+  "updated": "2026-09-12",
   "seen_video_ids": [
     "KcshxSB3sNY",
     "0ZfHnZf_VMc",
@@ -11,7 +11,17 @@
     "ZZpYpLgAbEQ",
     "s2u6ImvZwfs",
     "oe0KXL7nPds",
-    "p5-hHg2YRTA"
+    "p5-hHg2YRTA",
+    "IXe48aIw_X4",
+    "TvnOYwIoWoQ",
+    "Y88EWb2X7WE",
+    "XE5-hb-H-OY",
+    "hfEjTvLibwE",
+    "sFxX9wQn7F8",
+    "Mzr7byMFy_4",
+    "BqRhBq-_kgE",
+    "Lu1UWqVTbQg",
+    "uMudSbZ79-A"
   ],
   "seen_urls": [
     "https://youtube.com/watch?v=KcshxSB3sNY",
@@ -31,7 +41,25 @@
     "https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos",
     "https://infoq.com/news/2026/09/gitlab-ai-sandbox-access",
     "http://arxiv.org/abs/2609.05339v1",
-    "http://arxiv.org/abs/2609.04915v1"
+    "http://arxiv.org/abs/2609.04915v1",
+    "https://youtube.com/watch?v=IXe48aIw_X4",
+    "https://youtube.com/watch?v=TvnOYwIoWoQ",
+    "https://youtube.com/watch?v=Y88EWb2X7WE",
+    "https://youtube.com/watch?v=XE5-hb-H-OY",
+    "https://youtube.com/watch?v=hfEjTvLibwE",
+    "https://youtube.com/watch?v=sFxX9wQn7F8",
+    "https://youtube.com/watch?v=Mzr7byMFy_4",
+    "https://youtube.com/watch?v=BqRhBq-_kgE",
+    "https://youtube.com/watch?v=Lu1UWqVTbQg",
+    "https://youtube.com/watch?v=uMudSbZ79-A",
+    "https://github.com/zachsaw/graphify-csharp",
+    "http://arxiv.org/abs/2609.10901v1",
+    "https://github.com/okf-memory/okf-agent-memory",
+    "http://arxiv.org/abs/2609.10892v1",
+    "http://arxiv.org/abs/2609.10750v1",
+    "https://github.com/Atomburstofficial/geiger",
+    "http://arxiv.org/abs/2609.10871v1",
+    "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload"
   ],
   "rejected": [
     {
@@ -51,6 +79,18 @@
       "title": "How Figma Uses AI Agents for Security",
       "решение": "2026-09-08, отклонено вручную",
       "причина": "тема неинтересна: Figma и инструменты дизайна к запуску агентов в продакшене отношения не имеют. Уточнено пользователем 2026-09-09"
+    },
+    {
+      "url": "https://youtube.com/watch?v=gz4ftTavnfE",
+      "title": "Connect Grok Bot to Your Own AI Agents (A2A Protocol)",
+      "решение": "2026-09-12, отклонено вручную",
+      "причина": "ПРИЧИНА НЕ НАЗВАНА пользователем. Агент предполагает: демонстрация подключения близка к обзору продукта, механики протокола в ней мало. Проверить при случае"
+    },
+    {
+      "url": "https://rubyhack.ai",
+      "title": "OpenAI agents carried out an undisclosed attack on RubyGems",
+      "решение": "2026-09-12, отклонено вручную",
+      "причина": "новостное сообщение об инциденте без разбора механики — жанр заметки, а не материала, после которого можно что-то сделать"
     }
   ],
   "channel_last_featured": {
@@ -65,7 +105,18 @@
     "UCmeU2DYiVy80wMBGZzEWnbw": "2026-09-09T16:28:35.822914+00:00",
     "UCIQzTfzErmrixae2oFqRxyg": "2026-09-09T16:28:35.822914+00:00",
     "Simon Willison": "2026-09-09T16:28:35.822914+00:00",
-    "InfoQ AI/ML": "2026-09-09T16:28:35.822914+00:00"
+    "InfoQ AI/ML": "2026-09-09T16:28:35.822914+00:00",
+    "UCt9WqM6o0y5YGqQm1nffFWQ": "2026-09-12T10:31:50.702020+00:00",
+    "UCuXX9B1kSwRTQE2BIhK7Khw": "2026-09-12T10:31:50.702020+00:00",
+    "UCyznFVRwL2wBZZHMNZuVwSw": "2026-09-12T10:31:50.702020+00:00",
+    "UCC-lyoTfSrcJzA1ab3APAgw": "2026-09-12T10:31:50.702020+00:00",
+    "UCf4sXk66VuWGlg4Nh0tuCdA": "2026-09-12T10:31:50.702020+00:00",
+    "UCyBZCFUN118RhbpXhEyqgZg": "2026-09-12T10:31:50.702020+00:00",
+    "UCJS9pqu9BzkAMNTmzNMNhvg": "2026-09-12T10:31:50.702020+00:00",
+    "UCoMzQTJSIr7-RU1QbomQI2w": "2026-09-12T10:31:50.702020+00:00",
+    "UC6MhHkSosYXAD-LTXBWyLMg": "2026-09-12T10:31:50.702020+00:00",
+    "UChtOSt7gtYMMM21ceOFH3tQ": "2026-09-12T10:31:50.702020+00:00",
+    "AWS Machine Learning": "2026-09-12T10:31:50.702020+00:00"
   },
   "carryover": []
 }

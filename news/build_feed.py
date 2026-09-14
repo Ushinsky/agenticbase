@@ -228,7 +228,7 @@ def render_issue_page(issue, is_closed=False):
     # он и есть начало раздела, а дорога в архив ведет снизу, кнопкой.
     if is_closed:
         crumb = ('<p class="digest-crumb"><a href="/news/">Лента</a> / '
-                 '<a href="/news/archive/">Архив</a> / выпуск %d</p>' % number)
+                 '<a href="/news/archive/">Архив</a> / дайджест %d</p>' % number)
     else:
         crumb = ""
 
@@ -252,7 +252,7 @@ def render_issue_page(issue, is_closed=False):
         if web else "<p class='digest-empty'>За эту неделю качественных статей не нашлось.</p>"
     )
 
-    title = "Выпуск %d — %s — Запуск ИИ-агентов" % (number, issue["period_label"])
+    title = "Дайджест #%d — %s — Запуск ИИ-агентов" % (number, issue["period_label"])
 
     return "\n".join([
         "<!doctype html>",
@@ -282,7 +282,7 @@ def render_issue_page(issue, is_closed=False):
         articles_block,
         "</section>",
         '<p class="archive-cta">'
-        '<a class="archive-button" href="/news/archive/">Все выпуски</a></p>',
+        '<a class="archive-button" href="/news/archive/">Все дайджесты</a></p>',
         "</article>",
         "</body>",
         "</html>",
@@ -321,13 +321,13 @@ def render_current_row(issue):
     if lead is None:
         return ""
     rest = rest_titles(issue, lead, 3)
-    rest_line = ("<p class=\"row-rest\">Еще в выпуске: %s</p>"
+    rest_line = ("<p class=\"row-rest\">Еще в дайджесте: %s</p>"
                  % esc(", ".join(rest))) if rest else ""
     return "\n".join([
         '<section class="archive-current">',
-        '<h2 class="archive-subhead">Текущий выпуск</h2>',
+        '<h2 class="archive-subhead">Текущий дайджест</h2>',
         '<div class="current-row">',
-        '<div class="row-num"><span class="num">&#8470;%d</span>'
+        '<div class="row-num"><span class="row-number">&#8470;%d</span>'
         '<span class="row-dates">%s</span></div>' % (issue.get("number", 1), esc(issue["period_label"])),
         '<div class="row-body"><p class="row-lead">%s</p>%s</div>' % (esc(lead["title"]), rest_line),
         '<div class="row-side"><p class="row-counts">%s</p>%s'
@@ -347,7 +347,7 @@ def render_archive_row(week):
     href = "/news/%s" % week.get("html_path", "")
     return (
         '<a class="archive-row" href="%s">'
-        '<div class="row-num"><span class="num">&#8470;%d</span>'
+        '<div class="row-num"><span class="row-number">&#8470;%d</span>'
         '<span class="row-dates">%s</span></div>'
         '<div class="row-body"><p class="row-lead">%s</p>%s</div>'
         '<div class="row-side"><p class="row-counts">%s</p>%s'
@@ -387,13 +387,13 @@ def render_archive(current, closed_weeks):
             '<div class="month-rows">%s</div>'
             "</section>"
             % (MONTHS_NOM[month - 1], year, len(weeks),
-               plural(len(weeks), "выпуск", "выпуска", "выпусков"), rows)
+               plural(len(weeks), "дайджест", "дайджеста", "дайджестов"), rows)
         )
 
     if sections:
         body = "".join(sections)
     else:
-        body = ("<p class='digest-empty'>Закрытых выпусков пока нет — первый закроется, "
+        body = ("<p class='digest-empty'>Закрытых дайджестов пока нет — первый закроется, "
                 "когда выйдет следующий.</p>")
 
     total = len(closed_weeks) + (1 if current else 0)
@@ -411,7 +411,7 @@ def render_archive(current, closed_weeks):
         last = closed_weeks[0].get("number", 0)
         footer = (
             '<div class="archive-foot">'
-            '<p>Показаны выпуски %d—%d из %d</p>'
+            '<p>Показаны дайджесты %d—%d из %d</p>'
             '<a href="/news/archive/all.html">Показать более ранние &rarr;</a>'
             "</div>" % (first, last, total)
         )
@@ -423,7 +423,7 @@ def render_archive(current, closed_weeks):
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<link rel="icon" href="/favicon.ico">',
-        "<title>Архив Ленты — Запуск ИИ-агентов</title>",
+        "<title>Архив дайджестов — Запуск ИИ-агентов</title>",
         '<link rel="stylesheet" href="%s">' % asset_url('/assets/lesson.css'),
         '<link rel="stylesheet" href="%s">' % asset_url('/assets/news.css'),
         "</head>",
@@ -433,7 +433,7 @@ def render_archive(current, closed_weeks):
         '<header class="issue-head">',
         "<h1>Архив дайджестов</h1>",
         '<p class="issue-dates">%d %s%s</p>'
-        % (total, plural(total, "выпуск", "выпуска", "выпусков"), since),
+        % (total, plural(total, "дайджест", "дайджеста", "дайджестов"), since),
         "</header>",
         render_current_row(current) if current else "",
         body,
@@ -460,8 +460,8 @@ def render_empty_index():
         render_sitenav("news"),
         '<article class="sheet wide">',
         '<header class="issue-head"><h1>Лента</h1>',
-        '<p class="issue-dates">выпусков еще нет</p></header>',
-        "<p class=\"digest-empty\">Первый выпуск появится здесь после первой сборки.</p>",
+        '<p class="issue-dates">дайджестов еще нет</p></header>',
+        "<p class=\"digest-empty\">Первый дайджест появится здесь после первой сборки.</p>",
         '<footer class="colophon"><nav><a href="/kb/">База знаний</a></nav></footer>',
         "</article>",
         "</body>",

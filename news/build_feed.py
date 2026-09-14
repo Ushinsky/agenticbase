@@ -327,11 +327,11 @@ def render_current_row(issue):
         '<section class="archive-current">',
         '<h2 class="archive-subhead">Текущий выпуск</h2>',
         '<div class="current-row">',
-        '<div class="row-num"><span class="num">%d</span>'
+        '<div class="row-num"><span class="num">&#8470;%d</span>'
         '<span class="row-dates">%s</span></div>' % (issue.get("number", 1), esc(issue["period_label"])),
         '<div class="row-body"><p class="row-lead">%s</p>%s</div>' % (esc(lead["title"]), rest_line),
         '<div class="row-side"><p class="row-counts">%s</p>%s'
-        '<a class="row-open" href="/news/">Открыть выпуск &rarr;</a></div>'
+        '<a class="row-open" href="/news/">Открыть дайджест</a></div>'
         % (render_counts(issue), render_type_breakdown(issue)),
         "</div>",
         "</section>",
@@ -350,7 +350,8 @@ def render_archive_row(week):
         '<div class="row-num"><span class="num">&#8470;%d</span>'
         '<span class="row-dates">%s</span></div>'
         '<div class="row-body"><p class="row-lead">%s</p>%s</div>'
-        '<div class="row-side"><p class="row-counts">%s</p>%s</div>'
+        '<div class="row-side"><p class="row-counts">%s</p>%s'
+        '<span class="row-open">Открыть дайджест</span></div>'
         "</a>"
     ) % (
         esc(href), week.get("number", 0), esc(week["period_label"]),
@@ -430,19 +431,13 @@ def render_archive(current, closed_weeks):
         render_sitenav("news"),
         '<article class="sheet wide">',
         '<header class="issue-head">',
-        "<h1>Архив</h1>",
+        "<h1>Архив дайджестов</h1>",
         '<p class="issue-dates">%d %s%s</p>'
         % (total, plural(total, "выпуск", "выпуска", "выпусков"), since),
         "</header>",
         render_current_row(current) if current else "",
         body,
         footer,
-        '<footer class="colophon">',
-        "<nav>",
-        '<a href="/kb/">База знаний</a>',
-        '<a href="/news/">Текущий выпуск</a>',
-        "</nav>",
-        "</footer>",
         "</article>",
         "</body>",
         "</html>",

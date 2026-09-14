@@ -57,7 +57,7 @@
    очевидного. Остается короткая метка с номером и диапазон дат — прижаты
    вправо, под ними та же линейка, что и у остальных шапок. */
 .issue-head-tag {
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: var(--sp-4);
 }
 
@@ -65,7 +65,7 @@
    крупный кегль, и одного класса не хватило бы по весу. */
 .issue-head .issue-tag {
   margin: 0;
-  font-family: var(--sans);
+  font-family: var(--mono);
   font-weight: 600;
   font-size: 1.05rem;
   letter-spacing: 0;

@@ -113,7 +113,17 @@ jobs:
         id: summary
         run: python news/summary.py .cache/issue-$(date -u +%F).json > pr-body.md
 
+      # Два режима публикации, переключаются переменной репозитория
+      # AUTO_PUBLISH (Settings -> Secrets and variables -> Actions -> Variables).
+      #
+      #   не задана или что угодно кроме true — выпуск уезжает в пулл-реквест
+      #                                          и ждет решения человека;
+      #   true                                 — выпуск публикуется сразу.
+      #
+      # Переключение не требует правки кода: это решение владельца сайта, а не
+      # программиста, и принимать его надо там, где оно принимается.
       - name: Открыть пулл-реквест
+        if: vars.AUTO_PUBLISH != 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           branch: digest/auto
@@ -132,6 +142,52 @@ jobs:
             sitemap.xml
             kb/index.html
             hub/index.html
+
+      - name: Опубликовать сразу
+        if: vars.AUTO_PUBLISH == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news/digest.json news/state.json news/index.html \
+                  news/archive/index.html news/weeks \
+                  index.html sitemap.xml kb/index.html hub/index.html
+          if git diff --cached --quiet; then
+            echo "изменений нет, публиковать нечего"
+            exit 0
+          fi
+          git commit -m "Лента: очередной выпуск"
+          git push
+          # Пуш в main запускает deploy.yml — сборку и выкладку на Beget.
+
+      - name: Сообщить в телеграм
+        # Работает, только если в секретах репозитория заданы TELEGRAM_BOT_TOKEN
+        # и TELEGRAM_CHAT_ID. Не заданы — шаг молча пропускается, ничего не
+        # ломая: письмо от GitHub легко теряется среди служебных уведомлений,
+        # но принуждать к телеграму незачем.
+        if: always()
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MODE: ${{ vars.AUTO_PUBLISH == 'true' && 'опубликован' || 'ждет решения' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          # Проверка пустого токена сделана здесь, а не в условии if: доступность
+          # контекста secrets в if — поведение платформы, на которое опираться
+          # не хочется, а две строки на shell работают всегда.
+          if [ -z "$TOKEN" ] || [ -z "$CHAT" ]; then
+            echo "телеграм не настроен — пропускаю"
+            exit 0
+          fi
+          if [ "${{ job.status }}" != "success" ]; then
+            TEXT="Лента: прогон упал. Журнал: $RUN_URL"
+          else
+            COUNTS=$(python news/telegram_line.py)
+            TEXT="Лента: выпуск $MODE. $COUNTS"$'\n'"$RUN_URL"
+          fi
+          curl -s -o /dev/null -X POST \
+            "https://api.telegram.org/bot$TOKEN/sendMessage" \
+            --data-urlencode "chat_id=$CHAT" \
+            --data-urlencode "text=$TEXT"
 
       - name: Сохранить журналы прогона
         if: always()

@@ -52,6 +52,54 @@
   color: var(--ink-2);
 }
 
+/* Шапка текущего выпуска. Крупного заголовка тут намеренно нет: на странице
+   и так видно, что это выпуск, а место над содержимым дороже повторения
+   очевидного. Остается короткая метка с номером и диапазон дат — прижаты
+   вправо, под ними та же линейка, что и у остальных шапок. */
+.issue-head-tag {
+  justify-content: flex-end;
+  gap: var(--sp-4);
+}
+
+/* Селектор с двумя классами намеренно: правило .issue-head h1 выше задает
+   крупный кегль, и одного класса не хватило бы по весу. */
+.issue-head .issue-tag {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: var(--accent);
+}
+
+/* Дорога в архив с текущего выпуска ровно одна, и она внизу — значит,
+   должна быть заметной. Кнопка, а не ссылка в строке колофона: колофон
+   на узком экране скрыт целиком, и ссылка в нем пропала бы вместе с ним. */
+.archive-cta {
+  margin: var(--sp-7) 0 0;
+  text-align: center;
+}
+
+.archive-button {
+  display: inline-block;
+  padding: var(--sp-3) var(--sp-6);
+  border: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--accent);
+  background: var(--surface);
+}
+
+.archive-button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+}
+
 /* ---------- Блок выпуска ---------- */
 
 .issue-block { margin: 0 0 var(--sp-8); }

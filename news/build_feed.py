@@ -223,11 +223,14 @@ def render_issue_page(issue, is_closed=False):
     web = issue.get("web", [])
     number = issue.get("number", 1)
 
+    # Хлебные крошки нужны только закрытому выпуску: он лежит в глубине
+    # архива, и без них непонятно, где ты. У текущего выпуска их нет —
+    # он и есть начало раздела, а дорога в архив ведет снизу, кнопкой.
     if is_closed:
         crumb = ('<p class="digest-crumb"><a href="/news/">Лента</a> / '
                  '<a href="/news/archive/">Архив</a> / выпуск %d</p>' % number)
     else:
-        crumb = '<p class="digest-crumb"><a href="/news/archive/">Архив выпусков &rarr;</a></p>'
+        crumb = ""
 
     watch_count = "%d %s" % (len(videos), plural(len(videos), "ролик", "ролика", "роликов"))
     watch_meta = " · ".join(part for part in [watch_count, duration_label(videos)] if part)
@@ -266,8 +269,8 @@ def render_issue_page(issue, is_closed=False):
         render_sitenav("news"),
         '<article class="sheet wide">',
         crumb,
-        '<header class="issue-head">',
-        "<h1>Выпуск %d</h1>" % number,
+        '<header class="issue-head issue-head-tag">',
+        '<h1 class="issue-tag">Дайджест #%d</h1>' % number,
         '<p class="issue-dates">%s</p>' % esc(issue["period_label"]),
         "</header>",
         '<section class="issue-block" aria-label="Смотреть">',
@@ -278,12 +281,8 @@ def render_issue_page(issue, is_closed=False):
         '<div class="block-head"><h2>Читать</h2><p class="block-meta">%s</p></div>' % esc(read_meta),
         articles_block,
         "</section>",
-        '<footer class="colophon">',
-        "<nav>",
-        '<a href="/kb/">База знаний</a>',
-        '<a href="/news/archive/">Архив</a>',
-        "</nav>",
-        "</footer>",
+        '<p class="archive-cta">'
+        '<a class="archive-button" href="/news/archive/">Все выпуски</a></p>',
         "</article>",
         "</body>",
         "</html>",

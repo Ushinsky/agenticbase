@@ -582,7 +582,8 @@ def main():
 
     # --- YouTube -----------------------------------------------------------
     api_key = os.environ.get("YOUTUBE_API_KEY")
-    if wanted("youtube") and config["youtube"].get("enabled"):
+    youtube_expected = wanted("youtube") and config["youtube"].get("enabled")
+    if youtube_expected:
         if not api_key:
             report.ok("youtube", 0, "нет YOUTUBE_API_KEY — пропущен")
         else:
@@ -627,6 +628,19 @@ def main():
                 "items": items,
             }, handle, ensure_ascii=False, indent=2)
         print("Сохранено: %s (%d кандидатов)" % (path, len(items)))
+
+    # Без роликов выпуска нет: «Смотреть» — половина выпуска. Отказ YouTube
+    # раньше выглядел как «ничего не нашлось»: прогон шел дальше, платил за
+    # оценку статей и публиковал выпуск с нулем роликов (2026-09-19, дневной
+    # лимит поисковых запросов исчерпали три перезапуска подряд). Останавливаемся
+    # здесь — до первого платного шага. Кандидаты выше уже сохранены, так что
+    # журнал прогона покажет, что именно вернули источники.
+    if youtube_expected and not any(item["kind"] == "video" for item in items):
+        reasons = [error for source, error in report.errors if source.startswith("youtube")]
+        sys.exit("YouTube не дал ни одного ролика%s. Выпуск без роликов не собираем; "
+                 "прогон остановлен до платных шагов. Если причина — дневной лимит "
+                 "поиска, он сбрасывается в полночь по тихоокеанскому времени."
+                 % ((" (" + "; ".join(reasons) + ")") if reasons else ""))
 
     return 0
 

@@ -171,8 +171,16 @@ def main():
     if not arguments.fresh and previous.get("current"):
         old = previous["current"]
         if old.get("period_label") != period_label(start, end):
-            label = datetime.fromisoformat(old["week_start"]).strftime("%Y-W%V")
-            old["html_path"] = "weeks/%s.html" % label
+            # Имя страницы — дата начала окна, а не номер недели ISO. Номер
+            # недели совпадает у двух выпусков, если окно хоть раз сдвинулось:
+            # дайджест 1 (со среды 2 сентября) и дайджест 2 (с субботы
+            # 5 сентября) оба попадали в 2026-W36, и страница второго затирала
+            # первый. Уже выданные адреса не трогаем — на них ведут ссылки.
+            label = datetime.fromisoformat(old["week_start"]).strftime("%Y-%m-%d")
+            path = "weeks/%s.html" % label
+            if path in {week.get("html_path") for week in closed}:
+                path = "weeks/%s-%d.html" % (label, old.get("number", 0))
+            old["html_path"] = path
             closed.insert(0, old)
             number = old.get("number", 0) + 1
         else:

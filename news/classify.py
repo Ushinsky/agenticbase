@@ -124,6 +124,21 @@ def parse_answer(text, size):
     return parsed
 
 
+def stop_if_account_problem(error):
+    """Ошибки счета и ключа не лечатся повтором следующей пачки.
+
+    Без этой проверки кончившиеся деньги на API выглядели как «ни один
+    материал не прошел отбор»: каждая пачка тихо падала, а прогон доходил
+    до конца с пустым выпуском (так было 2026-09-19).
+    """
+    text = str(error).lower()
+    if isinstance(error, (anthropic.AuthenticationError, anthropic.PermissionDeniedError)):
+        sys.exit("Ключ Anthropic API не принят (%s). Прогон остановлен." % type(error).__name__)
+    if "credit balance" in text:
+        sys.exit("На счете Anthropic API закончились деньги. Пополнить: "
+                 "console.anthropic.com -> Plans & Billing. Прогон остановлен.")
+
+
 def classify_batch(client, taste, batch, attempt=0):
     """Классифицирует пачку. При неудаче возвращает None — это «пропустить всех»."""
     payload = "\n".join(describe(index + 1, item) for index, item in enumerate(batch))
@@ -135,6 +150,7 @@ def classify_batch(client, taste, batch, attempt=0):
             messages=[{"role": "user", "content": payload}],
         )
     except anthropic.APIError as error:
+        stop_if_account_problem(error)
         print("   ! пачка не обработана (%s), материалы пропущены дальше" % type(error).__name__)
         return None
 

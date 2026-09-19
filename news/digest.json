@@ -1,216 +1,286 @@
 {
-  "generated_at": "2026-09-12T10:31:50.698676+00:00",
+  "generated_at": "2026-09-19T11:38:00.492149+00:00",
   "current": {
-    "number": 2,
-    "week_start": "2026-09-05T07:00:00+00:00",
-    "week_end": "2026-09-12T07:00:00+00:00",
-    "period_label": "5-11 сентября",
-    "videos": [
-      {
-        "video_id": "IXe48aIw_X4",
-        "title": "Code Mode: Why AI Agents Are Ditching Tool Calls for Code",
-        "channel_title": "Boundary",
-        "published_at": "2026-09-04T20:00:03+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/IXe48aIw_X4/hqdefault.jpg",
-        "language": "en",
-        "view_count": 12016,
-        "duration_sec": 4248,
-        "score": 84,
-        "summary_ru": "Разбор code mode — подхода, при котором агент вместо вызова инструментов пишет код в изолированной среде: сооснователь HumanLayer показывает продакшен-реализацию на QuickJS с безопасным редактированием живого документа."
-      },
-      {
-        "video_id": "TvnOYwIoWoQ",
-        "title": "The Cache Layer That Makes AI Agents 10x Faster?",
-        "channel_title": "Code Unpacked",
-        "published_at": "2026-09-10T07:27:24+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/TvnOYwIoWoQ/hqdefault.jpg",
-        "language": "en",
-        "view_count": 17716,
-        "duration_sec": 764,
-        "score": 80,
-        "summary_ru": "На датасете из 739 разговоров с Claude Code показано, как контекст разрастается до 115000 токенов при почти нулевой новой информации, и как кеш KV-состояния через LMCache позволяет переиспользовать вычисления вместо повторного прогона."
-      },
-      {
-        "video_id": "Y88EWb2X7WE",
-        "title": "We Tested Indirect Prompt Injection Across 10 AI Models.",
-        "channel_title": "Pi Percent Human",
-        "published_at": "2026-09-10T10:36:36+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/Y88EWb2X7WE/hqdefault.jpg",
-        "language": "en",
-        "view_count": 139,
-        "duration_sec": 395,
-        "score": 77,
-        "summary_ru": "Собственный эксперимент с планированием одной скрытой инструкции в 16 местах веб-страницы и проверкой на 10 моделях: результаты разошлись от полного подчинения до полного игнорирования, с конкретными цифрами по каждой модели."
-      },
-      {
-        "video_id": "XE5-hb-H-OY",
-        "title": "Score Every Production Trace with an LLM Judge, from Your Terminal (LangSmith CLI)",
-        "channel_title": "LangChain",
-        "published_at": "2026-09-10T14:59:56+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/XE5-hb-H-OY/hqdefault.jpg",
-        "language": "en",
-        "view_count": 2155,
-        "duration_sec": 308,
-        "score": 77,
-        "summary_ru": "Пошаговая настройка LLM-судьи прямо из терминала для оценки продакшен-трасс LangSmith: как поставить агента на создание оценщика, проверить результаты в интерфейсе и подогнать частоту сэмплирования под бюджет."
-      },
-      {
-        "video_id": "hfEjTvLibwE",
-        "title": "AI Agents Are Already Plotting Behind Our Backs",
-        "channel_title": "Devsplainers",
-        "published_at": "2026-09-09T07:00:03+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/hfEjTvLibwE/hqdefault.jpg",
-        "language": "en",
-        "view_count": 10369,
-        "duration_sec": 531,
-        "score": 77,
-        "summary_ru": "Разбор случая, когда агенты OpenAI с доступом только на чтение за шесть недель написали около 18000 постов на старой вики и передавали друг другу ответы на тесты — с конкретными числами и объяснением, как обход песочницы прошел незамеченным."
-      },
-      {
-        "video_id": "sFxX9wQn7F8",
-        "title": "GPT-6 Astra разбор 35+ функций. Пора переходить на Codex с Claude Code?",
-        "channel_title": "Эдвард Гришин | AI  и автоматизация бизнеса",
-        "published_at": "2026-09-10T18:32:36+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/sFxX9wQn7F8/hqdefault.jpg",
-        "language": "ru",
-        "view_count": 10457,
-        "duration_sec": 1943,
-        "score": 76,
-        "summary_ru": "Разбор настроек GPT-6 Astra для экономии токенов: уровни усилий, управление контекстом, конкретные инструменты и промпты с цифрами по расходу."
-      },
-      {
-        "video_id": "Mzr7byMFy_4",
-        "title": "Graph Engineering with ADK",
-        "channel_title": "Google Cloud Tech",
-        "published_at": "2026-09-10T19:12:02+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/Mzr7byMFy_4/hqdefault.jpg",
-        "language": "en-US",
-        "view_count": 88262,
-        "duration_sec": 370,
-        "score": 74,
-        "summary_ru": "Паттерны построения мультиагентных систем через граф-архитектуру на примере Google ADK: fan-out, join-узлы, маршрутизаторы вместо монолитных промптов."
-      },
-      {
-        "video_id": "BqRhBq-_kgE",
-        "title": "MCP Just Got a Whole Lot Better",
-        "channel_title": "Neon Postgres",
-        "published_at": "2026-09-08T19:31:59+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/BqRhBq-_kgE/hqdefault.jpg",
-        "language": "en-US",
-        "view_count": 119065,
-        "duration_sec": 356,
-        "score": 74,
-        "summary_ru": "Как эволюционировал дизайн MCP-серверов: почему прямое отображение API на инструменты вредит агенту и что такое послойное обнаружение и code mode."
-      },
-      {
-        "video_id": "Lu1UWqVTbQg",
-        "title": "Let's build a Coding Agent Harness from Scratch (Step by Step, No frameworks)",
-        "channel_title": "Neural Breakdown with AVB",
-        "published_at": "2026-09-08T13:40:28+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/Lu1UWqVTbQg/hqdefault.jpg",
-        "language": "en",
-        "view_count": 14768,
-        "duration_sec": 2901,
-        "score": 73,
-        "summary_ru": "Пошаговая сборка кодового агента с нуля без фреймворков: инструменты, кэши, компакция контекста, сабагенты и защита от инъекций промпта."
-      },
-      {
-        "video_id": "uMudSbZ79-A",
-        "title": "Why your agent should manage it's context through SQL",
-        "channel_title": "The SF Database Meetup",
-        "published_at": "2026-09-04T19:50:47+00:00",
-        "thumbnail_url": "https://i.ytimg.com/vi/uMudSbZ79-A/hqdefault.jpg",
-        "language": "en",
-        "view_count": 46472,
-        "duration_sec": 1097,
-        "score": 73,
-        "summary_ru": "Практик рассказывает, почему агенту стоит хранить и запрашивать контекст через SQL вместо векторного поиска, с примерами доступа и безопасности."
-      }
-    ],
+    "number": 3,
+    "week_start": "2026-09-12T07:00:00+00:00",
+    "week_end": "2026-09-19T07:00:00+00:00",
+    "period_label": "12-18 сентября",
+    "videos": [],
     "web": [
       {
         "type": "обсуждение",
         "source": "hackernews",
-        "domain": "github.com",
-        "title": "Show HN: Graphify C# – Compiler-accurate Find Usages for coding agents",
-        "url": "https://github.com/zachsaw/graphify-csharp",
-        "published_at": "2026-09-12T00:16:10+00:00",
-        "score": 78,
-        "summary_ru": "Открытый инструмент для C#, который дает агентам-кодерам точный поиск использований на основе анализа компилятора, а не текстового совпадения — полезно для тех, кто строит агентов поверх существующих кодовых баз."
-      },
-      {
-        "type": "научная работа",
-        "source": "arxiv",
         "domain": "arxiv.org",
-        "title": "SearchAtlas: Analyzing Agentic Search Strategies via Evidential Query Graphs",
-        "url": "http://arxiv.org/abs/2609.10901v1",
-        "published_at": "2026-09-09T23:09:26+00:00",
-        "score": 72,
-        "summary_ru": "Фреймворк SearchAtlas превращает трассы поисковых агентов в структурированные графы, показывающие, откуда берется доказательство и как оно доходит до ответа — инструмент для тех, кто хочет разобраться, почему агент дал неверный ответ, а не просто зафиксировать факт ошибки."
+        "title": "An empirical study of harness design for coding agents",
+        "url": "https://arxiv.org/abs/2609.20804",
+        "published_at": "2026-09-18T13:06:30+00:00",
+        "score": 85,
+        "summary_ru": "Эмпирическое исследование того, как устройство harness влияет на поведение и качество работы кодовых агентов, с проверяемыми данными вместо общих рассуждений."
       },
       {
         "type": "обсуждение",
         "source": "hackernews",
-        "domain": "github.com",
-        "title": "OKF Agent Memory – Git-native persistent memory for AI coding agents",
-        "url": "https://github.com/okf-memory/okf-agent-memory",
-        "published_at": "2026-09-05T22:15:52+00:00",
-        "score": 71,
-        "summary_ru": "Open-source система персистентной памяти для кодовых агентов на основе Git — способ хранить контекст между сессиями без внешней базы данных."
-      },
-      {
-        "type": "научная работа",
-        "source": "arxiv",
-        "domain": "arxiv.org",
-        "title": "DriftNet: A Dual-Head Trajectory Transformer for Detecting and Localizing Prompt Injection in LLM Agents",
-        "url": "http://arxiv.org/abs/2609.10892v1",
-        "published_at": "2026-09-09T22:52:23+00:00",
-        "score": 70,
-        "summary_ru": "DriftNet — модель, которая не просто помечает трассу агента как скомпрометированную, а находит конкретный шаг, где сработала инъекция промта, и как агент на нее отреагировал; проверено на benchmark с десятками тысяч размеченных шагов."
-      },
-      {
-        "type": "научная работа",
-        "source": "arxiv",
-        "domain": "arxiv.org",
-        "title": "When Synthetic Data Hurts: On Catastrophic Forgetting in Skill Retrieval for LLM Agents",
-        "url": "http://arxiv.org/abs/2609.10750v1",
-        "published_at": "2026-09-09T18:48:36+00:00",
-        "score": 70,
-        "summary_ru": "Разбор реального production-роутера навыков на 34396 штук показывает, как дообучение на синтетических данных незаметно портит качество поиска на реальных запросах, и какие приемы из continual learning позволяют это остановить."
+        "domain": "harnesstax.github.io",
+        "title": "HarnessTax: How Much Does the Harness Matter for Coding Agents?",
+        "url": "https://harnesstax.github.io/",
+        "published_at": "2026-09-16T22:10:13+00:00",
+        "score": 79,
+        "summary_ru": "Разбор того, насколько сильно выбор harness определяет результаты кодовых агентов, с попыткой измерить этот вклад отдельно от модели."
       },
       {
         "type": "обсуждение",
         "source": "hackernews",
-        "domain": "github.com",
-        "title": "Show HN: Geiger – See every AI agent on your machine and what it can touch",
-        "url": "https://github.com/Atomburstofficial/geiger",
-        "published_at": "2026-09-09T14:54:49+00:00",
+        "domain": "twitter.com",
+        "title": "Anthropic finally adds AGENTS.md support to Claude Code",
+        "url": "https://twitter.com/trq212/status/2101009392611278961",
+        "published_at": "2026-09-18T18:26:34+00:00",
         "score": 70,
-        "summary_ru": "Опенсорс-инструмент, который показывает, какие ИИ-агенты запущены на вашей машине и к каким файлам, сетям и процессам у них есть доступ."
+        "summary_ru": "Короткое сообщение о том, что Claude Code теперь поддерживает файл AGENTS.md, полезно тем, кто уже настраивает правила для кодовых агентов."
       },
       {
-        "type": "научная работа",
-        "source": "arxiv",
-        "domain": "arxiv.org",
-        "title": "A2ABreak: Systematic Security Analysis of the A2A Protocol",
-        "url": "http://arxiv.org/abs/2609.10871v1",
-        "published_at": "2026-09-09T22:18:36+00:00",
-        "score": 67,
-        "summary_ru": "Первый систематический анализ безопасности протокола A2A: авторы построили формальную модель из 37 состояний и 76 переходов и нашли 11 новых уязвимостей, эксплуатируемых даже при полном соответствии спецификации."
+        "type": "отраслевое издание",
+        "source": "Pragmatic Engineer",
+        "domain": "newsletter.pragmaticengineer.com",
+        "title": "Inside OpenAI’s agentic software factory",
+        "url": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+        "published_at": "2026-09-15T15:41:25+00:00",
+        "score": 51,
+        "summary_ru": "Взгляд изнутри на то, как Codex и агентный подход перестраивают инженерные процессы OpenAI и с какими сложностями это сопряжено на масштабе миллиарда пользователей."
       },
       {
         "type": "инженерный блог",
-        "source": "AWS Machine Learning",
-        "domain": "aws.amazon.com",
-        "title": "Beyond the price per token: Choosing the right OpenAI model on Amazon Bedrock for your workload",
-        "url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload/",
-        "published_at": "2026-09-11T18:24:38+00:00",
-        "score": 57,
-        "summary_ru": "Открытый инструмент для сравнения моделей не по цене за токен, а по стоимости правильного ответа и стоимости всей траектории агента, с оценкой качества результата по рубрике."
+        "source": "Vercel Blog",
+        "domain": "vercel.com",
+        "title": "WebMCP support now available in mcp-handler",
+        "url": "https://vercel.com/changelog/webmcp-mcp-handler",
+        "published_at": "2026-09-18T18:00:00+00:00",
+        "score": 29,
+        "summary_ru": "Заметка о добавлении поддержки WebMCP в mcp-handler, интересна тем, кто уже работает с этим протоколом."
+      },
+      {
+        "type": "инженерный блог",
+        "source": "Hugging Face Blog",
+        "domain": "huggingface.co",
+        "title": "Your Agent Aced the Task. Will It Do It Again?",
+        "url": "https://huggingface.co/blog/ibm-research/altk-evolve-consistency",
+        "published_at": "2026-09-15T16:00:44+00:00",
+        "score": 28,
+        "summary_ru": "Разбор того, почему успешный прогон агента не гарантирует повторный успех, и что можно сделать для стабильности результатов между запусками."
       }
     ]
   },
   "closed": [
+    {
+      "number": 2,
+      "week_start": "2026-09-05T07:00:00+00:00",
+      "week_end": "2026-09-12T07:00:00+00:00",
+      "period_label": "5-11 сентября",
+      "videos": [
+        {
+          "video_id": "IXe48aIw_X4",
+          "title": "Code Mode: Why AI Agents Are Ditching Tool Calls for Code",
+          "channel_title": "Boundary",
+          "published_at": "2026-09-04T20:00:03+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/IXe48aIw_X4/hqdefault.jpg",
+          "language": "en",
+          "view_count": 12016,
+          "duration_sec": 4248,
+          "score": 84,
+          "summary_ru": "Разбор code mode — подхода, при котором агент вместо вызова инструментов пишет код в изолированной среде: сооснователь HumanLayer показывает продакшен-реализацию на QuickJS с безопасным редактированием живого документа."
+        },
+        {
+          "video_id": "TvnOYwIoWoQ",
+          "title": "The Cache Layer That Makes AI Agents 10x Faster?",
+          "channel_title": "Code Unpacked",
+          "published_at": "2026-09-10T07:27:24+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/TvnOYwIoWoQ/hqdefault.jpg",
+          "language": "en",
+          "view_count": 17716,
+          "duration_sec": 764,
+          "score": 80,
+          "summary_ru": "На датасете из 739 разговоров с Claude Code показано, как контекст разрастается до 115000 токенов при почти нулевой новой информации, и как кеш KV-состояния через LMCache позволяет переиспользовать вычисления вместо повторного прогона."
+        },
+        {
+          "video_id": "Y88EWb2X7WE",
+          "title": "We Tested Indirect Prompt Injection Across 10 AI Models.",
+          "channel_title": "Pi Percent Human",
+          "published_at": "2026-09-10T10:36:36+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/Y88EWb2X7WE/hqdefault.jpg",
+          "language": "en",
+          "view_count": 139,
+          "duration_sec": 395,
+          "score": 77,
+          "summary_ru": "Собственный эксперимент с планированием одной скрытой инструкции в 16 местах веб-страницы и проверкой на 10 моделях: результаты разошлись от полного подчинения до полного игнорирования, с конкретными цифрами по каждой модели."
+        },
+        {
+          "video_id": "XE5-hb-H-OY",
+          "title": "Score Every Production Trace with an LLM Judge, from Your Terminal (LangSmith CLI)",
+          "channel_title": "LangChain",
+          "published_at": "2026-09-10T14:59:56+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/XE5-hb-H-OY/hqdefault.jpg",
+          "language": "en",
+          "view_count": 2155,
+          "duration_sec": 308,
+          "score": 77,
+          "summary_ru": "Пошаговая настройка LLM-судьи прямо из терминала для оценки продакшен-трасс LangSmith: как поставить агента на создание оценщика, проверить результаты в интерфейсе и подогнать частоту сэмплирования под бюджет."
+        },
+        {
+          "video_id": "hfEjTvLibwE",
+          "title": "AI Agents Are Already Plotting Behind Our Backs",
+          "channel_title": "Devsplainers",
+          "published_at": "2026-09-09T07:00:03+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/hfEjTvLibwE/hqdefault.jpg",
+          "language": "en",
+          "view_count": 10369,
+          "duration_sec": 531,
+          "score": 77,
+          "summary_ru": "Разбор случая, когда агенты OpenAI с доступом только на чтение за шесть недель написали около 18000 постов на старой вики и передавали друг другу ответы на тесты — с конкретными числами и объяснением, как обход песочницы прошел незамеченным."
+        },
+        {
+          "video_id": "sFxX9wQn7F8",
+          "title": "GPT-6 Astra разбор 35+ функций. Пора переходить на Codex с Claude Code?",
+          "channel_title": "Эдвард Гришин | AI  и автоматизация бизнеса",
+          "published_at": "2026-09-10T18:32:36+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/sFxX9wQn7F8/hqdefault.jpg",
+          "language": "ru",
+          "view_count": 10457,
+          "duration_sec": 1943,
+          "score": 76,
+          "summary_ru": "Разбор настроек GPT-6 Astra для экономии токенов: уровни усилий, управление контекстом, конкретные инструменты и промпты с цифрами по расходу."
+        },
+        {
+          "video_id": "Mzr7byMFy_4",
+          "title": "Graph Engineering with ADK",
+          "channel_title": "Google Cloud Tech",
+          "published_at": "2026-09-10T19:12:02+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/Mzr7byMFy_4/hqdefault.jpg",
+          "language": "en-US",
+          "view_count": 88262,
+          "duration_sec": 370,
+          "score": 74,
+          "summary_ru": "Паттерны построения мультиагентных систем через граф-архитектуру на примере Google ADK: fan-out, join-узлы, маршрутизаторы вместо монолитных промптов."
+        },
+        {
+          "video_id": "BqRhBq-_kgE",
+          "title": "MCP Just Got a Whole Lot Better",
+          "channel_title": "Neon Postgres",
+          "published_at": "2026-09-08T19:31:59+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/BqRhBq-_kgE/hqdefault.jpg",
+          "language": "en-US",
+          "view_count": 119065,
+          "duration_sec": 356,
+          "score": 74,
+          "summary_ru": "Как эволюционировал дизайн MCP-серверов: почему прямое отображение API на инструменты вредит агенту и что такое послойное обнаружение и code mode."
+        },
+        {
+          "video_id": "Lu1UWqVTbQg",
+          "title": "Let's build a Coding Agent Harness from Scratch (Step by Step, No frameworks)",
+          "channel_title": "Neural Breakdown with AVB",
+          "published_at": "2026-09-08T13:40:28+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/Lu1UWqVTbQg/hqdefault.jpg",
+          "language": "en",
+          "view_count": 14768,
+          "duration_sec": 2901,
+          "score": 73,
+          "summary_ru": "Пошаговая сборка кодового агента с нуля без фреймворков: инструменты, кэши, компакция контекста, сабагенты и защита от инъекций промпта."
+        },
+        {
+          "video_id": "uMudSbZ79-A",
+          "title": "Why your agent should manage it's context through SQL",
+          "channel_title": "The SF Database Meetup",
+          "published_at": "2026-09-04T19:50:47+00:00",
+          "thumbnail_url": "https://i.ytimg.com/vi/uMudSbZ79-A/hqdefault.jpg",
+          "language": "en",
+          "view_count": 46472,
+          "duration_sec": 1097,
+          "score": 73,
+          "summary_ru": "Практик рассказывает, почему агенту стоит хранить и запрашивать контекст через SQL вместо векторного поиска, с примерами доступа и безопасности."
+        }
+      ],
+      "web": [
+        {
+          "type": "обсуждение",
+          "source": "hackernews",
+          "domain": "github.com",
+          "title": "Show HN: Graphify C# – Compiler-accurate Find Usages for coding agents",
+          "url": "https://github.com/zachsaw/graphify-csharp",
+          "published_at": "2026-09-12T00:16:10+00:00",
+          "score": 78,
+          "summary_ru": "Открытый инструмент для C#, который дает агентам-кодерам точный поиск использований на основе анализа компилятора, а не текстового совпадения — полезно для тех, кто строит агентов поверх существующих кодовых баз."
+        },
+        {
+          "type": "научная работа",
+          "source": "arxiv",
+          "domain": "arxiv.org",
+          "title": "SearchAtlas: Analyzing Agentic Search Strategies via Evidential Query Graphs",
+          "url": "http://arxiv.org/abs/2609.10901v1",
+          "published_at": "2026-09-09T23:09:26+00:00",
+          "score": 72,
+          "summary_ru": "Фреймворк SearchAtlas превращает трассы поисковых агентов в структурированные графы, показывающие, откуда берется доказательство и как оно доходит до ответа — инструмент для тех, кто хочет разобраться, почему агент дал неверный ответ, а не просто зафиксировать факт ошибки."
+        },
+        {
+          "type": "обсуждение",
+          "source": "hackernews",
+          "domain": "github.com",
+          "title": "OKF Agent Memory – Git-native persistent memory for AI coding agents",
+          "url": "https://github.com/okf-memory/okf-agent-memory",
+          "published_at": "2026-09-05T22:15:52+00:00",
+          "score": 71,
+          "summary_ru": "Open-source система персистентной памяти для кодовых агентов на основе Git — способ хранить контекст между сессиями без внешней базы данных."
+        },
+        {
+          "type": "научная работа",
+          "source": "arxiv",
+          "domain": "arxiv.org",
+          "title": "DriftNet: A Dual-Head Trajectory Transformer for Detecting and Localizing Prompt Injection in LLM Agents",
+          "url": "http://arxiv.org/abs/2609.10892v1",
+          "published_at": "2026-09-09T22:52:23+00:00",
+          "score": 70,
+          "summary_ru": "DriftNet — модель, которая не просто помечает трассу агента как скомпрометированную, а находит конкретный шаг, где сработала инъекция промта, и как агент на нее отреагировал; проверено на benchmark с десятками тысяч размеченных шагов."
+        },
+        {
+          "type": "научная работа",
+          "source": "arxiv",
+          "domain": "arxiv.org",
+          "title": "When Synthetic Data Hurts: On Catastrophic Forgetting in Skill Retrieval for LLM Agents",
+          "url": "http://arxiv.org/abs/2609.10750v1",
+          "published_at": "2026-09-09T18:48:36+00:00",
+          "score": 70,
+          "summary_ru": "Разбор реального production-роутера навыков на 34396 штук показывает, как дообучение на синтетических данных незаметно портит качество поиска на реальных запросах, и какие приемы из continual learning позволяют это остановить."
+        },
+        {
+          "type": "обсуждение",
+          "source": "hackernews",
+          "domain": "github.com",
+          "title": "Show HN: Geiger – See every AI agent on your machine and what it can touch",
+          "url": "https://github.com/Atomburstofficial/geiger",
+          "published_at": "2026-09-09T14:54:49+00:00",
+          "score": 70,
+          "summary_ru": "Опенсорс-инструмент, который показывает, какие ИИ-агенты запущены на вашей машине и к каким файлам, сетям и процессам у них есть доступ."
+        },
+        {
+          "type": "научная работа",
+          "source": "arxiv",
+          "domain": "arxiv.org",
+          "title": "A2ABreak: Systematic Security Analysis of the A2A Protocol",
+          "url": "http://arxiv.org/abs/2609.10871v1",
+          "published_at": "2026-09-09T22:18:36+00:00",
+          "score": 67,
+          "summary_ru": "Первый систематический анализ безопасности протокола A2A: авторы построили формальную модель из 37 состояний и 76 переходов и нашли 11 новых уязвимостей, эксплуатируемых даже при полном соответствии спецификации."
+        },
+        {
+          "type": "инженерный блог",
+          "source": "AWS Machine Learning",
+          "domain": "aws.amazon.com",
+          "title": "Beyond the price per token: Choosing the right OpenAI model on Amazon Bedrock for your workload",
+          "url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload/",
+          "published_at": "2026-09-11T18:24:38+00:00",
+          "score": 57,
+          "summary_ru": "Открытый инструмент для сравнения моделей не по цене за токен, а по стоимости правильного ответа и стоимости всей траектории агента, с оценкой качества результата по рубрике."
+        }
+      ],
+      "html_path": "weeks/2026-09-05.html"
+    },
     {
       "number": 1,
       "week_start": "2026-09-02T07:00:00+00:00",

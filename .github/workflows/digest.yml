@@ -190,10 +190,21 @@ jobs:
             --data-urlencode "text=$TEXT"
 
       - name: Сохранить журналы прогона
+        # Здесь лежит все, за что уже заплачено: кандидаты, оценки и готовый
+        # выпуск. Если прогон упал на проверке, выпуск собирается из этого
+        # архива локально, без повторных вызовов модели.
+        #
+        # include-hidden-files обязателен: папка называется .cache, а
+        # upload-artifact@v4 молча пропускает все, что начинается с точки.
+        # Без этого флага шаг писал «No files were found» и не сохранял ничего —
+        # так пропал выпуск 2026-09-19, упавший на kb/check.py после всех
+        # платных шагов. if-no-files-found: error — чтобы пустой архив больше
+        # не выглядел как успех.
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: digest-logs
           path: .cache/
+          include-hidden-files: true
           retention-days: 14
-          if-no-files-found: warn
+          if-no-files-found: error

@@ -121,9 +121,29 @@ def load_json(path, fallback):
         return json.load(handle)
 
 
+# Запрещенная буква записана кодом символа, как в write.py и kb/check.py.
+YO_LOWER, YO_UPPER = chr(1105), chr(1025)
+
+
+def no_yo(data):
+    """Чистит запрещенную букву во всем, что уходит в репозиторий.
+
+    write.py чистит только тексты модели, а заголовки приходят из источников
+    как есть: русский ролик с этой буквой в названии уронил прогон 2026-09-19
+    на kb/check.py. Поэтому финальная замена — здесь, над всем файлом целиком.
+    """
+    if isinstance(data, dict):
+        return {no_yo(key): no_yo(value) for key, value in data.items()}
+    if isinstance(data, list):
+        return [no_yo(part) for part in data]
+    if isinstance(data, str):
+        return data.replace(YO_LOWER, "е").replace(YO_UPPER, "Е")
+    return data
+
+
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as handle:
-        json.dump(data, handle, ensure_ascii=False, indent=2)
+        json.dump(no_yo(data), handle, ensure_ascii=False, indent=2)
 
 
 def main():

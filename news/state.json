@@ -28,7 +28,10 @@
     "fPQ-XjVr26E",
     "Gk8QB-5l4ms",
     "JsNQwFB9N1Q",
-    "1QI6LTKdwmw"
+    "1QI6LTKdwmw",
+    "NFKHLhAvj1g",
+    "xbedfuqYQYA",
+    "UftYcziWO3g"
   ],
   "seen_urls": [
     "https://youtube.com/watch?v=KcshxSB3sNY",
@@ -74,6 +77,9 @@
     "https://youtube.com/watch?v=Gk8QB-5l4ms",
     "https://youtube.com/watch?v=JsNQwFB9N1Q",
     "https://youtube.com/watch?v=1QI6LTKdwmw",
+    "https://youtube.com/watch?v=NFKHLhAvj1g",
+    "https://youtube.com/watch?v=xbedfuqYQYA",
+    "https://youtube.com/watch?v=UftYcziWO3g",
     "https://arxiv.org/abs/2609.20804",
     "https://harnesstax.github.io",
     "https://code.claude.com/docs/en/changelog",
@@ -137,16 +143,19 @@
     "UC6MhHkSosYXAD-LTXBWyLMg": "2026-09-12T10:31:50.702020+00:00",
     "UChtOSt7gtYMMM21ceOFH3tQ": "2026-09-12T10:31:50.702020+00:00",
     "AWS Machine Learning": "2026-09-12T10:31:50.702020+00:00",
-    "UCbWryqgKErPU53MkH3utLng": "2026-09-22T04:35:15.018166+00:00",
-    "UC0m81bQuthaQZmFbXEY9QSw": "2026-09-22T04:35:15.018166+00:00",
-    "UCMwVTLZIRRUyyVrkjDpn4pA": "2026-09-22T04:35:15.018166+00:00",
-    "UC021qI1mjAMJWG8p1jUE2ZA": "2026-09-22T04:35:15.018166+00:00",
-    "UCPYWhu0v-_e1m8QdZvrdUTg": "2026-09-22T04:35:15.018166+00:00",
-    "UCeCPt9gVnrQ39BeqEIjdnfA": "2026-09-22T04:35:15.018166+00:00",
-    "UCe1F6myqSiai-1kleX3WZpA": "2026-09-22T04:35:15.018166+00:00",
-    "Hugging Face Blog": "2026-09-22T04:35:15.018166+00:00",
-    "Pragmatic Engineer": "2026-09-22T04:35:15.018166+00:00",
-    "Cloudflare Blog": "2026-09-22T04:35:15.018166+00:00"
+    "UCbWryqgKErPU53MkH3utLng": "2026-09-22T04:49:15.566780+00:00",
+    "UC0m81bQuthaQZmFbXEY9QSw": "2026-09-22T04:49:15.566780+00:00",
+    "UCMwVTLZIRRUyyVrkjDpn4pA": "2026-09-22T04:49:15.566780+00:00",
+    "UC021qI1mjAMJWG8p1jUE2ZA": "2026-09-22T04:49:15.566780+00:00",
+    "UCPYWhu0v-_e1m8QdZvrdUTg": "2026-09-22T04:49:15.566780+00:00",
+    "UCeCPt9gVnrQ39BeqEIjdnfA": "2026-09-22T04:49:15.566780+00:00",
+    "UCe1F6myqSiai-1kleX3WZpA": "2026-09-22T04:49:15.566780+00:00",
+    "UCKhKnxp8JhHu1FsbyZYxqwg": "2026-09-22T04:49:15.566780+00:00",
+    "UCsRvxZErBo0ByyWUX_aVuvg": "2026-09-22T04:49:15.566780+00:00",
+    "UCzCsyvyrq38R6TnztEzOmgg": "2026-09-22T04:49:15.566780+00:00",
+    "Hugging Face Blog": "2026-09-22T04:49:15.566780+00:00",
+    "Pragmatic Engineer": "2026-09-22T04:49:15.566780+00:00",
+    "Cloudflare Blog": "2026-09-22T04:49:15.566780+00:00"
   },
   "carryover": []
 }

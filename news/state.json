@@ -1,6 +1,6 @@
 {
   "_comment": "Служебная память Ленты. Коммитится вместе с выпуском, поэтому у нее есть история, ее можно посмотреть глазами и откатить. seen_* — что уже публиковалось, rejected — что забраковано вручную и больше не должно предлагаться, channel_last_featured — когда источник последний раз был в выпуске (кулдаун), carryover — свежие материалы, отложенные до следующего выпуска, пока не набрались просмотры.",
-  "updated": "2026-09-19",
+  "updated": "2026-09-22",
   "seen_video_ids": [
     "KcshxSB3sNY",
     "0ZfHnZf_VMc",
@@ -21,7 +21,14 @@
     "Mzr7byMFy_4",
     "BqRhBq-_kgE",
     "Lu1UWqVTbQg",
-    "uMudSbZ79-A"
+    "uMudSbZ79-A",
+    "ID8dFnZdcdw",
+    "SNJ3yuJ_QwY",
+    "SWEThyRHMgQ",
+    "fPQ-XjVr26E",
+    "Gk8QB-5l4ms",
+    "JsNQwFB9N1Q",
+    "1QI6LTKdwmw"
   ],
   "seen_urls": [
     "https://youtube.com/watch?v=KcshxSB3sNY",
@@ -60,12 +67,19 @@
     "https://github.com/Atomburstofficial/geiger",
     "http://arxiv.org/abs/2609.10871v1",
     "https://aws.amazon.com/blogs/machine-learning/beyond-the-price-per-token-choosing-the-right-openai-model-on-amazon-bedrock-for-your-workload",
+    "https://youtube.com/watch?v=ID8dFnZdcdw",
+    "https://youtube.com/watch?v=SNJ3yuJ_QwY",
+    "https://youtube.com/watch?v=SWEThyRHMgQ",
+    "https://youtube.com/watch?v=fPQ-XjVr26E",
+    "https://youtube.com/watch?v=Gk8QB-5l4ms",
+    "https://youtube.com/watch?v=JsNQwFB9N1Q",
+    "https://youtube.com/watch?v=1QI6LTKdwmw",
     "https://arxiv.org/abs/2609.20804",
     "https://harnesstax.github.io",
-    "https://twitter.com/trq212/status/2101009392611278961",
+    "https://code.claude.com/docs/en/changelog",
+    "https://huggingface.co/blog/ibm-research/altk-evolve-consistency",
     "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
-    "https://vercel.com/changelog/webmcp-mcp-handler",
-    "https://huggingface.co/blog/ibm-research/altk-evolve-consistency"
+    "https://blog.cloudflare.com/workers-granular-authorization"
   ],
   "rejected": [
     {
@@ -123,9 +137,16 @@
     "UC6MhHkSosYXAD-LTXBWyLMg": "2026-09-12T10:31:50.702020+00:00",
     "UChtOSt7gtYMMM21ceOFH3tQ": "2026-09-12T10:31:50.702020+00:00",
     "AWS Machine Learning": "2026-09-12T10:31:50.702020+00:00",
-    "Pragmatic Engineer": "2026-09-19T11:38:00.493564+00:00",
-    "Vercel Blog": "2026-09-19T11:38:00.493564+00:00",
-    "Hugging Face Blog": "2026-09-19T11:38:00.493564+00:00"
+    "UCbWryqgKErPU53MkH3utLng": "2026-09-22T04:35:15.018166+00:00",
+    "UC0m81bQuthaQZmFbXEY9QSw": "2026-09-22T04:35:15.018166+00:00",
+    "UCMwVTLZIRRUyyVrkjDpn4pA": "2026-09-22T04:35:15.018166+00:00",
+    "UC021qI1mjAMJWG8p1jUE2ZA": "2026-09-22T04:35:15.018166+00:00",
+    "UCPYWhu0v-_e1m8QdZvrdUTg": "2026-09-22T04:35:15.018166+00:00",
+    "UCeCPt9gVnrQ39BeqEIjdnfA": "2026-09-22T04:35:15.018166+00:00",
+    "UCe1F6myqSiai-1kleX3WZpA": "2026-09-22T04:35:15.018166+00:00",
+    "Hugging Face Blog": "2026-09-22T04:35:15.018166+00:00",
+    "Pragmatic Engineer": "2026-09-22T04:35:15.018166+00:00",
+    "Cloudflare Blog": "2026-09-22T04:35:15.018166+00:00"
   },
   "carryover": []
 }

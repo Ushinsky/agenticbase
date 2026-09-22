@@ -1,11 +1,96 @@
 {
-  "generated_at": "2026-09-19T11:38:00.492149+00:00",
+  "generated_at": "2026-09-22T04:35:15.016617+00:00",
   "current": {
     "number": 3,
     "week_start": "2026-09-12T07:00:00+00:00",
     "week_end": "2026-09-19T07:00:00+00:00",
     "period_label": "12-18 сентября",
-    "videos": [],
+    "videos": [
+      {
+        "video_id": "ID8dFnZdcdw",
+        "title": "Context Engineering: I Measured 4 Agent Setups",
+        "channel_title": "Edukast AI",
+        "published_at": "2026-09-18T03:30:11+00:00",
+        "thumbnail_url": "https://i.ytimg.com/vi/ID8dFnZdcdw/hqdefault.jpg",
+        "language": "en",
+        "view_count": 149,
+        "duration_sec": 261,
+        "score": 82,
+        "summary_ru": "Замер четырех вариантов настройки Claude Code на одной и той же задаче: разница в стоимости и скорости доходит до десятков процентов, с конкретными цифрами по токенам, времени и доле кэша."
+      },
+      {
+        "video_id": "SNJ3yuJ_QwY",
+        "title": "Jev (Fully Tested) + Browser Use: FASTEST AI Agent I'VE TRIED YET!",
+        "channel_title": "AICodeKing",
+        "published_at": "2026-09-17T09:40:46+00:00",
+        "thumbnail_url": "https://i.ytimg.com/vi/SNJ3yuJ_QwY/hqdefault.jpg",
+        "language": "en",
+        "view_count": 33630,
+        "duration_sec": 502,
+        "score": 80,
+        "summary_ru": "Практическое тестирование модели Jev на задачах маршрутизации, обнаружения возврата, устойчивости к промт-инъекциям и аудита действий агента — с честным выводом, что для продакшена нужно больше проверок."
+      },
+      {
+        "video_id": "SWEThyRHMgQ",
+        "title": "My NEW FAVORITE Skill - Claude Code Drives My Whole Computer (Better Computer Use)",
+        "channel_title": "Cole Medin",
+        "published_at": "2026-09-15T00:00:10+00:00",
+        "thumbnail_url": "https://i.ytimg.com/vi/SWEThyRHMgQ/hqdefault.jpg",
+        "language": "en",
+        "view_count": 33526,
+        "duration_sec": 781,
+        "score": 80,
+        "summary_ru": "Автор рассказывает, как заставил Claude Code управлять всем компьютером через один простой скилл вместо готовых инструментов компьютерного использования, и как правит его ошибки добавлением правил."
+      },
+      {
+        "video_id": "fPQ-XjVr26E",
+        "title": "LangGraph FULL Project Research Agent (step-by-step)",
+        "channel_title": "AI Career Lab",
+        "published_at": "2026-09-14T12:00:04+00:00",
+        "thumbnail_url": "https://i.ytimg.com/vi/fPQ-XjVr26E/hqdefault.jpg",
+        "language": "en-US",
+        "view_count": 53904,
+        "duration_sec": 10223,
+        "score": 79,
+        "summary_ru": "Пошаговая сборка исследовательского мультиагента на LangGraph: панель аналитиков, интервью-цикл, параллельные подграфы, human-in-the-loop и сборка итогового отчета — с конкретной архитектурой графа."
+      },
+      {
+        "video_id": "Gk8QB-5l4ms",
+        "title": "MCP с нуля: подключаю Claude к своим данным за 20 минут",
+        "channel_title": "Андрей Андриевский",
+        "published_at": "2026-09-18T08:00:26+00:00",
+        "thumbnail_url": "https://i.ytimg.com/vi/Gk8QB-5l4ms/hqdefault.jpg",
+        "language": "ru",
+        "view_count": 626,
+        "duration_sec": 868,
+        "score": 79,
+        "summary_ru": "Автор проходит путь настройки MCP-сервера для Claude Code с нуля: от демо-примера до собственного сервера с тремя инструментами над реальными данными, показывая, что решает докстринг инструмента и где протокол не нужен вовсе."
+      },
+      {
+        "video_id": "JsNQwFB9N1Q",
+        "title": "Jev for AI Agents: I Tested it with rtrvr.ai for browser automation",
+        "channel_title": "Retriever AI",
+        "published_at": "2026-09-17T09:36:52+00:00",
+        "thumbnail_url": "https://i.ytimg.com/vi/JsNQwFB9N1Q/hqdefault.jpg",
+        "language": "en-US",
+        "view_count": 6673,
+        "duration_sec": 424,
+        "score": 79,
+        "summary_ru": "Разработчик rtrvr.ai тестирует новую модель Jev внутри своего браузерного агента и честно показывает, где быстрые вероятностные решения сработали, а где агент ошибся."
+      },
+      {
+        "video_id": "1QI6LTKdwmw",
+        "title": "Как AI агенты работают в BigTech? | Василий Исаев | Wildberries",
+        "channel_title": "ШВМ - Программы по AI и высшей математике",
+        "published_at": "2026-09-17T07:06:29+00:00",
+        "thumbnail_url": "https://i.ytimg.com/vi/1QI6LTKdwmw/hqdefault.jpg",
+        "language": "ru",
+        "view_count": 211,
+        "duration_sec": 2654,
+        "score": 78,
+        "summary_ru": "Инженер Wildberries разбирает намеренно сломанного банковского ассистента: пять конкретных провалов от overengineering до забитого контекста, и что остается чинить после первых фиксов."
+      }
+    ],
     "web": [
       {
         "type": "обсуждение",
@@ -14,8 +99,8 @@
         "title": "An empirical study of harness design for coding agents",
         "url": "https://arxiv.org/abs/2609.20804",
         "published_at": "2026-09-18T13:06:30+00:00",
-        "score": 85,
-        "summary_ru": "Эмпирическое исследование того, как устройство harness влияет на поведение и качество работы кодовых агентов, с проверяемыми данными вместо общих рассуждений."
+        "score": 81,
+        "summary_ru": "Эмпирическое исследование того, как устройство шлюза (harness) влияет на результаты кодовых агентов, с конкретными данными по разным конфигурациям."
       },
       {
         "type": "обсуждение",
@@ -24,38 +109,18 @@
         "title": "HarnessTax: How Much Does the Harness Matter for Coding Agents?",
         "url": "https://harnesstax.github.io/",
         "published_at": "2026-09-16T22:10:13+00:00",
-        "score": 79,
-        "summary_ru": "Разбор того, насколько сильно выбор harness определяет результаты кодовых агентов, с попыткой измерить этот вклад отдельно от модели."
+        "score": 80,
+        "summary_ru": "Разбор того, насколько сильно harness определяет качество работы кодовых агентов, с попыткой измерить этот вклад отдельно от модели."
       },
       {
         "type": "обсуждение",
         "source": "hackernews",
-        "domain": "twitter.com",
-        "title": "Anthropic finally adds AGENTS.md support to Claude Code",
-        "url": "https://twitter.com/trq212/status/2101009392611278961",
-        "published_at": "2026-09-18T18:26:34+00:00",
-        "score": 70,
-        "summary_ru": "Короткое сообщение о том, что Claude Code теперь поддерживает файл AGENTS.md, полезно тем, кто уже настраивает правила для кодовых агентов."
-      },
-      {
-        "type": "отраслевое издание",
-        "source": "Pragmatic Engineer",
-        "domain": "newsletter.pragmaticengineer.com",
-        "title": "Inside OpenAI’s agentic software factory",
-        "url": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
-        "published_at": "2026-09-15T15:41:25+00:00",
-        "score": 51,
-        "summary_ru": "Взгляд изнутри на то, как Codex и агентный подход перестраивают инженерные процессы OpenAI и с какими сложностями это сопряжено на масштабе миллиарда пользователей."
-      },
-      {
-        "type": "инженерный блог",
-        "source": "Vercel Blog",
-        "domain": "vercel.com",
-        "title": "WebMCP support now available in mcp-handler",
-        "url": "https://vercel.com/changelog/webmcp-mcp-handler",
-        "published_at": "2026-09-18T18:00:00+00:00",
-        "score": 29,
-        "summary_ru": "Заметка о добавлении поддержки WebMCP в mcp-handler, интересна тем, кто уже работает с этим протоколом."
+        "domain": "code.claude.com",
+        "title": "Claude Code now reads AGENTS.md if there is no Claude.md",
+        "url": "https://code.claude.com/docs/en/changelog",
+        "published_at": "2026-09-18T21:00:32+00:00",
+        "score": 76,
+        "summary_ru": "Заметка об изменении в Claude Code: теперь агент читает AGENTS.md, если рядом нет Claude.md — важная деталь для тех, кто настраивает файлы правил."
       },
       {
         "type": "инженерный блог",
@@ -64,8 +129,28 @@
         "title": "Your Agent Aced the Task. Will It Do It Again?",
         "url": "https://huggingface.co/blog/ibm-research/altk-evolve-consistency",
         "published_at": "2026-09-15T16:00:44+00:00",
-        "score": 28,
-        "summary_ru": "Разбор того, почему успешный прогон агента не гарантирует повторный успех, и что можно сделать для стабильности результатов между запусками."
+        "score": 52,
+        "summary_ru": "Материал про то, что успешное прохождение агентом задачи один раз не гарантирует повторяемости результата, и как это проверять."
+      },
+      {
+        "type": "отраслевое издание",
+        "source": "Pragmatic Engineer",
+        "domain": "newsletter.pragmaticengineer.com",
+        "title": "Inside OpenAI’s agentic software factory",
+        "url": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+        "published_at": "2026-09-15T15:41:25+00:00",
+        "score": 44,
+        "summary_ru": "Заметка о внутренней разработке Codex в OpenAI и о том, как компания выстраивает свой конвейер работы с агентами при большой нагрузке."
+      },
+      {
+        "type": "инженерный блог",
+        "source": "Cloudflare Blog",
+        "domain": "blog.cloudflare.com",
+        "title": "Give every teammate and agent the right level of access to your Workers",
+        "url": "https://blog.cloudflare.com/workers-granular-authorization/",
+        "published_at": "2026-09-15T13:00:00+00:00",
+        "score": 30,
+        "summary_ru": "Cloudflare добавил более узкие роли доступа к Workers, чтобы разграничивать права между людьми, CI-токенами и агентами и не давать лишнего доступа при деплое и отладке."
       }
     ]
   },

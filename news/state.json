@@ -1,6 +1,6 @@
 {
   "_comment": "Служебная память Ленты. Коммитится вместе с выпуском, поэтому у нее есть история, ее можно посмотреть глазами и откатить. seen_* — что уже публиковалось, rejected — что забраковано вручную и больше не должно предлагаться, channel_last_featured — когда источник последний раз был в выпуске (кулдаун), carryover — свежие материалы, отложенные до следующего выпуска, пока не набрались просмотры.",
-  "updated": "2026-09-22",
+  "updated": "2026-09-26",
   "seen_video_ids": [
     "KcshxSB3sNY",
     "0ZfHnZf_VMc",
@@ -31,7 +31,17 @@
     "1QI6LTKdwmw",
     "NFKHLhAvj1g",
     "xbedfuqYQYA",
-    "UftYcziWO3g"
+    "UftYcziWO3g",
+    "-RTgK6qX6A8",
+    "ukIGzrvLVAA",
+    "xZTrukZkZ08",
+    "p3htNgFSPVs",
+    "AL-PQuB2wy0",
+    "3b0U4_02bAE",
+    "ILn2GX8s1FM",
+    "Bn2uI2Ni9wY",
+    "uaVJfykIyzs",
+    "bBMp5tLxShQ"
   ],
   "seen_urls": [
     "https://youtube.com/watch?v=KcshxSB3sNY",
@@ -85,7 +95,21 @@
     "https://code.claude.com/docs/en/changelog",
     "https://huggingface.co/blog/ibm-research/altk-evolve-consistency",
     "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
-    "https://blog.cloudflare.com/workers-granular-authorization"
+    "https://blog.cloudflare.com/workers-granular-authorization",
+    "https://youtube.com/watch?v=-RTgK6qX6A8",
+    "https://youtube.com/watch?v=ukIGzrvLVAA",
+    "https://youtube.com/watch?v=xZTrukZkZ08",
+    "https://youtube.com/watch?v=p3htNgFSPVs",
+    "https://youtube.com/watch?v=AL-PQuB2wy0",
+    "https://youtube.com/watch?v=3b0U4_02bAE",
+    "https://youtube.com/watch?v=ILn2GX8s1FM",
+    "https://youtube.com/watch?v=Bn2uI2Ni9wY",
+    "https://youtube.com/watch?v=uaVJfykIyzs",
+    "https://youtube.com/watch?v=bBMp5tLxShQ",
+    "https://blog.szypowi.cz/p/claude-code-reads-agents.md-only-when-telemetry-is-on",
+    "https://minimaxir.com/2026/09/agentic-iteration",
+    "https://theregister.com/devops/2026/09/18/microsoft-agentically-ports-copilot-runtime-to-rust-for-120k/5297549",
+    "https://github.blog/engineering/user-experience/rendering-huge-pull-requests-in-the-github-copilot-app"
   ],
   "rejected": [
     {
@@ -155,7 +179,18 @@
     "UCzCsyvyrq38R6TnztEzOmgg": "2026-09-22T04:49:15.566780+00:00",
     "Hugging Face Blog": "2026-09-22T04:49:15.566780+00:00",
     "Pragmatic Engineer": "2026-09-22T04:49:15.566780+00:00",
-    "Cloudflare Blog": "2026-09-22T04:49:15.566780+00:00"
+    "Cloudflare Blog": "2026-09-22T04:49:15.566780+00:00",
+    "UC4JX40jDee_tINbkjycV4Sg": "2026-09-26T11:39:39.392574+00:00",
+    "UCjete_rlEo4zKvkzJNCMzsA": "2026-09-26T11:39:39.392574+00:00",
+    "UCy_XB5HjpR0-6dEZPsoE4UA": "2026-09-26T11:39:39.392574+00:00",
+    "UCg8ss4xW9jASrqWGP30jXiw": "2026-09-26T11:39:39.392574+00:00",
+    "UCtVTmZdo7U1RzUWm4F0WWBQ": "2026-09-26T11:39:39.392574+00:00",
+    "UC_x36zCEGilGpB1m-V4gmjg": "2026-09-26T11:39:39.392574+00:00",
+    "UC4ogdcPcIAOOMJktgBMhQnQ": "2026-09-26T11:39:39.392574+00:00",
+    "UCkFKiCm7dD0gsB4jqIdCuRQ": "2026-09-26T11:39:39.392574+00:00",
+    "UCL9S_mHsL0ihkXQMh80WYtg": "2026-09-26T11:39:39.392574+00:00",
+    "UCelfWQr9sXVMTvBzviPGlFw": "2026-09-26T11:39:39.392574+00:00",
+    "GitHub Engineering": "2026-09-26T11:39:39.392574+00:00"
   },
   "carryover": []
 }

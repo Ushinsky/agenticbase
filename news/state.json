@@ -1,6 +1,6 @@
 {
   "_comment": "Служебная память Ленты. Коммитится вместе с выпуском, поэтому у нее есть история, ее можно посмотреть глазами и откатить. seen_* — что уже публиковалось, rejected — что забраковано вручную и больше не должно предлагаться, channel_last_featured — когда источник последний раз был в выпуске (кулдаун), carryover — свежие материалы, отложенные до следующего выпуска, пока не набрались просмотры.",
-  "updated": "2026-09-26",
+  "updated": "2026-10-03",
   "seen_video_ids": [
     "KcshxSB3sNY",
     "0ZfHnZf_VMc",
@@ -41,7 +41,17 @@
     "ILn2GX8s1FM",
     "Bn2uI2Ni9wY",
     "uaVJfykIyzs",
-    "bBMp5tLxShQ"
+    "bBMp5tLxShQ",
+    "1NrE-Cp3e8w",
+    "wPdoZRbvaF4",
+    "mQZB0l-rhxE",
+    "mON705FmG_M",
+    "A-JBaNvv3Tk",
+    "bA2WYOTOC14",
+    "TN3mj92oZ8I",
+    "vKT59uoByXc",
+    "esZ4htaHsP8",
+    "HYqRclqfNsU"
   ],
   "seen_urls": [
     "https://youtube.com/watch?v=KcshxSB3sNY",
@@ -109,7 +119,25 @@
     "https://blog.szypowi.cz/p/claude-code-reads-agents.md-only-when-telemetry-is-on",
     "https://minimaxir.com/2026/09/agentic-iteration",
     "https://theregister.com/devops/2026/09/18/microsoft-agentically-ports-copilot-runtime-to-rust-for-120k/5297549",
-    "https://github.blog/engineering/user-experience/rendering-huge-pull-requests-in-the-github-copilot-app"
+    "https://github.blog/engineering/user-experience/rendering-huge-pull-requests-in-the-github-copilot-app",
+    "https://youtube.com/watch?v=1NrE-Cp3e8w",
+    "https://youtube.com/watch?v=wPdoZRbvaF4",
+    "https://youtube.com/watch?v=mQZB0l-rhxE",
+    "https://youtube.com/watch?v=mON705FmG_M",
+    "https://youtube.com/watch?v=A-JBaNvv3Tk",
+    "https://youtube.com/watch?v=bA2WYOTOC14",
+    "https://youtube.com/watch?v=TN3mj92oZ8I",
+    "https://youtube.com/watch?v=vKT59uoByXc",
+    "https://youtube.com/watch?v=esZ4htaHsP8",
+    "https://youtube.com/watch?v=HYqRclqfNsU",
+    "https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot",
+    "https://distantprovince.substack.com/p/the-four-horsemen-of-agentic-coding",
+    "https://news.ycombinator.com/item?id=49911500",
+    "http://arxiv.org/abs/2610.01787v1",
+    "http://arxiv.org/abs/2610.01618v1",
+    "https://infoq.com/news/2026/09/agentic-refactoring-case-study",
+    "http://arxiv.org/abs/2610.01023v1",
+    "http://arxiv.org/abs/2610.02163v1"
   ],
   "rejected": [
     {
@@ -146,7 +174,7 @@
   "channel_last_featured": {
     "UC6YYHJzM6PhZ2Yey9BQiUaw": "2026-09-09T16:28:35.822914+00:00",
     "UC71msi5AXOXZWCpzPr9zuZQ": "2026-09-09T16:28:35.822914+00:00",
-    "UCV03SRZXJEz-hchIAogeJOg": "2026-09-09T16:28:35.822914+00:00",
+    "UCV03SRZXJEz-hchIAogeJOg": "2026-10-03T11:54:10.246943+00:00",
     "UCdXorgCT87YlFRN9n8oJ7_A": "2026-09-09T16:28:35.822914+00:00",
     "UCcefcZRL2oaA_uBNeo5UOWg": "2026-09-09T16:28:35.822914+00:00",
     "UCWWO3yt3b5R_LrWHReU0b-g": "2026-09-09T16:28:35.822914+00:00",
@@ -155,14 +183,14 @@
     "UCmeU2DYiVy80wMBGZzEWnbw": "2026-09-09T16:28:35.822914+00:00",
     "UCIQzTfzErmrixae2oFqRxyg": "2026-09-09T16:28:35.822914+00:00",
     "Simon Willison": "2026-09-09T16:28:35.822914+00:00",
-    "InfoQ AI/ML": "2026-09-09T16:28:35.822914+00:00",
+    "InfoQ AI/ML": "2026-10-03T11:54:10.246943+00:00",
     "UCt9WqM6o0y5YGqQm1nffFWQ": "2026-09-12T10:31:50.702020+00:00",
     "UCuXX9B1kSwRTQE2BIhK7Khw": "2026-09-12T10:31:50.702020+00:00",
     "UCyznFVRwL2wBZZHMNZuVwSw": "2026-09-12T10:31:50.702020+00:00",
     "UCC-lyoTfSrcJzA1ab3APAgw": "2026-09-12T10:31:50.702020+00:00",
     "UCf4sXk66VuWGlg4Nh0tuCdA": "2026-09-12T10:31:50.702020+00:00",
     "UCyBZCFUN118RhbpXhEyqgZg": "2026-09-12T10:31:50.702020+00:00",
-    "UCJS9pqu9BzkAMNTmzNMNhvg": "2026-09-12T10:31:50.702020+00:00",
+    "UCJS9pqu9BzkAMNTmzNMNhvg": "2026-10-03T11:54:10.246943+00:00",
     "UCoMzQTJSIr7-RU1QbomQI2w": "2026-09-12T10:31:50.702020+00:00",
     "UC6MhHkSosYXAD-LTXBWyLMg": "2026-09-12T10:31:50.702020+00:00",
     "UChtOSt7gtYMMM21ceOFH3tQ": "2026-09-12T10:31:50.702020+00:00",
@@ -190,7 +218,15 @@
     "UCkFKiCm7dD0gsB4jqIdCuRQ": "2026-09-26T11:39:39.392574+00:00",
     "UCL9S_mHsL0ihkXQMh80WYtg": "2026-09-26T11:39:39.392574+00:00",
     "UCelfWQr9sXVMTvBzviPGlFw": "2026-09-26T11:39:39.392574+00:00",
-    "GitHub Engineering": "2026-09-26T11:39:39.392574+00:00"
+    "GitHub Engineering": "2026-09-26T11:39:39.392574+00:00",
+    "UCbo1ezBGYI44jBBb14fLcLw": "2026-10-03T11:54:10.246943+00:00",
+    "UCz80JEs56coMRDd5OzYe_lw": "2026-10-03T11:54:10.246943+00:00",
+    "UCPGrgwfbkjTIgPoOh2q1BAg": "2026-10-03T11:54:10.246943+00:00",
+    "UCox5GlnRT93ttIpiJq8xUnA": "2026-10-03T11:54:10.246943+00:00",
+    "UCLKPca3kwwd-B59HNr-_lvA": "2026-10-03T11:54:10.246943+00:00",
+    "UCdMz6KKEDW_1Qqas-ya7S6w": "2026-10-03T11:54:10.246943+00:00",
+    "UCRiin4u8YZGlVQRZp7qOOaw": "2026-10-03T11:54:10.246943+00:00",
+    "UCRo_w_pfTxgTJgGLSPAKcuw": "2026-10-03T11:54:10.246943+00:00"
   },
   "carryover": []
 }

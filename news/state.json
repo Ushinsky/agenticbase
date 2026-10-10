@@ -1,6 +1,6 @@
 {
   "_comment": "Служебная память Ленты. Коммитится вместе с выпуском, поэтому у нее есть история, ее можно посмотреть глазами и откатить. seen_* — что уже публиковалось, rejected — что забраковано вручную и больше не должно предлагаться, channel_last_featured — когда источник последний раз был в выпуске (кулдаун), carryover — свежие материалы, отложенные до следующего выпуска, пока не набрались просмотры.",
-  "updated": "2026-10-03",
+  "updated": "2026-10-10",
   "seen_video_ids": [
     "KcshxSB3sNY",
     "0ZfHnZf_VMc",
@@ -51,7 +51,17 @@
     "TN3mj92oZ8I",
     "vKT59uoByXc",
     "esZ4htaHsP8",
-    "HYqRclqfNsU"
+    "HYqRclqfNsU",
+    "CacTDGs-If4",
+    "mAKUL12h1n8",
+    "efxFeiz2Zk4",
+    "lP-WeNdWW8E",
+    "XqnYqTKInWI",
+    "ZkAeIEcw8N8",
+    "Mph1H5u3yeA",
+    "qdHqm0L3nuQ",
+    "h9rNmHeLgZE",
+    "YLkSfz3EFGw"
   ],
   "seen_urls": [
     "https://youtube.com/watch?v=KcshxSB3sNY",
@@ -137,7 +147,25 @@
     "http://arxiv.org/abs/2610.01618v1",
     "https://infoq.com/news/2026/09/agentic-refactoring-case-study",
     "http://arxiv.org/abs/2610.01023v1",
-    "http://arxiv.org/abs/2610.02163v1"
+    "http://arxiv.org/abs/2610.02163v1",
+    "https://youtube.com/watch?v=CacTDGs-If4",
+    "https://youtube.com/watch?v=mAKUL12h1n8",
+    "https://youtube.com/watch?v=efxFeiz2Zk4",
+    "https://youtube.com/watch?v=lP-WeNdWW8E",
+    "https://youtube.com/watch?v=XqnYqTKInWI",
+    "https://youtube.com/watch?v=ZkAeIEcw8N8",
+    "https://youtube.com/watch?v=Mph1H5u3yeA",
+    "https://youtube.com/watch?v=qdHqm0L3nuQ",
+    "https://youtube.com/watch?v=h9rNmHeLgZE",
+    "https://youtube.com/watch?v=YLkSfz3EFGw",
+    "https://github.com/rociiu/talorys",
+    "https://liao.gg/blog/agents-dont-need-memory",
+    "https://pipod.dev",
+    "https://aws.amazon.com/blogs/machine-learning/how-cornerstone-ondemand-cut-database-diagnosis-by-78-with-amazon-bedrock",
+    "http://arxiv.org/abs/2610.11602v1",
+    "http://arxiv.org/abs/2610.11647v1",
+    "http://arxiv.org/abs/2610.11655v1",
+    "http://arxiv.org/abs/2610.11559v1"
   ],
   "rejected": [
     {
@@ -184,17 +212,17 @@
     "UCIQzTfzErmrixae2oFqRxyg": "2026-09-09T16:28:35.822914+00:00",
     "Simon Willison": "2026-09-09T16:28:35.822914+00:00",
     "InfoQ AI/ML": "2026-10-03T11:54:10.246943+00:00",
-    "UCt9WqM6o0y5YGqQm1nffFWQ": "2026-09-12T10:31:50.702020+00:00",
+    "UCt9WqM6o0y5YGqQm1nffFWQ": "2026-10-10T12:48:47.433970+00:00",
     "UCuXX9B1kSwRTQE2BIhK7Khw": "2026-09-12T10:31:50.702020+00:00",
     "UCyznFVRwL2wBZZHMNZuVwSw": "2026-09-12T10:31:50.702020+00:00",
     "UCC-lyoTfSrcJzA1ab3APAgw": "2026-09-12T10:31:50.702020+00:00",
-    "UCf4sXk66VuWGlg4Nh0tuCdA": "2026-09-12T10:31:50.702020+00:00",
+    "UCf4sXk66VuWGlg4Nh0tuCdA": "2026-10-10T12:48:47.433970+00:00",
     "UCyBZCFUN118RhbpXhEyqgZg": "2026-09-12T10:31:50.702020+00:00",
     "UCJS9pqu9BzkAMNTmzNMNhvg": "2026-10-03T11:54:10.246943+00:00",
     "UCoMzQTJSIr7-RU1QbomQI2w": "2026-09-12T10:31:50.702020+00:00",
     "UC6MhHkSosYXAD-LTXBWyLMg": "2026-09-12T10:31:50.702020+00:00",
     "UChtOSt7gtYMMM21ceOFH3tQ": "2026-09-12T10:31:50.702020+00:00",
-    "AWS Machine Learning": "2026-09-12T10:31:50.702020+00:00",
+    "AWS Machine Learning": "2026-10-10T12:48:47.433970+00:00",
     "UCbWryqgKErPU53MkH3utLng": "2026-09-22T04:49:15.566780+00:00",
     "UC0m81bQuthaQZmFbXEY9QSw": "2026-09-22T04:49:15.566780+00:00",
     "UCMwVTLZIRRUyyVrkjDpn4pA": "2026-09-22T04:49:15.566780+00:00",
@@ -226,7 +254,15 @@
     "UCLKPca3kwwd-B59HNr-_lvA": "2026-10-03T11:54:10.246943+00:00",
     "UCdMz6KKEDW_1Qqas-ya7S6w": "2026-10-03T11:54:10.246943+00:00",
     "UCRiin4u8YZGlVQRZp7qOOaw": "2026-10-03T11:54:10.246943+00:00",
-    "UCRo_w_pfTxgTJgGLSPAKcuw": "2026-10-03T11:54:10.246943+00:00"
+    "UCRo_w_pfTxgTJgGLSPAKcuw": "2026-10-03T11:54:10.246943+00:00",
+    "UCxUk2e3VhNKsuDw6ww-dv1Q": "2026-10-10T12:48:47.433970+00:00",
+    "UCkQX1tChV7Z7l1LFF4L9j_g": "2026-10-10T12:48:47.433970+00:00",
+    "UCkXt17E-ay0Aid5y-ZYEwjw": "2026-10-10T12:48:47.433970+00:00",
+    "UCeNLqAes-kUMjWksPA6d-BA": "2026-10-10T12:48:47.433970+00:00",
+    "UCm9jHSoQXwnoUyqUoedShRg": "2026-10-10T12:48:47.433970+00:00",
+    "UCkVfrGwV-iG9bSsgCbrNPxQ": "2026-10-10T12:48:47.433970+00:00",
+    "UCni-QWSYGsS_u4xpHcYyL0g": "2026-10-10T12:48:47.433970+00:00",
+    "UCJDWj0B_-Rzi9tdemSzl-bw": "2026-10-10T12:48:47.433970+00:00"
   },
   "carryover": []
 }
